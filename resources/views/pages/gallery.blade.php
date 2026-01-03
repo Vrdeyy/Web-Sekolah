@@ -4,26 +4,19 @@
 
 @section('content')
     {{-- Hero Header --}}
-    <section class="pt-28 pb-16 bg-gradient-to-br from-slate-900 via-pink-900 to-purple-900 relative overflow-hidden">
-        <div class="absolute inset-0">
-            <div
-                class="absolute top-0 left-0 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2">
-            </div>
-            <div
-                class="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2">
-            </div>
-        </div>
+    <section class="pt-28 pb-16 bg-gradient-to-br from-[#1A0E17] via-[#2A1424] to-[#12080F] relative overflow-hidden">
+        @include('partials.awards-shapes')
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto">
                 <div
-                    class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-pink-300 text-sm font-medium mb-6">
-                    <i class="fas fa-images"></i>
+                    class="inline-flex items-center gap-2 px-6 py-3 bg-[#932F80]/25 backdrop-blur-md rounded-full text-[#F3DCEB] text-sm font-semibold mb-6 border border-[#932F80]/50 shadow-glow">
+                    <i class="fas fa-images animate-bounce"></i>
                     <span>GALERI SEKOLAH</span>
                 </div>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6">
-                    Dokumentasi <span class="text-pink-400">Kegiatan</span>
+                <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 tracking-wide drop-shadow-lg">
+                    Dokumentasi <span class="text-[#F3DCEB]">Kegiatan</span>
                 </h1>
-                <p class="text-gray-300 text-lg">
+                <p class="text-gray-300 text-lg md:text-xl leading-relaxed">
                     Kumpulan foto dan video kegiatan di {{ $settings['school_name'] ?? 'SMK YAJ' }}
                 </p>
             </div>
@@ -31,18 +24,18 @@
     </section>
 
     {{-- Tab Navigation --}}
-    <section class="py-8 bg-white border-b border-gray-200 sticky top-20 z-30 backdrop-blur-xl bg-white/95">
+    <section class="py-10 bg-white border-b border-gray-200 sticky top-20 z-30 backdrop-blur-xl bg-white/95">
         <div class="container mx-auto px-4 lg:px-8">
-            <div class="flex items-center justify-center gap-4">
+            <div class="flex items-center justify-center gap-6">
                 <a href="{{ route('gallery.photos') }}"
-                    class="px-8 py-3 rounded-xl font-semibold transition-all {{ request()->routeIs('gallery.photos') ? 'bg-pink-600 text-white shadow-lg' : 'bg-gray-100 text-gray-600 hover:bg-pink-100 hover:text-pink-700' }}">
-                    <i class="fas fa-image mr-2"></i>
-                    Foto
+                    class="px-10 py-4 rounded-2xl font-bold tracking-wide transition-all duration-300 {{ request()->routeIs('gallery.photos') ? 'bg-[#932F80] text-white shadow-lg shadow-[#932F80]/30 scale-105' : 'bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-900 border border-gray-200' }}">
+                    <i class="fas fa-image mr-2 text-lg"></i>
+                    FOTO
                 </a>
                 <a href="{{ route('gallery.videos') }}"
-                    class="px-8 py-3 rounded-xl font-semibold transition-all {{ request()->routeIs('gallery.videos') ? 'bg-pink-600 text-white shadow-lg' : 'bg-gray-100 text-gray-600 hover:bg-pink-100 hover:text-pink-700' }}">
-                    <i class="fas fa-video mr-2"></i>
-                    Video
+                    class="px-10 py-4 rounded-2xl font-bold tracking-wide transition-all duration-300 {{ request()->routeIs('gallery.videos') ? 'bg-[#932F80] text-white shadow-lg shadow-[#932F80]/30 scale-105' : 'bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-900 border border-gray-200' }}">
+                    <i class="fas fa-video mr-2 text-lg"></i>
+                    VIDEO
                 </a>
             </div>
         </div>
@@ -50,29 +43,29 @@
 
     {{-- Photo Gallery --}}
     @if(request()->routeIs('gallery.photos'))
-        <section class="py-16 bg-gradient-to-b from-gray-50 to-white">
+        <section class="py-16 bg-purple-50 relative">
             <div class="container mx-auto px-4 lg:px-8">
                 @if($galleries->count() > 0)
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         @foreach($galleries as $gallery)
-                            <div class="group relative aspect-square rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
+                            <div class="group relative aspect-square rounded-3xl overflow-hidden shadow-lg shadow-purple-900/5 hover:shadow-2xl hover:shadow-purple-900/10 border border-gray-100 hover:border-[#932F80]/30 transition-all duration-500 cursor-pointer"
                                 onclick="openLightbox('{{ asset('storage/' . $gallery->image) }}', '{{ $gallery->title ?? '' }}')">
                                 <img src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->title ?? 'Galeri' }}"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                     onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400'">
 
                                 {{-- Overlay --}}
                                 <div
-                                    class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
-                                    <div class="absolute bottom-0 left-0 right-0 p-4">
+                                    class="absolute inset-0 bg-gradient-to-t from-purple-900/80 via-purple-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                    <div class="absolute bottom-0 left-0 right-0 p-6">
                                         @if($gallery->title)
-                                            <h3 class="text-white font-semibold text-sm line-clamp-2">{{ $gallery->title }}</h3>
+                                            <h3 class="text-white font-bold text-sm line-clamp-2 tracking-tight">{{ $gallery->title }}</h3>
                                         @endif
                                     </div>
                                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                                         <div
-                                            class="w-12 h-12 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center">
-                                            <i class="fas fa-search-plus text-white text-xl"></i>
+                                            class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500 border border-white/20">
+                                            <i class="fas fa-search-plus text-white text-2xl"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -86,11 +79,11 @@
                     </div>
                 @else
                     {{-- Empty State --}}
-                    <div class="text-center py-20">
-                        <div class="w-24 h-24 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <i class="fas fa-image text-4xl text-pink-400"></i>
+                    <div class="text-center py-20 bg-white rounded-3xl border border-gray-100 shadow-sm">
+                        <div class="w-24 h-24 bg-purple-50 rounded-full flex items-center justify-center mx-auto mb-6 border border-purple-100">
+                            <i class="fas fa-image text-4xl text-[#932F80]"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Belum Ada Foto</h3>
+                        <h3 class="text-xl font-bold text-[#2A1424] mb-2">Belum Ada Foto</h3>
                         <p class="text-gray-500">Galeri foto masih kosong.</p>
                     </div>
                 @endif
@@ -100,40 +93,40 @@
 
     {{-- Video Gallery --}}
     @if(request()->routeIs('gallery.videos'))
-        <section class="py-16 bg-gradient-to-b from-gray-50 to-white">
+        <section class="py-16 bg-purple-50 relative">
             <div class="container mx-auto px-4 lg:px-8">
                 @if($galleries->count() > 0)
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         @foreach($galleries as $gallery)
-                            <div class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
+                            <div class="group bg-white rounded-2xl overflow-hidden shadow-lg shadow-purple-900/5 hover:shadow-2xl hover:shadow-purple-900/10 border border-gray-100 hover:border-[#932F80]/30 transition-all duration-500 cursor-pointer"
                                 onclick="openVideoModal('{{ $gallery->video_url }}')">
-                                <div class="relative aspect-video overflow-hidden">
+                                <div class="relative aspect-video overflow-hidden bg-gray-100">
                                     @if($gallery->thumbnail)
                                         <img src="{{ asset('storage/' . $gallery->thumbnail) }}" alt="{{ $gallery->title ?? 'Video' }}"
-                                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                                     @else
                                         <div
-                                            class="w-full h-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center">
-                                            <i class="fas fa-play-circle text-6xl text-white/40"></i>
+                                            class="w-full h-full bg-gradient-to-br from-purple-100 to-white flex items-center justify-center">
+                                            <i class="fas fa-play-circle text-6xl text-purple-200"></i>
                                         </div>
                                     @endif
 
                                     {{-- Play Button Overlay --}}
                                     <div
-                                        class="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/50 transition-colors">
+                                        class="absolute inset-0 bg-purple-900/30 flex items-center justify-center group-hover:bg-purple-900/50 transition-all duration-500">
                                         <div
-                                            class="w-16 h-16 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                                            <i class="fas fa-play text-white text-2xl ml-1"></i>
+                                            class="w-20 h-20 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500 border border-white/40 shadow-xl">
+                                            <i class="fas fa-play text-white text-3xl ml-1"></i>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="p-6">
-                                    <h3 class="font-bold text-gray-900 group-hover:text-pink-600 transition-colors">
+                                <div class="p-8">
+                                    <h3 class="font-bold text-[#2A1424] text-lg group-hover:text-[#932F80] transition-colors tracking-tight">
                                         {{ $gallery->title ?? 'Video' }}
                                     </h3>
                                     @if($gallery->description)
-                                        <p class="text-gray-500 text-sm mt-2 line-clamp-2">{{ $gallery->description }}</p>
+                                        <p class="text-gray-500 text-sm mt-3 line-clamp-2 leading-relaxed">{{ $gallery->description }}</p>
                                     @endif
                                 </div>
                             </div>
@@ -146,11 +139,11 @@
                     </div>
                 @else
                     {{-- Empty State --}}
-                    <div class="text-center py-20">
-                        <div class="w-24 h-24 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <i class="fas fa-video text-4xl text-pink-400"></i>
+                    <div class="text-center py-20 bg-white rounded-3xl border border-gray-100 shadow-sm">
+                        <div class="w-24 h-24 bg-purple-50 rounded-full flex items-center justify-center mx-auto mb-6 border border-purple-100">
+                            <i class="fas fa-video text-4xl text-[#932F80]"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Belum Ada Video</h3>
+                        <h3 class="text-xl font-bold text-[#2A1424] mb-2">Belum Ada Video</h3>
                         <p class="text-gray-500">Galeri video masih kosong.</p>
                     </div>
                 @endif
@@ -159,27 +152,21 @@
     @endif
 
     {{-- CTA Section --}}
-    <section class="py-16 bg-gradient-to-r from-pink-600 to-purple-600 relative overflow-hidden">
-        <div class="absolute inset-0">
-            <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=\" 60\" height=\"60\"
-                viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg
-                fill=\"%23ffffff\" fill-opacity=\"0.05\"%3E%3Cpath d=\"M36
-                34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6
-                4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
-        </div>
+    <section class="py-24 bg-gradient-to-br from-[#1A0E17] via-[#2A1424] to-[#12080F] relative overflow-hidden border-t border-white/10">
+        @include('partials.awards-shapes')
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
             <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">Ikuti Kegiatan Kami!</h2>
-                <p class="text-pink-100 text-lg mb-8">Jangan lewatkan berbagai kegiatan menarik di sekolah kami.</p>
-                <div class="flex flex-wrap justify-center gap-4">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">Ikuti Kegiatan Kami!</h2>
+                <p class="text-gray-300 text-lg md:text-xl mb-10 leading-relaxed">Jangan lewatkan berbagai kegiatan menarik di sekolah kami.</p>
+                <div class="flex flex-wrap justify-center gap-6">
                     <a href="{{ route('news') }}"
-                        class="inline-flex items-center gap-2 px-8 py-4 bg-white text-pink-700 font-bold rounded-xl hover:bg-pink-50 transition-colors shadow-lg">
-                        <i class="fas fa-newspaper"></i>
+                        class="inline-flex items-center gap-3 px-10 py-4 bg-white text-[#932F80] font-bold rounded-2xl hover:bg-gray-100 transition-all shadow-xl hover:-translate-y-1">
+                        <i class="fas fa-newspaper text-lg"></i>
                         Baca Berita
                     </a>
                     <a href="{{ route('extracurriculars') }}"
-                        class="inline-flex items-center gap-2 px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-bold rounded-xl border-2 border-white/40 hover:bg-white/30 transition-colors">
-                        <i class="fas fa-futbol"></i>
+                        class="inline-flex items-center gap-3 px-10 py-4 bg-white/10 backdrop-blur-md text-white font-bold rounded-2xl border-2 border-white/20 hover:bg-white/20 transition-all hover:-translate-y-1">
+                        <i class="fas fa-futbol text-lg"></i>
                         Lihat Eskul
                     </a>
                 </div>

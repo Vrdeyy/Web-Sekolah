@@ -65,17 +65,6 @@
         mobileMenuOverlay?.addEventListener('click', toggleMobileMenu);
         mobileMenuClose?.addEventListener('click', toggleMobileMenu);
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', function () {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-white/95', 'backdrop-blur-lg', 'shadow-lg');
-                navbar.classList.remove('bg-transparent');
-            } else {
-                navbar.classList.remove('bg-white/95', 'backdrop-blur-lg', 'shadow-lg');
-                navbar.classList.add('bg-transparent');
-            }
-        });
 
         // Dropdown menus
         document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
@@ -84,6 +73,23 @@
                 const dropdown = this.nextElementSibling;
                 dropdown.classList.toggle('hidden');
             });
+        });
+
+        // Navbar
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 40) {
+                navbar.classList.add(
+                    'scale-[0.98]',
+                    'opacity-95'
+                );
+            } else {
+                navbar.classList.remove(
+                    'scale-[0.98]',
+                    'opacity-95'
+                );
+            }
         });
     </script>
 </body>

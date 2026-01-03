@@ -4,26 +4,19 @@
 
 @section('content')
     {{-- Hero Header --}}
-    <section class="pt-28 pb-16 bg-gradient-to-br from-slate-900 via-orange-900 to-red-900 relative overflow-hidden">
-        <div class="absolute inset-0">
-            <div
-                class="absolute top-0 left-0 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2">
-            </div>
-            <div
-                class="absolute bottom-0 right-0 w-96 h-96 bg-red-500/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2">
-            </div>
-        </div>
+    <section class="pt-28 pb-16 bg-gradient-to-br from-[#1A0E17] via-[#2A1424] to-[#12080F] relative overflow-hidden">
+        @include('partials.awards-shapes')
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto">
                 <div
-                    class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-orange-300 text-sm font-medium mb-6">
-                    <i class="fas fa-store"></i>
+                    class="inline-flex items-center gap-2 px-6 py-3 bg-[#932F80]/25 backdrop-blur-md rounded-full text-[#F3DCEB] text-sm font-semibold mb-6 border border-[#932F80]/50 shadow-glow">
+                    <i class="fas fa-store animate-bounce"></i>
                     <span>TEACHING FACTORY</span>
                 </div>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6">
-                    Pusat <span class="text-orange-400">Bisnis</span>
+                <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 tracking-wide drop-shadow-lg">
+                    Pusat <span class="text-[#F3DCEB]">Bisnis</span>
                 </h1>
-                <p class="text-gray-300 text-lg">
+                <p class="text-gray-300 text-lg md:text-xl leading-relaxed">
                     Unit usaha dan teaching factory sebagai wadah pembelajaran wirausaha bagi siswa
                 </p>
             </div>
@@ -31,77 +24,83 @@
     </section>
 
     {{-- Stats Section --}}
-    <section class="py-8 bg-white border-b border-gray-200">
+    <section class="py-12 bg-white relative border-b border-gray-200">
         <div class="container mx-auto px-4 lg:px-8">
             <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16">
-                <div class="text-center">
-                    <div class="text-3xl font-extrabold text-orange-600">{{ $businessCenters->count() }}</div>
-                    <div class="text-gray-500 text-sm">Unit Usaha</div>
+                <div class="text-center group">
+                    <div class="text-4xl font-extrabold text-[#932F80] mb-1 transition-transform group-hover:scale-110">{{ $businessCenters->count() }}</div>
+                    <div class="text-gray-600 text-sm font-medium tracking-wide">Unit Bisnis</div>
                 </div>
-                <div class="text-center">
-                    <div class="text-3xl font-extrabold text-emerald-600">100+</div>
-                    <div class="text-gray-500 text-sm">Siswa Terlibat</div>
+                <div class="text-center group">
+                    <div class="text-4xl font-extrabold text-[#2A1424] mb-1 transition-transform group-hover:scale-110">100%</div>
+                    <div class="text-gray-600 text-sm font-medium tracking-wide">Professional</div>
                 </div>
-                <div class="text-center">
-                    <div class="text-3xl font-extrabold text-blue-600">Real</div>
-                    <div class="text-gray-500 text-sm">Pengalaman Bisnis</div>
+                <div class="text-center group">
+                    <div class="text-4xl font-extrabold text-[#932F80] mb-1 transition-transform group-hover:scale-110">24/7</div>
+                    <div class="text-gray-600 text-sm font-medium tracking-wide">Layanan</div>
                 </div>
             </div>
         </div>
     </section>
 
     {{-- Business Centers Grid --}}
-    <section class="py-16 bg-gradient-to-b from-gray-50 to-white">
+    <section class="py-24 bg-purple-50 relative overflow-hidden">
         <div class="container mx-auto px-4 lg:px-8">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @foreach($businessCenters as $bc)
+            <div class="grid md:grid-cols-2 gap-10">
+                @foreach($businessCenters as $center)
                     <article
-                        class="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:border-orange-200 transition-all duration-300 hover:-translate-y-2">
-                        {{-- Image --}}
-                        <div class="relative h-56 overflow-hidden">
-                            @if($bc->image)
-                                <img src="{{ asset('storage/' . $bc->image) }}" alt="{{ $bc->name }}"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            @else
-                                <div
-                                    class="w-full h-full bg-gradient-to-br from-orange-500 via-red-500 to-pink-500 flex items-center justify-center">
-                                    <i class="fas fa-store text-6xl text-white/40"></i>
-                                </div>
-                            @endif
-
-                            {{-- Overlay --}}
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                            </div>
-                        </div>
-
-                        {{-- Content --}}
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-orange-600 transition-colors">
-                                {{ $bc->name }}
-                            </h3>
-
-                            @if($bc->description)
-                                <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                                    {{ strip_tags($bc->description) }}
-                                </p>
-                            @endif
-
-                            {{-- Footer --}}
-                            <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-                                <div class="flex items-center gap-2">
-                                    <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-                                        <i class="fas fa-users text-orange-600 text-xs"></i>
+                        class="group bg-white rounded-[2.5rem] overflow-hidden border border-gray-200 shadow-xl shadow-purple-900/5 hover:shadow-2xl hover:shadow-purple-900/10 hover:border-[#932F80]/30 transition-all duration-500 hover:-translate-y-2">
+                        <div class="grid md:grid-cols-2 h-full">
+                            {{-- Image Side --}}
+                            <div class="relative overflow-hidden h-64 md:h-full bg-gray-100">
+                                @if($center->image)
+                                    <img src="{{ asset('storage/' . $center->image) }}" alt="{{ $center->name }}"
+                                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                @else
+                                    <div
+                                        class="w-full h-full bg-gradient-to-br from-purple-100 to-white flex items-center justify-center">
+                                        <i class="fas fa-store text-6xl text-purple-200"></i>
                                     </div>
-                                    <span class="text-sm text-gray-500">Teaching Factory</span>
-                                </div>
-                                @if($bc->link)
-                                    <a href="{{ $bc->link }}" target="_blank"
-                                        class="inline-flex items-center gap-2 text-orange-600 font-semibold text-sm hover:gap-3 transition-all">
-                                        Kunjungi
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
                                 @endif
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#2A1424]/80 to-transparent flex flex-col justify-end p-8 md:p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                    <a href="#" class="inline-flex items-center gap-2 text-white font-bold text-sm">
+                                        Lihat Detail <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            {{-- Content Side --}}
+                            <div class="p-8 md:p-10 flex flex-col justify-center">
+                                <h3 class="text-2xl font-extrabold text-[#2A1424] mb-4 group-hover:text-[#932F80] transition-colors leading-tight">
+                                    {{ $center->name }}
+                                </h3>
+                                
+                                @if($center->description)
+                                    <p class="text-gray-600 text-sm mb-6 line-clamp-3 leading-relaxed font-medium">
+                                        {{ $center->description }}
+                                    </p>
+                                @endif
+
+                                <div class="space-y-4">
+                                    <div class="flex items-center gap-4 group/item">
+                                        <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center text-[#932F80] group-hover/item:bg-[#932F80] group-hover/item:text-white transition-all duration-300">
+                                            <i class="fas fa-clock"></i>
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Jam Operasional</span>
+                                            <span class="text-sm font-bold text-[#2A1424]">08:00 - 16:00 WIB</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-4 group/item">
+                                        <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover/item:bg-blue-600 group-hover/item:text-white transition-all duration-300">
+                                            <i class="fas fa-check-circle"></i>
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Status</span>
+                                            <span class="text-sm font-bold text-[#2A1424]">Buka Hari Ini</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </article>
@@ -111,72 +110,51 @@
     </section>
 
     {{-- Benefits Section --}}
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Manfaat Teaching Factory</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    Pembelajaran berbasis produksi yang memberikan pengalaman nyata kepada siswa
-                </p>
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-4 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-[#932F80] font-extrabold text-sm tracking-widest uppercase mb-4 block">Keunggulan Kami</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-[#2A1424] mb-6 tracking-tight">Kenapa Memilih Layanan <span class="text-[#932F80]">Kami?</span></h2>
+                <p class="text-gray-600 text-lg font-medium leading-relaxed">Kami berkomitmen memberikan layanan terbaik dengan standar profesional dan hasil yang memuaskan.</p>
             </div>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div
-                    class="p-6 bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl border border-orange-100 hover:shadow-lg transition-all text-center">
-                    <div class="w-14 h-14 bg-orange-600 rounded-xl flex items-center justify-center mb-4 mx-auto">
-                        <i class="fas fa-hands-helping text-2xl text-white"></i>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-purple-50 rounded-[2.5rem] p-10 text-center group hover:bg-[#932F80] transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-20 h-20 bg-white rounded-3xl mx-auto flex items-center justify-center mb-8 shadow-xl shadow-purple-900/5 group-hover:scale-110 transition-transform duration-500">
+                        <i class="fas fa-award text-4xl text-[#932F80]"></i>
                     </div>
-                    <h3 class="font-bold text-gray-900 mb-2">Pengalaman Nyata</h3>
-                    <p class="text-gray-600 text-sm">Siswa belajar langsung dari praktik bisnis yang nyata</p>
+                    <h3 class="text-xl font-extrabold text-[#2A1424] mb-4 group-hover:text-white transition-colors">Kualitas Terjamin</h3>
+                    <p class="text-gray-600 group-hover:text-white/90 transition-colors leading-relaxed font-medium">Standar kualitas tinggi dalam setiap produk dan layanan yang kami berikan.</p>
                 </div>
-
-                <div
-                    class="p-6 bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl border border-emerald-100 hover:shadow-lg transition-all text-center">
-                    <div class="w-14 h-14 bg-emerald-600 rounded-xl flex items-center justify-center mb-4 mx-auto">
-                        <i class="fas fa-lightbulb text-2xl text-white"></i>
+                <div class="bg-purple-50 rounded-[2.5rem] p-10 text-center group hover:bg-[#932F80] transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-20 h-20 bg-white rounded-3xl mx-auto flex items-center justify-center mb-8 shadow-xl shadow-purple-900/5 group-hover:scale-110 transition-transform duration-500">
+                        <i class="fas fa-hand-holding-usd text-4xl text-[#932F80]"></i>
                     </div>
-                    <h3 class="font-bold text-gray-900 mb-2">Jiwa Wirausaha</h3>
-                    <p class="text-gray-600 text-sm">Menumbuhkan semangat dan jiwa kewirausahaan</p>
+                    <h3 class="text-xl font-extrabold text-[#2A1424] mb-4 group-hover:text-white transition-colors">Harga Kompetitif</h3>
+                    <p class="text-gray-600 group-hover:text-white/90 transition-colors leading-relaxed font-medium">Penawaran harga terbaik yang bersaing dengan kualitas yang tidak diragukan.</p>
                 </div>
-
-                <div
-                    class="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-100 hover:shadow-lg transition-all text-center">
-                    <div class="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center mb-4 mx-auto">
-                        <i class="fas fa-cogs text-2xl text-white"></i>
+                <div class="bg-purple-50 rounded-[2.5rem] p-10 text-center group hover:bg-[#932F80] transition-all duration-500 hover:-translate-y-2">
+                    <div class="w-20 h-20 bg-white rounded-3xl mx-auto flex items-center justify-center mb-8 shadow-xl shadow-purple-900/5 group-hover:scale-110 transition-transform duration-500">
+                        <i class="fas fa-users-cog text-4xl text-[#932F80]"></i>
                     </div>
-                    <h3 class="font-bold text-gray-900 mb-2">Soft Skills</h3>
-                    <p class="text-gray-600 text-sm">Mengembangkan kemampuan komunikasi dan manajemen</p>
-                </div>
-
-                <div
-                    class="p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl border border-purple-100 hover:shadow-lg transition-all text-center">
-                    <div class="w-14 h-14 bg-purple-600 rounded-xl flex items-center justify-center mb-4 mx-auto">
-                        <i class="fas fa-chart-line text-2xl text-white"></i>
-                    </div>
-                    <h3 class="font-bold text-gray-900 mb-2">Siap Kerja</h3>
-                    <p class="text-gray-600 text-sm">Lulusan siap memasuki dunia kerja atau berwirausaha</p>
+                    <h3 class="text-xl font-extrabold text-[#2A1424] mb-4 group-hover:text-white transition-colors">SDM Professional</h3>
+                    <p class="text-gray-600 group-hover:text-white/90 transition-colors leading-relaxed font-medium">Didukung oleh siswa terlatih dan pembimbing ahli di bidangnya.</p>
                 </div>
             </div>
         </div>
     </section>
 
     {{-- CTA Section --}}
-    <section class="py-16 bg-gradient-to-r from-orange-500 to-red-500 relative overflow-hidden">
-        <div class="absolute inset-0">
-            <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=\" 60\" height=\"60\"
-                viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg
-                fill=\"%23ffffff\" fill-opacity=\"0.05\"%3E%3Cpath d=\"M36
-                34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6
-                4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
-        </div>
+    <section class="py-24 bg-gradient-to-br from-[#1A0E17] via-[#2A1424] to-[#12080F] relative overflow-hidden border-t border-white/10">
+        @include('partials.awards-shapes')
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
             <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">Tertarik Menjadi Partner?</h2>
-                <p class="text-orange-100 text-lg mb-8">Kami terbuka untuk kerja sama dengan dunia usaha dan industri.</p>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6">Tertarik Menjadi Partner?</h2>
+                <p class="text-gray-300 text-lg md:text-xl mb-12 font-medium">Kami terbuka untuk kolaborasi strategis dengan Dunia Usaha dan Dunia Industri (DUDI).</p>
                 <a href="{{ route('contact') }}"
-                    class="inline-flex items-center gap-2 px-8 py-4 bg-white text-orange-700 font-bold rounded-xl hover:bg-orange-50 transition-colors shadow-lg">
-                    <i class="fas fa-handshake"></i>
-                    Hubungi Kami
+                    class="inline-flex items-center gap-4 px-12 py-5 bg-[#932F80] text-white font-extrabold rounded-2xl hover:bg-[#6E1F5F] transition-all shadow-2xl hover:shadow-purple-500/50 hover:-translate-y-1 transform">
+                    <i class="fas fa-handshake text-2xl"></i>
+                    HUBUNGI KAMI SEKARANG
                 </a>
             </div>
         </div>

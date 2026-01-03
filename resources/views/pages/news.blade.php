@@ -4,26 +4,19 @@
 
 @section('content')
     {{-- Hero Header --}}
-    <section class="pt-28 pb-16 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900 relative overflow-hidden">
-        <div class="absolute inset-0">
-            <div
-                class="absolute top-0 left-0 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2">
-            </div>
-            <div
-                class="absolute bottom-0 right-0 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2">
-            </div>
-        </div>
+    <section class="pt-28 pb-16 bg-gradient-to-br from-[#1A0E17] via-[#2A1424] to-[#12080F] relative overflow-hidden">
+        @include('partials.awards-shapes')
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto">
                 <div
-                    class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-emerald-300 text-sm font-medium mb-6">
-                    <i class="fas fa-newspaper"></i>
+                    class="inline-flex items-center gap-2 px-6 py-3 bg-[#932F80]/25 backdrop-blur-md rounded-full text-[#F3DCEB] text-sm font-semibold mb-6 border border-[#932F80]/50 shadow-glow">
+                    <i class="fas fa-newspaper animate-bounce"></i>
                     <span>BERITA & ARTIKEL</span>
                 </div>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6">
-                    Berita <span class="text-emerald-400">Terkini</span>
+                <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 tracking-wide drop-shadow-lg">
+                    Berita <span class="text-[#F3DCEB]">Terkini</span>
                 </h1>
-                <p class="text-gray-300 text-lg">
+                <p class="text-gray-300 text-lg md:text-xl leading-relaxed">
                     Informasi terbaru seputar kegiatan, prestasi, dan perkembangan di
                     {{ $settings['school_name'] ?? 'SMK YAJ' }}
                 </p>
@@ -32,33 +25,33 @@
     </section>
 
     {{-- Category Filter Tabs --}}
-    <section class="py-8 bg-white border-b border-gray-200 sticky top-20 z-30 backdrop-blur-xl bg-white/95">
+    <section class="py-10 bg-white border-b border-gray-200 sticky top-20 z-30 backdrop-blur-xl bg-white/95">
         <div class="container mx-auto px-4 lg:px-8">
-            <div class="flex flex-wrap items-center justify-between gap-4">
+            <div class="flex flex-wrap items-center justify-between gap-6">
                 {{-- Category Pills --}}
-                <div class="flex flex-wrap gap-2">
+                <div class="flex flex-wrap gap-3">
                     <a href="{{ route('news') }}"
-                        class="px-5 py-2.5 rounded-xl font-medium text-sm transition-all {{ !request('category') ? 'bg-emerald-600 text-white shadow-lg' : 'bg-gray-100 text-gray-600 hover:bg-emerald-100 hover:text-emerald-700' }}">
-                        Semua
+                        class="px-6 py-3 rounded-2xl font-bold text-sm transition-all duration-300 {{ !request('category') ? 'bg-[#932F80] text-white shadow-lg shadow-[#932F80]/30 scale-105' : 'bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-900 border border-gray-200' }}">
+                        SEMUA
                     </a>
                     @php
                         $categories = ['Kegiatan', 'Pengumuman', 'Prestasi', 'Workshop', 'Kunjungan'];
                     @endphp
                     @foreach($categories as $cat)
                         <a href="{{ route('news') }}?category={{ $cat }}"
-                            class="px-5 py-2.5 rounded-xl font-medium text-sm transition-all {{ request('category') == $cat ? 'bg-emerald-600 text-white shadow-lg' : 'bg-gray-100 text-gray-600 hover:bg-emerald-100 hover:text-emerald-700' }}">
-                            {{ $cat }}
+                            class="px-6 py-3 rounded-2xl font-bold text-sm transition-all duration-300 {{ request('category') == $cat ? 'bg-[#932F80] text-white shadow-lg shadow-[#932F80]/30 scale-105' : 'bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-900 border border-gray-200' }}">
+                            {{ strtoupper($cat) }}
                         </a>
                     @endforeach
                 </div>
 
                 {{-- Search Box --}}
-                <form action="{{ route('news') }}" method="GET" class="relative">
+                <form action="{{ route('news') }}" method="GET" class="relative group">
                     <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari berita..."
-                        class="pl-4 pr-12 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 w-64">
+                        class="pl-6 pr-14 py-3.5 bg-gray-100 border border-gray-200 rounded-2xl text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-[#932F80] focus:border-[#932F80] w-72 transition-all outline-none">
                     <button type="submit"
-                        class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-emerald-600">
-                        <i class="fas fa-search"></i>
+                        class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 group-hover:text-[#932F80] transition-colors">
+                        <i class="fas fa-search text-lg"></i>
                     </button>
                 </form>
             </div>
@@ -68,11 +61,11 @@
     {{-- Featured News (Latest) --}}
     @if($news->count() > 0 && $news->first())
         @php $featured = $news->first(); @endphp
-        <section class="py-16 bg-gradient-to-b from-gray-50 to-white">
+        <section class="py-16 bg-white relative">
             <div class="container mx-auto px-4 lg:px-8">
-                <div class="mb-10">
-                    <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-3">
-                        <span class="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center">
+                <div class="mb-12">
+                    <h2 class="text-3xl font-extrabold text-[#2A1424] flex items-center gap-4 tracking-tight">
+                        <span class="w-12 h-12 bg-[#932F80] rounded-2xl flex items-center justify-center shadow-lg shadow-[#932F80]/30 transition-transform hover:rotate-12">
                             <i class="fas fa-star text-white"></i>
                         </span>
                         Berita Utama
@@ -80,55 +73,55 @@
                 </div>
 
                 <a href="{{ route('news.show', $featured->slug) }}"
-                    class="group block relative overflow-hidden rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500">
+                    class="group block relative overflow-hidden rounded-[3rem] shadow-2xl hover:shadow-[#932F80]/20 transition-all duration-700 border border-white/5">
                     {{-- Background Image --}}
-                    <div class="relative h-[500px] lg:h-[450px]">
+                    <div class="relative h-[550px] lg:h-[500px]">
                         @if($featured->image)
                             <img src="{{ asset('storage/' . $featured->image) }}" alt="{{ $featured->title }}"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
                         @else
-                            <div class="w-full h-full bg-gradient-to-br from-emerald-500 via-teal-600 to-cyan-700"></div>
+                            <div class="w-full h-full bg-gradient-to-br from-[#932F80]/60 via-[#6E1F5F]/60 to-[#1A0E17]"></div>
                         @endif
 
                         {{-- Gradient Overlay --}}
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent"></div>
 
                         {{-- Content --}}
-                        <div class="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
-                            <div class="max-w-3xl">
+                        <div class="absolute bottom-0 left-0 right-0 p-10 lg:p-16">
+                            <div class="max-w-4xl">
                                 @if($featured->category)
                                     <span
-                                        class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500 text-white text-sm font-bold rounded-lg mb-4">
+                                        class="inline-flex items-center gap-2 px-6 py-2.5 bg-[#932F80] text-white text-sm font-extrabold rounded-xl mb-6 shadow-lg shadow-[#932F80]/50 tracking-wider">
                                         <i class="fas fa-folder"></i>
-                                        {{ $featured->category }}
+                                        {{ strtoupper($featured->category) }}
                                     </span>
                                 @endif
 
                                 <h3
-                                    class="text-3xl lg:text-4xl font-extrabold text-white mb-4 group-hover:text-emerald-300 transition-colors">
+                                    class="text-4xl lg:text-5xl font-extrabold text-white mb-6 group-hover:text-[#F3DCEB] transition-colors leading-tight tracking-tight">
                                     {{ $featured->title }}
                                 </h3>
 
-                                <p class="text-gray-300 text-lg mb-6 line-clamp-2">
+                                <p class="text-gray-300 text-lg lg:text-xl mb-8 line-clamp-2 leading-relaxed font-medium">
                                     {{ $featured->excerpt }}
                                 </p>
 
-                                <div class="flex flex-wrap items-center gap-6 text-gray-400 text-sm">
-                                    <span class="flex items-center gap-2">
-                                        <i class="far fa-calendar"></i>
+                                <div class="flex flex-wrap items-center gap-8 text-gray-400 font-bold uppercase tracking-widest text-xs">
+                                    <span class="flex items-center gap-3 bg-white/5 backdrop-blur-md px-4 py-2 rounded-lg border border-white/10">
+                                        <i class="far fa-calendar text-[#932F80] text-sm"></i>
                                         {{ $featured->published_at->format('d F Y') }}
                                     </span>
-                                    <span class="flex items-center gap-2">
-                                        <i class="far fa-user"></i>
+                                    <span class="flex items-center gap-3 bg-white/5 backdrop-blur-md px-4 py-2 rounded-lg border border-white/10">
+                                        <i class="far fa-user text-[#932F80] text-sm"></i>
                                         {{ $featured->author ?? 'Admin' }}
                                     </span>
-                                    <span class="flex items-center gap-2">
-                                        <i class="far fa-eye"></i>
-                                        {{ $featured->views }} views
+                                    <span class="flex items-center gap-3 bg-white/5 backdrop-blur-md px-4 py-2 rounded-lg border border-white/10">
+                                        <i class="far fa-eye text-[#932F80] text-sm"></i>
+                                        {{ number_format($featured->views) }} VIEWS
                                     </span>
                                     <span
-                                        class="inline-flex items-center gap-2 text-emerald-400 font-semibold group-hover:gap-4 transition-all">
-                                        Baca Selengkapnya
+                                        class="inline-flex items-center gap-3 text-[#F3DCEB] font-extrabold group-hover:gap-5 transition-all ml-auto group-hover:bg-[#932F80] group-hover:text-white px-6 py-2 rounded-xl border border-[#932F80]/30 bg-[#932F80]/10">
+                                        BACA SELENGKAPNYA
                                         <i class="fas fa-arrow-right"></i>
                                     </span>
                                 </div>
@@ -141,80 +134,80 @@
     @endif
 
     {{-- News Grid --}}
-    <section class="py-16 bg-white">
+    <section class="py-16 bg-[#FDF4F9] relative">
         <div class="container mx-auto px-4 lg:px-8">
-            <div class="flex items-center justify-between mb-10">
-                <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-3">
-                    <span class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
+            <div class="flex items-center justify-between mb-12">
+                <h2 class="text-3xl font-extrabold text-[#2A1424] flex items-center gap-4 tracking-tight">
+                    <span class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-600/30">
                         <i class="fas fa-list text-white"></i>
                     </span>
                     Semua Berita
                 </h2>
-                <p class="text-gray-500">
-                    Menampilkan {{ $news->total() ?? $news->count() }} artikel
-                </p>
+                <div class="px-5 py-2.5 bg-white border border-gray-200 rounded-2xl text-gray-500 font-bold text-sm tracking-wider shadow-sm">
+                    MENAMPILKAN {{ $news->total() ?? $news->count() }} ARTIKEL
+                </div>
             </div>
 
             @if($news->count() > 0)
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                     @foreach($news->skip(1) as $item)
                         <article
-                            class="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:border-emerald-200 transition-all duration-300 hover:-translate-y-1">
+                            class="group bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-xl shadow-purple-900/5 hover:shadow-2xl hover:shadow-purple-900/10 hover:border-[#932F80]/30 transition-all duration-500 hover:-translate-y-2">
                             {{-- Thumbnail --}}
-                            <a href="{{ route('news.show', $item->slug) }}" class="block relative h-52 overflow-hidden">
+                            <a href="{{ route('news.show', $item->slug) }}" class="block relative h-60 overflow-hidden">
                                 @if($item->image)
                                     <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}"
-                                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                                 @else
                                     <div
-                                        class="w-full h-full bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
-                                        <i class="fas fa-newspaper text-5xl text-slate-400"></i>
+                                        class="w-full h-full bg-gradient-to-br from-[#FDF4F9] to-white flex items-center justify-center border-b border-gray-100">
+                                        <i class="fas fa-newspaper text-5xl text-purple-200"></i>
                                     </div>
                                 @endif
 
                                 {{-- Category Badge --}}
                                 @if($item->category)
-                                    <div class="absolute top-4 left-4">
+                                    <div class="absolute top-6 left-6">
                                         <span
-                                            class="px-3 py-1.5 bg-white/95 backdrop-blur-sm text-emerald-700 text-xs font-bold rounded-lg shadow">
+                                            class="px-4 py-2 bg-white/90 backdrop-blur-md text-[#932F80] text-xs font-extrabold rounded-xl shadow-lg border border-purple-100 tracking-widest uppercase">
                                             {{ $item->category }}
                                         </span>
                                     </div>
                                 @endif
 
                                 {{-- Date Badge --}}
-                                <div class="absolute top-4 right-4">
+                                <div class="absolute top-6 right-6">
                                     <div
-                                        class="w-14 h-14 bg-emerald-600 rounded-xl flex flex-col items-center justify-center text-white shadow-lg">
-                                        <span class="text-lg font-bold leading-none">{{ $item->published_at->format('d') }}</span>
-                                        <span class="text-xs uppercase">{{ $item->published_at->format('M') }}</span>
+                                        class="w-14 h-14 bg-white/90 backdrop-blur-md rounded-2xl flex flex-col items-center justify-center text-[#932F80] shadow-lg border border-purple-100">
+                                        <span class="text-xl font-extrabold leading-none">{{ $item->published_at->format('d') }}</span>
+                                        <span class="text-[10px] font-bold uppercase tracking-tighter mt-1">{{ $item->published_at->format('M') }}</span>
                                     </div>
                                 </div>
                             </a>
 
                             {{-- Content --}}
-                            <div class="p-6">
+                            <div class="p-8">
                                 <a href="{{ route('news.show', $item->slug) }}">
                                     <h3
-                                        class="text-lg font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-emerald-600 transition-colors">
+                                        class="text-xl font-extrabold text-[#2A1424] mb-4 line-clamp-2 group-hover:text-[#932F80] transition-colors leading-tight tracking-tight">
                                         {{ $item->title }}
                                     </h3>
                                 </a>
 
-                                <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                                <p class="text-gray-500 text-sm mb-6 line-clamp-2 leading-relaxed font-medium">
                                     {{ $item->excerpt }}
                                 </p>
 
                                 {{-- Meta --}}
-                                <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                                <div class="flex items-center justify-between pt-6 border-t border-gray-100">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
-                                            <i class="fas fa-user text-emerald-600 text-xs"></i>
+                                        <div class="w-8 h-8 bg-purple-50 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-user text-[#932F80] text-[10px]"></i>
                                         </div>
-                                        <span class="text-sm text-gray-500">{{ $item->author ?? 'Admin' }}</span>
+                                        <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">{{ $item->author ?? 'Admin' }}</span>
                                     </div>
-                                    <span class="text-sm text-gray-400">
-                                        <i class="far fa-eye mr-1"></i>{{ $item->views }}
+                                    <span class="text-xs font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2">
+                                        <i class="far fa-eye text-[#932F80]"></i>{{ number_format($item->views) }}
                                     </span>
                                 </div>
                             </div>
@@ -223,21 +216,21 @@
                 </div>
 
                 {{-- Pagination --}}
-                <div class="mt-12">
+                <div class="mt-16">
                     {{ $news->links() }}
                 </div>
             @else
                 {{-- Empty State --}}
-                <div class="text-center py-20">
-                    <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-newspaper text-4xl text-gray-400"></i>
+                <div class="text-center py-32 bg-white rounded-[3rem] border border-gray-100 shadow-xl shadow-purple-900/5">
+                    <div class="w-24 h-24 bg-purple-50 rounded-full flex items-center justify-center mx-auto mb-8 border border-purple-100">
+                        <i class="fas fa-newspaper text-4xl text-[#932F80]"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Belum Ada Berita</h3>
-                    <p class="text-gray-500 mb-6">Berita yang Anda cari tidak ditemukan.</p>
+                    <h3 class="text-2xl font-extrabold text-[#2A1424] mb-4 tracking-tight">Belum Ada Berita</h3>
+                    <p class="text-gray-500 text-lg mb-10 max-w-md mx-auto">Berita yang Anda cari tidak ditemukan atau belum dipublikasikan.</p>
                     <a href="{{ route('news') }}"
-                        class="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 transition-colors">
+                        class="inline-flex items-center gap-3 px-10 py-4 bg-[#932F80] text-white font-extrabold rounded-2xl hover:bg-[#6E1F5F] transition-all shadow-xl hover:shadow-purple-500/40 hover:-translate-y-1">
                         <i class="fas fa-arrow-left"></i>
-                        Lihat Semua Berita
+                        LIHAT SEMUA BERITA
                     </a>
                 </div>
             @endif
@@ -245,52 +238,52 @@
     </section>
 
     {{-- Related Sections --}}
-    <section class="py-16 bg-gradient-to-b from-gray-50 to-white">
+    <section class="py-24 bg-white relative border-t border-gray-100">
         <div class="container mx-auto px-4 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12">
+            <div class="grid lg:grid-cols-2 gap-16">
                 {{-- Achievements Widget --}}
                 <div>
-                    <div class="flex items-center justify-between mb-8">
-                        <h2 class="text-xl font-bold text-gray-900 flex items-center gap-3">
-                            <span class="w-10 h-10 bg-amber-500 rounded-xl flex items-center justify-center">
+                    <div class="flex items-center justify-between mb-10">
+                        <h2 class="text-2xl font-extrabold text-[#2A1424] flex items-center gap-4 tracking-tight">
+                            <span class="w-12 h-12 bg-amber-500 rounded-2xl flex items-center justify-center shadow-lg shadow-amber-500/30">
                                 <i class="fas fa-trophy text-white"></i>
                             </span>
                             Prestasi Terbaru
                         </h2>
-                        <a href="{{ route('achievements') }}" class="text-amber-600 font-semibold text-sm hover:underline">
-                            Lihat Semua <i class="fas fa-arrow-right ml-1"></i>
+                        <a href="{{ route('achievements') }}" class="text-[#932F80] font-extrabold text-xs tracking-widest uppercase hover:text-[#6E1F5F] transition-colors bg-[#FDF4F9] px-4 py-2 rounded-lg border border-[#932F80]/20">
+                            LIHAT SEMUA <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
 
-                    <div class="space-y-4">
+                    <div class="space-y-6">
                         @foreach(\App\Models\Achievement::active()->ordered()->take(3)->get() as $achievement)
                             <div
-                                class="flex gap-4 p-4 bg-white rounded-2xl border border-gray-100 hover:shadow-md transition-all group">
-                                <div class="w-20 h-20 flex-shrink-0 rounded-xl overflow-hidden bg-amber-100">
+                                class="flex gap-6 p-6 bg-white rounded-3xl border border-gray-100 shadow-lg shadow-purple-900/5 hover:shadow-2xl hover:shadow-amber-500/10 hover:border-amber-500/50 transition-all duration-500 group transform hover:-translate-x-1">
+                                <div class="w-24 h-24 flex-shrink-0 rounded-2xl overflow-hidden bg-gray-100 border border-gray-200">
                                     @if($achievement->image)
                                         <img src="{{ asset('storage/' . $achievement->image) }}" alt="{{ $achievement->title }}"
-                                            class="w-full h-full object-cover">
+                                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                                     @else
-                                        <div class="w-full h-full flex items-center justify-center">
-                                            <i class="fas fa-trophy text-amber-400 text-2xl"></i>
+                                        <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-amber-500/20 to-transparent">
+                                            <i class="fas fa-trophy text-amber-500 text-3xl"></i>
                                         </div>
                                     @endif
                                 </div>
-                                <div class="flex-1 min-w-0">
+                                <div class="flex-1 min-w-0 flex flex-col justify-center">
                                     <h4
-                                        class="font-semibold text-gray-900 line-clamp-1 group-hover:text-amber-600 transition-colors">
+                                        class="text-lg font-extrabold text-[#2A1424] line-clamp-1 group-hover:text-amber-500 transition-colors tracking-tight">
                                         {{ $achievement->title }}</h4>
                                     @if($achievement->student_name)
-                                        <p class="text-sm text-gray-500 mt-1">{{ $achievement->student_name }}</p>
+                                        <p class="text-sm font-bold text-gray-500 uppercase tracking-widest mt-2">{{ $achievement->student_name }}</p>
                                     @endif
-                                    <div class="flex items-center gap-3 mt-2">
+                                    <div class="flex items-center gap-3 mt-4">
                                         @if($achievement->level)
                                             <span
-                                                class="px-2 py-1 bg-amber-100 text-amber-700 text-xs font-medium rounded">{{ $achievement->level }}</span>
+                                                class="px-3 py-1 bg-amber-50 text-amber-600 text-[10px] font-extrabold rounded-lg border border-amber-500/30 uppercase tracking-widest">{{ $achievement->level }}</span>
                                         @endif
                                         @if($achievement->rank)
                                             <span
-                                                class="px-2 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded">{{ $achievement->rank }}</span>
+                                                class="px-3 py-1 bg-purple-50 text-[#932F80] text-[10px] font-extrabold rounded-lg border border-[#932F80]/30 uppercase tracking-widest">{{ $achievement->rank }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -301,25 +294,28 @@
 
                 {{-- Gallery Widget --}}
                 <div>
-                    <div class="flex items-center justify-between mb-8">
-                        <h2 class="text-xl font-bold text-gray-900 flex items-center gap-3">
-                            <span class="w-10 h-10 bg-purple-600 rounded-xl flex items-center justify-center">
+                    <div class="flex items-center justify-between mb-10">
+                        <h2 class="text-2xl font-extrabold text-[#2A1424] flex items-center gap-4 tracking-tight">
+                            <span class="w-12 h-12 bg-purple-600 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-600/30">
                                 <i class="fas fa-images text-white"></i>
                             </span>
                             Galeri Foto
                         </h2>
                         <a href="{{ route('gallery.photos') }}"
-                            class="text-purple-600 font-semibold text-sm hover:underline">
-                            Lihat Semua <i class="fas fa-arrow-right ml-1"></i>
+                            class="text-[#932F80] font-extrabold text-xs tracking-widest uppercase hover:text-[#6E1F5F] transition-colors bg-purple-50 px-4 py-2 rounded-lg border border-purple-100">
+                            LIHAT SEMUA <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
 
-                    <div class="grid grid-cols-3 gap-3">
+                    <div class="grid grid-cols-3 gap-4">
                         @foreach(\App\Models\Gallery::active()->photos()->ordered()->take(6)->get() as $gallery)
-                            <div class="aspect-square rounded-xl overflow-hidden group">
+                            <div class="aspect-square rounded-2xl overflow-hidden group relative border border-gray-100 cursor-pointer shadow-lg hover:shadow-purple-500/30 transition-all duration-500">
                                 <img src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->title ?? 'Galeri' }}"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                    class="w-full h-full object-cover group-hover:scale-125 transition-transform duration-1000"
                                     onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=300'">
+                                <div class="absolute inset-0 bg-[#932F80]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                                    <i class="fas fa-search-plus text-white text-xl transform scale-50 group-hover:scale-100 transition-transform duration-500"></i>
+                                </div>
                             </div>
                         @endforeach
                     </div>
@@ -329,30 +325,23 @@
     </section>
 
     {{-- Newsletter CTA --}}
-    <section class="py-16 bg-gradient-to-r from-emerald-600 to-teal-600 relative overflow-hidden">
-        <div class="absolute inset-0">
-            <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width=\" 60\" height=\"60\"
-                viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg
-                fill=\"%23ffffff\" fill-opacity=\"0.05\"%3E%3Cpath d=\"M36
-                34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6
-                4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
-        </div>
+    <section class="py-24 bg-gradient-to-br from-[#1A0E17] via-[#2A1424] to-[#12080F] relative overflow-hidden border-t border-white/10">
+        @include('partials.awards-shapes')
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
-            <div class="max-w-2xl mx-auto text-center">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">Jangan Lewatkan Update Terbaru!</h2>
-                <p class="text-emerald-100 text-lg mb-8">Kunjungi website kami secara berkala untuk mendapatkan informasi
-                    terbaru seputar kegiatan sekolah.</p>
-                <div class="flex flex-wrap justify-center gap-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">Jangan Lewatkan Update Terbaru!</h2>
+                <p class="text-gray-300 text-lg md:text-xl mb-10 leading-relaxed">Kunjungi website kami secara berkala untuk mendapatkan informasi terbaru seputar kegiatan sekolah.</p>
+                <div class="flex flex-wrap justify-center gap-6">
                     <a href="{{ route('home') }}"
-                        class="inline-flex items-center gap-2 px-8 py-4 bg-white text-emerald-700 font-bold rounded-xl hover:bg-emerald-50 transition-colors shadow-lg">
-                        <i class="fas fa-home"></i>
-                        Kembali ke Beranda
+                        class="inline-flex items-center gap-3 px-10 py-4 bg-white text-[#932F80] font-extrabold rounded-2xl hover:bg-gray-100 transition-all shadow-xl hover:-translate-y-1">
+                        <i class="fas fa-home text-lg"></i>
+                        KEMBALI KE BERANDA
                     </a>
                     @if(($settings['ppdb_active'] ?? false))
                         <a href="{{ $settings['ppdb_url'] ?? '#' }}" target="_blank"
-                            class="inline-flex items-center gap-2 px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-bold rounded-xl border-2 border-white/40 hover:bg-white/30 transition-colors">
-                            <i class="fas fa-user-plus"></i>
-                            Daftar PPDB
+                            class="inline-flex items-center gap-3 px-10 py-4 bg-white/10 backdrop-blur-md text-white font-extrabold rounded-2xl border-2 border-white/20 hover:bg-white/20 transition-all hover:-translate-y-1">
+                            <i class="fas fa-user-plus text-lg"></i>
+                            DAFTAR PPDB
                         </a>
                     @endif
                 </div>

@@ -1,121 +1,160 @@
-{{-- Header/Navbar --}}
-<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
-    <nav class="container mx-auto px-4 lg:px-8">
-        <div class="flex items-center justify-between h-20">
-            {{-- Logo --}}
-            <a href="{{ route('home') }}" class="flex items-center gap-3">
-                <div
-                    class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shadow-lg">
-                    <span class="text-white font-bold text-xl">YAJ</span>
-                </div>
-                <div class="hidden sm:block">
-                    <h1 class="font-bold text-lg text-gray-800">{{ $settings['school_name'] ?? 'SMK YAJ' }}</h1>
-                    <p class="text-xs text-gray-500">Sekolah Menengah Kejuruan</p>
-                </div>
-            </a>
+<header id="navbar"
+    class="fixed top-4 left-0 right-0 z-50 pointer-events-none transition-all duration-300">
 
-            {{-- Desktop Navigation --}}
-            <div class="hidden lg:flex items-center gap-1">
-                {{-- Profil Dropdown --}}
-                <div class="relative group">
-                    <button
-                        class="px-4 py-2 text-gray-700 hover:text-emerald-600 font-medium flex items-center gap-1 transition-colors">
-                        Profil
-                        <i class="fas fa-chevron-down text-xs"></i>
-                    </button>
+    <div class="flex justify-center">
+        <nav
+            class="pointer-events-auto
+                   w-[95%] max-w-7xl
+                   px-6 py-3
+                   rounded-2xl
+                   bg-white/50 backdrop-blur-xl
+                   border border-[#4f2744]/25
+                   shadow-lg shadow-[#4f2744]/10">
+
+            <div class="flex items-center justify-between">
+
+                {{-- Logo --}}
+                <a href="{{ route('home') }}" class="flex items-center gap-3 glass-text">
                     <div
-                        class="absolute top-full left-0 w-48 bg-white rounded-xl shadow-xl border border-gray-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2">
-                        <a href="{{ route('page', 'yayasan') }}"
-                            class="block px-4 py-2 text-gray-600 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Yayasan</a>
-                        <a href="{{ route('page', 'sekolah') }}"
-                            class="block px-4 py-2 text-gray-600 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Sekolah</a>
-                        <a href="{{ route('page', 'visi-misi') }}"
-                            class="block px-4 py-2 text-gray-600 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Visi
-                            & Misi</a>
+                        class="w-11 h-11 bg-white
+                               rounded-xl flex items-center justify-center
+                               shadow-md ring-1 ring-[#4f2744]/30">
+                        <img src="{{ asset('img/logo.png') }}" alt="Logo"
+                             class="w-8 h-8 object-contain">
                     </div>
-                </div>
-
-                {{-- Akademik Dropdown --}}
-                <div class="relative group">
-                    <button
-                        class="px-4 py-2 text-gray-700 hover:text-emerald-600 font-medium flex items-center gap-1 transition-colors">
-                        Akademik
-                        <i class="fas fa-chevron-down text-xs"></i>
-                    </button>
-                    <div
-                        class="absolute top-full left-0 w-48 bg-white rounded-xl shadow-xl border border-gray-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2">
-                        <a href="{{ route('majors') }}"
-                            class="block px-4 py-2 text-gray-600 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Jurusan</a>
-                        <a href="{{ route('extracurriculars') }}"
-                            class="block px-4 py-2 text-gray-600 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Ekstrakurikuler</a>
-                        <a href="{{ route('achievements') }}"
-                            class="block px-4 py-2 text-gray-600 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Prestasi</a>
+                    <div class="hidden sm:block leading-tight">
+                        <h1 class="font-semibold text-slate-900">
+                            {{ $settings['school_name'] ?? 'SMK YAJ' }}
+                        </h1>
+                        <p class="text-xs text-slate-600">
+                            Sekolah Menengah Kejuruan
+                        </p>
                     </div>
-                </div>
+                </a>
 
-                {{-- Direktori Dropdown --}}
-                <div class="relative group">
-                    <button
-                        class="px-4 py-2 text-gray-700 hover:text-emerald-600 font-medium flex items-center gap-1 transition-colors">
-                        Direktori
-                        <i class="fas fa-chevron-down text-xs"></i>
-                    </button>
-                    <div
-                        class="absolute top-full left-0 w-48 bg-white rounded-xl shadow-xl border border-gray-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2">
-                        <a href="{{ route('teachers') }}"
-                            class="block px-4 py-2 text-gray-600 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Daftar
-                            Guru</a>
-                        <a href="{{ route('staff') }}"
-                            class="block px-4 py-2 text-gray-600 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Daftar
-                            Staff</a>
-                        <a href="{{ route('business-centers') }}"
-                            class="block px-4 py-2 text-gray-600 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Business
-                            Center</a>
-                    </div>
-                </div>
+                {{-- Desktop Navigation --}}
+                <div class="hidden lg:flex items-center gap-1">
 
-                {{-- Galeri Dropdown --}}
-                <div class="relative group">
-                    <button
-                        class="px-4 py-2 text-gray-700 hover:text-emerald-600 font-medium flex items-center gap-1 transition-colors">
-                        Galeri
-                        <i class="fas fa-chevron-down text-xs"></i>
-                    </button>
-                    <div
-                        class="absolute top-full left-0 w-48 bg-white rounded-xl shadow-xl border border-gray-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2">
-                        <a href="{{ route('gallery.photos') }}"
-                            class="block px-4 py-2 text-gray-600 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Foto
-                            Sekolah</a>
-                        <a href="{{ route('gallery.videos') }}"
-                            class="block px-4 py-2 text-gray-600 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">Video
-                            Sekolah</a>
-                    </div>
-                </div>
-
-                {{-- Berita --}}
-                <a href="{{ route('news') }}"
-                    class="px-4 py-2 text-gray-700 hover:text-emerald-600 font-medium transition-colors">Berita</a>
-
-                {{-- Kontak --}}
-                <a href="{{ route('contact') }}"
-                    class="px-4 py-2 text-gray-700 hover:text-emerald-600 font-medium transition-colors">Kontak</a>
-            </div>
-
-            {{-- CTA Button --}}
-            <div class="flex items-center gap-4">
-                @if(($settings['ppdb_active'] ?? false))
-                    <a href="{{ $settings['ppdb_url'] ?? '#' }}" target="_blank"
-                        class="hidden md:inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-emerald-500/30 transition-all duration-300 transform hover:-translate-y-0.5">
-                        <i class="fas fa-user-plus"></i>
-                        DAFTAR PPDB
+                    {{-- Beranda --}}
+                    <a href="{{ route('home') }}"
+                       class="px-4 py-2 rounded-lg font-semibold transition glass-text
+                       {{ request()->routeIs('home')
+                            ? 'bg-[#4f2744]/15 text-[#4f2744]'
+                            : 'text-slate-900 hover:bg-[#4f2744]/10 hover:text-[#4f2744]' }}">
+                        Beranda
                     </a>
-                @endif
 
-                {{-- Mobile Menu Button --}}
-                <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-700 hover:text-emerald-600">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
+                    {{-- Dropdown Groups --}}
+                    @foreach ([
+                        'Profil' => [
+                            'active' => request()->routeIs('page*'),
+                            'items' => [
+                                ['Yayasan', 'page', 'yayasan'],
+                                ['Sekolah', 'page', 'sekolah'],
+                                ['Visi & Misi', 'page', 'visi-misi'],
+                            ],
+                        ],
+                        'Akademik' => [
+                            'active' => request()->routeIs('majors*','extracurriculars*','achievements*'),
+                            'items' => [
+                                ['Jurusan', 'majors', null],
+                                ['Ekstrakurikuler', 'extracurriculars', null],
+                                ['Prestasi', 'achievements', null],
+                            ],
+                        ],
+                        'Direktori' => [
+                            'active' => request()->routeIs('teachers*','staff*','business-centers*'),
+                            'items' => [
+                                ['Guru', 'teachers', null],
+                                ['Staff', 'staff', null],
+                                ['Business Center', 'business-centers', null],
+                            ],
+                        ],
+                        'Galeri' => [
+                            'active' => request()->routeIs('gallery.*'),
+                            'items' => [
+                                ['Foto', 'gallery.photos', null],
+                                ['Video', 'gallery.videos', null],
+                            ],
+                        ],
+                    ] as $label => $group)
+
+                        <div class="relative group">
+                            <button
+                                class="px-4 py-2 rounded-lg font-medium flex items-center gap-1 transition glass-text
+                                {{ $group['active']
+                                    ? 'bg-[#4f2744]/15 text-[#4f2744]'
+                                    : 'text-slate-900 hover:text-[#4f2744] hover:bg-[#4f2744]/10' }}">
+                                {{ $label }}
+                                <i class="fas fa-chevron-down text-xs opacity-80"></i>
+                            </button>
+
+                            <div
+                                class="absolute top-full left-0 mt-3 w-56
+                                       bg-white/95 backdrop-blur-xl
+                                       rounded-xl shadow-xl
+                                       border border-[#4f2744]/20
+                                       py-2
+                                       opacity-0 invisible translate-y-2
+                                       group-hover:opacity-100
+                                       group-hover:visible
+                                       group-hover:translate-y-0
+                                       transition-all duration-200">
+
+                                @foreach ($group['items'] as [$text, $route, $param])
+                                    <a href="{{ $param ? route($route, $param) : route($route) }}"
+                                       class="block px-4 py-2 rounded-md transition
+                                       {{ request()->routeIs($route.'*')
+                                            ? 'bg-[#4f2744]/15 text-[#4f2744] font-medium'
+                                            : 'text-slate-700 hover:bg-[#4f2744]/10 hover:text-[#4f2744]' }}">
+                                        {{ $text }}
+                                    </a>
+                                @endforeach
+
+                            </div>
+                        </div>
+                    @endforeach
+
+                    {{-- Berita --}}
+                    <a href="{{ route('news') }}"
+                       class="px-4 py-2 rounded-lg transition glass-text
+                       {{ request()->routeIs('news*')
+                            ? 'bg-[#4f2744]/15 text-[#4f2744] font-semibold'
+                            : 'text-slate-900 hover:bg-[#4f2744]/10 hover:text-[#4f2744]' }}">
+                        Berita
+                    </a>
+
+                    {{-- Kontak --}}
+                    <a href="{{ route('contact') }}"
+                       class="px-4 py-2 rounded-lg transition glass-text
+                       {{ request()->routeIs('contact*')
+                            ? 'bg-[#4f2744]/15 text-[#4f2744] font-semibold'
+                            : 'text-slate-900 hover:bg-[#4f2744]/10 hover:text-[#4f2744]' }}">
+                        Kontak
+                    </a>
+                </div>
+
+                {{-- CTA + Mobile --}}
+                <div class="flex items-center gap-3">
+                    @if(($settings['ppdb_active'] ?? false))
+                        <a href="{{ $settings['ppdb_url'] }}" target="_blank"
+                           class="hidden md:inline-flex items-center
+                                  px-5 py-2.5 rounded-xl
+                                  bg-gradient-to-r from-[#4f2744] to-[#3a1c32]
+                                  text-white font-semibold
+                                  shadow hover:shadow-lg transition">
+                            DAFTAR PPDB
+                        </a>
+                    @endif
+
+                    <button id="mobile-menu-btn"
+                        class="lg:hidden p-2 rounded-lg
+                               text-slate-900 hover:bg-[#4f2744]/10">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
 </header>
