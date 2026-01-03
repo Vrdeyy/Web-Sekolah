@@ -9,7 +9,7 @@
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto">
                 <div
-                    class="inline-flex items-center gap-2 px-6 py-3 bg-[#932F80]/25 backdrop-blur-md rounded-full text-[#F3DCEB] text-sm font-semibold mb-6 border border-[#932F80]/50 shadow-glow">
+                    class="inline-flex items-center gap-2 px-6 py-3 bg-[#4f2744]/25 backdrop-blur-md rounded-full text-[#F3DCEB] text-sm font-semibold mb-6 border border-[#4f2744]/50 shadow-glow">
                     <i class="fas fa-store animate-bounce"></i>
                     <span>TEACHING FACTORY</span>
                 </div>
@@ -28,7 +28,7 @@
         <div class="container mx-auto px-4 lg:px-8">
             <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16">
                 <div class="text-center group">
-                    <div class="text-4xl font-extrabold text-[#932F80] mb-1 transition-transform group-hover:scale-110">{{ $businessCenters->count() }}</div>
+                    <div class="text-4xl font-extrabold text-[#4f2744] mb-1 transition-transform group-hover:scale-110">{{ $businessCenters->count() }}</div>
                     <div class="text-gray-600 text-sm font-medium tracking-wide">Unit Bisnis</div>
                 </div>
                 <div class="text-center group">
@@ -36,7 +36,7 @@
                     <div class="text-gray-600 text-sm font-medium tracking-wide">Professional</div>
                 </div>
                 <div class="text-center group">
-                    <div class="text-4xl font-extrabold text-[#932F80] mb-1 transition-transform group-hover:scale-110">24/7</div>
+                    <div class="text-4xl font-extrabold text-[#4f2744] mb-1 transition-transform group-hover:scale-110">24/7</div>
                     <div class="text-gray-600 text-sm font-medium tracking-wide">Layanan</div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
             <div class="grid md:grid-cols-2 gap-10">
                 @foreach($businessCenters as $center)
                     <article
-                        class="group bg-white rounded-[2.5rem] overflow-hidden border border-gray-200 shadow-xl shadow-purple-900/5 hover:shadow-2xl hover:shadow-purple-900/10 hover:border-[#932F80]/30 transition-all duration-500 hover:-translate-y-2">
+                        class="group bg-white rounded-[2.5rem] overflow-hidden border border-gray-200 shadow-xl shadow-purple-900/5 hover:shadow-2xl hover:shadow-purple-900/10 hover:border-[#4f2744]/30 transition-all duration-500 hover:-translate-y-2">
                         <div class="grid md:grid-cols-2 h-full">
                             {{-- Image Side --}}
                             <div class="relative overflow-hidden h-64 md:h-full bg-gray-100">
@@ -71,7 +71,7 @@
 
                             {{-- Content Side --}}
                             <div class="p-8 md:p-10 flex flex-col justify-center">
-                                <h3 class="text-2xl font-extrabold text-[#2A1424] mb-4 group-hover:text-[#932F80] transition-colors leading-tight">
+                                <h3 class="text-2xl font-extrabold text-[#2A1424] mb-4 group-hover:text-[#4f2744] transition-colors leading-tight">
                                     {{ $center->name }}
                                 </h3>
                                 
@@ -83,7 +83,7 @@
 
                                 <div class="space-y-4">
                                     <div class="flex items-center gap-4 group/item">
-                                        <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center text-[#932F80] group-hover/item:bg-[#932F80] group-hover/item:text-white transition-all duration-300">
+                                        <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center text-[#4f2744] group-hover/item:bg-[#4f2744] group-hover/item:text-white transition-all duration-300">
                                             <i class="fas fa-clock"></i>
                                         </div>
                                         <div class="flex flex-col">
@@ -113,29 +113,29 @@
     <section class="py-24 bg-white relative overflow-hidden">
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-[#932F80] font-extrabold text-sm tracking-widest uppercase mb-4 block">Keunggulan Kami</span>
-                <h2 class="text-4xl md:text-5xl font-extrabold text-[#2A1424] mb-6 tracking-tight">Kenapa Memilih Layanan <span class="text-[#932F80]">Kami?</span></h2>
+                <span class="text-[#4f2744] font-extrabold text-sm tracking-widest uppercase mb-4 block">Keunggulan Kami</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-[#2A1424] mb-6 tracking-tight">Kenapa Memilih Layanan <span class="text-[#4f2744]">Kami?</span></h2>
                 <p class="text-gray-600 text-lg font-medium leading-relaxed">Kami berkomitmen memberikan layanan terbaik dengan standar profesional dan hasil yang memuaskan.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-purple-50 rounded-[2.5rem] p-10 text-center group hover:bg-[#932F80] transition-all duration-500 hover:-translate-y-2">
+                <div class="bg-[#4f2744]/5 rounded-[2.5rem] p-10 text-center group hover:bg-gradient-to-r hover:from-[#4f2744] hover:to-[#3a1c32] transition-all duration-500 hover:-translate-y-2">
                     <div class="w-20 h-20 bg-white rounded-3xl mx-auto flex items-center justify-center mb-8 shadow-xl shadow-purple-900/5 group-hover:scale-110 transition-transform duration-500">
-                        <i class="fas fa-award text-4xl text-[#932F80]"></i>
+                        <i class="fas fa-award text-4xl text-[#4f2744] group-hover:text-[#4f2744]"></i>
                     </div>
                     <h3 class="text-xl font-extrabold text-[#2A1424] mb-4 group-hover:text-white transition-colors">Kualitas Terjamin</h3>
                     <p class="text-gray-600 group-hover:text-white/90 transition-colors leading-relaxed font-medium">Standar kualitas tinggi dalam setiap produk dan layanan yang kami berikan.</p>
                 </div>
-                <div class="bg-purple-50 rounded-[2.5rem] p-10 text-center group hover:bg-[#932F80] transition-all duration-500 hover:-translate-y-2">
+                <div class="bg-[#4f2744]/5 rounded-[2.5rem] p-10 text-center group hover:bg-gradient-to-r hover:from-[#4f2744] hover:to-[#3a1c32] transition-all duration-500 hover:-translate-y-2">
                     <div class="w-20 h-20 bg-white rounded-3xl mx-auto flex items-center justify-center mb-8 shadow-xl shadow-purple-900/5 group-hover:scale-110 transition-transform duration-500">
-                        <i class="fas fa-hand-holding-usd text-4xl text-[#932F80]"></i>
+                        <i class="fas fa-hand-holding-usd text-4xl text-[#4f2744] group-hover:text-[#4f2744]"></i>
                     </div>
                     <h3 class="text-xl font-extrabold text-[#2A1424] mb-4 group-hover:text-white transition-colors">Harga Kompetitif</h3>
                     <p class="text-gray-600 group-hover:text-white/90 transition-colors leading-relaxed font-medium">Penawaran harga terbaik yang bersaing dengan kualitas yang tidak diragukan.</p>
                 </div>
-                <div class="bg-purple-50 rounded-[2.5rem] p-10 text-center group hover:bg-[#932F80] transition-all duration-500 hover:-translate-y-2">
+                <div class="bg-[#4f2744]/5 rounded-[2.5rem] p-10 text-center group hover:bg-gradient-to-r hover:from-[#4f2744] hover:to-[#3a1c32] transition-all duration-500 hover:-translate-y-2">
                     <div class="w-20 h-20 bg-white rounded-3xl mx-auto flex items-center justify-center mb-8 shadow-xl shadow-purple-900/5 group-hover:scale-110 transition-transform duration-500">
-                        <i class="fas fa-users-cog text-4xl text-[#932F80]"></i>
+                        <i class="fas fa-users-cog text-4xl text-[#4f2744] group-hover:text-[#4f2744]"></i>
                     </div>
                     <h3 class="text-xl font-extrabold text-[#2A1424] mb-4 group-hover:text-white transition-colors">SDM Professional</h3>
                     <p class="text-gray-600 group-hover:text-white/90 transition-colors leading-relaxed font-medium">Didukung oleh siswa terlatih dan pembimbing ahli di bidangnya.</p>
@@ -152,7 +152,7 @@
                 <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6">Tertarik Menjadi Partner?</h2>
                 <p class="text-gray-300 text-lg md:text-xl mb-12 font-medium">Kami terbuka untuk kolaborasi strategis dengan Dunia Usaha dan Dunia Industri (DUDI).</p>
                 <a href="{{ route('contact') }}"
-                    class="inline-flex items-center gap-4 px-12 py-5 bg-[#932F80] text-white font-extrabold rounded-2xl hover:bg-[#6E1F5F] transition-all shadow-2xl hover:shadow-purple-500/50 hover:-translate-y-1 transform">
+                    class="inline-flex items-center gap-4 px-12 py-5 bg-gradient-to-r from-[#4f2744] to-[#3a1c32] text-white font-extrabold rounded-2xl hover:opacity-90 transition-all shadow-2xl hover:shadow-[#4f2744]/50 hover:-translate-y-1 transform">
                     <i class="fas fa-handshake text-2xl"></i>
                     HUBUNGI KAMI SEKARANG
                 </a>

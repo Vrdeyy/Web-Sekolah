@@ -9,7 +9,7 @@
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto">
                 <div
-                    class="inline-flex items-center gap-2 px-6 py-3 bg-[#932F80]/25 backdrop-blur-md rounded-full text-[#F3DCEB] text-sm font-semibold mb-6 border border-[#932F80]/50 shadow-glow">
+                    class="inline-flex items-center gap-2 px-6 py-3 bg-[#4f2744]/25 backdrop-blur-md rounded-full text-[#F3DCEB] text-sm font-semibold mb-6 border border-[#4f2744]/50 shadow-glow">
                     <i class="fas fa-phone-alt animate-bounce"></i>
                     <span>HUBUNGI KAMI</span>
                 </div>
@@ -30,9 +30,9 @@
                 {{-- Contact Cards --}}
                 <div class="space-y-6">
                     {{-- Address Card --}}
-                    <div class="bg-purple-50 rounded-2xl p-6 border border-purple-100 shadow-md hover:shadow-purple-500/10 hover:border-[#932F80]/50 transition-all duration-300 group">
+                    <div class="bg-purple-50 rounded-2xl p-6 border border-purple-100 shadow-md hover:shadow-purple-500/10 hover:border-[#4f2744]/50 transition-all duration-300 group">
                         <div class="flex items-start gap-4">
-                            <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm text-[#932F80] group-hover:scale-110 transition-transform">
+                            <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm text-[#4f2744] group-hover:scale-110 transition-transform">
                                 <i class="fas fa-map-marker-alt text-2xl"></i>
                             </div>
                             <div>
@@ -45,9 +45,9 @@
                     </div>
 
                     {{-- Phone Card --}}
-                    <div class="bg-purple-50 rounded-2xl p-6 border border-purple-100 shadow-md hover:shadow-purple-500/10 hover:border-[#932F80]/50 transition-all duration-300 group">
+                    <div class="bg-purple-50 rounded-2xl p-6 border border-purple-100 shadow-md hover:shadow-purple-500/10 hover:border-[#4f2744]/50 transition-all duration-300 group">
                         <div class="flex items-start gap-4">
-                            <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm text-blue-500 group-hover:scale-110 transition-transform">
+                            <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm text-[#4f2744] group-hover:scale-110 transition-transform">
                                 <i class="fas fa-phone text-2xl"></i>
                             </div>
                             <div>
@@ -60,9 +60,9 @@
                     </div>
 
                     {{-- Email Card --}}
-                    <div class="bg-purple-50 rounded-2xl p-6 border border-purple-100 shadow-md hover:shadow-purple-500/10 hover:border-[#932F80]/50 transition-all duration-300 group">
+                    <div class="bg-purple-50 rounded-2xl p-6 border border-purple-100 shadow-md hover:shadow-purple-500/10 hover:border-[#4f2744]/50 transition-all duration-300 group">
                         <div class="flex items-start gap-4">
-                            <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm text-purple-500 group-hover:scale-110 transition-transform">
+                            <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm text-[#4f2744] group-hover:scale-110 transition-transform">
                                 <i class="fas fa-envelope text-2xl"></i>
                             </div>
                             <div>
@@ -76,9 +76,9 @@
 
                     {{-- WhatsApp Card --}}
                     @if($settings['whatsapp'] ?? false)
-                        <div class="bg-purple-50 rounded-2xl p-6 border border-purple-100 shadow-md hover:shadow-purple-500/10 hover:border-[#932F80]/50 transition-all duration-300 group">
+                        <div class="bg-purple-50 rounded-2xl p-6 border border-purple-100 shadow-md hover:shadow-purple-500/10 hover:border-[#4f2744]/50 transition-all duration-300 group">
                             <div class="flex items-start gap-4">
-                                <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm text-green-500 group-hover:scale-110 transition-transform">
+                                <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm text-[#4f2744] group-hover:scale-110 transition-transform">
                                     <i class="fab fa-whatsapp text-2xl"></i>
                                 </div>
                                 <div>
@@ -93,30 +93,27 @@
                     @endif
 
                     {{-- Social Media --}}
-                    <div class="bg-gradient-to-br from-[#932F80] to-[#6E1F5F] rounded-2xl p-8 text-white shadow-xl">
-                        <h3 class="font-bold text-lg mb-6 tracking-tight">Ikuti Kami</h3>
+                    <div class="bg-purple-50 rounded-2xl p-8 border border-purple-100 shadow-md hover:shadow-purple-500/10 hover:border-[#4f2744]/50 transition-all duration-300 group">
+                        <h3 class="font-bold text-[#2A1424] text-lg mb-6 tracking-tight">Ikuti Kami</h3>
                         <div class="flex flex-wrap gap-4">
                             @if(isset($socialLinks) && $socialLinks->count() > 0)
                                 @foreach($socialLinks as $social)
                                     @if($social && $social->url)
                                         <a href="{{ $social->url }}" target="_blank"
-                                            class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-white hover:text-[#932F80] transition-all transform hover:-translate-y-1">
+                                            class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-[#4f2744] shadow-sm hover:bg-[#4f2744] hover:text-white transition-all transform hover:-translate-y-1">
                                             <i class="fab fa-{{ $social->platform ?? 'link' }} text-lg"></i>
                                         </a>
                                     @endif
                                 @endforeach
                             @else
-                                <a href="#" class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-white hover:text-[#932F80] transition-all transform hover:-translate-y-1">
+                                <a href="#" class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-[#4f2744] shadow-sm hover:bg-[#4f2744] hover:text-white transition-all transform hover:-translate-y-1">
                                     <i class="fab fa-facebook-f text-lg"></i>
                                 </a>
-                                <a href="#" class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-white hover:text-[#932F80] transition-all transform hover:-translate-y-1">
+                                <a href="#" class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-[#4f2744] shadow-sm hover:bg-[#4f2744] hover:text-white transition-all transform hover:-translate-y-1">
                                     <i class="fab fa-instagram text-lg"></i>
                                 </a>
-                                <a href="#" class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-white hover:text-[#932F80] transition-all transform hover:-translate-y-1">
+                                <a href="#" class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-[#4f2744] shadow-sm hover:bg-[#4f2744] hover:text-white transition-all transform hover:-translate-y-1">
                                     <i class="fab fa-youtube text-lg"></i>
-                                </a>
-                                <a href="#" class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-white hover:text-[#932F80] transition-all transform hover:-translate-y-1">
-                                    <i class="fab fa-tiktok text-lg"></i>
                                 </a>
                             @endif
                         </div>
@@ -160,31 +157,31 @@
                         <div>
                             <label class="block text-sm font-bold text-gray-700 mb-3 tracking-wide uppercase">Nama Lengkap</label>
                             <input type="text" name="name" required
-                                class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-[#932F80] focus:border-[#932F80] transition-all outline-none"
+                                class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-[#4f2744] focus:border-[#4f2744] transition-all outline-none"
                                 placeholder="Masukkan nama Anda">
                         </div>
                         <div>
                             <label class="block text-sm font-bold text-gray-700 mb-3 tracking-wide uppercase">Email</label>
                             <input type="email" name="email" required
-                                class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-[#932F80] focus:border-[#932F80] transition-all outline-none"
+                                class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-[#4f2744] focus:border-[#4f2744] transition-all outline-none"
                                 placeholder="Masukkan email Anda">
                         </div>
                     </div>
                     <div>
                         <label class="block text-sm font-bold text-gray-700 mb-3 tracking-wide uppercase">Subjek</label>
                         <input type="text" name="subject" required
-                            class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-[#932F80] focus:border-[#932F80] transition-all outline-none"
+                            class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-[#4f2744] focus:border-[#4f2744] transition-all outline-none"
                             placeholder="Subjek pesan">
                     </div>
                     <div>
                         <label class="block text-sm font-bold text-gray-700 mb-3 tracking-wide uppercase">Pesan</label>
                         <textarea name="message" rows="5" required
-                            class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-[#932F80] focus:border-[#932F80] transition-all outline-none resize-none"
+                            class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-[#4f2744] focus:border-[#4f2744] transition-all outline-none resize-none"
                             placeholder="Tulis pesan Anda"></textarea>
                     </div>
                     <div class="text-center pt-4">
                         <button type="submit"
-                            class="inline-flex items-center gap-3 px-10 py-5 bg-[#932F80] text-white font-extrabold rounded-2xl hover:bg-[#6E1F5F] transition-all shadow-xl hover:shadow-purple-500/40 hover:-translate-y-1">
+                            class="inline-flex items-center gap-3 px-10 py-5 bg-[#4f2744] text-white font-extrabold rounded-2xl hover:bg-[#3a1c32] transition-all shadow-xl hover:shadow-[#4f2744]/40 hover:-translate-y-1">
                             <i class="fas fa-paper-plane text-lg"></i>
                             Kirim Pesan
                         </button>
@@ -204,12 +201,12 @@
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <a href="{{ route('majors') }}"
-                    class="group p-8 bg-purple-50 rounded-3xl border border-purple-100 shadow-lg hover:shadow-purple-500/20 hover:border-[#932F80]/50 transition-all duration-500 text-center transform hover:-translate-y-2">
+                    class="group p-8 bg-purple-50 rounded-3xl border border-purple-100 shadow-lg hover:shadow-purple-500/20 hover:border-[#4f2744]/50 transition-all duration-500 text-center transform hover:-translate-y-2">
                     <div
-                        class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 mx-auto shadow-sm group-hover:bg-[#932F80] transition-all duration-500">
-                        <i class="fas fa-graduation-cap text-2xl text-[#932F80] group-hover:text-white transition-colors"></i>
+                        class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 mx-auto shadow-sm group-hover:bg-[#4f2744] transition-all duration-500">
+                        <i class="fas fa-graduation-cap text-2xl text-[#4f2744] group-hover:text-white transition-colors"></i>
                     </div>
-                    <h3 class="font-bold text-[#2A1424] text-lg group-hover:text-[#932F80] transition-colors tracking-tight">Program Keahlian</h3>
+                    <h3 class="font-bold text-[#2A1424] text-lg group-hover:text-[#4f2744] transition-colors tracking-tight">Program Keahlian</h3>
                     <p class="text-gray-500 text-sm mt-3 leading-relaxed">Lihat jurusan tersedia</p>
                 </a>
 
@@ -235,10 +232,10 @@
 
                 @if(($settings['ppdb_active'] ?? false))
                     <a href="{{ $settings['ppdb_url'] ?? '#' }}" target="_blank"
-                        class="group p-8 bg-gradient-to-br from-[#932F80] to-[#6E1F5F] rounded-3xl shadow-xl hover:shadow-purple-500/40 transition-all duration-500 text-center text-white transform hover:-translate-y-2">
+                        class="group p-8 bg-gradient-to-br from-[#4f2744] to-[#3a1c32] rounded-3xl shadow-xl hover:shadow-[#4f2744]/40 transition-all duration-500 text-center text-white transform hover:-translate-y-2">
                         <div
                             class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:bg-white transition-all duration-500">
-                            <i class="fas fa-user-plus text-2xl text-white group-hover:text-[#932F80] transition-colors"></i>
+                            <i class="fas fa-user-plus text-2xl text-white group-hover:text-[#4f2744] transition-colors"></i>
                         </div>
                         <h3 class="font-extrabold text-lg tracking-tight">Daftar PPDB</h3>
                         <p class="text-[#F3DCEB] text-sm mt-3 leading-relaxed font-medium">Pendaftaran siswa baru</p>

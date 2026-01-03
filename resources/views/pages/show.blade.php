@@ -36,56 +36,91 @@
                 {{-- Featured Image --}}
                 @if($page->image)
                     <figure class="mb-16 rounded-[3rem] overflow-hidden shadow-2xl shadow-purple-900/20 border border-gray-100">
-                        <img src="{{ asset('storage/' . $page->image) }}" alt="{{ $page->title }}" class="w-full h-auto hover:scale-105 transition-transform duration-[2s]">
+                        <img src="{{ asset('storage/' . $page->image) }}" alt="{{ $page->title }}"
+                            class="w-full h-auto hover:scale-105 transition-transform duration-[2s]">
                     </figure>
                 @endif
 
                 {{-- Content --}}
                 <div class="prose prose-lg max-w-none
-                        prose-headings:text-[#2A1424] prose-headings:font-extrabold
-                        prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-8 prose-h2:pb-4 prose-h2:border-b prose-h2:border-gray-200
-                        prose-h3:text-2xl prose-h3:mt-12 prose-h3:mb-6
-                        prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-8 prose-p:font-medium
-                        prose-a:text-[#932F80] prose-a:font-bold prose-a:no-underline hover:prose-a:text-[#6E1F5F] transition-colors
-                        prose-strong:text-[#2A1424] prose-strong:font-extrabold
-                        prose-ul:my-8 prose-li:text-gray-600 prose-li:mb-3
-                        prose-ol:my-8
-                        prose-blockquote:border-l-4 prose-blockquote:border-[#932F80] prose-blockquote:bg-purple-50 prose-blockquote:py-8 prose-blockquote:px-10 prose-blockquote:rounded-3xl prose-blockquote:italic prose-blockquote:text-gray-700
-                        prose-img:rounded-[2rem] prose-img:shadow-2xl">
+                            prose-headings:text-[#2A1424] prose-headings:font-extrabold
+                            prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-8 prose-h2:pb-4 prose-h2:border-b prose-h2:border-gray-200
+                            prose-h3:text-2xl prose-h3:mt-12 prose-h3:mb-6
+                            prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-8 prose-p:font-medium
+                            prose-a:text-[#932F80] prose-a:font-bold prose-a:no-underline hover:prose-a:text-[#6E1F5F] transition-colors
+                            prose-strong:text-[#2A1424] prose-strong:font-extrabold
+                            prose-ul:my-8 prose-li:text-gray-600 prose-li:mb-3
+                            prose-ol:my-8
+                            prose-blockquote:border-l-4 prose-blockquote:border-[#932F80] prose-blockquote:bg-purple-50 prose-blockquote:py-8 prose-blockquote:px-10 prose-blockquote:rounded-3xl prose-blockquote:italic prose-blockquote:text-gray-700
+                            prose-img:rounded-[2rem] prose-img:shadow-2xl">
                     {!! $page->content !!}
                 </div>
             </div>
         </div>
     </section>
 
-    {{-- Related Links Section --}}
-    <section class="py-24 bg-[#12080F] relative border-t border-white/5">
-        <div class="container mx-auto px-4 lg:px-8">
+    {{-- Related Links Section - Rich Modern Style --}}
+    <section class="py-28 bg-purple-50/50 relative overflow-hidden border-t border-gray-100">
+        {{-- BACKGROUND ELEMENTS --}}
+        <div class="absolute inset-0 pointer-events-none">
+            {{-- Big Blobs --}}
+            <div class="absolute -top-32 -left-32 w-[500px] h-[500px] bg-[#4f2744]/5 rounded-full blur-[120px]"></div>
+            <div class="absolute top-1/3 -right-40 w-[520px] h-[520px] bg-[#3a1c32]/5 rounded-full blur-[130px]"></div>
+            <div class="absolute -bottom-40 left-1/4 w-[600px] h-[600px] bg-[#4f2744]/5 rounded-full blur-[140px]"></div>
+
+            {{-- Floating Dots --}}
+            <div class="absolute inset-0 bg-[radial-gradient(#4f274415_1px,transparent_1px)] bg-[size:18px_18px] opacity-30"></div>
+        </div>
+
+        <div class="container mx-auto px-4 lg:px-8 relative z-10">
             <div class="text-center mb-16">
-                <span class="text-[10px] font-extrabold text-[#932F80] tracking-[0.4em] uppercase mb-4 block">EXPLORE</span>
-                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">Halaman <span class="text-[#F3DCEB]">Lainnya</span></h2>
-                <p class="text-gray-500 font-medium">Informasi lain yang mungkin Anda butuhkan seputar sekolah kami</p>
+                <div
+                    class="inline-flex items-center gap-2 px-6 py-2.5 bg-[#4f2744]/10 rounded-full text-[#4f2744] text-[10px] font-black uppercase tracking-[0.3em] mb-6 shadow-sm border border-[#4f2744]/10">
+                    <i class="fas fa-compass"></i>
+                    <span>EKSPLORASI</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black text-[#3a1c32] mb-4 tracking-tight">Halaman <span
+                        class="text-[#4f2744]">Lainnya</span></h2>
+                <p class="text-gray-500 font-medium max-w-2xl mx-auto">Informasi lain yang mungkin Anda butuhkan seputar sekolah kami</p>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
                 @php
                     $links = [
-                        ['id' => 'yayasan', 'title' => 'Yayasan', 'desc' => 'Profil yayasan', 'icon' => 'fa-building', 'color' => '#932F80'],
-                        ['id' => 'sekolah', 'title' => 'Sekolah', 'desc' => 'Profil sekolah', 'icon' => 'fa-school', 'color' => '#3B82F6'],
-                        ['id' => 'visi-misi', 'title' => 'Visi & Misi', 'desc' => 'Tujuan sekolah', 'icon' => 'fa-bullseye', 'color' => '#8B5CF6'],
-                        ['id' => 'majors', 'title' => 'Jurusan', 'desc' => 'Program keahlian', 'icon' => 'fa-graduation-cap', 'color' => '#F59E0B'],
+                        ['id' => 'yayasan', 'title' => 'Yayasan', 'desc' => 'Profil yayasan', 'icon' => 'fa-building'],
+                        ['id' => 'sekolah', 'title' => 'Sekolah', 'desc' => 'Profil sekolah', 'icon' => 'fa-school'],
+                        ['id' => 'visi-misi', 'title' => 'Visi & Misi', 'desc' => 'Tujuan sekolah', 'icon' => 'fa-bullseye'],
+                        ['id' => 'majors', 'title' => 'Jurusan', 'desc' => 'Program keahlian', 'icon' => 'fa-graduation-cap'],
                     ];
                 @endphp
 
                 @foreach($links as $link)
                     <a href="{{ $link['id'] === 'majors' ? route('majors') : route('page', $link['id']) }}"
-                        class="group p-10 bg-white/5 rounded-[2.5rem] border border-white/5 hover:border-[#932F80]/50 hover:bg-white/10 transition-all duration-500 transform hover:-translate-y-2 text-center {{ request()->is('*/' . $link['id']) ? 'ring-2 ring-[#932F80] bg-[#932F80]/10' : '' }}">
-                        <div
-                            class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:bg-[#932F80] transition-all duration-500 border border-white/10 shadow-xl">
-                            <i class="fas {{ $link['icon'] }} text-2xl text-[#932F80] group-hover:text-white transition-colors"></i>
+                        class="group relative p-10 bg-white rounded-[3rem] border border-gray-100 
+                               shadow-xl shadow-purple-900/5 hover:shadow-3xl hover:shadow-[#4f2744]/20 
+                               hover:border-[#4f2744]/20 transition-all duration-700 transform hover:-translate-y-3 
+                               text-center overflow-hidden {{ request()->is('*/' . $link['id']) ? 'ring-2 ring-[#4f2744] bg-purple-50/50' : '' }}">
+                        
+                        {{-- Decorative Corner Shine ( Glass Design ) --}}
+                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-[#4f2744]/5 to-transparent rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
+                        <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-gradient-to-tr from-[#3a1c32]/5 to-transparent rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
+
+                        <div class="relative z-10">
+                            <div
+                                class="w-20 h-20 bg-white rounded-[2rem] flex items-center justify-center mb-8 mx-auto 
+                                       transition-all duration-500 border border-gray-100 shadow-lg group-hover:rotate-6 group-hover:shadow-xl group-hover:border-[#4f2744]/20">
+                                <i
+                                    class="fas {{ $link['icon'] }} text-3xl text-[#4f2744] transition-colors duration-500"></i>
+                            </div>
+                            <h3
+                                class="text-xl font-black text-[#3a1c32] group-hover:text-[#4f2744] transition-colors tracking-tight">
+                                {{ $link['title'] }}
+                            </h3>
+                            <p class="text-gray-400 text-[10px] font-black uppercase tracking-[0.2em] mt-4 group-hover:text-gray-600 transition-colors">{{ $link['desc'] }}</p>
+                            
+                            {{-- Subtle Decorative Line --}}
+                            <div class="w-8 h-1 bg-gradient-to-r from-[#4f2744]/0 via-[#4f2744]/20 to-[#4f2744]/0 rounded-full mx-auto mt-6 group-hover:w-16 transition-all duration-500"></div>
                         </div>
-                        <h3 class="text-xl font-extrabold text-white group-hover:text-[#F3DCEB] transition-colors tracking-tight">{{ $link['title'] }}</h3>
-                        <p class="text-gray-500 text-xs font-bold uppercase tracking-widest mt-4">{{ $link['desc'] }}</p>
                     </a>
                 @endforeach
             </div>
@@ -93,22 +128,33 @@
     </section>
 
     {{-- CTA Section --}}
-    <section class="py-24 bg-gradient-to-br from-[#1A0E17] via-[#2A1424] to-[#12080F] relative overflow-hidden border-t border-white/10">
+    <section
+        class="py-24 bg-gradient-to-br from-[#1A0E17] via-[#2A1424] to-[#12080F] relative overflow-hidden border-t border-white/10">
         @include('partials.awards-shapes')
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
             <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-4xl md:text-6xl font-extrabold text-white mb-8 tracking-tight">Ada Pertanyaan?</h2>
-                <p class="text-gray-300 text-lg md:text-xl mb-12 font-medium">Hubungi kami untuk informasi lebih lanjut mengenai program pendidikan dan kegiatan di sekolah.</p>
+                <p class="text-gray-300 text-lg md:text-xl mb-12 font-medium">Hubungi kami untuk informasi lebih lanjut
+                    mengenai program pendidikan dan kegiatan di sekolah.</p>
                 <div class="flex flex-wrap justify-center gap-6">
-                    <a href="{{ route('contact') }}"
-                        class="inline-flex items-center gap-4 px-12 py-5 bg-[#932F80] text-white font-extrabold rounded-2xl hover:bg-[#6E1F5F] transition-all shadow-2xl hover:shadow-purple-500/50 hover:-translate-y-1 transform">
-                        <i class="fas fa-phone-alt text-2xl"></i>
+                    <a href="{{ route('contact') }}" class="inline-flex items-center gap-3 px-10 py-4 
+                            rounded-xl
+                            bg-[#4f2744] text-white font-semibold shadow-lg 
+                            hover:bg-transparent 
+                            hover:text-[#4f2744]
+                            hover:border hover:border-[#4f2744]
+                            hover:shadow-[0_0_0_1px_rgba(79,39,68,0.15)]
+                            transform hover:scale-105 transition-all duration-300">
+                        <i class="fas fa-phone-alt text-xl"></i>
                         HUBUNGI KAMI
                     </a>
                     @if(($settings['ppdb_active'] ?? false))
-                        <a href="{{ $settings['ppdb_url'] ?? '#' }}" target="_blank"
-                            class="inline-flex items-center gap-4 px-12 py-5 bg-white/5 backdrop-blur-sm text-white font-extrabold rounded-2xl border border-white/20 hover:bg-white/10 transition-all hover:-translate-y-1 transform">
-                            <i class="fas fa-user-plus text-2xl"></i>
+                        <a href="{{ $settings['ppdb_url'] ?? '#' }}" target="_blank" class="inline-flex items-center gap-3 px-10 py-4 
+                                    rounded-xl
+                                    border border-[#4f2744] text-white font-semibold 
+                                    hover:bg-[#4f2744] hover:text-white
+                                    transform hover:scale-105 transition-all duration-300">
+                            <i class="fas fa-user-plus text-xl"></i>
                             DAFTAR PPDB
                         </a>
                     @endif

@@ -1,12 +1,12 @@
 # 🏫 SMK YAJ - Website Sekolah
 
-Website profil sekolah modern untuk **SMK YAJ (Yayasan At-Taqwa Kemiri Jaya)** yang dibangun dengan Laravel dan Filament Admin Panel.
+Website profil sekolah modern untuk **SMK YAJ (Yayasan Ar-Ridho Jatimulya)** yang dibangun dengan Laravel dan Filament Admin Panel.
 
 ![Laravel](https://img.shields.io/badge/Laravel-v12.x-FF2D20?style=flat-square&logo=laravel)
 ![PHP](https://img.shields.io/badge/PHP-v8.2+-777BB4?style=flat-square&logo=php)
 ![Filament](https://img.shields.io/badge/Filament-v3.3-F59E0B?style=flat-square)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v4.0-06B6D4?style=flat-square&logo=tailwindcss)
-![Vite](https://img.shields.io/badge/Vite-v7.0-646CFF?style=flat-square&logo=vite)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v4.0-4f2744?style=flat-square&logo=tailwindcss)
+![Theme](https://img.shields.io/badge/Theme-Premium_Dark_Purple-4f2744?style=flat-square)
 
 ---
 
@@ -30,17 +30,19 @@ Website profil sekolah modern untuk **SMK YAJ (Yayasan At-Taqwa Kemiri Jaya)** y
 ## ✨ Fitur
 
 ### 🎯 Frontend (Website Publik)
-- **Homepage Modern** - Landing page dengan animasi, glassmorphism, dan desain responsif
-- **Profil Sekolah** - Informasi Yayasan, Sekolah, Visi & Misi
-- **Program Keahlian (Jurusan)** - Daftar dan detail setiap jurusan dengan deskripsi lengkap
-- **Berita & Artikel** - Sistem berita dengan kategori, pencarian, dan pagination
-- **Prestasi Siswa** - Showcase prestasi dengan filter level (Nasional, Provinsi, dll)
-- **Ekstrakurikuler** - Informasi kegiatan ekstrakurikuler
-- **Galeri** - Foto dan video kegiatan sekolah dengan lightbox
-- **Daftar Guru & Staff** - Profil tenaga pengajar dan kependidikan
-- **Pusat Bisnis (Teaching Factory)** - Unit usaha sekolah
-- **Halaman Kontak** - Form kontak dan integrasi Google Maps
-- **Integrasi PPDB** - Link pendaftaran siswa baru
+- **Hero Section Premium** - Landing page dengan "Breakthrough Dynamic Collage", animasi floating, glassmorphism, dan integrasi pengaturan admin
+- **Branding Dark Purple** - Identitas visual baru yang mewah menggunakan palet `#4f2744` (Primary) dan `#3a1c32` (Secondary)
+- **Awards Section Elite** - Desain kartu penghargaan dengan efek glow, golden accents, dan micro-animations
+- **Pusat Bisnis (Rebranded)** - Unit usaha dengan desain grid modern dan keunggulan layanan beraksen gradasi brand
+- **Halaman Kontak UI/UX** - Sidebar kontak terintegrasi dengan style kartu yang sinkron dan hover effects premium
+- **Profil Sekolah** - Informasi Yayasan, Sekolah, Visi & Misi yang dioptimasi untuk readability
+- **Program Keahlian (Jurusan)** - Detail jurusan dengan layout modern
+- **Berita & Artikel** - Sistem berita dinamis dengan hover effects khusus
+- **Prestasi Siswa** - Showcase prestasi dengan tipografi yang kuat
+- **Ekstrakurikuler** - Informasi kegiatan dengan visual yang bersih
+- **Galeri** - Foto dan video kegiatan dengan lightbox terintegrasi
+- **Daftar Guru & Staff** - Profil tenaga pengajar dengan card lift effects
+- **Integrasi PPDB** - Link pendaftaran otomatis via admin settings
 
 ### 🔐 Admin Panel (Filament)
 - Dashboard modern dan responsif
@@ -65,7 +67,7 @@ Website profil sekolah modern untuk **SMK YAJ (Yayasan At-Taqwa Kemiri Jaya)** y
 ### Backend
 | Teknologi | Versi | Keterangan |
 |-----------|-------|------------|
-| **PHP** | ^8.2 | Bahasa pemrograman server-side |
+| **PHP** | ^8.3 | Bahasa pemrograman server-side |
 | **Laravel** | ^12.0 | Framework PHP modern |
 | **Filament** | 3.3 | Admin panel berbasis Livewire |
 | **Laravel Tinker** | ^2.10 | REPL untuk Laravel |
@@ -244,8 +246,8 @@ Lokasi: `app/Providers/Filament/AdminPanelProvider.php`
 ->path('admin')                    // URL admin panel
 ->login()                          // Aktifkan login
 ->brandName('SMK Admin Panel')     // Nama brand
-->colors([                         // Warna tema
-    'primary' => Color::Emerald,
+->colors([                         // Warna tema (Brand Rebrand)
+    'primary' => '#4f2744',
 ])
 ->spa()                            // Single Page Application mode
 ```
@@ -490,13 +492,18 @@ Kontribusi sangat diterima! Silakan ikuti langkah berikut:
 
 ## 📝 Changelog
 
+### v1.1.0 (2026-01-04) - The Premium Redesign
+- 🚀 **Full Rebranding**: Migrasi total ke tema "Premium Dark Purple" (#4f2744 & #3a1c32).
+- 🚀 **Hero Section 2.0**: Implementasi "Dynamic Educational Collage" dengan floating symbols.
+- 🚀 **UI Modernization**: Perombakan total pada halaman Business Centers, Contact, dan Related Links.
+- 🚀 **Enhanced Effects**: Penambahan glassmorphism shines, shadow-3xl, dan high-premium animations.
+- 🚀 **Admin UX**: Integrasi "Pengaturan Website" yang lebih dalam untuk kustomisasi hero & stats secara real-time.
+
 ### v1.0.0 (2024-12-19)
-- ✅ Initial release
-- ✅ Homepage dengan desain modern
+- ✅ Initial release dengan desain modern
 - ✅ Admin panel dengan Filament 3.3
 - ✅ Manajemen konten lengkap
 - ✅ Responsive design
-- ✅ SEO friendly
 
 ---
 

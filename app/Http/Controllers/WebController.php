@@ -12,7 +12,7 @@ use App\Models\News;
 use App\Models\Page;
 use App\Models\PrincipalMessage;
 use App\Models\Setting;
-use App\Models\Slider;
+use App\Models\ImgModel;
 use App\Models\SocialLink;
 use App\Models\Staff;
 use App\Models\Statistic;
@@ -33,7 +33,7 @@ class WebController extends Controller
     public function home(): View
     {
         $data = array_merge($this->getSharedData(), [
-            'sliders' => Slider::active()->ordered()->get(),
+            'slideBener' => ImgModel::active()->ordered()->get(),
             'principalMessage' => PrincipalMessage::active()->first(),
             'awards' => Award::active()->ordered()->take(8)->get(),
             'majors' => Major::active()->ordered()->get(),
