@@ -16,11 +16,14 @@
                 {{-- Logo --}}
                 <a href="{{ route('home') }}" class="flex items-center gap-3 glass-text">
                     <div
-                        class="w-11 h-11 bg-white
-                               rounded-xl flex items-center justify-center
-                               shadow-md ring-1 ring-[#4f2744]/30">
-                        <img src="{{ asset('img/logo.png') }}" alt="Logo"
-                             class="w-8 h-8 object-contain">
+                        class="w-12 h-12 bg-white rounded-xl flex items-center justify-center overflow-hidden shadow-lg border border-white/10">
+                        @if(isset($settings['school_logo']))
+                            <img src="{{ asset('storage/' . $settings['school_logo']) }}" alt="Logo" class="w-8 h-8 object-contain">
+                        @else
+                            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#932F80] to-[#4f2744]">
+                                <span class="text-white font-bold text-base">YAJ</span>
+                            </div>
+                        @endif
                     </div>
                     <div class="hidden sm:block leading-tight">
                         <h1 class="font-semibold text-slate-900">

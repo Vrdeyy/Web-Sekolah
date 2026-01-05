@@ -66,12 +66,19 @@
         mobileMenuClose?.addEventListener('click', toggleMobileMenu);
 
 
-        // Dropdown menus
-        document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-            toggle.addEventListener('click', function (e) {
-                e.preventDefault();
+        // Mobile dropdown menus
+        document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function () {
                 const dropdown = this.nextElementSibling;
+                const icon = this.querySelector('i');
+
+                // Toggle current dropdown
                 dropdown.classList.toggle('hidden');
+
+                // Rotate icon
+                if (icon) {
+                    icon.classList.toggle('rotate-180');
+                }
             });
         });
 

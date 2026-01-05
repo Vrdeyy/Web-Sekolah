@@ -7,9 +7,14 @@
         <div class="flex items-center justify-between mb-6">
             <div class="flex items-center gap-3">
                 <div
-                    class="w-10 h-10 rounded-xl flex items-center justify-center"
-                    style="background: linear-gradient(135deg, #4f2744, #3a1c32);">
-                    <span class="text-white font-bold">YAJ</span>
+                    class="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden bg-white shadow-sm border border-gray-100">
+                    @if(isset($settings['school_logo']))
+                        <img src="{{ asset('storage/' . $settings['school_logo']) }}" alt="Logo" class="w-7 h-7 object-contain">
+                    @else
+                        <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#4f2744] to-[#3a1c32]">
+                            <span class="text-white font-bold text-xs">YAJ</span>
+                        </div>
+                    @endif
                 </div>
                 <span class="font-bold text-gray-800 text-sm">
                     {{ $settings['school_name'] ?? 'SMK YAJ' }}

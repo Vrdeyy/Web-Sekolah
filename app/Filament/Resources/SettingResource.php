@@ -40,12 +40,14 @@ class SettingResource extends Resource
                             ->live(),
                         Forms\Components\Select::make('group')
                             ->label('Grup')
-                            ->options([
-                                'general' => 'Umum',
-                                'contact' => 'Kontak',
-                                'social' => 'Sosial Media',
-                                'ppdb' => 'PPDB',
-                            ])
+                            ->options(
+                                \App\Models\Setting::query()
+                                    ->pluck('group', 'group')
+                                    ->unique()
+                                    ->toArray()
+                            )
+                            ->searchable()
+                            ->creatable()
                             ->required(),
                         Forms\Components\TextInput::make('value')
                             ->label('Nilai')
@@ -82,12 +84,13 @@ class SettingResource extends Resource
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('group')
-                    ->options([
-                        'general' => 'Umum',
-                        'contact' => 'Kontak',
-                        'social' => 'Sosial Media',
-                        'ppdb' => 'PPDB',
-                    ]),
+                    ->label('Filter Grup')
+                    ->options(
+                        \App\Models\Setting::query()
+                            ->pluck('group', 'group')
+                            ->unique()
+                            ->toArray()
+                    ),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -97,7 +100,9 @@ class SettingResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->paginated([10, 25, 50, 100, 'all'])
+            ->defaultPaginationPageOption(25);
     }
 
     public static function getPages(): array

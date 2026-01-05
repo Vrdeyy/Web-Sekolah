@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
             ['key' => 'ppdb_url', 'value' => 'https://ppdb.sekolah.id', 'type' => 'url', 'group' => 'ppdb'],
             ['key' => 'ppdb_active', 'value' => '1', 'type' => 'text', 'group' => 'ppdb'],
             ['key' => 'years_experience', 'value' => '20', 'type' => 'text', 'group' => 'general'],
+            ['key' => 'school_logo', 'value' => null, 'type' => 'image', 'group' => 'general'],
         ];
 
         foreach ($settings as $setting) {

@@ -8,10 +8,16 @@
             {{-- About --}}
             <div class="lg:col-span-1">
                 <div class="flex items-center gap-3 mb-6">
-                    <div
-                        class="w-12 h-12 bg-[#932F80] rounded-xl flex items-center justify-center">
-                        <span class="text-white font-bold text-xl">YAJ</span>
-                    </div>
+                <div
+                    class="w-12 h-12 bg-white rounded-xl flex items-center justify-center overflow-hidden shadow-lg border border-white/10">
+                    @if(isset($settings['school_logo']))
+                        <img src="{{ asset('storage/' . $settings['school_logo']) }}" alt="Logo" class="w-8 h-8 object-contain">
+                    @else
+                        <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#932F80] to-[#4f2744]">
+                            <span class="text-white font-bold text-base">YAJ</span>
+                        </div>
+                    @endif
+                </div>
                     <div>
                         <h3 class="font-bold text-lg">{{ $settings['school_name'] ?? 'SMK YAJ' }}</h3>
                         <p class="text-sm text-white/60">Sekolah Menengah Kejuruan</p>
@@ -45,7 +51,7 @@
             </div>
 
             {{-- Information --}}
-            <div>
+            <div class="hidden lg:block">
                 <h4 class="font-semibold text-lg mb-6 text-white">Informasi</h4>
                 <ul class="space-y-3">
                     <li><a href="{{ route('page', 'yayasan') }}"
@@ -58,7 +64,7 @@
             </div>
 
             {{-- Explore --}}
-            <div>
+            <div class="hidden lg:block">
                 <h4 class="font-semibold text-lg mb-6 text-white">Jelajahi</h4>
                 <ul class="space-y-3">
                     <li><a href="{{ route('majors') }}"

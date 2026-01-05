@@ -1,44 +1,79 @@
-{{-- Background Shapes from Awards Section --}}
+{{-- Highly Premium & Balanced Background Shapes --}}
 <div class="absolute inset-0 pointer-events-none overflow-hidden">
-    {{-- Glow Circles --}}
-    <div class="absolute top-0 left-1/3 w-96 h-96 bg-[#4f2744]/30 rounded-full blur-4xl animate-pulse-slow"></div>
-    <div class="absolute bottom-0 right-1/3 w-96 h-96 bg-[#3a1c32]/15 rounded-full blur-4xl animate-pulse-slow"></div>
-    <div class="absolute top-1/2 left-0 w-64 h-64 bg-[#4f2744]/25 rounded-full blur-3xl animate-pulse-slow-delayed">
-    </div>
-    <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-[#3a1c32]/25 rounded-full blur-3xl animate-pulse-slow"></div>
 
-    {{-- Floating Triangles --}}
-    <div class="absolute top-1/4 left-10 w-32 h-32 bg-[#4f2744]/30 rotate-45 clip-triangle animate-float-slow"></div>
-    <div class="absolute bottom-1/3 right-16 w-24 h-24 bg-[#3a1c32]/25 rotate-12 clip-triangle animate-float-slow">
+    {{-- Strategic Glow Orbs --}}
+    <div
+        class="absolute top-[-5%] left-[5%] w-[600px] h-[600px] bg-gradient-to-br from-[#4f2744]/15 to-transparent rounded-full blur-[100px] animate-pulse-slow">
     </div>
     <div
-        class="absolute top-10 right-1/4 w-16 h-16 bg-[#4f2744]/30 -rotate-12 clip-triangle animate-float-slow-delayed">
+        class="absolute bottom-[-10%] right-[5%] w-[700px] h-[700px] bg-gradient-to-tl from-[#3a1c32]/15 via-purple-900/5 to-transparent rounded-full blur-[120px] animate-pulse-slow-delayed">
     </div>
     <div
-        class="absolute bottom-1/4 left-1/4 w-20 h-20 bg-[#3a1c32]/15 rotate-[120deg] clip-triangle animate-float-slow">
+        class="absolute top-1/4 right-[20%] w-[400px] h-[400px] bg-[#4f2744]/[0.05] rounded-full blur-[90px] animate-float-slow">
     </div>
 
-    {{-- Polygonal Shapes --}}
-    <div class="absolute top-2/3 left-1/2 w-40 h-40 bg-[#4f2744]/15 rounded-xl rotate-12 animate-rotate-slow"></div>
-    <div class="absolute bottom-10 right-1/4 w-48 h-48 bg-[#3a1c32]/18 rounded-2xl rotate-45 animate-rotate-slow"></div>
-    <div class="absolute top-1/3 left-20 w-12 h-12 bg-[#4f2744]/25 rounded-md -rotate-12 animate-rotate-slow-delayed">
+    {{-- CORE FLOATING ICONS (Balanced & High Quality) --}}
+    <div class="absolute top-[8%] left-[12%] text-white/10 text-6xl animate-float-slow transform -rotate-12 opacity-80">
+        <i class="fas fa-graduation-cap"></i>
     </div>
-    <div class="absolute bottom-1/2 left-10 w-28 h-28 bg-[#3a1c32]/12 rounded-3xl rotate-[30deg] animate-rotate-slow">
+    <div class="absolute top-[38%] right-[10%] text-[#4f2744]/20 text-8xl animate-float-slow-delayed rotate-12">
+        <i class="fas fa-award"></i>
+    </div>
+    <div class="absolute bottom-[12%] left-[15%] text-white/5 text-5xl animate-float-slow">
+        <i class="fas fa-medal"></i>
+    </div>
+    <div class="absolute top-[15%] right-[25%] text-yellow-500/10 text-7xl animate-pulse">
+        <i class="fas fa-star"></i>
+    </div>
+    <div class="absolute bottom-[5%] right-[15%] text-[#4f2744]/10 text-[10rem] animate-float-slow opacity-30">
+        <i class="fas fa-certificate"></i>
     </div>
 
-    {{-- Shapes tambahan di kanan --}}
-    <div class="absolute top-16 right-10 w-36 h-36 bg-[#4f2744]/25 rounded-full blur-2xl animate-float-slow"></div>
+    {{-- MICRO ACCENTS (Adding "Ramai" but Subtle) --}}
+    {{-- Plus/Cross Signs --}}
+    <div class="absolute top-1/4 left-1/3 text-white/20 text-xl animate-spin-slow">+</div>
+    <div class="absolute bottom-1/3 left-1/2 text-[#4f2744]/30 text-2xl animate-spin-slow-reverse">×</div>
+    <div class="absolute top-2/3 right-1/4 text-white/10 text-lg animate-float-slow">+</div>
+    <div class="absolute top-10 right-1/2 text-white/10 text-xl rotate-45 animate-pulse">×</div>
+
+    {{-- Small Glowing Dots --}}
+    <div class="absolute top-1/2 left-1/4 w-1.5 h-1.5 bg-yellow-400/40 rounded-full blur-sm animate-ping"></div>
+    <div class="absolute bottom-1/4 right-1/3 w-2 h-2 bg-white/30 rounded-full blur-sm animate-pulse"></div>
+    <div class="absolute top-[60%] right-[45%] w-1 h-1 bg-[#4f2744]/60 rounded-full animate-ping"></div>
+
+    {{-- ADVANCED GEOMETRIC LAYERS --}}
+    {{-- Abstract Rings --}}
+    <div class="absolute top-[20%] right-[15%] w-72 h-72 border border-white/5 rounded-full animate-spin-slow">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-[#4f2744]/50 rounded-full">
+        </div>
+    </div>
     <div
-        class="absolute bottom-20 right-0 w-28 h-28 bg-[#3a1c32]/25 rotate-12 clip-triangle animate-float-slow transition-transform">
+        class="absolute bottom-[15%] left-[5%] w-56 h-56 border border-[#4f2744]/10 rounded-full animate-spin-slow-reverse opacity-40">
     </div>
-    <div class="absolute top-1/2 right-20 w-24 h-24 bg-[#4f2744]/15 rounded-lg rotate-45 animate-rotate-slow"></div>
-    <div class="absolute top-1/4 right-1/3 w-8 h-8 bg-[#3a1c32]/30 rounded-full animate-ping"></div>
 
-    {{-- Tiny Accent Shapes --}}
-    <div class="absolute top-1/3 left-1/4 w-2 h-2 bg-[#4f2744]/60 rounded-full"></div>
-    <div class="absolute top-2/3 right-1/3 w-3 h-3 bg-[#3a1c32]/45 rotate-45"></div>
-    <div class="absolute bottom-1/4 left-1/2 w-2 h-2 bg-[#4f2744]/60 rounded-full"></div>
-    <div class="absolute top-10 left-1/2 w-3 h-3 bg-[#3a1c32]/45 rounded-sm"></div>
+    {{-- Orbital Line --}}
+    <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[1px] bg-gradient-to-r from-transparent via-white/[0.05] to-transparent -rotate-12">
+    </div>
+    <div
+        class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[1px] bg-gradient-to-r from-transparent via-[#4f2744]/[0.08] to-transparent rotate-6">
+    </div>
+
+    {{-- Decorative Rectangles (Glass) --}}
+    <div
+        class="absolute top-[45%] left-[8%] w-24 h-32 bg-white/[0.01] border border-white/5 rounded-2xl backdrop-blur-[2px] -rotate-12 animate-float-slow">
+    </div>
+    <div
+        class="absolute bottom-[25%] right-[5%] w-32 h-24 bg-[#4f2744]/[0.02] border border-[#4f2744]/5 rounded-3xl backdrop-blur-[2px] rotate-6 animate-float-slow-delayed">
+    </div>
+
+    {{-- BACKGROUND TEXTURE --}}
+    <div
+        class="absolute inset-0 bg-[radial-gradient(circle_at_center,#4f274408_2px,transparent_2px)] bg-[size:50px_50px]">
+    </div>
+    <div
+        class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:100px_100px]">
+    </div>
 </div>
 
 <style>
@@ -47,76 +82,68 @@
         0%,
         100% {
             transform: scale(1);
-            opacity: .7
+            opacity: 0.4;
         }
 
         50% {
-            transform: scale(1.1);
-            opacity: 1
+            transform: scale(1.05);
+            opacity: 0.7;
         }
     }
 
     .animate-pulse-slow {
-        animation: pulse-slow 8s infinite ease-in-out;
+        animation: pulse-slow 12s infinite ease-in-out;
     }
 
     .animate-pulse-slow-delayed {
-        animation: pulse-slow 8s infinite ease-in-out 4s;
+        animation: pulse-slow 12s infinite ease-in-out 6s;
     }
 
     @keyframes float-slow {
 
         0%,
         100% {
-            transform: translateY(0)
+            transform: translateY(0) rotate(0deg);
         }
 
         50% {
-            transform: translateY(-15px)
+            transform: translateY(-25px) rotate(3deg);
         }
     }
 
     .animate-float-slow {
-        animation: float-slow 10s infinite ease-in-out;
+        animation: float-slow 14s infinite ease-in-out;
     }
 
     .animate-float-slow-delayed {
-        animation: float-slow 10s infinite ease-in-out 5s;
-    }
-
-    @keyframes rotate-slow {
-        0% {
-            transform: rotate(0deg)
-        }
-
-        100% {
-            transform: rotate(360deg)
-        }
-    }
-
-    .animate-rotate-slow {
-        animation: rotate-slow 60s linear infinite;
-    }
-
-    .animate-rotate-slow-delayed {
-        animation: rotate-slow 60s linear infinite 30s;
+        animation: float-slow 16s infinite ease-in-out 8s;
     }
 
     @keyframes spin-slow {
-        0% {
-            transform: rotate(0deg)
+        from {
+            transform: rotate(0deg);
         }
 
-        100% {
-            transform: rotate(360deg)
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin-slow-reverse {
+        from {
+            transform: rotate(360deg);
+        }
+
+        to {
+            transform: rotate(0deg);
         }
     }
 
     .animate-spin-slow {
-        animation: spin-slow 15s linear infinite;
+        animation: spin-slow 40s linear infinite;
     }
 
-    .clip-triangle {
-        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    .animate-spin-slow-reverse {
+        animation: spin-slow-reverse 45s linear infinite;
     }
 </style>

@@ -24,39 +24,70 @@
         </div>
     </section>
 
-    {{-- Category Filter Tabs --}}
-    <section class="py-10 bg-white border-b border-gray-200 sticky top-20 z-30 backdrop-blur-xl bg-white/95">
+    {{-- Category Filter Pills (Standard Flow) --}}
+    <section class="py-10 bg-white border-b border-gray-50">
         <div class="container mx-auto px-4 lg:px-8">
-            <div class="flex flex-wrap items-center justify-between gap-6">
-                {{-- Category Pills --}}
-                <div class="flex flex-wrap gap-3">
-                    <a href="{{ route('news') }}"
-                        class="px-6 py-3 rounded-2xl font-bold text-sm transition-all duration-300 {{ !request('category') ? 'bg-[#932F80] text-white shadow-lg shadow-[#932F80]/30 scale-105' : 'bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-900 border border-gray-200' }}">
-                        SEMUA
+            <div class="flex flex-wrap items-center justify-center gap-3">
+                <a href="{{ route('news') }}"
+                    class="px-5 py-2.5 rounded-xl font-bold text-xs tracking-widest transition-all duration-300 shadow-sm {{ !request('category') ? 'bg-[#932F80] text-white shadow-lg shadow-[#932F80]/30 scale-105' : 'bg-gray-50 text-gray-500 hover:bg-gray-100 hover:text-gray-900 border border-gray-100' }}">
+                    SEMUA
+                </a>
+                @php
+                    $categories = ['Kegiatan', 'Pengumuman', 'Prestasi', 'Workshop', 'Kunjungan'];
+                @endphp
+                @foreach($categories as $cat)
+                    <a href="{{ route('news') }}?category={{ $cat }}"
+                        class="px-5 py-2.5 rounded-xl font-bold text-xs tracking-widest transition-all duration-300 shadow-sm {{ request('category') == $cat ? 'bg-[#932F80] text-white shadow-lg shadow-[#932F80]/30 scale-105' : 'bg-gray-50 text-gray-500 hover:bg-gray-100 hover:text-gray-900 border border-gray-100' }}">
+                        {{ strtoupper($cat) }}
                     </a>
-                    @php
-                        $categories = ['Kegiatan', 'Pengumuman', 'Prestasi', 'Workshop', 'Kunjungan'];
-                    @endphp
-                    @foreach($categories as $cat)
-                        <a href="{{ route('news') }}?category={{ $cat }}"
-                            class="px-6 py-3 rounded-2xl font-bold text-sm transition-all duration-300 {{ request('category') == $cat ? 'bg-[#932F80] text-white shadow-lg shadow-[#932F80]/30 scale-105' : 'bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-900 border border-gray-200' }}">
-                            {{ strtoupper($cat) }}
-                        </a>
-                    @endforeach
-                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
 
+    {{-- Floating Search Bar (Only Search is Fixed/Sticky) --}}
+    <section id="search-section" 
+        class="py-4 transition-all duration-300 z-40 
+               sticky top-20 bg-white/90 backdrop-blur-md border-b border-purple-100 shadow-sm
+               md:bg-transparent md:border-none md:shadow-none md:container md:mx-auto md:px-4 lg:px-8
+               fixed inset-x-0 top-16 md:relative md:top-0">
+        
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex justify-center md:justify-end">
                 {{-- Search Box --}}
-                <form action="{{ route('news') }}" method="GET" class="relative group">
+                <form action="{{ route('news') }}" method="GET" 
+                    class="relative group w-full md:w-auto max-w-lg">
                     <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari berita..."
-                        class="pl-6 pr-14 py-3.5 bg-gray-100 border border-gray-200 rounded-2xl text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-[#932F80] focus:border-[#932F80] w-72 transition-all outline-none">
+                        class="pl-6 pr-14 py-3 bg-white md:bg-gray-100/80 backdrop-blur-md border border-gray-200 rounded-2xl text-gray-900 placeholder-gray-500 
+                               focus:ring-2 focus:ring-[#932F80] focus:border-[#932F80] w-full md:w-80 
+                               transition-all outline-none shadow-lg shadow-purple-900/5 group-hover:shadow-purple-900/10">
                     <button type="submit"
                         class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 group-hover:text-[#932F80] transition-colors">
                         <i class="fas fa-search text-lg"></i>
                     </button>
+                    
+                    @if(request('search'))
+                        <a href="{{ route('news') }}" 
+                           class="absolute -bottom-6 left-0 text-[10px] font-black text-[#932F80] uppercase tracking-widest flex items-center gap-1 hover:underline">
+                           <i class="fas fa-times-circle"></i> Clear
+                        </a>
+                    @endif
                 </form>
             </div>
         </div>
     </section>
+
+    <style>
+        @media (max-width: 768px) {
+            #search-section {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+                background: rgba(255, 255, 255, 0.9);
+                backdrop-filter: blur(12px);
+                border-bottom: 1px solid rgba(147, 47, 128, 0.1);
+            }
+        }
+    </style>
 
     {{-- Featured News (Latest) --}}
     @if($news->count() > 0 && $news->first())
