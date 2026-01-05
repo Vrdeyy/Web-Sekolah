@@ -492,6 +492,13 @@ Kontribusi sangat diterima! Silakan ikuti langkah berikut:
 
 ## 📝 Changelog
 
+### v1.2.0 (2026-01-05) - The Responsive Refinement
+- 🚀 **Dynamic Logo Management**: Integrasi logo sekolah yang dapat diatur sepenuhnya via Admin Panel (Header, Footer, & Mobile Menu).
+- 🚀 **Mobile Hero Optimization**: Tuning khusus untuk layout hero di HP dan Tablet (Centered text, background glow, & responsive spacing).
+- 🚀 **Awards Data Enhancement**: Penambahan field "Tahun" dan "Penyelenggara" pada kartu penghargaan yang tersinkronisasi dengan database.
+- 🚀 **Admin Filter UX**: Perbaikan pada dropbox filter grup pengaturan agar lebih dinamis dan mampu memuat seluruh data kunci secara real-time.
+- 🚀 **Pagination Upgrade**: Penambahan fitur "View All" pada daftar kunci admin untuk navigasi pengaturan yang lebih mudah.
+
 ### v1.1.0 (2026-01-04) - The Premium Redesign
 - 🚀 **Full Rebranding**: Migrasi total ke tema "Premium Dark Purple" (#4f2744 & #3a1c32).
 - 🚀 **Hero Section 2.0**: Implementasi "Dynamic Educational Collage" dengan floating symbols.
@@ -515,18 +522,7 @@ Proyek ini dilisensikan di bawah [MIT License](LICENSE).
 
 ## 👨‍💻 Developer
 
-Dikembangkan dengan ❤️ oleh **IT Team SMK YAJ**
+Dikembangkan oleh IT Team SMK YAJ © 2026
 
 ---
 
-## 📞 Kontak & Support
-
-- **Website**: [https://smkyaj.sch.id](https://smkyaj.sch.id)
-- **Email**: info@smkyaj.sch.id
-- **GitHub Issues**: [Report Bug](https://github.com/your-username/web-yaj/issues)
-
----
-
-<p align="center">
-  <strong>SMK YAJ</strong> - Pilihan Yang Tepat Di Sekolah Yang Berkualitas
-</p>
