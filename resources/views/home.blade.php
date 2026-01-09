@@ -503,7 +503,7 @@
             {{-- FOOTER CTA --}}
             <div class="text-center mt-24" data-aos="fade-up">
                 <a href="{{ route('majors') }}"
-                   class="inline-flex items-center gap-4 px-12 py-5 bg-[#8C51A5] text-white font-black text-xs uppercase tracking-[0.2em] rounded-2xl shadow-xl shadow-[#8C51A5]/20 hover:bg-[#612F73] transform hover:scale-105 transition-all duration-500 ease-in-out group">
+                   class="inline-flex items-center gap-4 px-12 py-5 bg-[#8C51A5] text-white font-black text-xs uppercase tracking-[0.2em] rounded-2xl shadow-xl shadow-[#8C51A5]/20 hover:bg-[#8C51A5]/10 hover:text-[#8C51A5] border border-transparent hover:border-[#8C51A5]/20 transition-all duration-500 ease-in-out group">
                     <i class="fas fa-th-large group-hover:rotate-45 transition-transform"></i>
                     Semua Program Keahlian
                 </a>
@@ -746,7 +746,7 @@
             {{-- FOOTER CTA --}}
             <div class="text-center mt-24" data-aos="fade-up">
                 <a href="{{ route('news') }}"
-                   class="inline-flex items-center gap-4 px-12 py-5 bg-[#8C51A5]/10 text-[#8C51A5] font-black text-[10px] uppercase tracking-[0.2em] rounded-2xl border border-[#8C51A5]/20 hover:bg-[#8C51A5] hover:text-white transition-all duration-500 group">
+                   class="inline-flex items-center gap-4 px-12 py-5 bg-[#8C51A5] text-white font-black text-[10px] uppercase tracking-[0.2em] rounded-2xl shadow-xl shadow-[#8C51A5]/20 hover:bg-[#8C51A5]/10 hover:text-[#8C51A5] border border-transparent hover:border-[#8C51A5]/20 transition-all duration-500 group">
                     <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform duration-300 ease-in-out"></i>
                     Lihat Portofolio Berita
                 </a>
@@ -883,10 +883,8 @@
 
                 <div class="text-center mt-20" data-aos="fade-up">
                     <a href="{{ route('business-centers') }}"
-                        class="inline-flex items-center gap-4 px-12 py-5 
-                        rounded-2xl
-                        bg-[#8C51A5] text-white font-black hover:bg-[#612F73] shadow-premium-lg hover:-translate-y-1 transform transition-all duration-500 ease-in-out uppercase text-xs tracking-widest">
-                        <i class="fas fa-th-large text-xl text-[#F8CB62]"></i>
+                        class="inline-flex items-center gap-4 px-12 py-5 bg-[#8C51A5] text-white font-black text-xs uppercase tracking-[0.2em] rounded-2xl shadow-xl shadow-[#8C51A5]/20 hover:bg-[#8C51A5]/10 hover:text-[#8C51A5] border border-transparent hover:border-[#8C51A5]/20 transition-all duration-500 ease-in-out group">
+                        <i class="fas fa-th-large text-xl text-[#F8CB62] group-hover:rotate-45 transition-transform"></i>
                         Eksplorasi Unit Bisnis
                     </a>
                 </div>
