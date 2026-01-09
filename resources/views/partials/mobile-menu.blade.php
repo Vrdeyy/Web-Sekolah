@@ -11,7 +11,7 @@
                     @if(isset($settings['school_logo']))
                         <img src="{{ asset('storage/' . $settings['school_logo']) }}" alt="Logo" class="w-7 h-7 object-contain">
                     @else
-                        <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#4f2744] to-[#3a1c32]">
+                        <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#8C51A5] to-[#612F73]">
                             <span class="text-white font-bold text-xs">YAJ</span>
                         </div>
                     @endif
@@ -21,7 +21,7 @@
                 </span>
             </div>
             <button id="mobile-menu-close"
-                class="p-2 rounded-lg hover:bg-[#4f2744]/10">
+                class="p-2 rounded-lg hover:bg-[#8C51A5]/10">
                 <i class="fas fa-times"></i>
             </button>
         </div>
@@ -29,7 +29,7 @@
         {{-- Beranda --}}
         <a href="{{ route('home') }}"
             class="flex items-center gap-3 px-4 py-3 mb-4 rounded-xl font-semibold
-                   bg-[#4f2744]/10 text-[#4f2744]">
+                   bg-[#8C51A5]/10 text-[#612F73]">
             <i class="fas fa-home"></i>
             Beranda
         </a>
@@ -67,7 +67,7 @@
                     <div class="mobile-dropdown hidden pl-4">
                         @foreach ($items as [$label, $url])
                             <a href="{{ $url }}"
-                                class="block py-2 text-gray-600 hover:text-[#4f2744]">
+                                class="block py-2 text-gray-600 hover:text-[#8C51A5]">
                                 {{ $label }}
                             </a>
                         @endforeach
@@ -76,11 +76,11 @@
             @endforeach
 
             <a href="{{ route('news') }}"
-               class="block py-3 font-medium hover:text-[#4f2744]">
+               class="block py-3 font-medium hover:text-[#8C51A5]">
                 Berita
             </a>
             <a href="{{ route('contact') }}"
-               class="block py-3 font-medium hover:text-[#4f2744]">
+               class="block py-3 font-medium hover:text-[#8C51A5]">
                 Kontak
             </a>
         </nav>
@@ -89,8 +89,8 @@
         @if(($settings['ppdb_active'] ?? false))
             <a href="{{ $settings['ppdb_url'] }}"
                 class="mt-4 flex items-center justify-center gap-2 px-6 py-3
-                       text-white rounded-xl font-semibold"
-                style="background: linear-gradient(135deg, #4f2744, #3a1c32);">
+                       text-white rounded-xl font-black shadow-lg"
+                style="background: linear-gradient(135deg, #612F73, #8C51A5);">
                 DAFTAR PPDB
             </a>
         @endif

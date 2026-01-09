@@ -3,42 +3,42 @@
 @section('title', 'Beranda')
 
 @section('content')
-   {{-- HERO SECTION CLEAN EDUCATION (PURPLE THEME) --}}
-<section class="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#4f2744]/5 via-white to-[#3a1c32]/5 pt-32 lg:pt-8">
+{{-- HERO SECTION CLEAN EDUCATION (PURPLE THEME) --}}
+<section class="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#612F73]/5 via-white to-[#F0E7F8]/30 pt-32 lg:pt-8">
 
     {{-- Decorative Blobs & Glowing Orbs --}}
-    <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-gradient-to-br from-[#4f2744]/20 to-transparent rounded-full blur-[120px] animate-pulse-slow"></div>
-    <div class="absolute bottom-[-10%] right-[-5%] w-[600px] h-[600px] bg-gradient-to-tl from-[#3a1c32]/15 via-purple-900/5 to-transparent rounded-full blur-[130px] animate-pulse-slow-delayed"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#4f2744]/[0.03] rounded-full blur-[150px]"></div>
+    <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-gradient-to-br from-[#612F73]/15 to-transparent rounded-full blur-[120px] animate-pulse-slow"></div>
+    <div class="absolute bottom-[-10%] right-[-5%] w-[600px] h-[600px] bg-gradient-to-tl from-[#8C51A5]/10 via-[#D668EA]/5 to-transparent rounded-full blur-[130px] animate-pulse-slow-delayed"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#612F73]/[0.02] rounded-full blur-[150px]"></div>
 
     {{-- Dots & Grid Layered Pattern --}}
-    <div class="absolute inset-0 bg-[radial-gradient(#4f274412_1px,transparent_1px)] bg-[size:30px_30px] opacity-40"></div>
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f274405_1px,transparent_1px),linear-gradient(to_bottom,#4f274405_1px,transparent_1px)] bg-[size:80px_80px]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#612F7310_1px,transparent_1px)] bg-[size:30px_30px] opacity-40"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#612F7303_1px,transparent_1px),linear-gradient(to_bottom,#612F7303_1px,transparent_1px)] bg-[size:80px_80px]"></div>
 
     {{-- ADVANCED DECORATIVE ELEMENTS (Section-wide) --}}
     <div class="absolute inset-0 pointer-events-none overflow-hidden">
         {{-- Floating Icons --}}
-        <div class="absolute top-[18%] right-[15%] text-[#4f2744]/10 text-7xl animate-float-slow"><i class="fas fa-atom"></i></div>
-        <div class="absolute bottom-[20%] left-[8%] text-[#4f2744]/10 text-6xl animate-float-slow-delayed rotate-12"><i class="fas fa-book-open"></i></div>
-        <div class="absolute top-[25%] right-[35%] text-[#4f2744]/5 text-8xl animate-pulse"><i class="fas fa-graduation-cap"></i></div>
-        <div class="absolute bottom-[10%] right-[30%] text-[#4f2744]/10 text-[12rem] animate-float-slow opacity-20"><i class="fas fa-pencil-alt"></i></div>
+        <div class="absolute top-[18%] right-[15%] text-[#8C51A5]/10 text-7xl animate-float-slow"><i class="fas fa-atom"></i></div>
+        <div class="absolute bottom-[20%] left-[8%] text-[#8C51A5]/10 text-6xl animate-float-slow-delayed rotate-12"><i class="fas fa-book-open"></i></div>
+        <div class="absolute top-[25%] right-[35%] text-[#8C51A5]/5 text-8xl animate-pulse"><i class="fas fa-graduation-cap"></i></div>
+        <div class="absolute bottom-[10%] right-[30%] text-[#8C51A5]/10 text-[12rem] animate-float-slow opacity-10"><i class="fas fa-pencil-alt text-[#F8CB62]"></i></div>
         
         {{-- Plus/Cross Signs Accents --}}
-        <div class="absolute top-20 right-1/4 text-[#4f2744]/20 text-2xl animate-spin-slow">+</div>
-        <div class="absolute bottom-40 left-1/4 text-[#4f2744]/20 text-3xl animate-spin-slow-reverse">×</div>
-        <div class="absolute top-1/2 right-10 text-[#4f2744]/15 text-xl animate-pulse">+</div>
+        <div class="absolute top-20 right-1/4 text-[#8C51A5]/20 text-2xl animate-spin-slow">+</div>
+        <div class="absolute bottom-40 left-1/4 text-[#8C51A5]/20 text-3xl animate-spin-slow-reverse">×</div>
+        <div class="absolute top-1/2 right-10 text-[#8C51A5]/15 text-xl animate-pulse text-[#F8CB62]">+</div>
         
         {{-- Abstract Shapes --}}
-        <div class="absolute top-[40%] left-[2%] w-32 h-32 border-2 border-[#4f2744]/5 rounded-[2rem] rotate-12 animate-float-slow"></div>
-        <div class="absolute bottom-[30%] right-[3%] w-40 h-40 border border-[#4f2744]/10 rounded-full animate-spin-slow-reverse"></div>
+        <div class="absolute top-[40%] left-[2%] w-32 h-32 border-2 border-[#8C51A5]/5 rounded-[2rem] rotate-12 animate-float-slow"></div>
+        <div class="absolute bottom-[30%] right-[3%] w-40 h-40 border border-[#8C51A5]/10 rounded-full animate-spin-slow-reverse"></div>
         
         {{-- Particles --}}
-        <div class="absolute top-1/4 left-1/2 w-2 h-2 bg-[#932F80]/20 rounded-full blur-sm animate-ping"></div>
-        <div class="absolute bottom-1/3 left-[40%] w-1.5 h-1.5 bg-[#4f2744]/30 rounded-full animate-pulse"></div>
-        <div class="absolute top-2/3 right-1/4 w-2 h-2 bg-[#4f2744]/20 rounded-full blur-sm animate-ping" style="animation-delay: 2s"></div>
+        <div class="absolute top-1/4 left-1/2 w-2 h-2 bg-[#D668EA]/20 rounded-full blur-sm animate-ping"></div>
+        <div class="absolute bottom-1/3 left-[40%] w-1.5 h-1.5 bg-[#8C51A5]/30 rounded-full animate-pulse"></div>
+        <div class="absolute top-2/3 right-1/4 w-2 h-2 bg-[#8C51A5]/20 rounded-full blur-sm animate-ping" style="animation-delay: 2s"></div>
     </div>
 
-    <div class="container mx-auto px-6 lg:px-12 relative z-10 lg:-mt-10">
+    <div class="container mx-auto px-6 lg:px-12 relative z-10 lg:-mt-20">
         <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-14">
 
             {{-- LEFT CONTENT --}}
@@ -50,26 +50,26 @@
                     <div class="absolute inset-0 bg-gradient-to-b from-white/80 via-white/40 to-transparent blur-3xl rounded-[3rem]"></div>
                     
                     {{-- Decorative Patterns --}}
-                    <div class="absolute inset-0 opacity-[0.03] bg-[size:30px_30px] bg-[linear-gradient(to_right,#4f2744_1px,transparent_1px),linear-gradient(to_bottom,#4f2744_1px,transparent_1px)]"></div>
+                    <div class="absolute inset-0 opacity-[0.03] bg-[size:30px_30px] bg-[linear-gradient(to_right,#8C51A5_1px,transparent_1px),linear-gradient(to_bottom,#8C51A5_1px,transparent_1px)]"></div>
                     
                     {{-- Floating Symbols --}}
-                    <div class="absolute top-10 left-4 text-[#4f2744]/10 text-6xl font-black rotate-12 -z-10 select-none">Σ</div>
-                    <div class="absolute bottom-1/4 right-2 text-[#4f2744]/10 text-5xl font-black -rotate-12 -z-10 select-none font-mono">{}</div>
-                    <div class="absolute top-1/4 right-0 text-[#4f2744]/10 text-4xl font-black rotate-45 -z-10 select-none font-serif">&pi;</div>
+                    <div class="absolute top-10 left-4 text-[#8C51A5]/10 text-6xl font-black rotate-12 -z-10 select-none">Σ</div>
+                    <div class="absolute bottom-1/4 right-2 text-[#8C51A5]/10 text-5xl font-black -rotate-12 -z-10 select-none font-mono">{}</div>
+                    <div class="absolute top-1/4 right-0 text-[#8C51A5]/10 text-4xl font-black rotate-45 -z-10 select-none font-serif">&pi;</div>
                     
                     {{-- Floating Icons --}}
-                    <div class="absolute top-[20%] left-[-10px] text-[#4f2744]/5 text-6xl animate-float-slow -z-10">
+                    <div class="absolute top-[20%] left-[-10px] text-[#8C51A5]/5 text-6xl animate-float-slow -z-10">
                         <i class="fas fa-graduation-cap"></i>
                     </div>
-                    <div class="absolute bottom-[10%] right-[-10px] text-[#4f2744]/5 text-7xl animate-float-slow-delayed -z-10">
+                    <div class="absolute bottom-[10%] right-[-10px] text-[#8C51A5]/5 text-7xl animate-float-slow-delayed -z-10">
                         <i class="fas fa-lightbulb"></i>
                     </div>
                 </div>
-                <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#4f2744]/10 text-[#4f2744] text-sm font-bold tracking-wide mt-20 lg:mt-28" data-aos="fade-down" data-aos-delay="200">
+                <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#8C51A5]/10 text-[#612F73] text-sm font-bold tracking-wide mt-28 lg:mt-36 border border-[#8C51A5]/20 shadow-sm" data-aos="fade-down" data-aos-delay="200">
                     {{ $settings['hero_badge'] ?? '🎓 Pendidikan Digital' }}
                 </span>
 
-                <h1 class="text-4xl lg:text-5xl xl:text-6xl font-extrabold text-gray-900 leading-tight" data-aos="fade-up" data-aos-delay="400">
+                <h1 class="text-4xl lg:text-5xl xl:text-6xl font-black text-[#612F73] leading-tight" data-aos="fade-up" data-aos-delay="400">
                     @php
                         $title = $settings['hero_title'] ?? 'Pendidikan Online Serasa Kelas Nyata';
                         // Split title to colorize part of it if it's long enough or just use brand color for the last words
@@ -78,7 +78,7 @@
                         $firstPart = array_slice($titleWords, 0, count($titleWords) - 3);
                     @endphp
                     {{ implode(' ', $firstPart) }}
-                    <span class="text-[#4f2744]">{{ implode(' ', $lastThree) }}</span>
+                    <span class="text-[#8C51A5] bg-gradient-to-r from-[#612F73] to-[#D668EA] bg-clip-text text-transparent">{{ implode(' ', $lastThree) }}</span>
                 </h1>
 
                 <p class="text-gray-600 max-w-xl text-lg" data-aos="fade-up" data-aos-delay="600">
@@ -89,42 +89,42 @@
                 <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-4" data-aos="fade-up" data-aos-delay="800">
                     <a href="{{ $settings['ppdb_url'] ?? '#' }}" target="_blank"
                         class="px-8 py-4 rounded-2xl 
-                            bg-[#4f2744] text-white font-bold shadow-lg shadow-[#4f2744]/20
-                            hover:bg-white hover:text-[#4f2744] hover:shadow-[0_0_0_2px_#4f2744]
-                            transform hover:scale-105 transition-all duration-300">
+                            bg-gradient-to-r from-[#F8CB62] to-[#f5b82e] text-[#612F73] font-black shadow-xl shadow-[#F8CB62]/20
+                            hover:shadow-golden hover:-translate-y-1
+                            transform transition-all duration-300">
                         {{ $settings['hero_primary_text'] ?? 'PPDB Online' }}
                     </a>
 
                     <a href="{{ route('page', 'sekolah') }}"
                         class="px-8 py-4 rounded-2xl 
-                            border-2 border-[#4f2744]/20 text-[#4f2744] font-bold 
-                            hover:bg-[#4f2744] hover:text-white hover:border-[#4f2744]
-                            transform hover:scale-105 transition-all duration-300">
+                            bg-white border-2 border-[#8C51A5]/10 text-[#8C51A5] font-black 
+                            hover:bg-[#F0E7F8] hover:border-[#8C51A5]/30
+                            transform hover:-translate-y-1 transition-all duration-500 shadow-sm">
                         {{ $settings['hero_secondary_text'] ?? 'Profil Sekolah' }}
                     </a>
                 </div>
 
                 {{-- Stats --}}
-                <div class="flex flex-wrap justify-center lg:justify-start gap-6 lg:gap-10 pt-8 border-t border-[#4f2744]/5" data-aos="fade-up" data-aos-delay="400">
+                <div class="flex flex-wrap justify-center lg:justify-start gap-6 lg:gap-10 pt-8 border-t border-[#8C51A5]/10" data-aos="fade-up" data-aos-delay="400">
                     @php
                         $studentVal = $students_stat ? $students_stat->value : (int)filter_var($settings['hero_stats_1_value'] ?? '1500', FILTER_SANITIZE_NUMBER_INT);
                         $studentSuffix = $students_stat ? $students_stat->suffix : '+';
                     @endphp
                     <div class="text-center lg:text-left">
-                        <h3 class="text-3xl font-black text-gray-900 leading-none mb-1">
+                        <h3 class="text-3xl font-black text-[#612F73] leading-none mb-1">
                             <span class="counter" data-target="{{ $studentVal }}">0</span>{{ $studentSuffix }}
                         </h3>
-                        <p class="text-[#4f2744]/60 text-xs font-bold uppercase tracking-widest">{{ $settings['hero_stats_1_label'] ?? 'Siswa Aktif' }}</p>
+                        <p class="text-[#8C51A5]/60 text-[10px] font-black uppercase tracking-widest">{{ $settings['hero_stats_1_label'] ?? 'Siswa Aktif' }}</p>
                     </div>
-                    <div class="text-center lg:text-left border-x border-[#4f2744]/10 px-6 lg:px-10">
-                        <h3 class="text-3xl font-black text-gray-900 leading-none mb-1">
+                    <div class="text-center lg:text-left border-x border-[#8C51A5]/20 px-6 lg:px-10">
+                        <h3 class="text-3xl font-black text-[#612F73] leading-none mb-1">
                             <span class="counter" data-target="{{ $teachers_count ?? 120 }}">0</span>+
                         </h3>
-                        <p class="text-[#4f2744]/60 text-xs font-bold uppercase tracking-widest">{{ $settings['hero_stats_2_label'] ?? 'Guru Profesional' }}</p>
+                        <p class="text-[#8C51A5]/60 text-[10px] font-black uppercase tracking-widest">{{ $settings['hero_stats_2_label'] ?? 'Guru Profesional' }}</p>
                     </div>
                     <div class="text-center lg:text-left">
-                        <h3 class="text-3xl font-black text-gray-900 leading-none mb-1">{{ $settings['hero_stats_3_value'] ?? '98%' }}</h3>
-                        <p class="text-[#4f2744]/60 text-xs font-bold uppercase tracking-widest">{{ $settings['hero_stats_3_label'] ?? 'Kelulusan' }}</p>
+                        <h3 class="text-3xl font-black text-[#F8CB62] leading-none mb-1">{{ $settings['hero_stats_3_value'] ?? '98%' }}</h3>
+                        <p class="text-[#8C51A5]/60 text-[10px] font-black uppercase tracking-widest">{{ $settings['hero_stats_3_label'] ?? 'Kelulusan' }}</p>
                     </div>
                 </div>
             </div>
@@ -136,49 +136,48 @@
     <div class="absolute inset-0 z-0 pointer-events-none overflow-visible flex items-center justify-center" data-aos="zoom-in" data-aos-duration="1500">
         
         {{-- Soft Glow --}}
-        <div class="absolute w-[600px] lg:w-[900px] h-[600px] lg:h-[900px] bg-[#4f2744]/10 rounded-full blur-[120px]"></div>
-
+        <div class="absolute w-[600px] lg:w-[900px] h-[600px] lg:h-[900px] bg-[#8C51A5]/10 rounded-full blur-[120px]"></div>
+ 
         {{-- GEOMETRIC FOUNDATION --}}
         {{-- Solid Square - Top Right --}}
-        <div class="absolute top-[15%] right-[10%] w-24 lg:w-40 h-24 lg:w-40 bg-[#4f2744] rounded-[2.5rem] rotate-12 animate-float-slow transition-transform"></div>
+        <div class="absolute top-[15%] right-[10%] w-24 lg:w-40 h-24 lg:w-40 bg-[#612F73] rounded-[2.5rem] rotate-12 animate-float-slow transition-transform border-4 border-white/20 shadow-premium-lg"></div>
         
         {{-- Solid Triangle - Bottom Left --}}
-        <div class="absolute bottom-[20%] left-[8%] w-32 lg:w-56 h-32 lg:h-56 bg-[#4f2744] clip-triangle -rotate-12 animate-float-slow-delayed"></div>
+        <div class="absolute bottom-[20%] left-[8%] w-32 lg:w-56 h-32 lg:h-56 bg-[#8C51A5] clip-triangle -rotate-12 animate-float-slow-delayed border-white/10 opacity-20"></div>
         
         {{-- Wireframe Circle - Center --}}
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] lg:w-[600px] h-[350px] lg:h-[600px] border border-[#4f2744]/20 rounded-full"></div>
-
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] lg:w-[600px] h-[350px] lg:h-[600px] border border-[#8C51A5]/20 rounded-full"></div>
+ 
         {{-- EDUCATIONAL TOOLS (Floating Icons) --}}
         {{-- Coding - Top Left --}}
-        <div class="absolute top-[25%] left-[15%] flex items-center justify-center w-12 lg:w-16 h-12 lg:h-16 bg-white shadow-xl rounded-2xl animate-float-slow">
-            <i class="fas fa-code text-[#4f2744] text-xl lg:text-2xl"></i>
+        <div class="absolute top-[25%] left-[15%] flex items-center justify-center w-12 lg:w-16 h-12 lg:h-16 bg-white shadow-xl rounded-2xl animate-float-slow border border-[#8C51A5]/10">
+            <i class="fas fa-code text-[#612F73] text-xl lg:text-2xl"></i>
         </div>
-
+ 
         {{-- Science - Mid Right --}}
-        <div class="absolute top-[45%] right-[5%] flex items-center justify-center w-10 lg:w-14 h-10 lg:h-14 bg-white shadow-xl rounded-2xl animate-spin-slow">
-            <i class="fas fa-atom text-[#4f2744] text-lg lg:text-xl"></i>
+        <div class="absolute top-[45%] right-[5%] flex items-center justify-center w-10 lg:w-14 h-10 lg:h-14 bg-white shadow-xl rounded-2xl animate-spin-slow border border-[#8C51A5]/10">
+            <i class="fas fa-atom text-[#8C51A5] text-lg lg:text-xl"></i>
         </div>
-
+ 
         {{-- Finance/Math - Bottom Right --}}
-        <div class="absolute bottom-[25%] right-[12%] flex items-center justify-center w-12 lg:w-16 h-12 lg:h-16 bg-white shadow-xl rounded-2xl animate-float-slow-delayed">
-            <i class="fas fa-chart-line text-[#4f2744] text-xl lg:text-2xl"></i>
+        <div class="absolute bottom-[25%] right-[12%] flex items-center justify-center w-12 lg:w-16 h-12 lg:h-16 bg-white shadow-xl rounded-2xl animate-float-slow-delayed border border-[#8C51A5]/10">
+            <i class="fas fa-chart-line text-[#F8CB62] text-xl lg:text-2xl"></i>
         </div>
-
+ 
         {{-- Creative/Design - Bottom Left --}}
-        <div class="absolute bottom-[35%] left-[5%] flex items-center justify-center w-10 lg:w-14 h-10 lg:h-14 bg-white shadow-xl rounded-2xl animate-pulse">
-            <i class="fas fa-palette text-[#4f2744] text-lg lg:text-xl"></i>
+        <div class="absolute bottom-[35%] left-[5%] flex items-center justify-center w-10 lg:w-14 h-10 lg:h-14 bg-white shadow-xl rounded-2xl animate-pulse border border-[#8C51A5]/10">
+            <i class="fas fa-palette text-[#D668EA] text-lg lg:text-xl"></i>
         </div>
-
+ 
         {{-- Mathematics - Top Center --}}
-        <div class="absolute top-[8%] left-[45%] flex items-center justify-center w-12 h-12 bg-white shadow-xl rounded-2xl animate-float-slow">
-            <i class="fas fa-calculator text-[#4f2744] text-xl"></i>
+        <div class="absolute top-[8%] left-[45%] flex items-center justify-center w-12 h-12 bg-white shadow-xl rounded-2xl animate-float-slow border border-[#8C51A5]/10">
+            <i class="fas fa-calculator text-[#8C51A5] text-xl"></i>
         </div>
-
+ 
         {{-- Micro Decorative Elements --}}
-        <div class="absolute top-1/3 left-[40%] text-[#4f2744] opacity-20 text-4xl font-black rotate-12 select-none">Σ</div>
-        <div class="absolute bottom-1/4 right-[40%] text-[#4f2744] opacity-20 text-5xl font-black -rotate-12 select-none font-mono">{}</div>
-        <div class="absolute top-1/4 right-[20%] text-[#4f2744] opacity-20 text-3xl font-black rotate-45 select-none">&pi;</div>
-
+        <div class="absolute top-1/3 left-[40%] text-[#8C51A5] opacity-20 text-4xl font-black rotate-12 select-none">Σ</div>
+        <div class="absolute bottom-1/4 right-[40%] text-[#612F73] opacity-20 text-5xl font-black -rotate-12 select-none font-mono">{}</div>
+        <div class="absolute top-1/4 right-[20%] text-[#D668EA] opacity-20 text-3xl font-black rotate-45 select-none">&pi;</div>
     </div>
 
     {{-- Hero Model Display Wrapper --}}
@@ -190,7 +189,7 @@
         </div>
 
         {{-- Reflection/Shadow Canvas --}}
-        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-12 bg-[#4f2744]/40 rounded-[100%] blur-3xl opacity-50"></div>
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-12 bg-[#612F73]/40 rounded-[100%] blur-3xl opacity-50"></div>
 
         {{-- Image Slider --}}
         <div class="relative w-full h-full">
@@ -219,11 +218,11 @@
         {{-- Glass Floating Badge (Akreditasi) --}}
         <div class="absolute bottom-16 md:bottom-24 right-0 md:right-10 lg:right-20 z-20 animate-float-slow scale-90 md:scale-100">
             <div class="bg-white/10 backdrop-blur-xl border border-white/20 p-5 rounded-3xl shadow-2xl flex items-center gap-4">
-                <div class="w-12 h-12 bg-gradient-to-tr from-[#932F80] to-[#4f2744] rounded-2xl flex items-center justify-center shadow-lg">
+                <div class="w-12 h-12 bg-gradient-to-tr from-[#8C51A5] to-[#612F73] rounded-2xl flex items-center justify-center shadow-lg">
                     <i class="fas fa-user-graduate text-white"></i>
                 </div>
                 <div>
-                    <div class="text-[10px] font-black text-[#4f2744] uppercase tracking-widest">Status</div>
+                    <div class="text-[10px] font-black text-[#F8CB62] uppercase tracking-widest">Status</div>
                     <div class="text-white font-bold leading-tight">Akreditasi A</div>
                 </div>
             </div>
@@ -235,10 +234,10 @@
 
         {{-- Floating Shapes --}}
         <div class="absolute inset-0 z-10 overflow-hidden pointer-events-none">
-            <div class="absolute top-20 left-10 w-72 h-72 bg-[#4f2744]/10 rounded-full blur-3xl animate-float"></div>
-            <div class="absolute bottom-20 right-10 w-96 h-96 bg-[#3a1c32]/10 rounded-full blur-3xl animate-float-delayed">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-[#612F73]/10 rounded-full blur-3xl animate-float"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-[#8C51A5]/10 rounded-full blur-3xl animate-float-delayed">
             </div>
-            <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-[#4f2744]/5 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-[#D668EA]/5 rounded-full blur-3xl animate-pulse"></div>
         </div>
 
     
@@ -257,27 +256,27 @@
                 <div class="relative order-2 lg:order-1 px-4 lg:px-0" data-aos="fade-right">
                     <div class="relative z-10 group max-w-[450px] mx-auto">
                         <div
-                            class="absolute -inset-4 bg-gradient-to-br from-[#4f2744]/15 to-[#3a1c32]/15
+                            class="absolute -inset-4 bg-gradient-to-br from-[#8C51A5]/15 to-[#612F73]/15
                                 rounded-[2.5rem] blur-2xl group-hover:blur-3xl transition-all">
                         </div>
-
+ 
                         <div
-                            class="relative bg-gradient-to-br from-purple-50 to-indigo-50
-                                rounded-[2rem] md:rounded-[2.5rem] p-4 md:p-6 shadow-2xl">
-
+                            class="relative bg-gradient-to-br from-white to-[#F0E7F8]
+                                rounded-[2rem] md:rounded-[2.5rem] p-4 md:p-6 shadow-2xl border border-white/50">
+ 
                             @if($principalMessage->photo)
                                 <img src="{{ asset('storage/' . $principalMessage->photo) }}"
                                     alt="{{ $principalMessage->name }}"
                                     class="w-full rounded-2xl md:rounded-[1.5rem] shadow-lg
                                         transform group-hover:scale-[1.02]
                                         transition-transform duration-500"
-                                    onerror="this.src='https://ui-avatars.com/api/?name={{ urlencode($principalMessage->name) }}&size=400&background=4f2744&color=fff'">
+                                    onerror="this.src='https://ui-avatars.com/api/?name={{ urlencode($principalMessage->name) }}&size=400&background=612F73&color=fff'">
                             @else
                                 <div
                                     class="w-full aspect-[3/4]
-                                        bg-gradient-to-r from-[#4f2744] to-[#3a1c32]
+                                        bg-gradient-to-r from-[#612F73] to-[#8C51A5]
                                         rounded-2xl flex items-center justify-center">
-                                    <i class="fas fa-user text-8xl text-white/50"></i>
+                                    <i class="fas fa-user-graduate text-8xl text-white/30"></i>
                                 </div>
                             @endif
                         </div>
@@ -307,18 +306,18 @@
                 <div class="flex flex-col items-center lg:items-start text-center lg:text-left" data-aos="fade-left">
                     <div
                         class="inline-flex items-center gap-2 px-5 py-2.5
-                            bg-[#4f2744]/10 rounded-full
-                            text-[#4f2744] text-sm font-semibold mb-6">
+                            bg-[#8C51A5]/10 rounded-full
+                            text-[#612F73] text-sm font-semibold mb-6 border border-[#8C51A5]/20 shadow-sm">
                         <i class="fas fa-quote-left"></i>
                         <span>SAMBUTAN KEPALA SEKOLAH</span>
                     </div>
 
-                    <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-3">
+                    <h2 class="text-4xl md:text-5xl font-black text-[#612F73] mb-3 leading-tight">
                         {{ $principalMessage->name }}
                     </h2>
 
                     @if($principalMessage->title)
-                        <p class="text-[#4f2744] font-semibold text-lg mb-8">
+                        <p class="text-[#8C51A5] font-bold text-lg mb-8 uppercase tracking-widest">
                             {{ $principalMessage->title }}
                         </p>
                     @endif
@@ -330,36 +329,36 @@
                     {{-- Vision & Mission --}}
                     <div class="grid sm:grid-cols-2 gap-5">
 
-                        {{-- Vision --}}
+                         {{-- Vision --}}
                         <div
-                            class="group p-6 bg-gradient-to-br from-purple-50 to-[#4f2744]/5
-                                rounded-2xl border border-purple-100
-                                hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                            class="group p-6 bg-white/[0.02] backdrop-blur-sm
+                                rounded-3xl border border-[#8C51A5]/10
+                                hover:shadow-premium-lg hover:-translate-y-1 transition-all duration-500">
                             <div
-                                class="w-14 h-14 bg-gradient-to-r from-[#4f2744] to-[#3a1c32]
-                                    rounded-xl flex items-center justify-center mb-4
+                                class="w-14 h-14 bg-gradient-to-r from-[#612F73] to-[#8C51A5]
+                                    rounded-2xl flex items-center justify-center mb-4
                                     shadow-lg group-hover:scale-110 transition-transform">
                                 <i class="fas fa-bullseye text-white text-xl"></i>
                             </div>
-                            <h4 class="font-bold text-gray-900 text-lg mb-2">Visi Kami</h4>
-                            <p class="text-gray-600 text-sm leading-relaxed">
+                            <h4 class="font-bold text-[#612F73] text-lg mb-2">Visi Kami</h4>
+                            <p class="text-gray-500 text-sm leading-relaxed">
                                 {!! Str::limit(strip_tags($principalMessage->vision), 80) !!}
                             </p>
                         </div>
 
                         {{-- Mission --}}
                         <div
-                            class="group p-6 bg-gradient-to-br from-indigo-50 to-purple-50
-                                rounded-2xl border border-indigo-100
-                                hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                            class="group p-6 bg-white/[0.02] backdrop-blur-sm
+                                rounded-3xl border border-[#D668EA]/10
+                                hover:shadow-premium-lg hover:-translate-y-1 transition-all duration-500">
                             <div
-                                class="w-14 h-14 bg-gradient-to-r from-[#4f2744] to-[#3a1c32]
-                                    rounded-xl flex items-center justify-center mb-4
+                                class="w-14 h-14 bg-gradient-to-r from-[#8C51A5] to-[#D668EA]
+                                    rounded-2xl flex items-center justify-center mb-4
                                     shadow-lg group-hover:scale-110 transition-transform">
                                 <i class="fas fa-rocket text-white text-xl"></i>
                             </div>
-                            <h4 class="font-bold text-gray-900 text-lg mb-2">Misi Kami</h4>
-                            <p class="text-gray-600 text-sm leading-relaxed">
+                            <h4 class="font-bold text-[#612F73] text-lg mb-2">Misi Kami</h4>
+                            <p class="text-gray-500 text-sm leading-relaxed">
                                 {!! Str::limit(strip_tags($principalMessage->mission), 80) !!}
                             </p>
                         </div>
@@ -372,19 +371,19 @@
     @endif
 
 
-  {{-- Majors Section - Asymmetric Modern --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    {{-- Majors Section - Asymmetric Modern --}}
+    <section class="py-32 bg-[#F0E7F8]/30 relative overflow-hidden">
 
         {{-- Decorative Background Elements --}}
-        <div class="absolute -top-32 -left-32 w-96 h-96 bg-[#4f2744]/10 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div class="absolute top-1/3 -right-32 w-[28rem] h-[28rem] bg-[#3a1c32]/10 rounded-full blur-3xl animate-pulse-slow-delayed"></div>
+        <div class="absolute -top-32 -left-32 w-96 h-96 bg-[#8C51A5]/10 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute top-1/3 -right-32 w-[28rem] h-[28rem] bg-[#612F73]/10 rounded-full blur-3xl animate-pulse-slow-delayed"></div>
         
         {{-- Subtle Floating Elements --}}
-        <div class="absolute top-20 right-[20%] text-[#4f2744]/5 text-9xl font-black select-none pointer-events-none">PROGRAM</div>
-        <div class="absolute bottom-20 left-[10%] text-[#3a1c32]/5 text-9xl font-black select-none pointer-events-none rotate-90">STUDY</div>
+        <div class="absolute top-20 right-[20%] text-[#8C51A5]/5 text-9xl font-black select-none pointer-events-none">PROGRAM</div>
+        <div class="absolute bottom-20 left-[10%] text-[#612F73]/5 text-9xl font-black select-none pointer-events-none rotate-90">STUDY</div>
 
         {{-- Subtle Grid Pattern --}}
-        <div class="absolute inset-0 bg-[radial-gradient(#4f274408_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(#8C51A508_1px,transparent_1px)] bg-[size:40px_40px]"></div>
 
         <div class="container mx-auto px-6 lg:px-12 relative z-10">
 
@@ -392,14 +391,14 @@
             <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-24 gap-8" data-aos="fade-up">
                 <div class="max-w-2xl">
                     <div
-                        class="inline-flex items-center gap-3 px-5 py-2 bg-[#4f2744]/5 text-[#4f2744] text-xs font-black uppercase tracking-[0.3em] rounded-full mb-6 border-l-4 border-[#4f2744]">
+                        class="inline-flex items-center gap-3 px-5 py-2 bg-[#8C51A5]/10 text-[#612F73] text-xs font-black uppercase tracking-[0.3em] rounded-full mb-6 border-l-4 border-[#8C51A5] shadow-sm">
                         <i class="fas fa-book-open"></i>
                         <span>PROGRAM KEAHLIAN</span>
                     </div>
 
-                    <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-6 leading-[1.1]">
+                    <h2 class="text-4xl md:text-6xl font-black text-[#612F73] mb-6 leading-[1.1]">
                         {{ $majors->count() }} Jurusan <br>
-                        <span class="text-[#4f2744]">Unggulan</span> Kami
+                        <span class="text-[#8C51A5] bg-gradient-to-r from-[#612F73] to-[#D668EA] bg-clip-text text-transparent">Unggulan</span> Kami
                     </h2>
 
                     <p class="text-gray-500 text-lg leading-relaxed">
@@ -408,8 +407,8 @@
                 </div>
 
                 <div class="hidden lg:block text-right">
-                    <div class="text-7xl font-black text-gray-100 mb-2 uppercase">Majors</div>
-                    <div class="w-24 h-1.5 bg-[#4f2744] ml-auto rounded-full"></div>
+                    <div class="text-7xl font-black text-[#F0E7F8] mb-2 uppercase">Majors</div>
+                    <div class="w-24 h-1.5 bg-[#8C51A5] ml-auto rounded-full"></div>
                 </div>
             </div>
 
@@ -447,14 +446,14 @@
 
                     <div class="group relative {{ $spanClass }} transition-all duration-700" data-aos="fade-up">
                         <a href="{{ route('major.show', $major->slug) }}"
-                           class="block relative w-full {{ $heightClass }} rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-purple-50 shadow-xl hover:shadow-2xl transition-all duration-500 transform group-hover:-translate-y-2">
+                           class="block relative w-full {{ $heightClass }} rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-purple-50 shadow-xl hover:shadow-2xl transition-all duration-700 transform group-hover:-translate-y-3">
 
                             {{-- Background Image --}}
                             @if($major->image)
                                 <img src="{{ asset('storage/' . $major->image) }}" alt="{{ $major->name }}"
                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
                             @else
-                                <div class="w-full h-full bg-gradient-to-br from-[#4f2744] to-[#3a1c32] flex items-center justify-center">
+                                <div class="w-full h-full bg-gradient-to-br from-[#612F73] to-[#8C51A5] flex items-center justify-center">
                                     <i class="fas fa-graduation-cap text-7xl text-white/20"></i>
                                 </div>
                             @endif
@@ -464,7 +463,7 @@
                             
                             {{-- Glass Badge --}}
                             <div class="absolute top-6 left-6">
-                                <span class="px-5 py-2 bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest rounded-xl border border-white/20">
+                                <span class="px-5 py-2 bg-white/15 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest rounded-xl border border-white/20 shadow-lg">
                                     {{ $major->short_name }}
                                 </span>
                             </div>
@@ -477,8 +476,8 @@
                             {{-- Text Content (Bottom Anchored) --}}
                             <div class="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
                                 <div class="mb-4 flex items-center gap-3">
-                                    <div class="w-10 h-[2px] bg-[#4f2744]"></div>
-                                    <span class="text-[#4f2744] font-black text-[10px] uppercase tracking-[0.3em]">Program Keahlian</span>
+                                    <div class="w-10 h-[2px] bg-[#F8CB62]"></div>
+                                    <span class="text-[#F8CB62] font-black text-[10px] uppercase tracking-[0.3em]">Program Keahlian</span>
                                 </div>
                                 
                                 <h3 class="text-2xl md:text-4xl font-black text-white mb-4 leading-tight">
@@ -491,7 +490,7 @@
                             </div>
 
                             {{-- Hover Border Glow --}}
-                            <div class="absolute inset-0 border-4 border-[#4f2744]/0 group-hover:border-[#4f2744]/50 rounded-[2rem] md:rounded-[3rem] transition-all pointer-events-none"></div>
+                            <div class="absolute inset-0 border-4 border-[#8C51A5]/0 group-hover:border-[#8C51A5]/50 rounded-[2rem] md:rounded-[3rem] transition-all pointer-events-none"></div>
                         </a>
                     </div>
                 @endforeach
@@ -500,7 +499,7 @@
             {{-- FOOTER CTA --}}
             <div class="text-center mt-24" data-aos="fade-up">
                 <a href="{{ route('majors') }}"
-                   class="inline-flex items-center gap-4 px-12 py-5 bg-[#4f2744] text-white font-black text-xs uppercase tracking-[0.2em] rounded-2xl shadow-2xl hover:bg-white hover:text-[#4f2744] hover:shadow-[0_0_0_2px_#4f2744] transform hover:scale-105 transition-all duration-300 group">
+                   class="inline-flex items-center gap-4 px-12 py-5 bg-[#8C51A5] text-white font-black text-xs uppercase tracking-[0.2em] rounded-2xl shadow-xl shadow-[#8C51A5]/20 hover:bg-[#612F73] transform hover:scale-105 transition-all duration-300 group">
                     <i class="fas fa-th-large group-hover:rotate-45 transition-transform"></i>
                     Semua Program Keahlian
                 </a>
@@ -510,22 +509,22 @@
     </section>
 
 
-    {{-- Awards Section - Asymmetric Modern (Dark Theme match CTA) --}}
+    {{-- Awards Section - Asymmetric Modern (Dark Premium Theme) --}}
     @if($awards->count() > 0)
-    <section class="py-32 bg-gradient-to-br from-[#1A0E17] via-[#2A1424] to-[#12080F] relative overflow-hidden">
+    <section class="py-32 bg-premium-dark relative overflow-hidden">
 
         {{-- BACKGROUND ELEMENTS (Dark & Dynamic match CTA) --}}
         @include('partials.awards-shapes')
 
         {{-- Floating Decorative Icons (Kept from previous enhance) --}}
         <div class="absolute inset-0 pointer-events-none">
-            <div class="absolute top-[15%] left-[10%] text-[#4f2744]/20 text-6xl animate-float-slow"><i class="fas fa-graduation-cap"></i></div>
-            <div class="absolute top-[40%] right-[15%] text-[#3a1c32]/20 text-8xl animate-float-delayed"><i class="fas fa-award"></i></div>
-            <div class="absolute bottom-[20%] left-[20%] text-[#4f2744]/20 text-5xl animate-float-slow-delayed"><i class="fas fa-medal"></i></div>
-            <div class="absolute top-[10%] right-[30%] text-[#3a1c32]/10 text-7xl animate-pulse"><i class="fas fa-star"></i></div>
-            <div class="absolute bottom-[10%] right-[10%] text-[#4f2744]/20 text-9xl animate-float-slow"><i class="fas fa-certificate"></i></div>
-            <div class="absolute top-1/2 left-[5%] text-[#3a1c32]/10 text-4xl -rotate-12"><i class="fas fa-book"></i></div>
-            <div class="absolute bottom-1/3 right-[5%] text-[#4f2744]/10 text-6xl rotate-12"><i class="fas fa-trophy"></i></div>
+            <div class="absolute top-[15%] left-[10%] text-[#8C51A5]/10 text-6xl animate-float-slow"><i class="fas fa-graduation-cap"></i></div>
+            <div class="absolute top-[40%] right-[15%] text-[#F8CB62]/10 text-8xl animate-float-delayed"><i class="fas fa-award"></i></div>
+            <div class="absolute bottom-[20%] left-[20%] text-[#D668EA]/10 text-5xl animate-float-slow-delayed"><i class="fas fa-medal text-[#F8CB62]"></i></div>
+            <div class="absolute top-[10%] right-[30%] text-[#8C51A5]/5 text-7xl animate-pulse"><i class="fas fa-star text-[#F8CB62]"></i></div>
+            <div class="absolute bottom-[10%] right-[10%] text-[#F0E7F8]/5 text-9xl animate-float-slow"><i class="fas fa-certificate"></i></div>
+            <div class="absolute top-1/2 left-[5%] text-[#8C51A5]/5 text-4xl -rotate-12"><i class="fas fa-book"></i></div>
+            <div class="absolute bottom-1/3 right-[5%] text-[#F8CB62]/5 text-6xl rotate-12"><i class="fas fa-trophy"></i></div>
         </div>
 
         <div class="container mx-auto px-6 lg:px-12 relative z-10">
@@ -534,26 +533,26 @@
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-24" data-aos="fade-up">
                 <div class="max-w-2xl">
                     <div
-                        class="inline-flex items-center gap-3 px-5 py-2 bg-white/10 backdrop-blur rounded-full text-white text-xs font-black uppercase tracking-[0.3em] mb-6 border-l-4 border-[#4f2744]">
-                        <i class="fas fa-trophy"></i>
+                        class="inline-flex items-center gap-3 px-5 py-2 bg-white/10 backdrop-blur rounded-full text-[#F0E7F8] text-[10px] font-black uppercase tracking-[0.3em] mb-6 border-l-4 border-[#F8CB62] shadow-lg">
+                        <i class="fas fa-trophy text-[#F8CB62]"></i>
                         <span>OUR RECOGNITIONS</span>
                     </div>
 
                     <h2 class="text-4xl md:text-6xl font-black text-white mb-6 leading-[1.1]">
                         Prestasi & <br>
-                        <span class="text-[#4f2744]">Penghargaan</span> Kami
+                        <span class="text-[#F8CB62] bg-gradient-to-r from-[#F8CB62] to-[#D668EA] bg-clip-text text-transparent">Penghargaan</span> Kami
                     </h2>
 
-                    <p class="text-gray-400 text-lg leading-relaxed">
+                    <p class="text-white/60 text-lg leading-relaxed">
                         Bukti dedikasi dan komitmen berkelanjutan dalam mencetak generasi unggul yang siap bersaing di era digital.
                     </p>
                 </div>
                 
                 <div class="hidden md:block">
-                    <div class="flex items-center gap-4 text-[#4f2744] font-bold">
-                        <span class="text-5xl opacity-30">#01</span>
-                        <div class="w-12 h-[2px] bg-[#4f2744]/50"></div>
-                        <span class="uppercase tracking-widest text-sm text-gray-300">Top Institution</span>
+                    <div class="flex items-center gap-4 text-[#8C51A5] font-black uppercase tracking-widest text-[10px]">
+                        <span class="text-5xl opacity-20 text-white">#01</span>
+                        <div class="w-12 h-[2px] bg-[#F8CB62]/50"></div>
+                        <span class="text-gray-300">Top Institution</span>
                     </div>
                 </div>
             </div>
@@ -564,49 +563,49 @@
                     <div class="group relative" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
                         
                         {{-- Hover Glow Behind --}}
-                        <div class="absolute inset-0 bg-[#932F80] rounded-[2rem] blur-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-700"></div>
+                        <div class="absolute inset-0 bg-[#8C51A5] rounded-[2rem] blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-700"></div>
 
-                        <div class="relative h-full bg-white rounded-[2rem] border border-gray-100 p-4 flex flex-col transition-all duration-500 hover:-translate-y-2 hover:border-[#932F80]/50 hover:shadow-[0_0_30px_rgba(147,47,128,0.25)]">
+                        <div class="relative h-full bg-white/5 backdrop-blur-md rounded-[2rem] border border-white/10 p-5 flex flex-col transition-all duration-500 hover:-translate-y-2 hover:border-[#F8CB62]/30 hover:shadow-premium-lg">
                             
                             {{-- Image Area (Full Width of Inner Card) --}}
                             <div class="relative w-full aspect-[4/3] rounded-[1.5rem] overflow-hidden mb-6 group/image">
                                 
                                 {{-- Year Badge (Floating) --}}
                                 @if($award->year)
-                                    <div class="absolute top-4 right-4 z-20 px-3 py-1 bg-white/90 backdrop-blur-md text-[#932F80] text-[10px] font-black uppercase tracking-widest rounded-lg border border-gray-100 shadow-sm group-hover:bg-[#932F80] group-hover:text-white transition-colors">
+                                    <div class="absolute top-4 right-4 z-20 px-3 py-1 bg-[#F8CB62] text-[#612F73] text-[10px] font-black uppercase tracking-widest rounded-lg shadow-lg">
                                         {{ $award->year }}
                                     </div>
                                 @endif
 
                                 @if($award->image)
                                     <img src="{{ asset('storage/' . $award->image) }}" alt="{{ $award->title }}"
-                                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000">
                                 @else
-                                    <div class="w-full h-full bg-gradient-to-br from-[#932F80] to-[#6E1F5F] flex items-center justify-center">
-                                        <i class="fas fa-medal text-5xl text-white/50 group-hover:text-white transition-colors"></i>
+                                    <div class="w-full h-full bg-gradient-to-br from-[#612F73]/50 to-[#8C51A5]/50 flex items-center justify-center">
+                                        <i class="fas fa-award text-5xl text-[#F8CB62]/50 group-hover:text-[#F8CB62] transition-colors"></i>
                                     </div>
                                 @endif
                             </div>
 
-                            {{-- Content Area --}}
-                            <div class="px-2 pb-4 flex-grow text-center">
+                             {{-- Content Area --}}
+                             <div class="px-2 pb-4 flex-grow text-center">
                                 @if($award->organizer)
                                     <div class="inline-block mb-3">
-                                        <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#932F80]">
+                                        <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#F8CB62]">
                                             {{ $award->organizer }}
                                         </span>
                                     </div>
                                 @endif
 
-                                <h4 class="font-extrabold text-[#2A1424] text-lg leading-snug mb-2 group-hover:text-[#932F80] transition-colors">
+                                <h4 class="font-bold text-white text-lg leading-snug mb-2 group-hover:text-[#F8CB62] transition-colors">
                                     {{ $award->title }}
                                 </h4>
                             </div>
 
                             {{-- Bottom Decorative Line --}}
                             <div class="mt-auto flex justify-center pb-2">
-                                <div class="w-12 h-1 bg-gray-100 rounded-full overflow-hidden">
-                                    <div class="w-full h-full bg-[#932F80] -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+                                <div class="w-12 h-1 bg-white/10 rounded-full overflow-hidden">
+                                    <div class="w-full h-full bg-[#F8CB62] -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                                 </div>
                             </div>
                         </div>
@@ -621,42 +620,42 @@
     {{-- News Section - Asymmetric Modern --}}
     @if($news->count() > 0)
     <section class="py-32 bg-white relative overflow-hidden">
-
+ 
         {{-- Decorative Background Elements --}}
-        <div class="absolute -top-32 -left-32 w-96 h-96 bg-[#4f2744]/10 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div class="absolute top-1/3 -right-32 w-[28rem] h-[28rem] bg-[#3a1c32]/10 rounded-full blur-3xl animate-pulse-slow-delayed"></div>
+        <div class="absolute -top-32 -left-32 w-96 h-96 bg-[#8C51A5]/10 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute top-1/3 -right-32 w-[28rem] h-[28rem] bg-[#612F73]/10 rounded-full blur-3xl animate-pulse-slow-delayed"></div>
         
         {{-- Subtle Floating Elements --}}
-        <div class="absolute top-20 right-[20%] text-[#4f2744]/5 text-9xl font-black select-none pointer-events-none uppercase">LATEST</div>
-        <div class="absolute bottom-20 left-[10%] text-[#3a1c32]/5 text-9xl font-black select-none pointer-events-none rotate-90 uppercase">ARTICLES</div>
-
+        <div class="absolute top-20 right-[20%] text-[#8C51A5]/5 text-9xl font-black select-none pointer-events-none uppercase tracking-[0.2em]">LATEST</div>
+        <div class="absolute bottom-20 left-[10%] text-[#612F73]/5 text-9xl font-black select-none pointer-events-none rotate-90 uppercase tracking-[0.2em]">ARTICLES</div>
+ 
         {{-- Subtle Grid Pattern --}}
-        <div class="absolute inset-0 bg-[radial-gradient(#4f274408_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-
+        <div class="absolute inset-0 bg-[radial-gradient(#8C51A508_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+ 
         <div class="container mx-auto px-6 lg:px-12 relative z-10">
-
+ 
             {{-- Section Header --}}
             <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-24 gap-8" data-aos="fade-up">
                 <div class="max-w-2xl">
                     <div
-                        class="inline-flex items-center gap-3 px-5 py-2 bg-[#4f2744]/5 text-[#4f2744] text-xs font-black uppercase tracking-[0.3em] rounded-full mb-6 border-l-4 border-[#4f2744]">
+                        class="inline-flex items-center gap-3 px-5 py-2 bg-[#8C51A5]/10 text-[#612F73] text-[10px] font-black uppercase tracking-[0.3em] rounded-full mb-6 border-l-4 border-[#8C51A5] shadow-sm">
                         <i class="fas fa-newspaper"></i>
-                        <span>BERITA & ARTIKEL</span>
+                        <span>BERITA & ARTIKEL TERKINI</span>
                     </div>
-
-                    <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-6 leading-[1.1]">
+ 
+                    <h2 class="text-4xl md:text-6xl font-black text-[#612F73] mb-6 leading-[1.1] uppercase tracking-tight">
                         Informasi <br>
-                        <span class="text-[#4f2744]">Terkini</span> Kami
+                        <span class="text-[#8C51A5] bg-gradient-to-r from-[#612F73] to-[#D668EA] bg-clip-text text-transparent">Update</span> Sekolah
                     </h2>
-
-                    <p class="text-gray-500 text-lg leading-relaxed">
-                        Update terbaru mengenai kegiatan, prestasi, dan pengumuman resmi dari civitas akademika kami.
+ 
+                    <p class="text-gray-500 text-lg leading-relaxed font-medium">
+                        Temukan berita terbaru, pengumuman resmi, dan artikel menarik seputar kegiatan sekolah kami.
                     </p>
                 </div>
-
+ 
                 <div class="hidden lg:block text-right">
-                    <div class="text-7xl font-black text-gray-100 mb-2 uppercase">News</div>
-                    <div class="w-24 h-1.5 bg-[#4f2744] ml-auto rounded-full"></div>
+                    <div class="text-7xl font-black text-[#F0E7F8] mb-2 uppercase">News</div>
+                    <div class="w-24 h-1.5 bg-[#8C51A5] ml-auto rounded-full"></div>
                 </div>
             </div>
 
@@ -686,14 +685,14 @@
 
                     <div class="group relative {{ $spanClass }} transition-all duration-700" data-aos="fade-up">
                         <a href="{{ route('news.show', $item->slug) }}"
-                           class="block relative w-full {{ $heightClass }} rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-purple-50 shadow-xl hover:shadow-2xl transition-all duration-500 transform group-hover:-translate-y-2">
+                           class="block relative w-full {{ $heightClass }} rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-purple-50 shadow-xl hover:shadow-2xl transition-all duration-700 transform group-hover:-translate-y-3">
 
                             {{-- Background Image --}}
                             @if($item->image)
                                 <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}"
                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
                             @else
-                                <div class="w-full h-full bg-gradient-to-br from-[#4f2744] to-[#3a1c32] flex items-center justify-center">
+                                <div class="w-full h-full bg-gradient-to-br from-[#612F73] to-[#8C51A5] flex items-center justify-center">
                                     <i class="fas fa-newspaper text-7xl text-white/20"></i>
                                 </div>
                             @endif
@@ -718,8 +717,8 @@
                             {{-- Text Content (Bottom Anchored) --}}
                             <div class="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
                                 <div class="mb-4 flex items-center gap-3">
-                                    <div class="w-10 h-[2px] bg-[#4f2744]"></div>
-                                    <span class="text-[#4f2744] font-black text-[10px] uppercase tracking-[0.3em]">
+                                    <div class="w-10 h-[2px] bg-[#F8CB62]"></div>
+                                    <span class="text-[#F8CB62] font-black text-[10px] uppercase tracking-[0.3em]">
                                         {{ $item->published_at->format('d M Y') }}
                                     </span>
                                 </div>
@@ -734,7 +733,7 @@
                             </div>
 
                             {{-- Hover Border Glow --}}
-                            <div class="absolute inset-0 border-4 border-[#4f2744]/0 group-hover:border-[#4f2744]/50 rounded-[2rem] md:rounded-[3rem] transition-all pointer-events-none"></div>
+                            <div class="absolute inset-0 border-4 border-[#8C51A5]/0 group-hover:border-[#8C51A5]/50 rounded-[2rem] md:rounded-[3rem] transition-all pointer-events-none"></div>
                         </a>
                     </div>
                 @endforeach
@@ -743,9 +742,9 @@
             {{-- FOOTER CTA --}}
             <div class="text-center mt-24" data-aos="fade-up">
                 <a href="{{ route('news') }}"
-                   class="inline-flex items-center gap-4 px-12 py-5 bg-[#4f2744] text-white font-black text-xs uppercase tracking-[0.2em] rounded-2xl shadow-2xl hover:bg-white hover:text-[#4f2744] hover:shadow-[0_0_0_2px_#4f2744] transform hover:scale-105 transition-all duration-300 group">
+                   class="inline-flex items-center gap-4 px-12 py-5 bg-[#8C51A5]/10 text-[#8C51A5] font-black text-[10px] uppercase tracking-[0.2em] rounded-2xl border border-[#8C51A5]/20 hover:bg-[#8C51A5] hover:text-white transition-all duration-500 group">
                     <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
-                    Lihat Semua Berita
+                    Lihat Portofolio Berita
                 </a>
             </div>
 
@@ -759,36 +758,28 @@
         @include('partials.awards-shapes')
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
             <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-4xl md:text-6xl font-extrabold text-white mb-8 tracking-tight" data-aos="fade-up">
-                    Bergabung Bersama Kami
+                <h2 class="text-4xl md:text-6xl font-black text-white mb-8 tracking-tight uppercase" data-aos="fade-up">
+                    Gabung Bersama Kami
                 </h2>
-                <p class="text-gray-300 text-lg md:text-xl mb-12 font-medium max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-                    Dengan pengalaman lebih dari {{ $settings['years_experience'] ?? '20' }} tahun,
-                    kami telah menghasilkan lulusan terbaik yang siap kerja.
+                <p class="text-gray-400 text-lg md:text-xl mb-12 font-medium max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+                    Mulai perjalanan akademik Anda bersama {{ $settings['school_name'] ?? 'SMK YAJ' }} dan raih masa depan cerah di industri global.
                 </p>
                 <div class="flex flex-wrap justify-center gap-6" data-aos="fade-up" data-aos-delay="400">
                     <a href="{{ route('contact') }}"
-                        class="inline-flex items-center gap-3 px-10 py-4 
-                        rounded-xl
-                        bg-[#4f2744] text-white font-semibold shadow-lg 
-                        hover:bg-transparent 
-                        hover:text-[#4f2744]
-                        hover:border hover:border-[#4f2744]
-                        hover:shadow-[0_0_0_1px_rgba(79,39,68,0.15)]
-                        transform hover:scale-105 transition-all duration-300">
-                        <i class="fas fa-phone-alt text-xl"></i>
-                        HUBUNGI KAMI
+                        class="inline-flex items-center gap-4 px-12 py-5 
+                        rounded-2xl
+                        bg-[#8C51A5] text-white font-black hover:bg-[#612F73] shadow-premium-lg hover:-translate-y-1 transform transition-all uppercase text-xs tracking-widest">
+                        <i class="fas fa-paper-plane text-xl text-[#F8CB62]"></i>
+                        KIRIM PESAN
                     </a>
-
+ 
                     @if(($settings['ppdb_active'] ?? false))
                         <a href="{{ $settings['ppdb_url'] ?? '#' }}" target="_blank"
-                            class="inline-flex items-center gap-3 px-10 py-4 
-                            rounded-xl
-                            border border-[#4f2744] text-white font-semibold 
-                            hover:bg-[#4f2744] hover:text-white
-                            transform hover:scale-105 transition-all duration-300">
+                            class="inline-flex items-center gap-4 px-12 py-5 
+                            rounded-2xl
+                            bg-gradient-to-r from-[#F8CB62] to-[#f5b82e] text-[#612F73] font-black hover:shadow-golden transform hover:-translate-y-1 transition-all uppercase text-xs tracking-widest">
                             <i class="fas fa-user-plus text-xl"></i>
-                            DAFTAR PPDB
+                            PENDAFTARAN PPDB
                         </a>
                     @endif
                 </div>
@@ -798,59 +789,58 @@
 
     {{-- Business Centers Section --}}
     @if($businessCenters->count() > 0)
-        <section class="py-24 bg-purple-50/50 relative overflow-hidden">
+        <section class="py-24 bg-[#F0E7F8]/30 relative overflow-hidden">
             {{-- Decorative Background Elements --}}
             <div class="absolute inset-0 pointer-events-none">
-                <div class="absolute top-1/4 -left-32 w-96 h-96 bg-[#4f2744]/5 rounded-full blur-[100px]"></div>
-                <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-[#3a1c32]/5 rounded-full blur-[100px]"></div>
+                <div class="absolute top-1/4 -left-32 w-96 h-96 bg-[#8C51A5]/5 rounded-full blur-[100px]"></div>
+                <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-[#612F73]/5 rounded-full blur-[100px]"></div>
             </div>
-
+ 
             <div class="container mx-auto px-4 lg:px-8 relative z-10">
                 {{-- Section Header --}}
                 <div class="text-center mb-16" data-aos="fade-up">
                     <div
-                        class="inline-flex items-center gap-2 px-6 py-2.5 bg-[#4f2744]/10 rounded-full text-[#4f2744] text-sm font-extrabold uppercase tracking-widest mb-6 shadow-sm border border-[#4f2744]/10">
-                        <i class="fas fa-store"></i>
-                        <span>BUSINESS CENTER</span>
+                        class="inline-flex items-center gap-2 px-6 py-2.5 bg-[#8C51A5]/10 rounded-full text-[#612F73] text-[10px] font-black uppercase tracking-widest mb-6 shadow-sm border border-[#8C51A5]/10">
+                        <i class="fas fa-store text-[#F8CB62]"></i>
+                        <span>BUSINESS CENTER & UNIT USAHA</span>
                     </div>
-                    <h2 class="text-4xl md:text-5xl font-extrabold text-[#3a1c32] mb-4">Business Center Kami</h2>
-                    <p class="text-gray-500 max-w-2xl mx-auto text-lg leading-relaxed">Unit usaha yang dikelola sebagai wahana praktik kewirausahaan siswa.</p>
+                    <h2 class="text-4xl md:text-5xl font-black text-[#612F73] mb-4 uppercase tracking-tight">Kemandirian Siswa</h2>
+                    <p class="text-gray-500 max-w-2xl mx-auto text-lg font-medium leading-relaxed">Unit produksi dan jasa yang menjadi wadah aktualisasi kompetensi siswa.</p>
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-8">
                     @foreach($businessCenters->take(3) as $bc)
                         <article
-                            class="group bg-white rounded-[2.5rem] overflow-hidden border border-gray-200 shadow-lg shadow-[#4f2744]/5 hover:shadow-2xl hover:shadow-[#4f2744]/10 hover:border-[#4f2744]/30 transition-all duration-500 hover:-translate-y-2 text-center p-8" data-aos="fade-up" data-aos-delay="{{ $loop->index * 150 }}">
+                            class="group bg-white rounded-[2.5rem] overflow-hidden border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/40 transition-all duration-700 ease-in-out hover:-translate-y-4 text-center p-10 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="{{ $loop->index * 150 }}">
                             {{-- Photo --}}
-                            <div class="relative mb-8">
+                            <div class="relative mb-10">
                                 <div
-                                    class="w-full h-48 rounded-3xl overflow-hidden border-4 border-gray-100 shadow-xl group-hover:border-[#4f2744]/50 transition-all duration-500 p-1">
+                                    class="w-full h-56 rounded-[2rem] overflow-hidden border-4 border-white shadow-xl group-hover:border-[#8C51A5]/20 transition-all duration-700 p-1 bg-gradient-to-br from-[#8C51A5]/5 to-transparent">
                                     @if($bc->image)
                                         <img src="{{ asset('storage/' . $bc->image) }}" alt="{{ $bc->name }}"
-                                            class="w-full h-full object-cover rounded-2xl group-hover:scale-110 transition-transform duration-700">
+                                            class="w-full h-full object-cover rounded-[1.75rem] group-hover:scale-110 transition-transform duration-1000 ease-in-out">
                                     @else
                                         <div
-                                            class="w-full h-full bg-gradient-to-br from-purple-100 to-white flex items-center justify-center rounded-2xl">
-                                            <i class="fas fa-store text-5xl text-purple-200"></i>
+                                            class="w-full h-full bg-[#F0E7F8] flex items-center justify-center rounded-[1.75rem]">
+                                            <i class="fas fa-store text-6xl text-[#8C51A5]/30"></i>
                                         </div>
                                     @endif
                                 </div>
-
                             </div>
 
                             {{-- Content --}}
                             <div class="space-y-3">
-                                <h3 class="text-xl font-extrabold text-[#3a1c32] group-hover:text-[#4f2744] transition-colors leading-tight">
+                                <h3 class="text-xl font-black text-[#612F73] group-hover:text-[#8C51A5] transition-colors leading-tight uppercase tracking-tight">
                                     {{ $bc->name }}
                                 </h3>
-
-                                <p class="text-gray-500 text-sm line-clamp-3 leading-relaxed">{{ $bc->short_description }}</p>
-
+ 
+                                <p class="text-gray-400 text-sm line-clamp-2 leading-relaxed font-medium">{{ $bc->short_description }}</p>
+ 
                                 {{-- Action Button --}}
-                                <div class="mt-8 pt-6 border-t border-gray-100">
+                                <div class="mt-8 pt-8 border-t border-[#F0E7F8]">
                                     <a href="{{ route('business-center.show', $bc->slug) }}"
-                                        class="inline-flex items-center gap-3 px-6 py-2.5 bg-[#4f2744]/10 text-[#4f2744] hover:bg-[#4f2744] hover:text-white transition-all duration-300 rounded-xl text-xs font-extrabold uppercase tracking-widest border border-[#4f2744]/20 group/btn">
-                                        <i class="fas fa-info-circle text-[10px]"></i>
+                                        class="inline-flex items-center gap-3 px-8 py-3 bg-[#8C51A5]/10 text-[#8C51A5] hover:bg-[#8C51A5] hover:text-white transition-all duration-500 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] border border-[#8C51A5]/20 group/btn shadow-sm">
+                                        <i class="fas fa-arrow-right text-[8px] group-hover/btn:translate-x-1 transition-transform"></i>
                                         Selengkapnya
                                     </a>
                                 </div>
@@ -859,15 +849,13 @@
                     @endforeach
                 </div>
 
-                <div class="text-center mt-16" data-aos="fade-up">
+                <div class="text-center mt-20" data-aos="fade-up">
                     <a href="{{ route('business-centers') }}"
-                        class="inline-flex items-center gap-3 px-10 py-4 
-                        rounded-xl
-                        bg-[#4f2744] text-white font-semibold shadow-lg 
-                        hover:bg-transparent hover:text-[#4f2744] hover:border hover:border-[#4f2744]
-                        transform hover:scale-105 transition-all duration-300">
-                        <i class="fas fa-th-large"></i>
-                        LIHAT SEMUA UNIT USAHA
+                        class="inline-flex items-center gap-4 px-12 py-5 
+                        rounded-2xl
+                        bg-[#8C51A5] text-white font-black hover:bg-[#612F73] shadow-premium-lg hover:-translate-y-1 transform transition-all uppercase text-xs tracking-widest">
+                        <i class="fas fa-th-large text-xl text-[#F8CB62]"></i>
+                        Eksplorasi Unit Bisnis
                     </a>
                 </div>
             </div>

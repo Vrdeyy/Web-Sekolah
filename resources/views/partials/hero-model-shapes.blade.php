@@ -3,7 +3,7 @@
 
     {{-- Main Glow Backdrop behind model --}}
     <div
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-[#932F80]/20 via-[#4f2744]/30 to-transparent rounded-full blur-[120px] animate-pulse-slow">
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-[#8C51A5]/20 via-[#612F73]/30 to-transparent rounded-full blur-[120px] animate-pulse-slow">
     </div>
 
     {{-- Concentric Orbital Rings --}}
@@ -12,8 +12,8 @@
         <div class="absolute top-1/4 left-0 w-2 h-2 bg-purple-400 rounded-full blur-sm"></div>
     </div>
     <div
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] lg:w-[500px] h-[350px] lg:h-[500px] border border-[#4f2744]/10 rounded-full animate-spin-slow-reverse opacity-30">
-        <div class="absolute bottom-1/4 right-0 w-3 h-3 bg-[#932F80] rounded-full blur-[2px]"></div>
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] lg:w-[500px] h-[350px] lg:h-[500px] border border-[#8C51A5]/10 rounded-full animate-spin-slow-reverse opacity-30">
+        <div class="absolute bottom-1/4 right-0 w-3 h-3 bg-[#8C51A5] rounded-full blur-[2px]"></div>
     </div>
 
     {{-- Floating Education Elements --}}
@@ -31,7 +31,7 @@
 
     {{-- Pencil/Creative - Mid Left --}}
     <div
-        class="absolute top-1/2 left-[5%] w-12 h-12 bg-[#4f2744]/20 rounded-xl flex items-center justify-center -rotate-45 animate-pulse">
+        class="absolute top-1/2 left-[5%] w-12 h-12 bg-[#8C51A5]/20 rounded-xl flex items-center justify-center -rotate-45 animate-pulse">
         <i class="fas fa-pencil-alt text-white/20 text-lg"></i>
     </div>
 
@@ -46,7 +46,7 @@
         class="absolute top-[30%] left-[20%] w-32 h-40 bg-gradient-to-br from-white/5 to-transparent border border-white/10 rounded-[2.5rem] backdrop-blur-sm -rotate-[25deg] animate-float-slow opacity-40">
     </div>
     <div
-        class="absolute bottom-[35%] right-[25%] w-24 h-24 bg-gradient-to-tl from-[#932F80]/10 to-transparent border border-[#932F80]/20 rounded-[2rem] blur-[1px] rotate-[15deg] animate-float-slow-delayed">
+        class="absolute bottom-[35%] right-[25%] w-24 h-24 bg-gradient-to-tl from-[#8C51A5]/10 to-transparent border border-[#8C51A5]/20 rounded-[2rem] blur-[1px] rotate-[15deg] animate-float-slow-delayed">
     </div>
 
     {{-- Particle Accents --}}

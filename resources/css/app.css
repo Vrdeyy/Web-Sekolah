@@ -1,5 +1,16 @@
 @import 'tailwindcss';
 
+/* Global Interaction Smoothing */
+button,
+a,
+.group,
+.group-hover\:,
+.hover\:,
+[class*='hover:'],
+[class*='group-hover:'] {
+    transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../vendor/filament/**/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -15,9 +26,21 @@
 }
 
 :root {
-    --brand: #4f2744;        /* ungu wine */
-    --brand-soft: #6a395c;   /* lebih terang */
-    --brand-dark: #3a1c32;   /* lebih gelap */
+    --brand-dark: #612F73;
+    /* Deep Purple */
+    --brand: #8C51A5;
+    /* Royal Purple */
+    --brand-light: #D668EA;
+    /* Bright Lavender */
+    --brand-soft: #F0E7F8;
+    /* Soft Lilac */
+    --accent: #F8CB62;
+    /* Golden Honey Accent */
+
+    /* New Premium Gradients */
+    --gradient-premium: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand) 100%);
+    --gradient-glass: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    --shadow-premium: 0 20px 50px rgba(97, 47, 115, 0.15);
 }
 
 /* ===============================
@@ -109,6 +132,7 @@
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -164,6 +188,21 @@
     color: #9ca3af;
     background: #f3f4f6;
     border: 1px solid #e5e7eb;
+}
+
+/* ===============================
+   Premium Utilities
+   =============================== */
+.shadow-premium-lg {
+    box-shadow: 0 30px 60px rgba(97, 47, 115, 0.25);
+}
+
+.shadow-golden {
+    box-shadow: 0 10px 30px rgba(248, 203, 98, 0.3);
+}
+
+.bg-premium-dark {
+    background: linear-gradient(135deg, #1A0E17 0%, #2A1424 50%, #12080F 100%);
 }
 
 /* ===============================

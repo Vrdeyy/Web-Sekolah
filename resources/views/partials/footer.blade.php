@@ -1,6 +1,4 @@
-{{-- Footer --}}
-<footer class="bg-gradient-to-br from-[#1A0E17] via-[#2A1424] to-[#12080F]
- text-white">
+<footer class="bg-premium-dark text-white border-t border-white/5">
     {{-- Main Footer --}}
     <div class="container mx-auto px-4 lg:px-8 py-16">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -13,8 +11,8 @@
                     @if(isset($settings['school_logo']))
                         <img src="{{ asset('storage/' . $settings['school_logo']) }}" alt="Logo" class="w-8 h-8 object-contain">
                     @else
-                        <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#932F80] to-[#4f2744]">
-                            <span class="text-white font-bold text-base">YAJ</span>
+                        <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#8C51A5] to-[#612F73]">
+                            <span class="text-white font-black text-base">YAJ</span>
                         </div>
                     @endif
                 </div>
@@ -33,7 +31,7 @@
                         @foreach($socialLinks as $social)
                             @if($social && $social->url)
                                 <a href="{{ $social->url }}" target="_blank"
-                                   class="w-10 h-10 bg-white/5 hover:bg-[#932F80] rounded-lg flex items-center justify-center transition-colors">
+                                   class="w-10 h-10 bg-white/5 hover:bg-[#8C51A5] rounded-lg flex items-center justify-center transition-colors border border-white/10">
                                     @switch($social->platform ?? '')
                                         @case('youtube') <i class="fab fa-youtube"></i> @break
                                         @case('instagram') <i class="fab fa-instagram"></i> @break
@@ -54,12 +52,12 @@
             <div class="hidden lg:block">
                 <h4 class="font-semibold text-lg mb-6 text-white">Informasi</h4>
                 <ul class="space-y-3">
-                    <li><a href="{{ route('page', 'yayasan') }}"
-                           class="text-white/60 hover:text-[#932F80] transition-colors">Yayasan</a></li>
+                     <li><a href="{{ route('page', 'yayasan') }}"
+                            class="text-white/60 hover:text-[#F8CB62] transition-colors">Yayasan</a></li>
                     <li><a href="{{ route('page', 'sekolah') }}"
-                           class="text-white/60 hover:text-[#932F80] transition-colors">Sekolah</a></li>
+                            class="text-white/60 hover:text-[#F8CB62] transition-colors">Sekolah</a></li>
                     <li><a href="{{ route('page', 'visi-misi') }}"
-                           class="text-white/60 hover:text-[#932F80] transition-colors">Visi & Misi</a></li>
+                            class="text-white/60 hover:text-[#F8CB62] transition-colors">Visi & Misi</a></li>
                 </ul>
             </div>
 
@@ -67,14 +65,14 @@
             <div class="hidden lg:block">
                 <h4 class="font-semibold text-lg mb-6 text-white">Jelajahi</h4>
                 <ul class="space-y-3">
-                    <li><a href="{{ route('majors') }}"
-                           class="text-white/60 hover:text-[#932F80] transition-colors">Jurusan</a></li>
+                     <li><a href="{{ route('majors') }}"
+                            class="text-white/60 hover:text-[#F8CB62] transition-colors">Jurusan</a></li>
                     <li><a href="{{ route('extracurriculars') }}"
-                           class="text-white/60 hover:text-[#932F80] transition-colors">Ekstrakurikuler</a></li>
+                            class="text-white/60 hover:text-[#F8CB62] transition-colors">Ekstrakurikuler</a></li>
                     <li><a href="{{ route('achievements') }}"
-                           class="text-white/60 hover:text-[#932F80] transition-colors">Prestasi</a></li>
+                            class="text-white/60 hover:text-[#F8CB62] transition-colors">Prestasi</a></li>
                     <li><a href="{{ route('news') }}"
-                           class="text-white/60 hover:text-[#932F80] transition-colors">Berita</a></li>
+                            class="text-white/60 hover:text-[#F8CB62] transition-colors">Berita</a></li>
                 </ul>
             </div>
 
@@ -82,24 +80,24 @@
             <div>
                 <h4 class="font-semibold text-lg mb-6 text-white">Kontak</h4>
                 <ul class="space-y-4">
-                    <li class="flex items-start gap-3">
-                        <i class="fas fa-envelope text-[#932F80] mt-1"></i>
+                     <li class="flex items-start gap-3">
+                        <i class="fas fa-envelope text-[#F8CB62] mt-1"></i>
                         <a href="mailto:{{ $settings['school_email'] ?? 'info@sekolah.id' }}"
-                           class="text-white/60 hover:text-[#932F80] transition-colors">
+                           class="text-white/60 hover:text-[#F8CB62] transition-colors">
                             {{ $settings['school_email'] ?? 'info@sekolah.id' }}
                         </a>
                     </li>
 
                     <li class="flex items-start gap-3">
-                        <i class="fas fa-phone text-[#932F80] mt-1"></i>
+                        <i class="fas fa-phone text-[#F8CB62] mt-1"></i>
                         <a href="tel:{{ $settings['school_phone'] ?? '' }}"
-                           class="text-white/60 hover:text-[#932F80] transition-colors">
+                           class="text-white/60 hover:text-[#F8CB62] transition-colors">
                             {{ $settings['school_phone'] ?? '(021) 12345678' }}
                         </a>
                     </li>
 
                     <li class="flex items-start gap-3">
-                        <i class="fas fa-clock text-[#932F80] mt-1"></i>
+                        <i class="fas fa-clock text-[#F8CB62] mt-1"></i>
                         <span class="text-white/60 text-sm">
                             {{ $settings['school_hours'] ?? 'Senin - Jumat: 07:00 - 17:00' }}
                         </span>
@@ -114,15 +112,15 @@
     <div class="border-t border-white/10">
         <div class="container mx-auto px-4 lg:px-8 py-6">
             <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-                <p class="text-white/40 text-sm">
+                 <p class="text-white/40 text-sm italic">
                     © {{ date('Y') }}
-                    <span class="text-[#932F80] font-medium">
+                    <span class="text-[#F8CB62] font-black non-italic">
                         {{ $settings['school_name'] ?? 'SMK YAJ' }}
                     </span>
                     · All rights reserved
                 </p>
                 <p class="text-white/40 text-sm">
-                    Developed with <i class="fas fa-heart text-[#932F80]"></i> by IT Team
+                    Made with <i class="fas fa-heart text-[#F8CB62] animate-pulse"></i> by IT Team
                 </p>
             </div>
         </div>

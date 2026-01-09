@@ -7,9 +7,9 @@
                    w-[95%] max-w-7xl
                    px-6 py-3
                    rounded-2xl
-                   bg-white/50 backdrop-blur-xl
-                   border border-[#4f2744]/25
-                   shadow-lg shadow-[#4f2744]/10">
+                    bg-white/70 backdrop-blur-xl
+                    border border-[#8C51A5]/15
+                    shadow-xl shadow-[#612F73]/5">
 
             <div class="flex items-center justify-between">
 
@@ -19,9 +19,9 @@
                         class="w-12 h-12 bg-white rounded-xl flex items-center justify-center overflow-hidden shadow-lg border border-white/10">
                         @if(isset($settings['school_logo']))
                             <img src="{{ asset('storage/' . $settings['school_logo']) }}" alt="Logo" class="w-8 h-8 object-contain">
-                        @else
-                            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#932F80] to-[#4f2744]">
-                                <span class="text-white font-bold text-base">YAJ</span>
+@else
+                            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#8C51A5] to-[#612F73]">
+                                <span class="text-white font-black text-base">YAJ</span>
                             </div>
                         @endif
                     </div>
@@ -40,10 +40,10 @@
 
                     {{-- Beranda --}}
                     <a href="{{ route('home') }}"
-                       class="px-4 py-2 rounded-lg font-semibold transition glass-text
+                       class="px-4 py-2 rounded-lg font-bold transition-all duration-500 glass-text
                        {{ request()->routeIs('home')
-                            ? 'bg-[#4f2744]/15 text-[#4f2744]'
-                            : 'text-slate-900 hover:bg-[#4f2744]/10 hover:text-[#4f2744]' }}">
+                            ? 'bg-[#8C51A5]/10 text-[#612F73]'
+                            : 'text-slate-900 hover:bg-[#8C51A5]/5 hover:text-[#8C51A5]' }}">
                         Beranda
                     </a>
 
@@ -84,10 +84,10 @@
 
                         <div class="relative group">
                             <button
-                                class="px-4 py-2 rounded-lg font-medium flex items-center gap-1 transition glass-text
+                                class="px-4 py-2 rounded-lg font-bold flex items-center gap-1 transition glass-text
                                 {{ $group['active']
-                                    ? 'bg-[#4f2744]/15 text-[#4f2744]'
-                                    : 'text-slate-900 hover:text-[#4f2744] hover:bg-[#4f2744]/10' }}">
+                                    ? 'bg-[#8C51A5]/10 text-[#612F73]'
+                                    : 'text-slate-900 hover:text-[#8C51A5] hover:bg-[#8C51A5]/5' }}">
                                 {{ $label }}
                                 <i class="fas fa-chevron-down text-xs opacity-80"></i>
                             </button>
@@ -95,21 +95,21 @@
                             <div
                                 class="absolute top-full left-0 mt-3 w-56
                                        bg-white/95 backdrop-blur-xl
-                                       rounded-xl shadow-xl
-                                       border border-[#4f2744]/20
+                                       rounded-2xl shadow-premium-lg
+                                       border border-[#8C51A5]/10
                                        py-2
                                        opacity-0 invisible translate-y-2
                                        group-hover:opacity-100
                                        group-hover:visible
                                        group-hover:translate-y-0
-                                       transition-all duration-200">
+                                       transition-all duration-500">
 
                                 @foreach ($group['items'] as [$text, $route, $param])
                                     <a href="{{ $param ? route($route, $param) : route($route) }}"
-                                       class="block px-4 py-2 rounded-md transition
+                                       class="block px-4 py-2.5 mx-2 rounded-xl transition
                                        {{ request()->routeIs($route.'*')
-                                            ? 'bg-[#4f2744]/15 text-[#4f2744] font-medium'
-                                            : 'text-slate-700 hover:bg-[#4f2744]/10 hover:text-[#4f2744]' }}">
+                                            ? 'bg-[#8C51A5]/10 text-[#612F73] font-bold'
+                                            : 'text-gray-600 hover:bg-[#8C51A5]/5 hover:text-[#8C51A5]' }}">
                                         {{ $text }}
                                     </a>
                                 @endforeach
@@ -122,8 +122,8 @@
                     <a href="{{ route('news') }}"
                        class="px-4 py-2 rounded-lg transition glass-text
                        {{ request()->routeIs('news*')
-                            ? 'bg-[#4f2744]/15 text-[#4f2744] font-semibold'
-                            : 'text-slate-900 hover:bg-[#4f2744]/10 hover:text-[#4f2744]' }}">
+                            ? 'bg-[#8C51A5]/10 text-[#612F73] font-bold'
+                            : 'text-slate-900 hover:bg-[#8C51A5]/5 hover:text-[#8C51A5]' }}">
                         Berita
                     </a>
 
@@ -131,8 +131,8 @@
                     <a href="{{ route('contact') }}"
                        class="px-4 py-2 rounded-lg transition glass-text
                        {{ request()->routeIs('contact*')
-                            ? 'bg-[#4f2744]/15 text-[#4f2744] font-semibold'
-                            : 'text-slate-900 hover:bg-[#4f2744]/10 hover:text-[#4f2744]' }}">
+                            ? 'bg-[#8C51A5]/10 text-[#612F73] font-bold'
+                            : 'text-slate-900 hover:bg-[#8C51A5]/5 hover:text-[#8C51A5]' }}">
                         Kontak
                     </a>
                 </div>
@@ -142,17 +142,17 @@
                     @if(($settings['ppdb_active'] ?? false))
                         <a href="{{ $settings['ppdb_url'] }}" target="_blank"
                            class="hidden md:inline-flex items-center
-                                  px-5 py-2.5 rounded-xl
-                                  bg-gradient-to-r from-[#4f2744] to-[#3a1c32]
-                                  text-white font-semibold
-                                  shadow hover:shadow-lg transition">
-                            DAFTAR PPDB
+                                  px-6 py-2.5 rounded-xl
+                                  bg-gradient-to-r from-[#F8CB62] to-[#f5b82e]
+                                  text-[#612F73] font-black
+                                  shadow-lg shadow-[#F8CB62]/10 hover:shadow-golden hover:-translate-y-0.5 transition-all duration-500">
+                            DAFTAR SEKARANG
                         </a>
                     @endif
 
                     <button id="mobile-menu-btn"
                         class="lg:hidden p-2 rounded-lg
-                               text-slate-900 hover:bg-[#4f2744]/10">
+                               text-slate-900 hover:bg-[#8C51A5]/10">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
