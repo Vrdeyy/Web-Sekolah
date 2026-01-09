@@ -38,16 +38,14 @@ class SettingResource extends Resource
                             ])
                             ->required()
                             ->live(),
-                        Forms\Components\Select::make('group')
+                        Forms\Components\TextInput::make('group')
                             ->label('Grup')
-                            ->options(
+                            ->datalist(
                                 \App\Models\Setting::query()
-                                    ->pluck('group', 'group')
+                                    ->pluck('group')
                                     ->unique()
                                     ->toArray()
                             )
-                            ->searchable()
-                            ->creatable()
                             ->required(),
                         Forms\Components\TextInput::make('value')
                             ->label('Nilai')

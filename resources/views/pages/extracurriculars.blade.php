@@ -7,16 +7,17 @@
     <section class="pt-28 pb-16 bg-gradient-to-br from-[#1A0E17] via-[#2A1424] to-[#12080F] relative overflow-hidden">
         @include('partials.awards-shapes')
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
-            <div class="text-center max-w-3xl mx-auto">
-                <div
-                    class="inline-flex items-center gap-2 px-6 py-3 bg-[#932F80]/25 backdrop-blur-md rounded-full text-[#F3DCEB] text-sm font-semibold mb-6 border border-[#932F80]/50 shadow-glow">
+            <div class="text-center max-w-3xl mx-auto" data-aos="fade-up">
+                <div class="inline-flex items-center gap-2 px-6 py-3 bg-[#932F80]/25 backdrop-blur-md rounded-full text-[#F3DCEB] text-sm font-semibold mb-6 border border-[#932F80]/50 shadow-glow"
+                    data-aos="fade-down" data-aos-delay="200">
                     <i class="fas fa-futbol animate-bounce"></i>
                     <span>EKSTRAKURIKULER</span>
                 </div>
-                <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 tracking-wide drop-shadow-lg">
+                <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 tracking-wide drop-shadow-lg"
+                    data-aos="zoom-in" data-aos-delay="400">
                     Kegiatan <span class="text-[#F3DCEB]">Ekstrakurikuler</span>
                 </h1>
-                <p class="text-gray-300 text-lg md:text-xl leading-relaxed">
+                <p class="text-gray-300 text-lg md:text-xl leading-relaxed" data-aos="fade-up" data-aos-delay="600">
                     Kembangkan bakat dan minat Anda melalui berbagai kegiatan ekstrakurikuler yang menarik
                 </p>
             </div>
@@ -27,16 +28,20 @@
     <section class="py-12 bg-white border-b border-gray-200 relative">
         <div class="container mx-auto px-4 lg:px-8">
             <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16">
-                <div class="text-center group">
-                    <div class="text-4xl font-extrabold text-[#932F80] mb-1 transition-transform group-hover:scale-110">{{ $extracurriculars->count() }}</div>
+                <div class="text-center group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-4xl font-extrabold text-[#932F80] mb-1 transition-transform group-hover:scale-110">
+                        {{ $extracurriculars->count() }}
+                    </div>
                     <div class="text-gray-600 text-sm font-medium tracking-wide">Kegiatan Aktif</div>
                 </div>
-                <div class="text-center group">
-                    <div class="text-4xl font-extrabold text-[#2A1424] mb-1 transition-transform group-hover:scale-110">500+</div>
+                <div class="text-center group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-4xl font-extrabold text-[#2A1424] mb-1 transition-transform group-hover:scale-110">500+
+                    </div>
                     <div class="text-gray-600 text-sm font-medium tracking-wide">Siswa Aktif</div>
                 </div>
-                <div class="text-center group">
-                    <div class="text-4xl font-extrabold text-[#932F80] mb-1 transition-transform group-hover:scale-110">50+</div>
+                <div class="text-center group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-4xl font-extrabold text-[#932F80] mb-1 transition-transform group-hover:scale-110">50+
+                    </div>
                     <div class="text-gray-600 text-sm font-medium tracking-wide">Prestasi Diraih</div>
                 </div>
             </div>
@@ -47,9 +52,10 @@
     <section class="py-16 bg-purple-50 relative overflow-hidden">
         <div class="container mx-auto px-4 lg:px-8">
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @foreach($extracurriculars as $ekskul)
+                @foreach($extracurriculars as $index => $ekskul)
                     <article
-                        class="group bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-lg shadow-purple-900/5 hover:shadow-2xl hover:shadow-purple-900/10 hover:border-[#932F80]/30 transition-all duration-300 hover:-translate-y-2">
+                        class="group bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-lg shadow-purple-900/5 hover:shadow-2xl hover:shadow-purple-900/10 hover:border-[#932F80]/30 transition-all duration-300 hover:-translate-y-2"
+                        data-aos="fade-up" data-aos-delay="{{ ($index % 3) * 150 }}">
                         {{-- Image --}}
                         <div class="relative h-52 overflow-hidden bg-gray-100">
                             @if($ekskul->image)
@@ -65,7 +71,8 @@
                             {{-- Schedule Badge --}}
                             @if($ekskul->schedule)
                                 <div class="absolute bottom-4 left-4 right-4">
-                                    <div class="px-4 py-2 bg-white/90 backdrop-blur-md rounded-lg shadow-lg border border-purple-100">
+                                    <div
+                                        class="px-4 py-2 bg-white/90 backdrop-blur-md rounded-lg shadow-lg border border-purple-100">
                                         <div class="flex items-center gap-2 text-[#2A1424]">
                                             <i class="far fa-clock text-[#932F80]"></i>
                                             <span class="text-sm font-medium">{{ $ekskul->schedule }}</span>
@@ -95,10 +102,11 @@
                                     </div>
                                     <span class="text-sm text-gray-500">Aktif</span>
                                 </div>
-                                <span class="inline-flex items-center gap-2 text-[#932F80] font-semibold text-sm hover:gap-3 transition-all cursor-pointer">
+                                <a href="{{ route('extracurricular.show', $ekskul->slug) }}"
+                                    class="inline-flex items-center gap-2 text-[#932F80] font-semibold text-sm hover:gap-3 transition-all cursor-pointer">
                                     Lihat Detail
                                     <i class="fas fa-arrow-right"></i>
-                                </span>
+                                </a>
                             </div>
                         </div>
                     </article>
@@ -110,44 +118,48 @@
     {{-- Categories Section --}}
     <section class="py-24 bg-white relative border-t border-gray-200">
         <div class="container mx-auto px-4 lg:px-8">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-4xl font-extrabold text-[#2A1424] mb-4 tracking-tight">Kategori Ekstrakurikuler</h2>
-                <p class="text-gray-500 max-w-2xl mx-auto text-lg">
+                <p class="text-gray-500 max-w-2xl mx-auto text-lg" data-aos="fade-up" data-aos-delay="200">
                     Berbagai kategori kegiatan yang dapat Anda pilih sesuai dengan minat dan bakat
                 </p>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div
-                    class="group p-8 bg-blue-50 rounded-3xl border border-blue-100 hover:shadow-2xl hover:shadow-blue-500/20 hover:border-blue-500/50 transition-all duration-500 transform hover:-translate-y-2">
-                    <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-blue-600/30">
+                <div class="group p-8 bg-blue-50 rounded-3xl border border-blue-100 hover:shadow-2xl hover:shadow-blue-500/20 hover:border-blue-500/50 transition-all duration-500 transform hover:-translate-y-2"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div
+                        class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-blue-600/30">
                         <i class="fas fa-running text-2xl text-white"></i>
                     </div>
                     <h3 class="text-xl font-bold text-[#2A1424] mb-3 tracking-tight">Olahraga</h3>
                     <p class="text-gray-500 text-sm leading-relaxed">Futsal, Basket, Voli, Badminton, dan lainnya</p>
                 </div>
 
-                <div
-                    class="group p-8 bg-purple-50 rounded-3xl border border-purple-100 hover:shadow-2xl hover:shadow-[#932F80]/20 hover:border-[#932F80]/50 transition-all duration-500 transform hover:-translate-y-2">
-                    <div class="w-16 h-16 bg-[#932F80] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-[#932F80]/30">
+                <div class="group p-8 bg-purple-50 rounded-3xl border border-purple-100 hover:shadow-2xl hover:shadow-[#932F80]/20 hover:border-[#932F80]/50 transition-all duration-500 transform hover:-translate-y-2"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div
+                        class="w-16 h-16 bg-[#932F80] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-[#932F80]/30">
                         <i class="fas fa-music text-2xl text-white"></i>
                     </div>
                     <h3 class="text-xl font-bold text-[#2A1424] mb-3 tracking-tight">Seni & Musik</h3>
                     <p class="text-gray-500 text-sm leading-relaxed">Paduan Suara, Band, Tari, dan lainnya</p>
                 </div>
 
-                <div
-                    class="group p-8 bg-emerald-50 rounded-3xl border border-emerald-100 hover:shadow-2xl hover:shadow-emerald-500/20 hover:border-emerald-500/50 transition-all duration-500 transform hover:-translate-y-2">
-                    <div class="w-16 h-16 bg-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-emerald-600/30">
+                <div class="group p-8 bg-emerald-50 rounded-3xl border border-emerald-100 hover:shadow-2xl hover:shadow-emerald-500/20 hover:border-emerald-500/50 transition-all duration-500 transform hover:-translate-y-2"
+                    data-aos="fade-up" data-aos-delay="300">
+                    <div
+                        class="w-16 h-16 bg-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-emerald-600/30">
                         <i class="fas fa-praying-hands text-2xl text-white"></i>
                     </div>
                     <h3 class="text-xl font-bold text-[#2A1424] mb-3 tracking-tight">Keagamaan</h3>
                     <p class="text-gray-500 text-sm leading-relaxed">Rohis, Pramuka, PMR, dan lainnya</p>
                 </div>
 
-                <div
-                    class="group p-8 bg-amber-50 rounded-3xl border border-amber-100 hover:shadow-2xl hover:shadow-amber-500/20 hover:border-amber-500/50 transition-all duration-500 transform hover:-translate-y-2">
-                    <div class="w-16 h-16 bg-amber-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-amber-600/30">
+                <div class="group p-8 bg-amber-50 rounded-3xl border border-amber-100 hover:shadow-2xl hover:shadow-amber-500/20 hover:border-amber-500/50 transition-all duration-500 transform hover:-translate-y-2"
+                    data-aos="fade-up" data-aos-delay="400">
+                    <div
+                        class="w-16 h-16 bg-amber-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-amber-600/30">
                         <i class="fas fa-laptop-code text-2xl text-white"></i>
                     </div>
                     <h3 class="text-xl font-bold text-[#2A1424] mb-3 tracking-tight">Akademik</h3>
@@ -158,13 +170,16 @@
     </section>
 
     {{-- CTA Section --}}
-    <section class="py-24 bg-gradient-to-br from-[#1A0E17] via-[#2A1424] to-[#12080F] relative overflow-hidden border-t border-white/10">
+    <section
+        class="py-24 bg-gradient-to-br from-[#1A0E17] via-[#2A1424] to-[#12080F] relative overflow-hidden border-t border-white/10">
         @include('partials.awards-shapes')
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
-            <div class="max-w-3xl mx-auto text-center">
+            <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">Kembangkan Potensimu!</h2>
-                <p class="text-gray-300 text-lg md:text-xl mb-10 leading-relaxed">Bergabunglah dengan berbagai kegiatan ekstrakurikuler dan temukan bakatmu.</p>
-                <div class="flex flex-wrap justify-center gap-6">
+                <p class="text-gray-300 text-lg md:text-xl mb-10 leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+                    Bergabunglah dengan berbagai kegiatan
+                    ekstrakurikuler dan temukan bakatmu.</p>
+                <div class="flex flex-wrap justify-center gap-6" data-aos="fade-up" data-aos-delay="400">
                     @if(($settings['ppdb_active'] ?? false))
                         <a href="{{ $settings['ppdb_url'] ?? '#' }}" target="_blank"
                             class="inline-flex items-center gap-3 px-10 py-4 bg-white text-[#932F80] font-bold rounded-2xl hover:bg-gray-100 transition-all shadow-xl hover:-translate-y-1">

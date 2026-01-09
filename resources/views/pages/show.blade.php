@@ -8,7 +8,7 @@
         @include('partials.awards-shapes')
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
             {{-- Breadcrumb --}}
-            <nav class="flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-[0.2em] mb-8">
+            <nav class="flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-[0.2em] mb-8" data-aos="fade-down">
                 <a href="{{ route('home') }}" class="text-gray-400 hover:text-[#F3DCEB] transition-colors">
                     <i class="fas fa-home"></i>
                 </a>
@@ -16,13 +16,13 @@
                 <span class="text-[#F3DCEB] tracking-widest">{{ strtoupper($page->title) }}</span>
             </nav>
 
-            <div class="max-w-4xl">
+            <div class="max-w-4xl" data-aos="fade-up">
                 <div
-                    class="inline-flex items-center gap-2 px-6 py-3 bg-[#932F80]/25 backdrop-blur-md rounded-full text-[#F3DCEB] text-[10px] font-extrabold mb-6 border border-[#932F80]/50 shadow-glow uppercase tracking-widest">
+                    class="inline-flex items-center gap-2 px-6 py-3 bg-[#932F80]/25 backdrop-blur-md rounded-full text-[#F3DCEB] text-[10px] font-extrabold mb-6 border border-[#932F80]/50 shadow-glow uppercase tracking-widest" data-aos="fade-down" data-aos-delay="200">
                     <i class="fas fa-file-alt"></i>
                     <span>HALAMAN</span>
                 </div>
-                <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 drop-shadow-lg tracking-tight">
+                <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 drop-shadow-lg tracking-tight" data-aos="zoom-in" data-aos-delay="400">
                     {{ $page->title }}
                 </h1>
             </div>
@@ -35,7 +35,7 @@
             <div class="max-w-4xl mx-auto">
                 {{-- Featured Image --}}
                 @if($page->image)
-                    <figure class="mb-16 rounded-[3rem] overflow-hidden shadow-2xl shadow-purple-900/20 border border-gray-100">
+                    <figure class="mb-16 rounded-[3rem] overflow-hidden shadow-2xl shadow-purple-900/20 border border-gray-100" data-aos="zoom-in">
                         <img src="{{ asset('storage/' . $page->image) }}" alt="{{ $page->title }}"
                             class="w-full h-auto hover:scale-105 transition-transform duration-[2s]">
                     </figure>
@@ -52,7 +52,7 @@
                             prose-ul:my-8 prose-li:text-gray-600 prose-li:mb-3
                             prose-ol:my-8
                             prose-blockquote:border-l-4 prose-blockquote:border-[#932F80] prose-blockquote:bg-purple-50 prose-blockquote:py-8 prose-blockquote:px-10 prose-blockquote:rounded-3xl prose-blockquote:italic prose-blockquote:text-gray-700
-                            prose-img:rounded-[2rem] prose-img:shadow-2xl">
+                            prose-img:rounded-[2rem] prose-img:shadow-2xl" data-aos="fade-up">
                     {!! $page->content !!}
                 </div>
             </div>
@@ -73,15 +73,15 @@
         </div>
 
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16" data-aos="fade-up">
                 <div
-                    class="inline-flex items-center gap-2 px-6 py-2.5 bg-[#4f2744]/10 rounded-full text-[#4f2744] text-[10px] font-black uppercase tracking-[0.3em] mb-6 shadow-sm border border-[#4f2744]/10">
+                    class="inline-flex items-center gap-2 px-6 py-2.5 bg-[#4f2744]/10 rounded-full text-[#4f2744] text-[10px] font-black uppercase tracking-[0.3em] mb-6 shadow-sm border border-[#4f2744]/10" data-aos="fade-down" data-aos-delay="200">
                     <i class="fas fa-compass"></i>
                     <span>EKSPLORASI</span>
                 </div>
-                <h2 class="text-4xl md:text-5xl font-black text-[#3a1c32] mb-4 tracking-tight">Halaman <span
+                <h2 class="text-4xl md:text-5xl font-black text-[#3a1c32] mb-4 tracking-tight" data-aos="zoom-in" data-aos-delay="400">Halaman <span
                         class="text-[#4f2744]">Lainnya</span></h2>
-                <p class="text-gray-500 font-medium max-w-2xl mx-auto">Informasi lain yang mungkin Anda butuhkan seputar sekolah kami</p>
+                <p class="text-gray-500 font-medium max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="600">Informasi lain yang mungkin Anda butuhkan seputar sekolah kami</p>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
@@ -94,12 +94,12 @@
                     ];
                 @endphp
 
-                @foreach($links as $link)
+                @foreach($links as $index => $link)
                     <a href="{{ $link['id'] === 'majors' ? route('majors') : route('page', $link['id']) }}"
                         class="group relative p-10 bg-white rounded-[3rem] border border-gray-100 
                                shadow-xl shadow-purple-900/5 hover:shadow-3xl hover:shadow-[#4f2744]/20 
                                hover:border-[#4f2744]/20 transition-all duration-700 transform hover:-translate-y-3 
-                               text-center overflow-hidden {{ request()->is('*/' . $link['id']) ? 'ring-2 ring-[#4f2744] bg-purple-50/50' : '' }}">
+                               text-center overflow-hidden {{ request()->is('*/' . $link['id']) ? 'ring-2 ring-[#4f2744] bg-purple-50/50' : '' }}" data-aos="fade-up" data-aos-delay="{{ $index * 150 }}">
                         
                         {{-- Decorative Corner Shine ( Glass Design ) --}}
                         <div class="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-[#4f2744]/5 to-transparent rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
@@ -132,11 +132,11 @@
         class="py-24 bg-gradient-to-br from-[#1A0E17] via-[#2A1424] to-[#12080F] relative overflow-hidden border-t border-white/10">
         @include('partials.awards-shapes')
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-4xl md:text-6xl font-extrabold text-white mb-8 tracking-tight">Ada Pertanyaan?</h2>
-                <p class="text-gray-300 text-lg md:text-xl mb-12 font-medium">Hubungi kami untuk informasi lebih lanjut
+            <div class="max-w-4xl mx-auto text-center" data-aos="zoom-in">
+                <h2 class="text-4xl md:text-6xl font-extrabold text-white mb-8 tracking-tight" data-aos="fade-up" data-aos-delay="200">Ada Pertanyaan?</h2>
+                <p class="text-gray-300 text-lg md:text-xl mb-12 font-medium" data-aos="fade-up" data-aos-delay="400">Hubungi kami untuk informasi lebih lanjut
                     mengenai program pendidikan dan kegiatan di sekolah.</p>
-                <div class="flex flex-wrap justify-center gap-6">
+                <div class="flex flex-wrap justify-center gap-6" data-aos="fade-up" data-aos-delay="600">
                     <a href="{{ route('contact') }}" class="inline-flex items-center gap-3 px-10 py-4 
                             rounded-xl
                             bg-[#4f2744] text-white font-semibold shadow-lg 

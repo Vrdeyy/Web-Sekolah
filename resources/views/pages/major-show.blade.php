@@ -8,29 +8,29 @@
         @include('partials.awards-shapes')
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
             {{-- Breadcrumb --}}
-            <nav class="flex items-center gap-2 text-sm mb-8 font-bold uppercase tracking-widest">
+            <nav class="flex flex-wrap items-center gap-2 text-xs md:text-sm mb-8 font-bold uppercase tracking-widest" data-aos="fade-down">
                 <a href="{{ route('home') }}" class="text-gray-400 hover:text-[#F3DCEB] transition-colors">
                     <i class="fas fa-home"></i>
                 </a>
                 <i class="fas fa-chevron-right text-[10px] text-gray-600"></i>
                 <a href="{{ route('majors') }}" class="text-gray-400 hover:text-[#F3DCEB] transition-colors">JURUSAN</a>
                 <i class="fas fa-chevron-right text-[10px] text-gray-600"></i>
-                <span class="text-[#F3DCEB]">{{ strtoupper($major->short_name ?? $major->name) }}</span>
+                <span class="text-[#F3DCEB] line-clamp-1 break-all">{{ strtoupper($major->short_name ?? $major->name) }}</span>
             </nav>
 
-            <div class="max-w-4xl">
+            <div class="max-w-4xl" data-aos="fade-up">
                 @if($major->short_name)
                     <div
-                        class="inline-flex items-center gap-2 px-6 py-2.5 bg-[#932F80]/25 backdrop-blur-md text-[#F3DCEB] font-extrabold rounded-xl mb-6 border border-[#932F80]/30 shadow-glow uppercase tracking-wider text-xs">
+                        class="inline-flex items-center gap-2 px-6 py-2.5 bg-[#932F80]/25 backdrop-blur-md text-[#F3DCEB] font-extrabold rounded-xl mb-6 border border-[#932F80]/30 shadow-glow uppercase tracking-wider text-xs" data-aos="fade-right" data-aos-delay="200">
                         <i class="fas fa-graduation-cap"></i>
                         {{ $major->short_name }}
                     </div>
                 @endif
-                <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 tracking-wide drop-shadow-lg">
+                <h1 class="text-3xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 tracking-wide drop-shadow-lg leading-tight" data-aos="zoom-in" data-aos-delay="400">
                     {{ $major->name }}
                 </h1>
                 @if($major->short_description)
-                    <p class="text-gray-300 text-lg md:text-xl leading-relaxed max-w-3xl font-medium">
+                    <p class="text-gray-300 text-lg md:text-xl leading-relaxed max-w-3xl font-medium" data-aos="fade-up" data-aos-delay="600">
                         {{ $major->short_description }}
                     </p>
                 @endif
@@ -39,28 +39,28 @@
     </section>
 
     {{-- Content Section --}}
-    <section class="py-16 bg-purple-50 relative">
+    <section class="py-12 md:py-16 bg-purple-50 relative">
         <div class="container mx-auto px-4 lg:px-8">
-            <div class="grid lg:grid-cols-3 gap-12">
+            <div class="grid lg:grid-cols-3 gap-8 md:gap-12">
                 {{-- Main Content --}}
                 <div class="lg:col-span-2 space-y-16">
                     {{-- Featured Image --}}
                     @if($major->image)
-                        <div class="rounded-[3rem] overflow-hidden shadow-2xl shadow-purple-900/10 border border-purple-100 group">
+                        <div class="rounded-[3rem] overflow-hidden shadow-2xl shadow-purple-900/10 border border-purple-100 group" data-aos="zoom-in">
                             <img src="{{ asset('storage/' . $major->image) }}" alt="{{ $major->name }}" class="w-full h-auto group-hover:scale-105 transition-transform duration-1000">
                         </div>
                     @endif
 
                     {{-- Description --}}
                     @if($major->description)
-                        <div class="bg-white rounded-[3rem] p-10 lg:p-12 border border-purple-100 shadow-xl">
-                            <h2 class="text-3xl font-extrabold text-[#2A1424] mb-8 flex items-center gap-4 tracking-tight">
-                                <span class="w-12 h-12 bg-[#932F80] rounded-2xl flex items-center justify-center shadow-lg shadow-[#932F80]/30 transition-transform hover:rotate-12">
+                        <div class="bg-white rounded-3xl md:rounded-[3rem] p-6 md:p-10 lg:p-12 border border-purple-100 shadow-xl" data-aos="fade-up">
+                            <h2 class="text-2xl md:text-3xl font-extrabold text-[#2A1424] mb-6 md:mb-8 flex items-center gap-4 tracking-tight">
+                                <span class="w-10 h-10 md:w-12 md:h-12 bg-[#932F80] rounded-2xl flex items-center justify-center shadow-lg shadow-[#932F80]/30 transition-transform hover:rotate-12">
                                     <i class="fas fa-info-circle text-white"></i>
                                 </span>
                                 Tentang Program
                             </h2>
-                            <div class="prose prose-lg max-w-none
+                            <div class="prose prose-base md:prose-lg max-w-none
                                 prose-headings:text-[#2A1424] prose-headings:font-extrabold
                                 prose-p:text-gray-600 prose-p:leading-relaxed prose-p:font-medium
                                 prose-strong:text-[#932F80] prose-strong:font-extrabold
@@ -73,15 +73,15 @@
 
                     {{-- Career Prospects --}}
                     @if($major->career_prospects)
-                        <div class="bg-gradient-to-br from-purple-50 to-white rounded-[3rem] p-10 lg:p-12 border border-purple-100 shadow-xl relative overflow-hidden group">
+                        <div class="bg-gradient-to-br from-purple-50 to-white rounded-3xl md:rounded-[3rem] p-6 md:p-10 lg:p-12 border border-purple-100 shadow-xl relative overflow-hidden group" data-aos="fade-up">
                            <div class="absolute top-0 right-0 w-64 h-64 bg-[#932F80]/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 group-hover:bg-[#932F80]/10 transition-colors duration-700"></div>
-                            <h2 class="text-3xl font-extrabold text-[#2A1424] mb-8 flex items-center gap-4 tracking-tight relative z-10">
-                                <span class="w-12 h-12 bg-amber-500 rounded-2xl flex items-center justify-center shadow-lg shadow-amber-500/30">
+                            <h2 class="text-2xl md:text-3xl font-extrabold text-[#2A1424] mb-6 md:mb-8 flex items-center gap-4 tracking-tight relative z-10">
+                                <span class="w-10 h-10 md:w-12 md:h-12 bg-amber-500 rounded-2xl flex items-center justify-center shadow-lg shadow-amber-500/30">
                                     <i class="fas fa-briefcase text-white"></i>
                                 </span>
                                 Prospek Karir
                             </h2>
-                            <div class="prose prose-lg max-w-none prose-p:text-gray-600 prose-li:text-gray-600 relative z-10 font-medium prose-strong:text-[#2A1424]">
+                            <div class="prose prose-base md:prose-lg max-w-none prose-p:text-gray-600 prose-li:text-gray-600 relative z-10 font-medium prose-strong:text-[#2A1424]">
                                 {!! $major->career_prospects !!}
                             </div>
                         </div>
@@ -89,15 +89,15 @@
 
                     {{-- Competencies --}}
                     @if($major->competencies)
-                        <div class="bg-gradient-to-br from-blue-50 to-white rounded-[3rem] p-10 lg:p-12 border border-blue-100 shadow-xl relative overflow-hidden group">
+                        <div class="bg-gradient-to-br from-blue-50 to-white rounded-3xl md:rounded-[3rem] p-6 md:p-10 lg:p-12 border border-blue-100 shadow-xl relative overflow-hidden group" data-aos="fade-up">
                             <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 group-hover:bg-blue-600/10 transition-colors duration-700"></div>
-                            <h2 class="text-3xl font-extrabold text-[#2A1424] mb-8 flex items-center gap-4 tracking-tight relative z-10">
-                                <span class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-600/30">
+                            <h2 class="text-2xl md:text-3xl font-extrabold text-[#2A1424] mb-6 md:mb-8 flex items-center gap-4 tracking-tight relative z-10">
+                                <span class="w-10 h-10 md:w-12 md:h-12 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-600/30">
                                     <i class="fas fa-cogs text-white"></i>
                                 </span>
                                 Kompetensi Keahlian
                             </h2>
-                            <div class="prose prose-lg max-w-none prose-p:text-gray-600 prose-li:text-gray-600 relative z-10 font-medium prose-strong:text-[#2A1424]">
+                            <div class="prose prose-base md:prose-lg max-w-none prose-p:text-gray-600 prose-li:text-gray-600 relative z-10 font-medium prose-strong:text-[#2A1424]">
                                 {!! $major->competencies !!}
                             </div>
                         </div>
@@ -105,15 +105,15 @@
                 </div>
 
                 {{-- Sidebar --}}
-                <div class="space-y-10">
+                <div class="space-y-8 md:space-y-10">
                     {{-- Quick Info Card --}}
-                    <div class="bg-white border border-gray-200 rounded-[2.5rem] p-8 shadow-xl">
+                    <div class="bg-white border border-gray-200 rounded-3xl md:rounded-[2.5rem] p-6 md:p-8 shadow-xl" data-aos="fade-left">
                         <h3 class="font-extrabold text-[#2A1424] text-xl mb-8 flex items-center gap-3 tracking-tight">
                             <i class="fas fa-info-circle text-[#932F80]"></i>
                             Informasi Program
                         </h3>
                         <ul class="space-y-6">
-                            <li class="flex items-center gap-5 pb-6 border-b border-gray-100 group">
+                            <li class="flex items-center gap-5 pb-6 border-b border-gray-100 group" data-aos="fade-left" data-aos-delay="100">
                                 <div class="w-14 h-14 bg-[#932F80]/10 rounded-2xl flex items-center justify-center group-hover:bg-[#932F80] transition-all duration-300 shadow-lg shadow-[#932F80]/10">
                                     <i class="fas fa-clock text-[#932F80] group-hover:text-white transition-colors"></i>
                                 </div>
@@ -122,7 +122,7 @@
                                     <span class="font-extrabold text-[#2A1424] tracking-wide">3 TAHUN</span>
                                 </div>
                             </li>
-                            <li class="flex items-center gap-5 pb-6 border-b border-gray-100 group">
+                            <li class="flex items-center gap-5 pb-6 border-b border-gray-100 group" data-aos="fade-left" data-aos-delay="200">
                                 <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center group-hover:bg-blue-600 transition-all duration-300 shadow-lg shadow-blue-500/10">
                                     <i class="fas fa-certificate text-blue-500 group-hover:text-white transition-colors"></i>
                                 </div>
@@ -131,7 +131,7 @@
                                     <span class="font-extrabold text-[#2A1424] tracking-wide">INTERNASIONAL</span>
                                 </div>
                             </li>
-                            <li class="flex items-center gap-5 group">
+                            <li class="flex items-center gap-5 group" data-aos="fade-left" data-aos-delay="300">
                                 <div class="w-14 h-14 bg-purple-600/10 rounded-2xl flex items-center justify-center group-hover:bg-purple-600 transition-all duration-300 shadow-lg shadow-purple-600/10">
                                     <i class="fas fa-building text-purple-500 group-hover:text-white transition-colors"></i>
                                 </div>
@@ -146,7 +146,7 @@
                     {{-- CTA Card --}}
                     @if(($settings['ppdb_active'] ?? false))
                         <div
-                            class="bg-gradient-to-br from-[#932F80] via-[#6E1F5F] to-[#2A1424] rounded-[2.5rem] p-8 text-white relative overflow-hidden shadow-2xl group shadow-[#932F80]/20">
+                            class="bg-gradient-to-br from-[#932F80] via-[#6E1F5F] to-[#2A1424] rounded-[2.5rem] p-8 text-white relative overflow-hidden shadow-2xl group shadow-[#932F80]/20" data-aos="fade-left" data-aos-delay="200">
                             <div
                                 class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-white/20 transition-all duration-700">
                             </div>
@@ -222,9 +222,9 @@
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-10">
-                    @foreach($relatedNews as $news)
+                    @foreach($relatedNews as $index => $news)
                         <a href="{{ route('news.show', $news->slug) }}"
-                            class="group bg-white rounded-[2.5rem] overflow-hidden border border-gray-200 shadow-lg shadow-purple-900/5 hover:shadow-2xl hover:shadow-purple-900/10 hover:border-[#932F80]/30 transition-all duration-500 hover:-translate-y-2">
+                            class="group bg-white rounded-[2.5rem] overflow-hidden border border-gray-200 shadow-lg shadow-purple-900/5 hover:shadow-2xl hover:shadow-purple-900/10 hover:border-[#932F80]/30 transition-all duration-500 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="{{ $index * 150 }}">
                             <div class="relative h-56 overflow-hidden bg-gray-100">
                                 @if($news->image)
                                     <img src="{{ asset('storage/' . $news->image) }}" alt="{{ $news->title }}"

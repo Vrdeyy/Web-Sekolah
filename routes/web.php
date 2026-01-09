@@ -13,7 +13,10 @@ Route::get('/halaman/{slug}', [WebController::class, 'page'])->name('page');
 Route::get('/jurusan', [WebController::class, 'majors'])->name('majors');
 Route::get('/jurusan/{major:slug}', [WebController::class, 'majorShow'])->name('major.show');
 Route::get('/ekstrakurikuler', [WebController::class, 'extracurriculars'])->name('extracurriculars');
+Route::get('/ekstrakurikuler/{extracurricular:slug}', [WebController::class, 'extracurricularShow'])->name('extracurricular.show');
 Route::get('/prestasi', [WebController::class, 'achievements'])->name('achievements');
+Route::get('/prestasi/{achievement:slug}', [WebController::class, 'achievementShow'])->name('achievement.show');
+Route::get('/pusat-bisnis/{businessCenter:slug}', [WebController::class, 'businessCenterShow'])->name('business-center.show');
 
 // Directory
 Route::get('/daftar-guru', [WebController::class, 'teachers'])->name('teachers');
@@ -30,3 +33,4 @@ Route::get('/berita/{news:slug}', [WebController::class, 'newsShow'])->name('new
 
 // Contact
 Route::get('/kontak', [WebController::class, 'contact'])->name('contact');
+Route::post('/kontak', [WebController::class, 'contactSend'])->name('contact.send');

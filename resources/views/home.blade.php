@@ -65,11 +65,11 @@
                         <i class="fas fa-lightbulb"></i>
                     </div>
                 </div>
-                <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#4f2744]/10 text-[#4f2744] text-sm font-bold tracking-wide lg:mt-8">
+                <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#4f2744]/10 text-[#4f2744] text-sm font-bold tracking-wide mt-20 lg:mt-28" data-aos="fade-down" data-aos-delay="200">
                     {{ $settings['hero_badge'] ?? '🎓 Pendidikan Digital' }}
                 </span>
 
-                <h1 class="text-4xl lg:text-5xl xl:text-6xl font-extrabold text-gray-900 leading-tight">
+                <h1 class="text-4xl lg:text-5xl xl:text-6xl font-extrabold text-gray-900 leading-tight" data-aos="fade-up" data-aos-delay="400">
                     @php
                         $title = $settings['hero_title'] ?? 'Pendidikan Online Serasa Kelas Nyata';
                         // Split title to colorize part of it if it's long enough or just use brand color for the last words
@@ -81,21 +81,21 @@
                     <span class="text-[#4f2744]">{{ implode(' ', $lastThree) }}</span>
                 </h1>
 
-                <p class="text-gray-600 max-w-xl text-lg">
+                <p class="text-gray-600 max-w-xl text-lg" data-aos="fade-up" data-aos-delay="600">
                     {{ $settings['hero_description'] ?? 'Sistem pembelajaran sekolah modern dengan kelas interaktif, materi terstruktur, dan pendampingan guru profesional.' }}
                 </p>
 
                 {{-- CTA --}}
-                <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
-                    <a href="{{ $settings['hero_primary_url'] ?? '#daftar' }}"
+                <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-4" data-aos="fade-up" data-aos-delay="800">
+                    <a href="{{ $settings['ppdb_url'] ?? '#' }}" target="_blank"
                         class="px-8 py-4 rounded-2xl 
                             bg-[#4f2744] text-white font-bold shadow-lg shadow-[#4f2744]/20
                             hover:bg-white hover:text-[#4f2744] hover:shadow-[0_0_0_2px_#4f2744]
                             transform hover:scale-105 transition-all duration-300">
-                        {{ $settings['hero_primary_text'] ?? 'Daftar Sekarang' }}
+                        {{ $settings['hero_primary_text'] ?? 'PPDB Online' }}
                     </a>
 
-                    <a href="{{ $settings['hero_secondary_url'] ?? '#profil' }}"
+                    <a href="{{ route('page', 'sekolah') }}"
                         class="px-8 py-4 rounded-2xl 
                             border-2 border-[#4f2744]/20 text-[#4f2744] font-bold 
                             hover:bg-[#4f2744] hover:text-white hover:border-[#4f2744]
@@ -105,13 +105,21 @@
                 </div>
 
                 {{-- Stats --}}
-                <div class="flex flex-wrap justify-center lg:justify-start gap-6 lg:gap-10 pt-8 border-t border-[#4f2744]/5">
+                <div class="flex flex-wrap justify-center lg:justify-start gap-6 lg:gap-10 pt-8 border-t border-[#4f2744]/5" data-aos="fade-up" data-aos-delay="400">
+                    @php
+                        $studentVal = $students_stat ? $students_stat->value : (int)filter_var($settings['hero_stats_1_value'] ?? '1500', FILTER_SANITIZE_NUMBER_INT);
+                        $studentSuffix = $students_stat ? $students_stat->suffix : '+';
+                    @endphp
                     <div class="text-center lg:text-left">
-                        <h3 class="text-3xl font-black text-gray-900 leading-none mb-1">{{ $settings['hero_stats_1_value'] ?? '15.000+' }}</h3>
+                        <h3 class="text-3xl font-black text-gray-900 leading-none mb-1">
+                            <span class="counter" data-target="{{ $studentVal }}">0</span>{{ $studentSuffix }}
+                        </h3>
                         <p class="text-[#4f2744]/60 text-xs font-bold uppercase tracking-widest">{{ $settings['hero_stats_1_label'] ?? 'Siswa Aktif' }}</p>
                     </div>
                     <div class="text-center lg:text-left border-x border-[#4f2744]/10 px-6 lg:px-10">
-                        <h3 class="text-3xl font-black text-gray-900 leading-none mb-1">{{ $settings['hero_stats_2_value'] ?? '120+' }}</h3>
+                        <h3 class="text-3xl font-black text-gray-900 leading-none mb-1">
+                            <span class="counter" data-target="{{ $teachers_count ?? 120 }}">0</span>+
+                        </h3>
                         <p class="text-[#4f2744]/60 text-xs font-bold uppercase tracking-widest">{{ $settings['hero_stats_2_label'] ?? 'Guru Profesional' }}</p>
                     </div>
                     <div class="text-center lg:text-left">
@@ -125,7 +133,7 @@
             <div class="relative flex justify-center lg:justify-end min-h-[450px] md:min-h-[550px] lg:min-h-[700px] mt-2 lg:mt-0">
 
     {{-- Dynamic Educational Collage Background --}}
-    <div class="absolute inset-0 z-0 pointer-events-none overflow-visible flex items-center justify-center">
+    <div class="absolute inset-0 z-0 pointer-events-none overflow-visible flex items-center justify-center" data-aos="zoom-in" data-aos-duration="1500">
         
         {{-- Soft Glow --}}
         <div class="absolute w-[600px] lg:w-[900px] h-[600px] lg:h-[900px] bg-[#4f2744]/10 rounded-full blur-[120px]"></div>
@@ -381,7 +389,7 @@
         <div class="container mx-auto px-6 lg:px-12 relative z-10">
 
             {{-- Section Header --}}
-            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-24 gap-8">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-24 gap-8" data-aos="fade-up">
                 <div class="max-w-2xl">
                     <div
                         class="inline-flex items-center gap-3 px-5 py-2 bg-[#4f2744]/5 text-[#4f2744] text-xs font-black uppercase tracking-[0.3em] rounded-full mb-6 border-l-4 border-[#4f2744]">
@@ -406,46 +414,34 @@
             </div>
 
             {{-- IMAGE-INSPIRED MASONRY GRID --}}
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                 @php $totalMajors = $majors->count(); @endphp
                 @foreach($majors as $index => $major)
                     @php
-                        $isLast = $index == $totalMajors - 1;
                         $mod = $index % 4;
-                        $spanClass = "";
-                        $heightClass = "h-[400px]"; // Base mobile
+                        $spanClass = "md:col-span-1";
+                        $heightClass = "h-[450px]"; 
                         
-                        // Self-Correcting Asymmetric Logic
-                        if ($totalMajors == 1) {
+                        // New 3-Column Asymmetric Logic (2 - 1 / 1 - 2)
+                        // This creates a checkerboard effect where large cards take 2/3 width, never full width.
+                        
+                        if ($mod == 0) {
                             $spanClass = "md:col-span-2";
-                            $heightClass .= " md:h-[600px]";
-                        } elseif ($totalMajors == 2) {
+                        } elseif ($mod == 1) {
                             $spanClass = "md:col-span-1";
-                            $heightClass .= " md:h-[500px]";
-                        } else {
-                            if ($mod == 0) {
-                                $spanClass = "md:col-span-2";
-                                $heightClass .= " md:h-[600px]";
-                            } elseif ($mod == 1) {
-                                if ($isLast) {
-                                    $spanClass = "md:col-span-2";
-                                    $heightClass .= " md:h-[500px]";
-                                } else {
-                                    $spanClass = "md:col-span-1";
-                                    $heightClass .= " md:h-[400px]";
-                                }
-                            } elseif ($mod == 2) {
-                                if ($isLast) {
-                                    $spanClass = "md:col-span-1"; // Pairs with index 1
-                                    $heightClass .= " md:h-[400px]";
-                                } else {
-                                    $spanClass = "md:col-span-1 md:row-span-2";
-                                    $heightClass .= " md:h-[832px]";
-                                }
-                            } elseif ($mod == 3) {
-                                $spanClass = "md:col-span-1";
-                                $heightClass .= " md:h-[400px]";
-                            }
+                        } elseif ($mod == 2) {
+                            $spanClass = "md:col-span-1";
+                        } elseif ($mod == 3) {
+                            $spanClass = "md:col-span-2";
+                        }
+
+                        // Last item handling to avoid gaps if it's a "1" at the start of a row
+                        if ($index == $totalMajors - 1) {
+                             // If it's the only item in the last row (mod 0 or mod 2 starts a row in this pattern?)
+                             // Row starts at 0 (2+1) and 2 (1+2).
+                             // If we have 1 item: index 0 (2). OK.
+                             // If we have 3 items: 0(2), 1(1), 2(1). Row 2 starts with 1. It's alone. 
+                             // It looks fine as a small card.
                         }
                     @endphp
 
@@ -502,7 +498,7 @@
             </div>
 
             {{-- FOOTER CTA --}}
-            <div class="text-center mt-24">
+            <div class="text-center mt-24" data-aos="fade-up">
                 <a href="{{ route('majors') }}"
                    class="inline-flex items-center gap-4 px-12 py-5 bg-[#4f2744] text-white font-black text-xs uppercase tracking-[0.2em] rounded-2xl shadow-2xl hover:bg-white hover:text-[#4f2744] hover:shadow-[0_0_0_2px_#4f2744] transform hover:scale-105 transition-all duration-300 group">
                     <i class="fas fa-th-large group-hover:rotate-45 transition-transform"></i>
@@ -535,7 +531,7 @@
         <div class="container mx-auto px-6 lg:px-12 relative z-10">
 
             {{-- HEADER (White Text) --}}
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-24">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-24" data-aos="fade-up">
                 <div class="max-w-2xl">
                     <div
                         class="inline-flex items-center gap-3 px-5 py-2 bg-white/10 backdrop-blur rounded-full text-white text-xs font-black uppercase tracking-[0.3em] mb-6 border-l-4 border-[#4f2744]">
@@ -563,70 +559,56 @@
             </div>
 
             {{-- BALANCED GRID (Cards Aligned) --}}
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 items-stretch">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8 items-stretch">
                 @foreach($awards as $index => $award)
-                    <div class="group relative transition-all duration-700">
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
                         
-                        {{-- Card Shadow/Glow Background --}}
-                        <div class="absolute -inset-4 bg-[#4f2744]/30 rounded-[3rem] opacity-0 group-hover:opacity-100 blur-2xl transition-all duration-700"></div>
+                        {{-- Hover Glow Behind --}}
+                        <div class="absolute inset-0 bg-[#932F80] rounded-[2rem] blur-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-700"></div>
 
-                        <div class="relative h-full bg-white/10 backdrop-blur-2xl p-8 lg:p-10 rounded-[2.5rem] border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-700 overflow-hidden transform group-hover:-translate-y-4 group-hover:border-white/40 group-hover:bg-white/15">
+                        <div class="relative h-full bg-white rounded-[2rem] border border-gray-100 p-4 flex flex-col transition-all duration-500 hover:-translate-y-2 hover:border-[#932F80]/50 hover:shadow-[0_0_30px_rgba(147,47,128,0.25)]">
                             
-                            {{-- White Shine Accent --}}
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/20 to-transparent rounded-bl-[5rem] group-hover:from-white/30 transition-all duration-500"></div>
-
-                            <div class="relative z-10 flex flex-col h-full">
-                                {{-- Year Badge --}}
+                            {{-- Image Area (Full Width of Inner Card) --}}
+                            <div class="relative w-full aspect-[4/3] rounded-[1.5rem] overflow-hidden mb-6 group/image">
+                                
+                                {{-- Year Badge (Floating) --}}
                                 @if($award->year)
-                                    <div class="mb-8 flex justify-between items-center">
-                                        <span class="px-4 py-1.5 bg-white text-[#1a0e17] text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg border border-white/20">
-                                            {{ $award->year }}
-                                        </span>
-                                        <div class="text-white/40 group-hover:text-white transition-colors">
-                                            <i class="fas fa-certificate"></i>
-                                        </div>
+                                    <div class="absolute top-4 right-4 z-20 px-3 py-1 bg-white/90 backdrop-blur-md text-[#932F80] text-[10px] font-black uppercase tracking-widest rounded-lg border border-gray-100 shadow-sm group-hover:bg-[#932F80] group-hover:text-white transition-colors">
+                                        {{ $award->year }}
                                     </div>
                                 @endif
 
-                                {{-- Image Container --}}
-                                <div class="relative mb-8 inline-block">
-                                    <div class="absolute inset-0 bg-white/20 rounded-3xl blur-xl scale-0 group-hover:scale-150 transition-transform duration-700"></div>
-                                    
-                                    @if($award->image)
-                                        <div class="relative w-24 h-24 p-3 bg-white/90 backdrop-blur-md rounded-3xl shadow-xl transform group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500 border border-white">
-                                            <img src="{{ asset('storage/' . $award->image) }}" alt="{{ $award->title }}"
-                                                class="w-full h-full object-contain">
-                                        </div>
-                                    @else
-                                        <div class="relative w-24 h-24 bg-gradient-to-br from-[#4f2744] to-[#3a1c32] rounded-3xl flex items-center justify-center shadow-lg transform group-hover:rotate-6 transition-all duration-500 border border-white/20">
-                                            <i class="fas fa-medal text-4xl text-white"></i>
-                                        </div>
-                                    @endif
-                                </div>
+                                @if($award->image)
+                                    <img src="{{ asset('storage/' . $award->image) }}" alt="{{ $award->title }}"
+                                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                @else
+                                    <div class="w-full h-full bg-gradient-to-br from-[#932F80] to-[#6E1F5F] flex items-center justify-center">
+                                        <i class="fas fa-medal text-5xl text-white/50 group-hover:text-white transition-colors"></i>
+                                    </div>
+                                @endif
+                            </div>
 
-                                {{-- Content --}}
-                                <div class="flex-grow">
-                                    <h4 class="font-extrabold text-white text-lg lg:text-xl leading-[1.3] mb-3 group-hover:text-white transition-colors duration-300">
-                                        {{ $award->title }}
-                                    </h4>
-                                    
-                                    @if($award->organizer)
-                                        <div class="flex items-center gap-2 text-white/50 text-xs font-semibold uppercase tracking-wider mb-6">
-                                            <i class="fas fa-university text-[#4f2744]"></i>
-                                            <span>{{ $award->organizer }}</span>
-                                        </div>
-                                    @endif
-                                </div>
+                            {{-- Content Area --}}
+                            <div class="px-2 pb-4 flex-grow text-center">
+                                @if($award->organizer)
+                                    <div class="inline-block mb-3">
+                                        <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#932F80]">
+                                            {{ $award->organizer }}
+                                        </span>
+                                    </div>
+                                @endif
 
-                                <div class="mt-auto">
-                                    <div class="w-12 h-[3px] bg-gradient-to-r from-white to-transparent rounded-full group-hover:w-full transition-all duration-500"></div>
+                                <h4 class="font-extrabold text-[#2A1424] text-lg leading-snug mb-2 group-hover:text-[#932F80] transition-colors">
+                                    {{ $award->title }}
+                                </h4>
+                            </div>
+
+                            {{-- Bottom Decorative Line --}}
+                            <div class="mt-auto flex justify-center pb-2">
+                                <div class="w-12 h-1 bg-gray-100 rounded-full overflow-hidden">
+                                    <div class="w-full h-full bg-[#932F80] -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                                 </div>
                             </div>
-                        </div>
-
-                        {{-- Order Number (Optional Decor) --}}
-                        <div class="absolute -bottom-6 right-6 font-black text-6xl text-white/[0.05] group-hover:text-white/[0.1] transition-colors select-none pointer-events-none">
-                            {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
                         </div>
                     </div>
                 @endforeach
@@ -654,7 +636,7 @@
         <div class="container mx-auto px-6 lg:px-12 relative z-10">
 
             {{-- Section Header --}}
-            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-24 gap-8">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-24 gap-8" data-aos="fade-up">
                 <div class="max-w-2xl">
                     <div
                         class="inline-flex items-center gap-3 px-5 py-2 bg-[#4f2744]/5 text-[#4f2744] text-xs font-black uppercase tracking-[0.3em] rounded-full mb-6 border-l-4 border-[#4f2744]">
@@ -679,49 +661,26 @@
             </div>
 
             {{-- ASYMMETRIC MASONRY GRID --}}
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                 @php 
-                    $newsItems = $news->take(4);
+                    $newsItems = $news->take(4); // Or more if design permits
                     $totalNews = $newsItems->count(); 
                 @endphp
                 @foreach($newsItems as $index => $item)
                     @php
-                        $isLast = $index == $totalNews - 1;
                         $mod = $index % 4;
-                        $spanClass = "";
-                        $heightClass = "h-[400px]"; // Base mobile
+                        $spanClass = "md:col-span-1";
+                        $heightClass = "h-[450px]"; 
                         
-                        // Self-Correcting Asymmetric Logic
-                        if ($totalNews == 1) {
+                        // New 3-Column Asymmetric Logic (2 - 1 / 1 - 2)
+                        if ($mod == 0) {
                             $spanClass = "md:col-span-2";
-                            $heightClass .= " md:h-[600px]";
-                        } elseif ($totalNews == 2) {
+                        } elseif ($mod == 1) {
                             $spanClass = "md:col-span-1";
-                            $heightClass .= " md:h-[500px]";
-                        } else {
-                            if ($mod == 0) {
-                                $spanClass = "md:col-span-2";
-                                $heightClass .= " md:h-[600px]";
-                            } elseif ($mod == 1) {
-                                if ($isLast) {
-                                    $spanClass = "md:col-span-2";
-                                    $heightClass .= " md:h-[500px]";
-                                } else {
-                                    $spanClass = "md:col-span-1";
-                                    $heightClass .= " md:h-[400px]";
-                                }
-                            } elseif ($mod == 2) {
-                                if ($isLast) {
-                                    $spanClass = "md:col-span-1"; // Pairs with index 1
-                                    $heightClass .= " md:h-[400px]";
-                                } else {
-                                    $spanClass = "md:col-span-1 md:row-span-2";
-                                    $heightClass .= " md:h-[832px]";
-                                }
-                            } elseif ($mod == 3) {
-                                $spanClass = "md:col-span-1";
-                                $heightClass .= " md:h-[400px]";
-                            }
+                        } elseif ($mod == 2) {
+                            $spanClass = "md:col-span-1";
+                        } elseif ($mod == 3) {
+                            $spanClass = "md:col-span-2";
                         }
                     @endphp
 
@@ -782,7 +741,7 @@
             </div>
 
             {{-- FOOTER CTA --}}
-            <div class="text-center mt-24">
+            <div class="text-center mt-24" data-aos="fade-up">
                 <a href="{{ route('news') }}"
                    class="inline-flex items-center gap-4 px-12 py-5 bg-[#4f2744] text-white font-black text-xs uppercase tracking-[0.2em] rounded-2xl shadow-2xl hover:bg-white hover:text-[#4f2744] hover:shadow-[0_0_0_2px_#4f2744] transform hover:scale-105 transition-all duration-300 group">
                     <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
@@ -800,14 +759,14 @@
         @include('partials.awards-shapes')
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
             <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-4xl md:text-6xl font-extrabold text-white mb-8 tracking-tight">
+                <h2 class="text-4xl md:text-6xl font-extrabold text-white mb-8 tracking-tight" data-aos="fade-up">
                     Bergabung Bersama Kami
                 </h2>
-                <p class="text-gray-300 text-lg md:text-xl mb-12 font-medium max-w-2xl mx-auto">
+                <p class="text-gray-300 text-lg md:text-xl mb-12 font-medium max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
                     Dengan pengalaman lebih dari {{ $settings['years_experience'] ?? '20' }} tahun,
                     kami telah menghasilkan lulusan terbaik yang siap kerja.
                 </p>
-                <div class="flex flex-wrap justify-center gap-6">
+                <div class="flex flex-wrap justify-center gap-6" data-aos="fade-up" data-aos-delay="400">
                     <a href="{{ route('contact') }}"
                         class="inline-flex items-center gap-3 px-10 py-4 
                         rounded-xl
@@ -848,7 +807,7 @@
 
             <div class="container mx-auto px-4 lg:px-8 relative z-10">
                 {{-- Section Header --}}
-                <div class="text-center mb-16">
+                <div class="text-center mb-16" data-aos="fade-up">
                     <div
                         class="inline-flex items-center gap-2 px-6 py-2.5 bg-[#4f2744]/10 rounded-full text-[#4f2744] text-sm font-extrabold uppercase tracking-widest mb-6 shadow-sm border border-[#4f2744]/10">
                         <i class="fas fa-store"></i>
@@ -861,7 +820,7 @@
                 <div class="grid md:grid-cols-3 gap-8">
                     @foreach($businessCenters->take(3) as $bc)
                         <article
-                            class="group bg-white rounded-[2.5rem] overflow-hidden border border-gray-200 shadow-lg shadow-[#4f2744]/5 hover:shadow-2xl hover:shadow-[#4f2744]/10 hover:border-[#4f2744]/30 transition-all duration-500 hover:-translate-y-2 text-center p-8">
+                            class="group bg-white rounded-[2.5rem] overflow-hidden border border-gray-200 shadow-lg shadow-[#4f2744]/5 hover:shadow-2xl hover:shadow-[#4f2744]/10 hover:border-[#4f2744]/30 transition-all duration-500 hover:-translate-y-2 text-center p-8" data-aos="fade-up" data-aos-delay="{{ $loop->index * 150 }}">
                             {{-- Photo --}}
                             <div class="relative mb-8">
                                 <div
@@ -889,7 +848,7 @@
 
                                 {{-- Action Button --}}
                                 <div class="mt-8 pt-6 border-t border-gray-100">
-                                    <a href="{{ route('business-centers') }}"
+                                    <a href="{{ route('business-center.show', $bc->slug) }}"
                                         class="inline-flex items-center gap-3 px-6 py-2.5 bg-[#4f2744]/10 text-[#4f2744] hover:bg-[#4f2744] hover:text-white transition-all duration-300 rounded-xl text-xs font-extrabold uppercase tracking-widest border border-[#4f2744]/20 group/btn">
                                         <i class="fas fa-info-circle text-[10px]"></i>
                                         Selengkapnya
@@ -900,7 +859,7 @@
                     @endforeach
                 </div>
 
-                <div class="text-center mt-16">
+                <div class="text-center mt-16" data-aos="fade-up">
                     <a href="{{ route('business-centers') }}"
                         class="inline-flex items-center gap-3 px-10 py-4 
                         rounded-xl

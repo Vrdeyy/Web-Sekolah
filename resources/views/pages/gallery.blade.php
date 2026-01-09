@@ -7,16 +7,17 @@
     <section class="pt-28 pb-16 bg-gradient-to-br from-[#1A0E17] via-[#2A1424] to-[#12080F] relative overflow-hidden">
         @include('partials.awards-shapes')
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
-            <div class="text-center max-w-3xl mx-auto">
-                <div
-                    class="inline-flex items-center gap-2 px-6 py-3 bg-[#932F80]/25 backdrop-blur-md rounded-full text-[#F3DCEB] text-sm font-semibold mb-6 border border-[#932F80]/50 shadow-glow">
+            <div class="text-center max-w-3xl mx-auto" data-aos="fade-up">
+                <div class="inline-flex items-center gap-2 px-6 py-3 bg-[#932F80]/25 backdrop-blur-md rounded-full text-[#F3DCEB] text-sm font-semibold mb-6 border border-[#932F80]/50 shadow-glow"
+                    data-aos="fade-down" data-aos-delay="200">
                     <i class="fas fa-images animate-bounce"></i>
                     <span>GALERI SEKOLAH</span>
                 </div>
-                <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 tracking-wide drop-shadow-lg">
+                <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 tracking-wide drop-shadow-lg"
+                    data-aos="zoom-in" data-aos-delay="400">
                     Dokumentasi <span class="text-[#F3DCEB]">Kegiatan</span>
                 </h1>
-                <p class="text-gray-300 text-lg md:text-xl leading-relaxed">
+                <p class="text-gray-300 text-lg md:text-xl leading-relaxed" data-aos="fade-up" data-aos-delay="600">
                     Kumpulan foto dan video kegiatan di {{ $settings['school_name'] ?? 'SMK YAJ' }}
                 </p>
             </div>
@@ -26,7 +27,7 @@
     {{-- Tab Navigation --}}
     <section class="py-10 bg-white border-b border-gray-200 sticky top-20 z-30 backdrop-blur-xl bg-white/95">
         <div class="container mx-auto px-4 lg:px-8">
-            <div class="flex items-center justify-center gap-6">
+            <div class="flex items-center justify-center gap-6" data-aos="fade-up">
                 <a href="{{ route('gallery.photos') }}"
                     class="px-10 py-4 rounded-2xl font-bold tracking-wide transition-all duration-300 {{ request()->routeIs('gallery.photos') ? 'bg-[#932F80] text-white shadow-lg shadow-[#932F80]/30 scale-105' : 'bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-900 border border-gray-200' }}">
                     <i class="fas fa-image mr-2 text-lg"></i>
@@ -47,9 +48,10 @@
             <div class="container mx-auto px-4 lg:px-8">
                 @if($galleries->count() > 0)
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                        @foreach($galleries as $gallery)
+                        @foreach($galleries as $index => $gallery)
                             <div class="group relative aspect-square rounded-3xl overflow-hidden shadow-lg shadow-purple-900/5 hover:shadow-2xl hover:shadow-purple-900/10 border border-gray-100 hover:border-[#932F80]/30 transition-all duration-500 cursor-pointer"
-                                onclick="openLightbox('{{ asset('storage/' . $gallery->image) }}', '{{ $gallery->title ?? '' }}')">
+                                onclick="openLightbox('{{ asset('storage/' . $gallery->image) }}', '{{ $gallery->title ?? '' }}')"
+                                data-aos="zoom-in" data-aos-delay="{{ ($index % 4) * 100 }}">
                                 <img src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->title ?? 'Galeri' }}"
                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                     onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400'">
@@ -80,7 +82,8 @@
                 @else
                     {{-- Empty State --}}
                     <div class="text-center py-20 bg-white rounded-3xl border border-gray-100 shadow-sm">
-                        <div class="w-24 h-24 bg-purple-50 rounded-full flex items-center justify-center mx-auto mb-6 border border-purple-100">
+                        <div
+                            class="w-24 h-24 bg-purple-50 rounded-full flex items-center justify-center mx-auto mb-6 border border-purple-100">
                             <i class="fas fa-image text-4xl text-[#932F80]"></i>
                         </div>
                         <h3 class="text-xl font-bold text-[#2A1424] mb-2">Belum Ada Foto</h3>
@@ -97,9 +100,10 @@
             <div class="container mx-auto px-4 lg:px-8">
                 @if($galleries->count() > 0)
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        @foreach($galleries as $gallery)
+                        @foreach($galleries as $index => $gallery)
                             <div class="group bg-white rounded-2xl overflow-hidden shadow-lg shadow-purple-900/5 hover:shadow-2xl hover:shadow-purple-900/10 border border-gray-100 hover:border-[#932F80]/30 transition-all duration-500 cursor-pointer"
-                                onclick="openVideoModal('{{ $gallery->video_url }}')">
+                                onclick="openVideoModal('{{ $gallery->video_url }}')" data-aos="fade-up"
+                                data-aos-delay="{{ ($index % 3) * 150 }}">
                                 <div class="relative aspect-video overflow-hidden bg-gray-100">
                                     @if($gallery->thumbnail)
                                         <img src="{{ asset('storage/' . $gallery->thumbnail) }}" alt="{{ $gallery->title ?? 'Video' }}"
@@ -122,7 +126,8 @@
                                 </div>
 
                                 <div class="p-8">
-                                    <h3 class="font-bold text-[#2A1424] text-lg group-hover:text-[#932F80] transition-colors tracking-tight">
+                                    <h3
+                                        class="font-bold text-[#2A1424] text-lg group-hover:text-[#932F80] transition-colors tracking-tight">
                                         {{ $gallery->title ?? 'Video' }}
                                     </h3>
                                     @if($gallery->description)
@@ -140,7 +145,8 @@
                 @else
                     {{-- Empty State --}}
                     <div class="text-center py-20 bg-white rounded-3xl border border-gray-100 shadow-sm">
-                        <div class="w-24 h-24 bg-purple-50 rounded-full flex items-center justify-center mx-auto mb-6 border border-purple-100">
+                        <div
+                            class="w-24 h-24 bg-purple-50 rounded-full flex items-center justify-center mx-auto mb-6 border border-purple-100">
                             <i class="fas fa-video text-4xl text-[#932F80]"></i>
                         </div>
                         <h3 class="text-xl font-bold text-[#2A1424] mb-2">Belum Ada Video</h3>
@@ -152,13 +158,15 @@
     @endif
 
     {{-- CTA Section --}}
-    <section class="py-24 bg-gradient-to-br from-[#1A0E17] via-[#2A1424] to-[#12080F] relative overflow-hidden border-t border-white/10">
+    <section
+        class="py-24 bg-gradient-to-br from-[#1A0E17] via-[#2A1424] to-[#12080F] relative overflow-hidden border-t border-white/10">
         @include('partials.awards-shapes')
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
-            <div class="max-w-3xl mx-auto text-center">
+            <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">Ikuti Kegiatan Kami!</h2>
-                <p class="text-gray-300 text-lg md:text-xl mb-10 leading-relaxed">Jangan lewatkan berbagai kegiatan menarik di sekolah kami.</p>
-                <div class="flex flex-wrap justify-center gap-6">
+                <p class="text-gray-300 text-lg md:text-xl mb-10 leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+                    Jangan lewatkan berbagai kegiatan menarik di sekolah kami.</p>
+                <div class="flex flex-wrap justify-center gap-6" data-aos="fade-up" data-aos-delay="400">
                     <a href="{{ route('news') }}"
                         class="inline-flex items-center gap-3 px-10 py-4 bg-white text-[#932F80] font-bold rounded-2xl hover:bg-gray-100 transition-all shadow-xl hover:-translate-y-1">
                         <i class="fas fa-newspaper text-lg"></i>

@@ -7,16 +7,16 @@
     <section class="pt-28 pb-16 bg-gradient-to-br from-[#1A0E17] via-[#2A1424] to-[#12080F] relative overflow-hidden">
         @include('partials.awards-shapes')
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
-            <div class="text-center max-w-3xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto" data-aos="fade-up">
                 <div
-                    class="inline-flex items-center gap-2 px-6 py-3 bg-[#932F80]/25 backdrop-blur-md rounded-full text-[#F3DCEB] text-sm font-semibold mb-6 border border-[#932F80]/50 shadow-glow">
+                    class="inline-flex items-center gap-2 px-6 py-3 bg-[#932F80]/25 backdrop-blur-md rounded-full text-[#F3DCEB] text-sm font-semibold mb-6 border border-[#932F80]/50 shadow-glow" data-aos="fade-down" data-aos-delay="200">
                     <i class="fas fa-newspaper animate-bounce"></i>
                     <span>BERITA & ARTIKEL</span>
                 </div>
-                <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 tracking-wide drop-shadow-lg">
+                <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 tracking-wide drop-shadow-lg" data-aos="zoom-in" data-aos-delay="400">
                     Berita <span class="text-[#F3DCEB]">Terkini</span>
                 </h1>
-                <p class="text-gray-300 text-lg md:text-xl leading-relaxed">
+                <p class="text-gray-300 text-lg md:text-xl leading-relaxed" data-aos="fade-up" data-aos-delay="600">
                     Informasi terbaru seputar kegiatan, prestasi, dan perkembangan di
                     {{ $settings['school_name'] ?? 'SMK YAJ' }}
                 </p>
@@ -27,7 +27,7 @@
     {{-- Category Filter Pills (Standard Flow) --}}
     <section class="py-10 bg-white border-b border-gray-50">
         <div class="container mx-auto px-4 lg:px-8">
-            <div class="flex flex-wrap items-center justify-center gap-3">
+            <div class="flex flex-wrap items-center justify-center gap-3" data-aos="fade-up">
                 <a href="{{ route('news') }}"
                     class="px-5 py-2.5 rounded-xl font-bold text-xs tracking-widest transition-all duration-300 shadow-sm {{ !request('category') ? 'bg-[#932F80] text-white shadow-lg shadow-[#932F80]/30 scale-105' : 'bg-gray-50 text-gray-500 hover:bg-gray-100 hover:text-gray-900 border border-gray-100' }}">
                     SEMUA
@@ -35,9 +35,9 @@
                 @php
                     $categories = ['Kegiatan', 'Pengumuman', 'Prestasi', 'Workshop', 'Kunjungan'];
                 @endphp
-                @foreach($categories as $cat)
+                @foreach($categories as $index => $cat)
                     <a href="{{ route('news') }}?category={{ $cat }}"
-                        class="px-5 py-2.5 rounded-xl font-bold text-xs tracking-widest transition-all duration-300 shadow-sm {{ request('category') == $cat ? 'bg-[#932F80] text-white shadow-lg shadow-[#932F80]/30 scale-105' : 'bg-gray-50 text-gray-500 hover:bg-gray-100 hover:text-gray-900 border border-gray-100' }}">
+                        class="px-5 py-2.5 rounded-xl font-bold text-xs tracking-widest transition-all duration-300 shadow-sm {{ request('category') == $cat ? 'bg-[#932F80] text-white shadow-lg shadow-[#932F80]/30 scale-105' : 'bg-gray-50 text-gray-500 hover:bg-gray-100 hover:text-gray-900 border border-gray-100' }}" data-aos="fade-up" data-aos-delay="{{ 100 + ($index * 50) }}">
                         {{ strtoupper($cat) }}
                     </a>
                 @endforeach
@@ -104,7 +104,7 @@
                 </div>
 
                 <a href="{{ route('news.show', $featured->slug) }}"
-                    class="group block relative overflow-hidden rounded-[3rem] shadow-2xl hover:shadow-[#932F80]/20 transition-all duration-700 border border-white/5">
+                    class="group block relative overflow-hidden rounded-[3rem] shadow-2xl hover:shadow-[#932F80]/20 transition-all duration-700 border border-white/5" data-aos="zoom-in">
                     {{-- Background Image --}}
                     <div class="relative h-[550px] lg:h-[500px]">
                         @if($featured->image)
@@ -118,7 +118,7 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent"></div>
 
                         {{-- Content --}}
-                        <div class="absolute bottom-0 left-0 right-0 p-10 lg:p-16">
+                        <div class="absolute bottom-0 left-0 right-0 p-10 lg:p-16" data-aos="fade-up" data-aos-delay="400">
                             <div class="max-w-4xl">
                                 @if($featured->category)
                                     <span
@@ -181,9 +181,9 @@
 
             @if($news->count() > 0)
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    @foreach($news->skip(1) as $item)
+                    @foreach($news->skip(1) as $index => $item)
                         <article
-                            class="group bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-xl shadow-purple-900/5 hover:shadow-2xl hover:shadow-purple-900/10 hover:border-[#932F80]/30 transition-all duration-500 hover:-translate-y-2">
+                            class="group bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-xl shadow-purple-900/5 hover:shadow-2xl hover:shadow-purple-900/10 hover:border-[#932F80]/30 transition-all duration-500 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="{{ ($index % 3) * 150 }}">
                             {{-- Thumbnail --}}
                             <a href="{{ route('news.show', $item->slug) }}" class="block relative h-60 overflow-hidden">
                                 @if($item->image)
@@ -287,9 +287,9 @@
                     </div>
 
                     <div class="space-y-6">
-                        @foreach(\App\Models\Achievement::active()->ordered()->take(3)->get() as $achievement)
+                        @foreach(\App\Models\Achievement::active()->ordered()->take(3)->get() as $index => $achievement)
                             <div
-                                class="flex gap-6 p-6 bg-white rounded-3xl border border-gray-100 shadow-lg shadow-purple-900/5 hover:shadow-2xl hover:shadow-amber-500/10 hover:border-amber-500/50 transition-all duration-500 group transform hover:-translate-x-1">
+                                class="flex gap-6 p-6 bg-white rounded-3xl border border-gray-100 shadow-lg shadow-purple-900/5 hover:shadow-2xl hover:shadow-amber-500/10 hover:border-amber-500/50 transition-all duration-500 group transform hover:-translate-x-1" data-aos="fade-right" data-aos-delay="{{ $index * 150 }}">
                                 <div class="w-24 h-24 flex-shrink-0 rounded-2xl overflow-hidden bg-gray-100 border border-gray-200">
                                     @if($achievement->image)
                                         <img src="{{ asset('storage/' . $achievement->image) }}" alt="{{ $achievement->title }}"
@@ -339,8 +339,8 @@
                     </div>
 
                     <div class="grid grid-cols-3 gap-4">
-                        @foreach(\App\Models\Gallery::active()->photos()->ordered()->take(6)->get() as $gallery)
-                            <div class="aspect-square rounded-2xl overflow-hidden group relative border border-gray-100 cursor-pointer shadow-lg hover:shadow-purple-500/30 transition-all duration-500">
+                        @foreach(\App\Models\Gallery::active()->photos()->ordered()->take(6)->get() as $index => $gallery)
+                            <div class="aspect-square rounded-2xl overflow-hidden group relative border border-gray-100 cursor-pointer shadow-lg hover:shadow-purple-500/30 transition-all duration-500" data-aos="zoom-in" data-aos-delay="{{ $index * 100 }}">
                                 <img src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->title ?? 'Galeri' }}"
                                     class="w-full h-full object-cover group-hover:scale-125 transition-transform duration-1000"
                                     onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=300'">

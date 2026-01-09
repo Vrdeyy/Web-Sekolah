@@ -7,16 +7,17 @@
     <section class="pt-28 pb-16 bg-gradient-to-br from-[#1A0E17] via-[#2A1424] to-[#12080F] relative overflow-hidden">
         @include('partials.awards-shapes')
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
-            <div class="text-center max-w-3xl mx-auto">
-                <div
-                    class="inline-flex items-center gap-2 px-6 py-3 bg-[#932F80]/25 backdrop-blur-md rounded-full text-[#F3DCEB] text-sm font-semibold mb-6 border border-[#932F80]/50 shadow-glow">
+            <div class="text-center max-w-3xl mx-auto" data-aos="fade-up">
+                <div class="inline-flex items-center gap-2 px-6 py-3 bg-[#932F80]/25 backdrop-blur-md rounded-full text-[#F3DCEB] text-sm font-semibold mb-6 border border-[#932F80]/50 shadow-glow"
+                    data-aos="fade-down" data-aos-delay="200">
                     <i class="fas fa-trophy animate-bounce"></i>
                     <span>PRESTASI SISWA</span>
                 </div>
-                <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 tracking-wide drop-shadow-lg">
+                <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 tracking-wide drop-shadow-lg"
+                    data-aos="zoom-in" data-aos-delay="400">
                     Prestasi <span class="text-[#F3DCEB]">Membanggakan</span>
                 </h1>
-                <p class="text-gray-300 text-lg md:text-xl leading-relaxed">
+                <p class="text-gray-300 text-lg md:text-xl leading-relaxed" data-aos="fade-up" data-aos-delay="600">
                     Berbagai prestasi yang telah diraih oleh siswa-siswi {{ $settings['school_name'] ?? 'SMK YAJ' }} di
                     berbagai bidang
                 </p>
@@ -27,7 +28,7 @@
     {{-- Filter Section --}}
     <section class="py-8 bg-white border-b border-gray-50">
         <div class="container mx-auto px-4 lg:px-8">
-            <div class="flex flex-wrap items-center justify-between gap-4">
+            <div class="flex flex-wrap items-center justify-between gap-4" data-aos="fade-right">
                 {{-- Level Filter --}}
                 <div class="flex flex-wrap gap-2">
                     <a href="{{ route('achievements') }}"
@@ -43,7 +44,7 @@
                 </div>
 
                 {{-- Stats --}}
-                <div class="text-gray-500 text-sm">
+                <div class="text-gray-500 text-sm" data-aos="fade-left">
                     <span class="font-semibold text-[#932F80]">{{ $achievements->total() ?? $achievements->count() }}</span>
                     Prestasi
                 </div>
@@ -56,9 +57,10 @@
         <div class="container mx-auto px-4 lg:px-8">
             @if($achievements->count() > 0)
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    @foreach($achievements as $achievement)
+                    @foreach($achievements as $index => $achievement)
                         <article
-                            class="group bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-lg shadow-purple-900/5 hover:shadow-2xl hover:shadow-purple-900/10 hover:border-[#932F80]/30 transition-all duration-300 hover:-translate-y-2">
+                            class="group bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-lg shadow-purple-900/5 hover:shadow-2xl hover:shadow-purple-900/10 hover:border-[#932F80]/30 transition-all duration-300 hover:-translate-y-2"
+                            data-aos="fade-up" data-aos-delay="{{ ($index % 3) * 150 }}">
                             {{-- Image --}}
                             <div class="relative h-52 overflow-hidden bg-gray-100">
                                 @if($achievement->image)
@@ -93,31 +95,39 @@
 
                             {{-- Content --}}
                             <div class="p-6">
-                                <h3
-                                    class="text-lg font-bold text-[#2A1424] mb-3 line-clamp-2 group-hover:text-[#932F80] transition-colors">
+                                <h3 class="text-xl font-bold text-[#2A1424] mb-3 group-hover:text-[#932F80] transition-colors">
                                     {{ $achievement->title }}
                                 </h3>
 
                                 @if($achievement->student_name)
-                                    <div class="flex items-center gap-3 mb-4">
-                                        <div
-                                            class="w-10 h-10 bg-purple-50 rounded-full flex items-center justify-center border border-purple-100">
-                                            <i class="fas fa-user-graduate text-[#932F80]"></i>
-                                        </div>
-                                        <div>
-                                            <p class="font-medium text-gray-800">{{ $achievement->student_name }}</p>
-                                            @if($achievement->year)
-                                                <p class="text-sm text-gray-500">Tahun {{ $achievement->year }}</p>
-                                            @endif
-                                        </div>
-                                    </div>
+                                    <p class="text-[#932F80] text-xs font-bold uppercase tracking-wider mb-2">
+                                        {{ $achievement->student_name }}
+                                        @if($achievement->year)
+                                            <span class="text-gray-400 font-medium normal-case ml-1">({{ $achievement->year }})</span>
+                                        @endif
+                                    </p>
                                 @endif
 
                                 @if($achievement->description)
-                                    <p class="text-gray-500 text-sm line-clamp-2">
+                                    <p class="text-gray-500 text-sm mb-6 line-clamp-3 leading-relaxed">
                                         {{ strip_tags($achievement->description) }}
                                     </p>
                                 @endif
+
+                                {{-- Footer --}}
+                                <div class="flex items-center justify-between pt-5 border-t border-gray-100">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-8 h-8 bg-purple-50 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-medal text-[#932F80] text-xs"></i>
+                                        </div>
+                                        <span class="text-sm text-gray-500">{{ $achievement->rank ?? 'Prestasi' }}</span>
+                                    </div>
+                                    <a href="{{ route('achievement.show', $achievement->slug) }}"
+                                        class="inline-flex items-center gap-2 text-[#932F80] font-semibold text-sm hover:gap-3 transition-all cursor-pointer">
+                                        Lihat Detail
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
                             </div>
                         </article>
                     @endforeach
@@ -150,11 +160,12 @@
     <section class="py-16 bg-gradient-to-br from-[#1A0E17] via-[#2A1424] to-[#12080F] relative overflow-hidden">
         @include('partials.awards-shapes')
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
-            <div class="max-w-3xl mx-auto text-center">
+            <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">Raih Prestasi Bersama Kami!</h2>
-                <p class="text-gray-300 text-lg mb-8">Bergabunglah dan jadilah bagian dari generasi berprestasi di sekolah
+                <p class="text-gray-300 text-lg mb-8" data-aos="fade-up" data-aos-delay="200">Bergabunglah dan jadilah
+                    bagian dari generasi berprestasi di sekolah
                     kami.</p>
-                <div class="flex flex-wrap justify-center gap-4">
+                <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="400">
                     @if(($settings['ppdb_active'] ?? false))
                         <a href="{{ $settings['ppdb_url'] ?? '#' }}" target="_blank"
                             class="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#932F80] font-bold rounded-xl hover:bg-gray-100 transition-colors shadow-lg">
