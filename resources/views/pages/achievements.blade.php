@@ -61,90 +61,91 @@
             @if($achievements->count() > 0)
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                     @foreach($achievements as $index => $achievement)
-                        <article
-                            class="group bg-white rounded-[2.5rem] overflow-hidden border border-[#8C51A5]/10 shadow-xl shadow-[#612F73]/5 hover:shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-500 hover:-translate-y-2"
-                            data-aos="fade-up" data-aos-delay="{{ ($index % 3) * 150 }}">
-                            {{-- Image --}}
-                            <div class="relative h-64 overflow-hidden bg-gray-50">
-                                @if($achievement->image)
-                                    <img src="{{ asset('storage/' . $achievement->image) }}" alt="{{ $achievement->title }}"
-                                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                                @else
-                                    <div
-                                        class="w-full h-full bg-gradient-to-br from-[#F0E7F8] to-white flex items-center justify-center">
-                                        <i class="fas fa-trophy text-6xl text-[#D668EA]/20"></i>
-                                    </div>
-                                @endif
-
-                                {{-- Overlay Gradient --}}
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-[#612F73]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                </div>
-
-                                {{-- Level Badge --}}
-                                @if($achievement->level)
-                                    <div class="absolute top-6 left-6">
-                                        <span
-                                            class="px-4 py-2 bg-[#8C51A5] text-white text-[10px] font-black rounded-xl shadow-lg uppercase tracking-widest">
-                                            {{ $achievement->level }}
-                                        </span>
-                                    </div>
-                                @endif
-
-                                {{-- Rank Badge --}}
-                                @if($achievement->rank)
-                                    <div class="absolute top-6 right-6">
-                                        <span
-                                            class="px-4 py-2 bg-white/90 backdrop-blur-md text-[#612F73] text-[10px] font-black rounded-xl shadow-lg border border-[#8C51A5]/10 uppercase tracking-widest">
-                                            {{ $achievement->rank }}
-                                        </span>
-                                    </div>
-                                @endif
-                            </div>
-
-                            {{-- Content --}}
-                            <div class="p-8 md:p-10">
-                                <h3
-                                    class="text-xl md:text-2xl font-black text-[#612F73] mb-4 group-hover:text-[#8C51A5] transition-colors line-clamp-2 leading-tight">
-                                    {{ $achievement->title }}
-                                </h3>
-
-                                @if($achievement->student_name)
-                                    <div class="flex items-center gap-2 mb-4">
-                                        <span class="w-8 h-[2px] bg-[#F8CB62]"></span>
-                                        <p class="text-[#8C51A5] text-[10px] font-black uppercase tracking-[0.2em]">
-                                            {{ $achievement->student_name }}
-                                            @if($achievement->year)
-                                                <span class="text-gray-400 font-bold ml-1">• {{ $achievement->year }}</span>
-                                            @endif
-                                        </p>
-                                    </div>
-                                @endif
-
-                                @if($achievement->description)
-                                    <p class="text-gray-500 text-sm mb-8 line-clamp-3 leading-relaxed font-medium">
-                                        {{ strip_tags($achievement->description) }}
-                                    </p>
-                                @endif
-
-                                {{-- Footer --}}
-                                <div class="flex items-center justify-between pt-6 border-t border-gray-50">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 bg-[#8C51A5]/10 rounded-xl flex items-center justify-center">
-                                            <i class="fas fa-award text-[#8C51A5] text-sm"></i>
+                        <div data-aos="fade-up" data-aos-delay="{{ ($index % 3) * 150 }}">
+                            <article
+                                class="group h-full bg-white rounded-[2.5rem] overflow-hidden border border-[#8C51A5]/10 shadow-xl shadow-[#612F73]/5 hover:shadow-2xl hover:border-[#8C51A5]/30 transition-all duration-500 ease-in-out hover:-translate-y-2 hover:scale-[1.01]">
+                                {{-- Image --}}
+                                <div class="relative h-64 overflow-hidden bg-gray-50">
+                                    @if($achievement->image)
+                                        <img src="{{ asset('storage/' . $achievement->image) }}" alt="{{ $achievement->title }}"
+                                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                                    @else
+                                        <div
+                                            class="w-full h-full bg-gradient-to-br from-[#F0E7F8] to-white flex items-center justify-center">
+                                            <i class="fas fa-trophy text-6xl text-[#D668EA]/20"></i>
                                         </div>
-                                        <span
-                                            class="text-xs font-black text-[#612F73] uppercase tracking-widest">{{ $achievement->rank ?? 'Prestasi' }}</span>
+                                    @endif
+    
+                                    {{-- Overlay Gradient --}}
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-t from-[#612F73]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                     </div>
-                                    <a href="{{ route('achievement.show', $achievement->slug) }}"
-                                        class="group/link inline-flex items-center gap-2 text-[#8C51A5] font-black text-[10px] uppercase tracking-[0.2em] hover:text-[#612F73] transition-all">
-                                        DETAIL
-                                        <i
-                                            class="fas fa-chevron-right text-[8px] text-[#F8CB62] group-hover/link:translate-x-1 transition-transform"></i>
-                                    </a>
+    
+                                    {{-- Level Badge --}}
+                                    @if($achievement->level)
+                                        <div class="absolute top-6 left-6">
+                                            <span
+                                                class="px-4 py-2 bg-[#8C51A5] text-white text-[10px] font-black rounded-xl shadow-lg uppercase tracking-widest">
+                                                {{ $achievement->level }}
+                                            </span>
+                                        </div>
+                                    @endif
+    
+                                    {{-- Rank Badge --}}
+                                    @if($achievement->rank)
+                                        <div class="absolute top-6 right-6">
+                                            <span
+                                                class="px-4 py-2 bg-white/90 backdrop-blur-md text-[#612F73] text-[10px] font-black rounded-xl shadow-lg border border-[#8C51A5]/10 uppercase tracking-widest">
+                                                {{ $achievement->rank }}
+                                            </span>
+                                        </div>
+                                    @endif
                                 </div>
-                            </div>
-                        </article>
+    
+                                {{-- Content --}}
+                                <div class="p-8 md:p-10">
+                                    <h3
+                                        class="text-xl md:text-2xl font-black text-[#612F73] mb-4 group-hover:text-[#8C51A5] transition-colors line-clamp-2 leading-tight">
+                                        {{ $achievement->title }}
+                                    </h3>
+    
+                                    @if($achievement->student_name)
+                                        <div class="flex items-center gap-2 mb-4">
+                                            <span class="w-8 h-[2px] bg-[#F8CB62]"></span>
+                                            <p class="text-[#8C51A5] text-[10px] font-black uppercase tracking-[0.2em]">
+                                                {{ $achievement->student_name }}
+                                                @if($achievement->year)
+                                                    <span class="text-gray-400 font-bold ml-1">• {{ $achievement->year }}</span>
+                                                @endif
+                                            </p>
+                                        </div>
+                                    @endif
+    
+                                    @if($achievement->description)
+                                        <p class="text-gray-500 text-sm mb-8 line-clamp-3 leading-relaxed font-medium">
+                                            {{ strip_tags($achievement->description) }}
+                                        </p>
+                                    @endif
+    
+                                    {{-- Footer --}}
+                                    <div class="flex items-center justify-between pt-6 border-t border-gray-50">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 bg-[#8C51A5]/10 rounded-xl flex items-center justify-center">
+                                                <i class="fas fa-award text-[#8C51A5] text-sm"></i>
+                                            </div>
+                                            <span
+                                                class="text-xs font-black text-[#612F73] uppercase tracking-widest">{{ $achievement->rank ?? 'Prestasi' }}</span>
+                                        </div>
+                                        <a href="{{ route('achievement.show', $achievement->slug) }}"
+                                            class="group/link inline-flex items-center gap-2 text-[#8C51A5] font-black text-[10px] uppercase tracking-[0.2em] hover:text-[#612F73] transition-all duration-300 ease-in-out">
+                                            DETAIL
+                                            <i
+                                                class="fas fa-chevron-right text-[8px] text-[#F8CB62] group-hover/link:translate-x-1 transition-transform duration-300 ease-in-out"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
                     @endforeach
                 </div>
 
@@ -164,7 +165,7 @@
                     <p class="text-gray-500 mb-10 max-w-md mx-auto font-medium">Prestasi yang Anda cari belum tersedia dalam
                         kategori ini. Silakan cek kategori lain atau kembali lagi nanti.</p>
                     <a href="{{ route('achievements') }}"
-                        class="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-[#612F73] to-[#8C51A5] text-white font-black rounded-2xl hover:shadow-premium-lg transition-all uppercase text-[10px] tracking-widest">
+                        class="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-[#612F73] to-[#8C51A5] text-white font-black rounded-2xl hover:shadow-premium-lg transition-all duration-500 hover:-translate-y-1 transform uppercase text-[10px] tracking-widest">
                         <i class="fas fa-arrow-left"></i>
                         LIHAT SEMUA PRESTASI
                     </a>
@@ -183,19 +184,23 @@
                 <p class="text-gray-400 text-lg md:text-xl mb-12 font-medium" data-aos="fade-up" data-aos-delay="200">
                     Jadilah bagian dari komunitas pembelajar yang dinamis dan raih prestasi membanggakan bersama kami.
                 </p>
-                <div class="flex flex-wrap justify-center gap-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="flex flex-wrap justify-center gap-6">
                     @if(($settings['ppdb_active'] ?? false))
-                        <a href="{{ $settings['ppdb_url'] ?? '#' }}" target="_blank"
-                            class="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-[#F8CB62] to-[#f5b82e] text-[#612F73] font-black rounded-2xl hover:shadow-golden transition-all uppercase text-xs tracking-widest">
-                            <i class="fas fa-user-plus text-lg"></i>
-                            DAFTAR PPDB SEKARANG
-                        </a>
+                        <div data-aos="fade-up" data-aos-delay="400">
+                            <a href="{{ $settings['ppdb_url'] ?? '#' }}" target="_blank"
+                                class="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-[#F8CB62] to-[#f5b82e] text-[#612F73] font-black rounded-2xl hover:shadow-golden transition-all duration-500 hover:-translate-y-1 transform uppercase text-xs tracking-widest">
+                                <i class="fas fa-user-plus text-lg"></i>
+                                DAFTAR PPDB SEKARANG
+                            </a>
+                        </div>
                     @endif
-                    <a href="{{ route('news') }}"
-                        class="inline-flex items-center gap-3 px-10 py-5 bg-white/5 backdrop-blur-md text-white font-black rounded-2xl border border-white/10 hover:bg-white/10 transition-all uppercase text-xs tracking-widest">
-                        <i class="fas fa-newspaper text-lg text-[#F8CB62]"></i>
-                        BACA KISAH SUKSES
-                    </a>
+                    <div data-aos="fade-up" data-aos-delay="{{ ($settings['ppdb_active'] ?? false) ? 500 : 400 }}">
+                        <a href="{{ route('news') }}"
+                            class="inline-flex items-center gap-3 px-10 py-5 bg-white/5 backdrop-blur-md text-white font-black rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-500 hover:-translate-y-1 transform uppercase text-xs tracking-widest">
+                            <i class="fas fa-newspaper text-lg text-[#F8CB62]"></i>
+                            BACA KISAH SUKSES
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

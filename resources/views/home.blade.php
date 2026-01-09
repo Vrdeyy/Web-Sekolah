@@ -65,11 +65,12 @@
                         <i class="fas fa-lightbulb"></i>
                     </div>
                 </div>
-                <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#8C51A5]/10 text-[#612F73] text-sm font-bold tracking-wide mt-28 lg:mt-36 border border-[#8C51A5]/20 shadow-sm" data-aos="fade-down" data-aos-delay="200">
-                    {{ $settings['hero_badge'] ?? '🎓 Pendidikan Digital' }}
+                <span class="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-[#8C51A5]/10 text-[#612F73] text-sm font-black tracking-wide mt-28 lg:mt-36 border border-[#8C51A5]/20 shadow-sm transition-all hover:bg-[#8C51A5]/20 hero-animate hero-fade-down" style="animation-delay: 200ms">
+                    <i class="fa-solid fa-award text-amber-500 scale-125"></i>
+                    <span>{{ $settings['hero_badge'] ?? 'Status Akreditasi A' }}</span>
                 </span>
 
-                <h1 class="text-4xl lg:text-5xl xl:text-6xl font-black text-[#612F73] leading-tight" data-aos="fade-up" data-aos-delay="400">
+                <h1 class="text-4xl lg:text-5xl xl:text-6xl font-black text-[#612F73] leading-tight hero-animate hero-fade-up" style="animation-delay: 500ms">
                     @php
                         $title = $settings['hero_title'] ?? 'Pendidikan Online Serasa Kelas Nyata';
                         // Split title to colorize part of it if it's long enough or just use brand color for the last words
@@ -81,12 +82,12 @@
                     <span class="text-[#8C51A5] bg-gradient-to-r from-[#612F73] to-[#D668EA] bg-clip-text text-transparent">{{ implode(' ', $lastThree) }}</span>
                 </h1>
 
-                <p class="text-gray-600 max-w-xl text-lg" data-aos="fade-up" data-aos-delay="600">
+                <p class="text-gray-600 max-w-xl text-lg hero-animate hero-fade-up" style="animation-delay: 750ms">
                     {{ $settings['hero_description'] ?? 'Sistem pembelajaran sekolah modern dengan kelas interaktif, materi terstruktur, dan pendampingan guru profesional.' }}
                 </p>
 
                 {{-- CTA --}}
-                <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-4" data-aos="fade-up" data-aos-delay="800">
+                <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-4 hero-animate hero-fade-up" style="animation-delay: 950ms">
                     <a href="{{ $settings['ppdb_url'] ?? '#' }}" target="_blank"
                         class="px-8 py-4 rounded-2xl 
                             bg-gradient-to-r from-[#F8CB62] to-[#f5b82e] text-[#612F73] font-black shadow-xl shadow-[#F8CB62]/20
@@ -99,13 +100,14 @@
                         class="px-8 py-4 rounded-2xl 
                             bg-white border-2 border-[#8C51A5]/10 text-[#8C51A5] font-black 
                             hover:bg-[#F0E7F8] hover:border-[#8C51A5]/30
-                            transform hover:-translate-y-1 transition-all duration-500 shadow-sm">
+                            transform hover:-translate-y-1 transition-all duration-500 ease-in-out shadow-sm">
                         {{ $settings['hero_secondary_text'] ?? 'Profil Sekolah' }}
                     </a>
                 </div>
 
                 {{-- Stats --}}
-                <div class="flex flex-wrap justify-center lg:justify-start gap-6 lg:gap-10 pt-8 border-t border-[#8C51A5]/10" data-aos="fade-up" data-aos-delay="400">
+                <div class="flex flex-wrap justify-center lg:justify-start gap-6 lg:gap-10 pt-8 border-t border-[#8C51A5]/10 hero-animate hero-fade-up" 
+                    style="animation-delay: 600ms">
                     @php
                         $studentVal = $students_stat ? $students_stat->value : (int)filter_var($settings['hero_stats_1_value'] ?? '1500', FILTER_SANITIZE_NUMBER_INT);
                         $studentSuffix = $students_stat ? $students_stat->suffix : '+';
@@ -123,7 +125,9 @@
                         <p class="text-[#8C51A5]/60 text-[10px] font-black uppercase tracking-widest">{{ $settings['hero_stats_2_label'] ?? 'Guru Profesional' }}</p>
                     </div>
                     <div class="text-center lg:text-left">
-                        <h3 class="text-3xl font-black text-[#F8CB62] leading-none mb-1">{{ $settings['hero_stats_3_value'] ?? '98%' }}</h3>
+                        <h3 class="text-3xl font-black text-[#F8CB62] leading-none mb-1">
+                            <span class="counter" data-target="{{ (int)filter_var($settings['hero_stats_3_value'] ?? '98', FILTER_SANITIZE_NUMBER_INT) }}">0</span>%
+                        </h3>
                         <p class="text-[#8C51A5]/60 text-[10px] font-black uppercase tracking-widest">{{ $settings['hero_stats_3_label'] ?? 'Kelulusan' }}</p>
                     </div>
                 </div>
@@ -133,7 +137,7 @@
             <div class="relative flex justify-center lg:justify-end min-h-[450px] md:min-h-[550px] lg:min-h-[700px] mt-2 lg:mt-0">
 
     {{-- Dynamic Educational Collage Background --}}
-    <div class="absolute inset-0 z-0 pointer-events-none overflow-visible flex items-center justify-center" data-aos="zoom-in" data-aos-duration="1500">
+    <div class="absolute inset-0 z-0 pointer-events-none overflow-visible flex items-center justify-center hero-animate hero-zoom-in" style="animation-delay: 400ms">
         
         {{-- Soft Glow --}}
         <div class="absolute w-[600px] lg:w-[900px] h-[600px] lg:h-[900px] bg-[#8C51A5]/10 rounded-full blur-[120px]"></div>
@@ -215,15 +219,15 @@
             @endforelse
         </div>
 
-        {{-- Glass Floating Badge (Akreditasi) --}}
+        {{-- Glass Floating Badge (Pendidikan Digital) --}}
         <div class="absolute bottom-16 md:bottom-24 right-0 md:right-10 lg:right-20 z-20 animate-float-slow scale-90 md:scale-100">
             <div class="bg-white/10 backdrop-blur-xl border border-white/20 p-5 rounded-3xl shadow-2xl flex items-center gap-4">
                 <div class="w-12 h-12 bg-gradient-to-tr from-[#8C51A5] to-[#612F73] rounded-2xl flex items-center justify-center shadow-lg">
                     <i class="fas fa-user-graduate text-white"></i>
                 </div>
                 <div>
-                    <div class="text-[10px] font-black text-[#F8CB62] uppercase tracking-widest">Status</div>
-                    <div class="text-white font-bold leading-tight">Akreditasi A</div>
+                    <div class="text-[10px] font-black text-[#F8CB62] uppercase tracking-widest">Pendidikan</div>
+                    <div class="text-white font-bold leading-tight">🎓 Digital</div>
                 </div>
             </div>
         </div>
@@ -444,14 +448,14 @@
                         }
                     @endphp
 
-                    <div class="group relative {{ $spanClass }} transition-all duration-700" data-aos="fade-up">
+                    <div class="group relative {{ $spanClass }}" data-aos="fade-up">
                         <a href="{{ route('major.show', $major->slug) }}"
-                           class="block relative w-full {{ $heightClass }} rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-purple-50 shadow-xl hover:shadow-2xl transition-all duration-700 transform group-hover:-translate-y-3">
+                           class="block relative w-full {{ $heightClass }} rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-purple-50 shadow-xl hover:shadow-2xl transition-all duration-500 ease-in-out transform group-hover:-translate-y-3">
 
                             {{-- Background Image --}}
                             @if($major->image)
                                 <img src="{{ asset('storage/' . $major->image) }}" alt="{{ $major->name }}"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
                             @else
                                 <div class="w-full h-full bg-gradient-to-br from-[#612F73] to-[#8C51A5] flex items-center justify-center">
                                     <i class="fas fa-graduation-cap text-7xl text-white/20"></i>
@@ -469,7 +473,7 @@
                             </div>
 
                             {{-- Floating Icon Decor --}}
-                            <div class="absolute top-6 right-6 text-white/20 text-3xl group-hover:scale-110 group-hover:text-white/40 transition-all">
+                            <div class="absolute top-6 right-6 text-white/20 text-3xl group-hover:scale-110 group-hover:text-white/40 transition-all duration-500 ease-in-out">
                                 <i class="fas fa-arrow-up-right-from-square"></i>
                             </div>
 
@@ -484,7 +488,7 @@
                                     {{ $major->name }}
                                 </h3>
 
-                                <p class="text-gray-300 text-sm md:text-base leading-relaxed line-clamp-2 max-w-xl group-hover:text-white transition-colors">
+                                <p class="text-gray-300 text-sm md:text-base leading-relaxed line-clamp-2 max-w-xl group-hover:text-white transition-colors duration-500 ease-in-out">
                                     {{ $major->short_description }}
                                 </p>
                             </div>
@@ -499,7 +503,7 @@
             {{-- FOOTER CTA --}}
             <div class="text-center mt-24" data-aos="fade-up">
                 <a href="{{ route('majors') }}"
-                   class="inline-flex items-center gap-4 px-12 py-5 bg-[#8C51A5] text-white font-black text-xs uppercase tracking-[0.2em] rounded-2xl shadow-xl shadow-[#8C51A5]/20 hover:bg-[#612F73] transform hover:scale-105 transition-all duration-300 group">
+                   class="inline-flex items-center gap-4 px-12 py-5 bg-[#8C51A5] text-white font-black text-xs uppercase tracking-[0.2em] rounded-2xl shadow-xl shadow-[#8C51A5]/20 hover:bg-[#612F73] transform hover:scale-105 transition-all duration-500 ease-in-out group">
                     <i class="fas fa-th-large group-hover:rotate-45 transition-transform"></i>
                     Semua Program Keahlian
                 </a>
@@ -579,10 +583,10 @@
 
                                 @if($award->image)
                                     <img src="{{ asset('storage/' . $award->image) }}" alt="{{ $award->title }}"
-                                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000">
+                                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out">
                                 @else
                                     <div class="w-full h-full bg-gradient-to-br from-[#612F73]/50 to-[#8C51A5]/50 flex items-center justify-center">
-                                        <i class="fas fa-award text-5xl text-[#F8CB62]/50 group-hover:text-[#F8CB62] transition-colors"></i>
+                                        <i class="fas fa-award text-5xl text-[#F8CB62]/50 group-hover:text-[#F8CB62] transition-colors duration-500 ease-in-out"></i>
                                     </div>
                                 @endif
                             </div>
@@ -597,7 +601,7 @@
                                     </div>
                                 @endif
 
-                                <h4 class="font-bold text-white text-lg leading-snug mb-2 group-hover:text-[#F8CB62] transition-colors">
+                                <h4 class="text-white font-black text-xl mb-3 leading-tight group-hover:text-[#F8CB62] transition-colors duration-500 ease-in-out">
                                     {{ $award->title }}
                                 </h4>
                             </div>
@@ -683,14 +687,14 @@
                         }
                     @endphp
 
-                    <div class="group relative {{ $spanClass }} transition-all duration-700" data-aos="fade-up">
+                    <div class="group relative {{ $spanClass }}" data-aos="fade-up">
                         <a href="{{ route('news.show', $item->slug) }}"
-                           class="block relative w-full {{ $heightClass }} rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-purple-50 shadow-xl hover:shadow-2xl transition-all duration-700 transform group-hover:-translate-y-3">
+                           class="block relative w-full {{ $heightClass }} rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-purple-50 shadow-xl hover:shadow-2xl transition-all duration-500 ease-in-out transform group-hover:-translate-y-3">
 
                             {{-- Background Image --}}
                             @if($item->image)
                                 <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
                             @else
                                 <div class="w-full h-full bg-gradient-to-br from-[#612F73] to-[#8C51A5] flex items-center justify-center">
                                     <i class="fas fa-newspaper text-7xl text-white/20"></i>
@@ -710,7 +714,7 @@
                             @endif
 
                             {{-- Floating Icon Decor --}}
-                            <div class="absolute top-6 right-6 text-white/20 text-3xl group-hover:scale-110 group-hover:text-white/40 transition-all">
+                            <div class="absolute top-6 right-6 text-white/20 text-3xl group-hover:scale-110 group-hover:text-white/40 transition-all duration-500 ease-in-out">
                                 <i class="fas fa-arrow-up-right-from-square"></i>
                             </div>
 
@@ -727,7 +731,7 @@
                                     {{ $item->title }}
                                 </h3>
 
-                                <p class="text-gray-300 text-sm md:text-base leading-relaxed line-clamp-2 max-w-xl group-hover:text-white transition-colors">
+                                <p class="text-gray-300 text-sm md:text-base leading-relaxed line-clamp-2 max-w-xl group-hover:text-white transition-colors duration-500 ease-in-out">
                                     {{ Str::limit(strip_tags($item->content), 120) }}
                                 </p>
                             </div>
@@ -743,7 +747,7 @@
             <div class="text-center mt-24" data-aos="fade-up">
                 <a href="{{ route('news') }}"
                    class="inline-flex items-center gap-4 px-12 py-5 bg-[#8C51A5]/10 text-[#8C51A5] font-black text-[10px] uppercase tracking-[0.2em] rounded-2xl border border-[#8C51A5]/20 hover:bg-[#8C51A5] hover:text-white transition-all duration-500 group">
-                    <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                    <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform duration-300 ease-in-out"></i>
                     Lihat Portofolio Berita
                 </a>
             </div>
@@ -790,10 +794,36 @@
     {{-- Business Centers Section --}}
     @if($businessCenters->count() > 0)
         <section class="py-24 bg-[#F0E7F8]/30 relative overflow-hidden">
-            {{-- Decorative Background Elements --}}
+            {{-- Decorative Background Elements - ENRICHED --}}
             <div class="absolute inset-0 pointer-events-none">
-                <div class="absolute top-1/4 -left-32 w-96 h-96 bg-[#8C51A5]/5 rounded-full blur-[100px]"></div>
-                <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-[#612F73]/5 rounded-full blur-[100px]"></div>
+                <div class="absolute top-1/4 -left-32 w-96 h-96 bg-[#8C51A5]/10 rounded-full blur-[100px] animate-pulse-slow"></div>
+                <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-[#612F73]/10 rounded-full blur-[100px] animate-pulse-slow-delayed"></div>
+                
+                {{-- Floating Icons for Business/Commerce Theme --}}
+                <div class="absolute top-[8%] right-[15%] text-[#8C51A5]/10 text-6xl animate-float-slow opacity-20"><i class="fas fa-handshake"></i></div>
+                <div class="absolute bottom-[12%] left-[8%] text-[#612F73]/10 text-8xl animate-float-slow-delayed opacity-10"><i class="fas fa-store"></i></div>
+                <div class="absolute top-1/2 right-[8%] text-[#8C51A5]/5 text-[15rem] animate-pulse opacity-5"><i class="fas fa-chart-bar text-[#F8CB62]"></i></div>
+                <div class="absolute bottom-[25%] right-[18%] text-[#612F73]/10 text-5xl animate-float-slow rotate-12 opacity-20"><i class="fas fa-calculator"></i></div>
+                <div class="absolute top-[18%] left-[12%] text-[#8C51A5]/5 text-7xl animate-float-slow-delayed -rotate-12 opacity-15"><i class="fas fa-wallet text-[#F8CB62]"></i></div>
+                <div class="absolute top-[40%] left-[5%] text-[#8C51A5]/10 text-5xl animate-spin-slow opacity-15"><i class="fas fa-coins text-[#F8CB62]"></i></div>
+                <div class="absolute bottom-[30%] left-[25%] text-[#612F73]/5 text-7xl animate-pulse opacity-10"><i class="fas fa-tags"></i></div>
+                <div class="absolute top-[5%] left-[40%] text-[#8C51A5]/10 text-4xl animate-float-slow opacity-10"><i class="fas fa-boxes"></i></div>
+                <div class="absolute bottom-[5%] right-[40%] text-[#612F73]/10 text-4xl animate-float-slow-delayed opacity-10"><i class="fas fa-receipt"></i></div>
+
+                {{-- Geometric Accents --}}
+                <div class="absolute top-12 left-1/4 text-[#8C51A5]/20 text-4xl animate-spin-slow-reverse">+</div>
+                <div class="absolute bottom-32 right-1/4 text-[#8C51A5]/20 text-3xl animate-spin-slow">×</div>
+                <div class="absolute top-1/3 left-10 text-[#8C51A5]/10 text-5xl font-black rotate-12 select-none">Σ</div>
+                <div class="absolute bottom-1/4 right-5 text-[#612F73]/10 text-6xl font-black -rotate-12 select-none font-mono">{}</div>
+                
+                {{-- Decorative Shapes --}}
+                <div class="absolute top-[60%] right-[12%] w-24 h-24 border-4 border-[#8C51A5]/5 rounded-3xl rotate-45 animate-float-slow"></div>
+                <div class="absolute top-[20%] left-[30%] w-16 h-16 border-2 border-[#8C51A5]/5 rounded-full animate-pulse"></div>
+                <div class="absolute bottom-[40%] right-[30%] w-20 h-20 bg-[#8C51A5]/5 rounded-[2rem] rotate-12 animate-float-slow-delayed"></div>
+                <div class="absolute top-[10%] left-1/2 w-40 h-1 bg-gradient-to-r from-transparent via-[#8C51A5]/10 to-transparent rotate-45"></div>
+                
+                {{-- Subtle Grid Pattern --}}
+                <div class="absolute inset-0 bg-[radial-gradient(#8C51A508_1px,transparent_1px)] bg-[size:40px_40px]"></div>
             </div>
  
             <div class="container mx-auto px-4 lg:px-8 relative z-10">
@@ -810,42 +840,44 @@
 
                 <div class="grid md:grid-cols-3 gap-8">
                     @foreach($businessCenters->take(3) as $bc)
-                        <article
-                            class="group bg-white rounded-[2.5rem] overflow-hidden border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/40 transition-all duration-700 ease-in-out hover:-translate-y-4 text-center p-10 hover:shadow-2xl" data-aos="fade-up" data-aos-delay="{{ $loop->index * 150 }}">
-                            {{-- Photo --}}
-                            <div class="relative mb-10">
-                                <div
-                                    class="w-full h-56 rounded-[2rem] overflow-hidden border-4 border-white shadow-xl group-hover:border-[#8C51A5]/20 transition-all duration-700 p-1 bg-gradient-to-br from-[#8C51A5]/5 to-transparent">
-                                    @if($bc->image)
-                                        <img src="{{ asset('storage/' . $bc->image) }}" alt="{{ $bc->name }}"
-                                            class="w-full h-full object-cover rounded-[1.75rem] group-hover:scale-110 transition-transform duration-1000 ease-in-out">
-                                    @else
-                                        <div
-                                            class="w-full h-full bg-[#F0E7F8] flex items-center justify-center rounded-[1.75rem]">
-                                            <i class="fas fa-store text-6xl text-[#8C51A5]/30"></i>
-                                        </div>
-                                    @endif
+                        <div data-aos="fade-up" data-aos-delay="{{ $loop->index * 150 }}">
+                            <article
+                                class="group h-full bg-white rounded-[2.5rem] overflow-hidden border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/40 transition-all duration-500 ease-in-out hover:-translate-y-3 hover:scale-[1.01] text-center p-10 hover:shadow-2xl">
+                                {{-- Photo --}}
+                                <div class="relative mb-10">
+                                    <div
+                                        class="w-full h-56 rounded-[2rem] overflow-hidden border-4 border-white shadow-xl group-hover:border-[#8C51A5]/20 transition-all duration-500 p-1 bg-gradient-to-br from-[#8C51A5]/5 to-transparent">
+                                        @if($bc->image)
+                                            <img src="{{ asset('storage/' . $bc->image) }}" alt="{{ $bc->name }}"
+                                                class="w-full h-full object-cover rounded-[1.75rem] group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                                        @else
+                                            <div
+                                                class="w-full h-full bg-[#F0E7F8] flex items-center justify-center rounded-[1.75rem]">
+                                                <i class="fas fa-store text-6xl text-[#8C51A5]/30"></i>
+                                            </div>
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
 
-                            {{-- Content --}}
-                            <div class="space-y-3">
-                                <h3 class="text-xl font-black text-[#612F73] group-hover:text-[#8C51A5] transition-colors leading-tight uppercase tracking-tight">
-                                    {{ $bc->name }}
-                                </h3>
- 
-                                <p class="text-gray-400 text-sm line-clamp-2 leading-relaxed font-medium">{{ $bc->short_description }}</p>
- 
-                                {{-- Action Button --}}
-                                <div class="mt-8 pt-8 border-t border-[#F0E7F8]">
-                                    <a href="{{ route('business-center.show', $bc->slug) }}"
-                                        class="inline-flex items-center gap-3 px-8 py-3 bg-[#8C51A5]/10 text-[#8C51A5] hover:bg-[#8C51A5] hover:text-white transition-all duration-500 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] border border-[#8C51A5]/20 group/btn shadow-sm">
-                                        <i class="fas fa-arrow-right text-[8px] group-hover/btn:translate-x-1 transition-transform"></i>
-                                        Selengkapnya
-                                    </a>
+                                {{-- Content --}}
+                                <div class="space-y-3">
+                                    <h3 class="text-xl font-black text-[#612F73] group-hover:text-[#8C51A5] transition-colors duration-500 ease-in-out leading-tight uppercase tracking-tight">
+                                        {{ $bc->name }}
+                                    </h3>
+    
+                                    <p class="text-gray-400 text-sm line-clamp-2 leading-relaxed font-medium">{{ $bc->short_description }}</p>
+    
+                                    {{-- Action Button --}}
+                                    <div class="mt-8 pt-8 border-t border-[#F0E7F8]">
+                                        <a href="{{ route('business-center.show', $bc->slug) }}"
+                                            class="inline-flex items-center gap-3 px-8 py-3 bg-[#8C51A5]/10 text-[#8C51A5] hover:bg-[#8C51A5] hover:text-white transition-all duration-500 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] border border-[#8C51A5]/20 group/btn shadow-sm">
+                                            <i class="fas fa-arrow-right text-[8px] group-hover/btn:translate-x-1 transition-transform"></i>
+                                            Selengkapnya
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        </article>
+                            </article>
+                        </div>
                     @endforeach
                 </div>
 
@@ -853,7 +885,7 @@
                     <a href="{{ route('business-centers') }}"
                         class="inline-flex items-center gap-4 px-12 py-5 
                         rounded-2xl
-                        bg-[#8C51A5] text-white font-black hover:bg-[#612F73] shadow-premium-lg hover:-translate-y-1 transform transition-all uppercase text-xs tracking-widest">
+                        bg-[#8C51A5] text-white font-black hover:bg-[#612F73] shadow-premium-lg hover:-translate-y-1 transform transition-all duration-500 ease-in-out uppercase text-xs tracking-widest">
                         <i class="fas fa-th-large text-xl text-[#F8CB62]"></i>
                         Eksplorasi Unit Bisnis
                     </a>
@@ -903,7 +935,7 @@
         @keyframes float-slow {
             0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
             33% { transform: translateY(-30px) translateX(10px) rotate(5deg); }
-            66% { transform: translateY(10px) translateX(-15px) rotate(-10deg); }
+            66% { transform: translateY(10px) translateX(-15px) rotate(10deg); }
         }
 
         @keyframes float-slow-delayed {
@@ -961,16 +993,60 @@
             opacity: 0;
             animation: fadeInUp 0.8s ease-out forwards;
         }
-
+ 
+        .hero-animate {
+            opacity: 0;
+            animation-fill-mode: forwards;
+            animation-duration: 1.2s;
+            animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+ 
+        .hero-fade-up {
+            animation-name: fadeInUp;
+        }
+ 
+        .hero-fade-down {
+            animation-name: fadeInDown;
+        }
+ 
+        .hero-zoom-in {
+            animation-name: heroZoomIn;
+            animation-duration: 1.8s;
+        }
+ 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(30px);
             }
-
+ 
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+ 
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+ 
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+ 
+        @keyframes heroZoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.92);
+            }
+ 
+            to {
+                opacity: 1;
+                transform: scale(1);
             }
         }
     </style>

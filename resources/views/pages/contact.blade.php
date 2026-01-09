@@ -30,77 +30,93 @@
                 {{-- Contact Cards --}}
                 <div class="space-y-8">
                     {{-- Address Card --}}
-                    <div class="bg-[#F0E7F8]/30 rounded-[2.5rem] p-8 border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-700 hover:-translate-y-2 group" data-aos="fade-right" data-aos-delay="100">
-                        <div class="flex items-start gap-6">
-                            <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg text-[#8C51A5] group-hover:bg-[#8C51A5] group-hover:text-white transition-all duration-500">
-                                <i class="fas fa-map-marked-alt text-2xl"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-black text-[#612F73] mb-3 uppercase tracking-tight">Alamat Sekolah</h3>
-                                <p class="text-gray-500 text-sm leading-relaxed font-medium">
-                                    {{ $settings['address'] ?? 'Jl. Raya Bogor KM. 31, Cimpaeun, Tapos, Kota Depok' }}
-                                </p>
+                    <div data-aos="fade-right" data-aos-delay="100">
+                        <div class="bg-[#F0E7F8]/30 rounded-[2.5rem] p-8 border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-500 ease-in-out hover:-translate-y-2 group">
+                            <div class="flex items-start gap-6">
+                                <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg text-[#8C51A5] group-hover:bg-[#8C51A5] group-hover:text-white transition-all duration-500">
+                                    <i class="fas fa-map-marked-alt text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-black text-[#612F73] mb-3 uppercase tracking-tight">Alamat Sekolah</h3>
+                                    <p class="text-gray-500 text-sm leading-relaxed font-medium">
+                                        {{ $settings['address'] ?? 'Jl. Raya Bogor KM. 31, Cimpaeun, Tapos, Kota Depok' }}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
  
                     {{-- Phone Card --}}
-                    <div class="bg-[#8C51A5]/5 rounded-[2.5rem] p-8 border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-700 hover:-translate-y-2 group" data-aos="fade-right" data-aos-delay="200">
-                        <div class="flex items-start gap-6">
-                            <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg text-[#8C51A5] group-hover:bg-[#8C51A5] group-hover:text-white transition-all duration-500">
-                                <i class="fas fa-headset text-2xl"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-black text-[#612F73] mb-3 uppercase tracking-tight">Layanan Telepon</h3>
-                                <p class="text-gray-500 text-sm leading-relaxed font-medium mt-1">
-                                    {{ $settings['phone'] ?? '(021) 8791 2345' }}
-                                </p>
+                    <div data-aos="fade-right" data-aos-delay="200">
+                        <div class="bg-[#8C51A5]/5 rounded-[2.5rem] p-8 border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-500 ease-in-out hover:-translate-y-2 group">
+                            <div class="flex items-start gap-6">
+                                <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg text-[#8C51A5] group-hover:bg-[#8C51A5] group-hover:text-white transition-all duration-500">
+                                    <i class="fas fa-headset text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-black text-[#612F73] mb-3 uppercase tracking-tight">Layanan Telepon</h3>
+                                    <p class="text-gray-500 text-sm leading-relaxed font-medium mt-1">
+                                        {{ $settings['phone'] ?? '(021) 8791 2345' }}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
  
                     {{-- WhatsApp Card --}}
                     @if($settings['whatsapp'] ?? false)
-                        <div class="bg-[#F0E7F8]/30 rounded-[2.5rem] p-8 border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-700 hover:-translate-y-2 group" data-aos="fade-right" data-aos-delay="300">
-                            <div class="flex items-start gap-6">
-                                <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg text-[#25D366] group-hover:bg-[#25D366] group-hover:text-white transition-all duration-500">
-                                    <i class="fab fa-whatsapp text-3xl"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-black text-[#612F73] mb-3 uppercase tracking-tight">WhatsApp Official</h3>
-                                    <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['whatsapp']) }}"
-                                        target="_blank" class="text-[#25D366] hover:text-[#128C7E] font-black text-sm transition-colors block mt-1 uppercase tracking-widest">
-                                        {{ $settings['whatsapp'] }}
-                                    </a>
+                        <div data-aos="fade-right" data-aos-delay="300">
+                            <div class="bg-[#F0E7F8]/30 rounded-[2.5rem] p-8 border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-500 ease-in-out hover:-translate-y-2 group">
+                                <div class="flex items-start gap-6">
+                                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg text-[#25D366] group-hover:bg-[#25D366] group-hover:text-white transition-all duration-500">
+                                        <i class="fab fa-whatsapp text-3xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-black text-[#612F73] mb-3 uppercase tracking-tight">WhatsApp Official</h3>
+                                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['whatsapp']) }}"
+                                            target="_blank" class="text-[#25D366] hover:text-[#128C7E] font-black text-sm transition-colors block mt-1 uppercase tracking-widest">
+                                            {{ $settings['whatsapp'] }}
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     @endif
  
                     {{-- Social Media --}}
-                    <div class="bg-[#8C51A5]/5 rounded-[2.5rem] p-10 border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-700 hover:-translate-y-2 group" data-aos="fade-right" data-aos-delay="400">
-                        <h3 class="font-black text-[#612F73] text-lg mb-8 tracking-tight uppercase">Media Sosial Kami</h3>
-                        <div class="flex flex-wrap gap-5">
-                            @if(isset($socialLinks) && $socialLinks->count() > 0)
-                                @foreach($socialLinks as $index => $social)
-                                    @if($social && $social->url)
-                                        <a href="{{ $social->url }}" target="_blank"
-                                            class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-[#8C51A5] shadow-lg border border-[#8C51A5]/10 hover:bg-[#8C51A5] hover:text-white transition-all transform hover:-translate-y-2 duration-500" data-aos="zoom-in" data-aos-delay="{{ 500 + ($index * 100) }}">
-                                            <i class="fab fa-{{ $social->platform ?? 'link' }} text-xl"></i>
+                    <div data-aos="fade-right" data-aos-delay="400">
+                        <div class="bg-[#8C51A5]/5 rounded-[2.5rem] p-10 border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-500 ease-in-out hover:-translate-y-2 group">
+                            <h3 class="font-black text-[#612F73] text-lg mb-8 tracking-tight uppercase">Media Sosial Kami</h3>
+                            <div class="flex flex-wrap gap-5">
+                                @if(isset($socialLinks) && $socialLinks->count() > 0)
+                                    @foreach($socialLinks as $index => $social)
+                                        @if($social && $social->url)
+                                            <div data-aos="zoom-in" data-aos-delay="{{ 500 + ($index * 100) }}">
+                                                <a href="{{ $social->url }}" target="_blank"
+                                                    class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-[#8C51A5] shadow-lg border border-[#8C51A5]/10 hover:bg-[#8C51A5] hover:text-white transition-all transform hover:-translate-y-2 duration-500">
+                                                    <i class="fab fa-{{ $social->platform ?? 'link' }} text-xl"></i>
+                                                </a>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @else
+                                    <div data-aos="zoom-in" data-aos-delay="500">
+                                        <a href="#" class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-[#8C51A5] shadow-lg border border-[#8C51A5]/10 hover:bg-[#8C51A5] hover:text-white transition-all transform hover:-translate-y-2 duration-500">
+                                            <i class="fab fa-instagram text-xl"></i>
                                         </a>
-                                    @endif
-                                @endforeach
-                            @else
-                                <a href="#" class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-[#8C51A5] shadow-lg border border-[#8C51A5]/10 hover:bg-[#8C51A5] hover:text-white transition-all transform hover:-translate-y-2 duration-500" data-aos="zoom-in" data-aos-delay="500">
-                                    <i class="fab fa-instagram text-xl"></i>
-                                </a>
-                                <a href="#" class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-[#8C51A5] shadow-lg border border-[#8C51A5]/10 hover:bg-[#8C51A5] hover:text-white transition-all transform hover:-translate-y-2 duration-500" data-aos="zoom-in" data-aos-delay="600">
-                                    <i class="fab fa-facebook-f text-xl"></i>
-                                </a>
-                                <a href="#" class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-[#8C51A5] shadow-lg border border-[#8C51A5]/10 hover:bg-[#8C51A5] hover:text-white transition-all transform hover:-translate-y-2 duration-500" data-aos="zoom-in" data-aos-delay="700">
-                                    <i class="fab fa-youtube text-xl"></i>
-                                </a>
-                            @endif
+                                    </div>
+                                    <div data-aos="zoom-in" data-aos-delay="600">
+                                        <a href="#" class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-[#8C51A5] shadow-lg border border-[#8C51A5]/10 hover:bg-[#8C51A5] hover:text-white transition-all transform hover:-translate-y-2 duration-500">
+                                            <i class="fab fa-facebook-f text-xl"></i>
+                                        </a>
+                                    </div>
+                                    <div data-aos="zoom-in" data-aos-delay="700">
+                                        <a href="#" class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-[#8C51A5] shadow-lg border border-[#8C51A5]/10 hover:bg-[#8C51A5] hover:text-white transition-all transform hover:-translate-y-2 duration-500">
+                                            <i class="fab fa-youtube text-xl"></i>
+                                        </a>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -205,57 +221,68 @@
             </div>
  
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <a href="{{ route('majors') }}"
-                    class="group p-10 bg-[#F0E7F8]/30 rounded-[2.5rem] border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-700 text-center transform hover:-translate-y-3" data-aos="fade-up" data-aos-delay="100">
-                    <div
-                        class="w-20 h-20 bg-white rounded-[2rem] flex items-center justify-center mb-8 mx-auto shadow-lg group-hover:bg-[#8C51A5] transition-all duration-700">
-                        <i class="fas fa-graduation-cap text-3xl text-[#8C51A5] group-hover:text-white transition-colors"></i>
-                    </div>
-                    <h3 class="font-black text-[#612F73] text-lg uppercase group-hover:text-[#8C51A5] transition-colors tracking-tight">Program Keahlian</h3>
-                    <p class="text-gray-400 text-[10px] font-black uppercase tracking-[0.2em] mt-4">Jurusan Unggulan</p>
-                </a>
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <a href="{{ route('majors') }}"
+                        class="group block h-full p-10 bg-[#F0E7F8]/30 rounded-[2.5rem] border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-500 ease-in-out text-center transform hover:-translate-y-3">
+                        <div
+                            class="w-20 h-20 bg-white rounded-[2rem] flex items-center justify-center mb-8 mx-auto shadow-lg group-hover:bg-[#8C51A5] transition-all duration-500 ease-in-out">
+                            <i class="fas fa-graduation-cap text-3xl text-[#8C51A5] group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h3 class="font-black text-[#612F73] text-lg uppercase group-hover:text-[#8C51A5] transition-colors tracking-tight">Program Keahlian</h3>
+                        <p class="text-gray-400 text-[10px] font-black uppercase tracking-[0.2em] mt-4">Jurusan Unggulan</p>
+                    </a>
+                </div>
  
-                <a href="{{ route('news') }}"
-                    class="group p-10 bg-[#8C51A5]/5 rounded-[2.5rem] border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-700 text-center transform hover:-translate-y-3" data-aos="fade-up" data-aos-delay="200">
-                    <div
-                        class="w-20 h-20 bg-white rounded-[2rem] flex items-center justify-center mb-8 mx-auto shadow-lg group-hover:bg-[#8C51A5] transition-all duration-700">
-                        <i class="fas fa-newspaper text-3xl text-[#8C51A5] group-hover:text-white transition-colors"></i>
-                    </div>
-                    <h3 class="font-black text-[#612F73] text-lg uppercase group-hover:text-[#8C51A5] transition-colors tracking-tight">Berita Terkini</h3>
-                    <p class="text-gray-400 text-[10px] font-black uppercase tracking-[0.2em] mt-4">Info Terbaru</p>
-                </a>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <a href="{{ route('news') }}"
+                        class="group block h-full p-10 bg-[#8C51A5]/5 rounded-[2.5rem] border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-500 ease-in-out text-center transform hover:-translate-y-3">
+                        <div
+                            class="w-20 h-20 bg-white rounded-[2rem] flex items-center justify-center mb-8 mx-auto shadow-lg group-hover:bg-[#8C51A5] transition-all duration-500 ease-in-out">
+                            <i class="fas fa-newspaper text-3xl text-[#8C51A5] group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h3 class="font-black text-[#612F73] text-lg uppercase group-hover:text-[#8C51A5] transition-colors tracking-tight">Berita Terkini</h3>
+                        <p class="text-gray-400 text-[10px] font-black uppercase tracking-[0.2em] mt-4">Info Terbaru</p>
+                    </a>
+                </div>
  
-                <a href="{{ route('gallery.photos') }}"
-                    class="group p-10 bg-[#F0E7F8]/30 rounded-[2.5rem] border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-700 text-center transform hover:-translate-y-3" data-aos="fade-up" data-aos-delay="300">
-                    <div
-                        class="w-20 h-20 bg-white rounded-[2rem] flex items-center justify-center mb-8 mx-auto shadow-lg group-hover:bg-[#8C51A5] transition-all duration-700">
-                        <i class="fas fa-images text-3xl text-[#8C51A5] group-hover:text-white transition-colors"></i>
-                    </div>
-                    <h3 class="font-black text-[#612F73] text-lg uppercase group-hover:text-[#8C51A5] transition-colors tracking-tight">Galeri Visual</h3>
-                    <p class="text-gray-400 text-[10px] font-black uppercase tracking-[0.2em] mt-4">Dokumentasi</p>
-                </a>
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <a href="{{ route('gallery.photos') }}"
+                        class="group block h-full p-10 bg-[#F0E7F8]/30 rounded-[2.5rem] border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-500 ease-in-out text-center transform hover:-translate-y-3">
+                        <div
+                            class="w-20 h-20 bg-white rounded-[2rem] flex items-center justify-center mb-8 mx-auto shadow-lg group-hover:bg-[#8C51A5] transition-all duration-500 ease-in-out">
+                            <i class="fas fa-images text-3xl text-[#8C51A5] group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h3 class="font-black text-[#612F73] text-lg uppercase group-hover:text-[#8C51A5] transition-colors tracking-tight">Galeri Visual</h3>
+                        <p class="text-gray-400 text-[10px] font-black uppercase tracking-[0.2em] mt-4">Dokumentasi</p>
+                    </a>
+                </div>
  
                 @if(($settings['ppdb_active'] ?? false))
-                    <a href="{{ $settings['ppdb_url'] ?? '#' }}" target="_blank"
-                        class="group p-10 bg-gradient-to-br from-[#612F73] via-[#8C51A5] to-[#D668EA] rounded-[2.5rem] shadow-2xl hover:shadow-premium-lg transition-all duration-700 text-center text-white transform hover:-translate-y-3 border border-white/10" data-aos="fade-up" data-aos-delay="400">
-                        <div
-                            class="w-20 h-20 bg-white/20 backdrop-blur-md rounded-[2rem] flex items-center justify-center mb-8 mx-auto group-hover:bg-white transition-all duration-700">
-                            <i class="fas fa-user-plus text-3xl text-white group-hover:text-[#8C51A5] transition-colors"></i>
-                        </div>
-                        <h3 class="font-black text-lg uppercase tracking-tight">Pendaftaran</h3>
-                        <p class="text-[#F0E7F8] text-[10px] font-black uppercase tracking-[0.2em] mt-4">Gabung Bersama Kami</p>
-                    </a>
+                    <div data-aos="fade-up" data-aos-delay="400">
+                        <a href="{{ $settings['ppdb_url'] ?? '#' }}" target="_blank"
+                            class="group block h-full p-10 bg-gradient-to-br from-[#612F73] via-[#8C51A5] to-[#D668EA] rounded-[2.5rem] shadow-2xl hover:shadow-premium-lg transition-all duration-700 text-center text-white transform hover:-translate-y-3 border border-white/10">
+                            <div
+                                class="w-20 h-20 bg-white/20 backdrop-blur-md rounded-[2rem] flex items-center justify-center mb-8 mx-auto group-hover:bg-white transition-all duration-700">
+                                <i class="fas fa-user-plus text-3xl text-white group-hover:text-[#8C51A5] transition-colors"></i>
+                            </div>
+                            <h3 class="font-black text-lg uppercase tracking-tight">Pendaftaran</h3>
+                            <p class="text-[#F0E7F8] text-[10px] font-black uppercase tracking-[0.2em] mt-4">Gabung Bersama Kami</p>
+                        </a>
+                    </div>
                 @else
-                    <a href="{{ route('achievements') }}"
-                        class="group p-10 bg-[#8C51A5]/5 rounded-[2.5rem] border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-700 text-center transform hover:-translate-y-3" data-aos="fade-up" data-aos-delay="400">
-                        <div
-                            class="w-20 h-20 bg-white rounded-[2rem] flex items-center justify-center mb-8 mx-auto shadow-lg group-hover:bg-amber-500 transition-all duration-700">
-                            <i class="fas fa-trophy text-3xl text-[#8C51A5] group-hover:text-white transition-colors"></i>
-                        </div>
-                        <h3 class="font-black text-[#612F73] text-lg uppercase group-hover:text-amber-500 transition-colors tracking-tight">Prestasi Siswa</h3>
-                        <p class="text-gray-400 text-[10px] font-black uppercase tracking-[0.2em] mt-4">Pencapaian Unggul</p>
-                    </a>
+                    <div data-aos="fade-up" data-aos-delay="400">
+                        <a href="{{ route('achievements') }}"
+                            class="group block h-full p-10 bg-[#8C51A5]/5 rounded-[2.5rem] border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-500 ease-in-out text-center transform hover:-translate-y-3">
+                            <div
+                                class="w-20 h-20 bg-white rounded-[2rem] flex items-center justify-center mb-8 mx-auto shadow-lg group-hover:bg-amber-500 transition-all duration-700">
+                                <i class="fas fa-trophy text-3xl text-[#8C51A5] group-hover:text-white transition-colors"></i>
+                            </div>
+                            <h3 class="font-black text-[#612F73] text-lg uppercase group-hover:text-amber-500 transition-colors tracking-tight">Prestasi Siswa</h3>
+                            <p class="text-gray-400 text-[10px] font-black uppercase tracking-[0.2em] mt-4">Pencapaian Unggul</p>
+                        </a>
+                    </div>
                 @endif
+            </div>
             </div>
         </div>
     </section>

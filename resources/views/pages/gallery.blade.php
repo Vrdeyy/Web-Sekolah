@@ -51,28 +51,29 @@
                 @if($galleries->count() > 0)
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         @foreach($galleries as $index => $gallery)
-                            <div class="group relative aspect-square rounded-[2rem] overflow-hidden shadow-xl shadow-[#612F73]/5 hover:shadow-premium-lg border border-[#8C51A5]/10 hover:border-[#8C51A5]/30 transition-all duration-700 cursor-pointer"
-                                onclick="openLightbox('{{ asset('storage/' . $gallery->image) }}', '{{ $gallery->title ?? '' }}')"
-                                data-aos="zoom-in" data-aos-delay="{{ ($index % 4) * 100 }}">
-                                <img src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->title ?? 'Galeri' }}"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                    onerror="this.src='https://ui-avatars.com/api/?name=SMK+YAJ&background=8C51A5&color=fff&size=400'">
-
-                                {{-- Overlay --}}
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-[#612F73]/90 via-[#612F73]/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
-                                    <div class="absolute bottom-0 left-0 right-0 p-8">
-                                        @if($gallery->title)
-                                            <h3
-                                                class="text-white font-black text-xs uppercase tracking-widest line-clamp-2 leading-relaxed">
-                                                {{ $gallery->title }}</h3>
-                                        @endif
-                                    </div>
+                            <div data-aos="zoom-in" data-aos-delay="{{ ($index % 4) * 100 }}">
+                                <div class="group relative aspect-square rounded-[2rem] overflow-hidden shadow-xl shadow-[#612F73]/5 hover:shadow-premium-lg border border-[#8C51A5]/10 hover:border-[#8C51A5]/30 transition-all duration-700 cursor-pointer"
+                                    onclick="openLightbox('{{ asset('storage/' . $gallery->image) }}', '{{ $gallery->title ?? '' }}')">
+                                    <img src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->title ?? 'Galeri' }}"
+                                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                        onerror="this.src='https://ui-avatars.com/api/?name=SMK+YAJ&background=8C51A5&color=fff&size=400'">
+    
+                                    {{-- Overlay --}}
                                     <div
-                                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-700">
+                                        class="absolute inset-0 bg-gradient-to-t from-[#612F73]/90 via-[#612F73]/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                        <div class="absolute bottom-0 left-0 right-0 p-8">
+                                            @if($gallery->title)
+                                                <h3
+                                                    class="text-white font-black text-xs uppercase tracking-widest line-clamp-2 leading-relaxed">
+                                                    {{ $gallery->title }}</h3>
+                                            @endif
+                                        </div>
                                         <div
-                                            class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/20">
-                                            <i class="fas fa-expand-alt text-[#F8CB62] text-xl"></i>
+                                            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-700">
+                                            <div
+                                                class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/20">
+                                                <i class="fas fa-expand-alt text-[#F8CB62] text-xl"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -106,39 +107,40 @@
                 @if($galleries->count() > 0)
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         @foreach($galleries as $index => $gallery)
-                            <div class="group bg-white rounded-[2.5rem] overflow-hidden shadow-xl shadow-[#612F73]/5 hover:shadow-premium-lg border border-[#8C51A5]/10 hover:border-[#8C51A5]/30 transition-all duration-700 cursor-pointer"
-                                onclick="openVideoModal('{{ $gallery->video_url }}')" data-aos="fade-up"
-                                data-aos-delay="{{ ($index % 3) * 150 }}">
-                                <div class="relative aspect-video overflow-hidden bg-gray-50">
-                                    @if($gallery->thumbnail)
-                                        <img src="{{ asset('storage/' . $gallery->thumbnail) }}" alt="{{ $gallery->title ?? 'Video' }}"
-                                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                    @else
+                            <div data-aos="fade-up" data-aos-delay="{{ ($index % 3) * 150 }}">
+                                <div class="group bg-white rounded-[2.5rem] overflow-hidden shadow-xl shadow-[#612F73]/5 hover:shadow-premium-lg border border-[#8C51A5]/10 hover:border-[#8C51A5]/30 transition-all duration-700 cursor-pointer"
+                                    onclick="openVideoModal('{{ $gallery->video_url }}')">
+                                    <div class="relative aspect-video overflow-hidden bg-gray-50">
+                                        @if($gallery->thumbnail)
+                                            <img src="{{ asset('storage/' . $gallery->thumbnail) }}" alt="{{ $gallery->title ?? 'Video' }}"
+                                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                        @else
+                                            <div
+                                                class="w-full h-full bg-gradient-to-br from-[#F0E7F8] to-white flex items-center justify-center">
+                                                <i class="fas fa-play-circle text-6xl text-[#D668EA]/20"></i>
+                                            </div>
+                                        @endif
+    
+                                        {{-- Play Button Overlay --}}
                                         <div
-                                            class="w-full h-full bg-gradient-to-br from-[#F0E7F8] to-white flex items-center justify-center">
-                                            <i class="fas fa-play-circle text-6xl text-[#D668EA]/20"></i>
-                                        </div>
-                                    @endif
-
-                                    {{-- Play Button Overlay --}}
-                                    <div
-                                        class="absolute inset-0 bg-[#612F73]/30 flex items-center justify-center group-hover:bg-[#612F73]/50 transition-all duration-500">
-                                        <div
-                                            class="w-20 h-20 bg-white/20 backdrop-blur-md rounded-[2rem] flex items-center justify-center group-hover:rotate-[360deg] transition-all duration-1000 border border-white/20 shadow-2xl">
-                                            <i class="fas fa-play text-[#F8CB62] text-3xl ml-1"></i>
+                                            class="absolute inset-0 bg-[#612F73]/30 flex items-center justify-center group-hover:bg-[#612F73]/50 transition-all duration-500">
+                                            <div
+                                                class="w-20 h-20 bg-white/20 backdrop-blur-md rounded-[2rem] flex items-center justify-center group-hover:rotate-[360deg] transition-all duration-1000 border border-white/20 shadow-2xl">
+                                                <i class="fas fa-play text-[#F8CB62] text-3xl ml-1"></i>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="p-10">
-                                    <h3
-                                        class="font-black text-[#612F73] text-lg uppercase group-hover:text-[#8C51A5] transition-colors tracking-tight leading-snug">
-                                        {{ $gallery->title ?? 'Video' }}
-                                    </h3>
-                                    @if($gallery->description)
-                                        <p class="text-gray-500 text-sm mt-4 line-clamp-2 leading-relaxed font-medium">
-                                            {{ $gallery->description }}</p>
-                                    @endif
+    
+                                    <div class="p-10">
+                                        <h3
+                                            class="font-black text-[#612F73] text-lg uppercase group-hover:text-[#8C51A5] transition-colors tracking-tight leading-snug">
+                                            {{ $gallery->title ?? 'Video' }}
+                                        </h3>
+                                        @if($gallery->description)
+                                            <p class="text-gray-500 text-sm mt-4 line-clamp-2 leading-relaxed font-medium">
+                                                {{ $gallery->description }}</p>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         @endforeach

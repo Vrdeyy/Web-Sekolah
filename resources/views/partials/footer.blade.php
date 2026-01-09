@@ -31,7 +31,7 @@
                         @foreach($socialLinks as $social)
                             @if($social && $social->url)
                                 <a href="{{ $social->url }}" target="_blank"
-                                   class="w-10 h-10 bg-white/5 hover:bg-[#8C51A5] rounded-lg flex items-center justify-center transition-colors border border-white/10">
+                                   class="w-10 h-10 bg-white/5 hover:bg-[#8C51A5] rounded-lg flex items-center justify-center transition-all duration-300 ease-in-out border border-white/10">
                                     @switch($social->platform ?? '')
                                         @case('youtube') <i class="fab fa-youtube"></i> @break
                                         @case('instagram') <i class="fab fa-instagram"></i> @break
@@ -53,11 +53,11 @@
                 <h4 class="font-semibold text-lg mb-6 text-white">Informasi</h4>
                 <ul class="space-y-3">
                      <li><a href="{{ route('page', 'yayasan') }}"
-                            class="text-white/60 hover:text-[#F8CB62] transition-colors">Yayasan</a></li>
+                            class="text-white/60 hover:text-[#F8CB62] transition-all duration-300 ease-in-out">Yayasan</a></li>
                     <li><a href="{{ route('page', 'sekolah') }}"
-                            class="text-white/60 hover:text-[#F8CB62] transition-colors">Sekolah</a></li>
+                            class="text-white/60 hover:text-[#F8CB62] transition-all duration-300 ease-in-out">Sekolah</a></li>
                     <li><a href="{{ route('page', 'visi-misi') }}"
-                            class="text-white/60 hover:text-[#F8CB62] transition-colors">Visi & Misi</a></li>
+                            class="text-white/60 hover:text-[#F8CB62] transition-all duration-300 ease-in-out">Visi & Misi</a></li>
                 </ul>
             </div>
 
@@ -66,13 +66,13 @@
                 <h4 class="font-semibold text-lg mb-6 text-white">Jelajahi</h4>
                 <ul class="space-y-3">
                      <li><a href="{{ route('majors') }}"
-                            class="text-white/60 hover:text-[#F8CB62] transition-colors">Jurusan</a></li>
+                            class="text-white/60 hover:text-[#F8CB62] transition-all duration-300 ease-in-out">Jurusan</a></li>
                     <li><a href="{{ route('extracurriculars') }}"
-                            class="text-white/60 hover:text-[#F8CB62] transition-colors">Ekstrakurikuler</a></li>
+                            class="text-white/60 hover:text-[#F8CB62] transition-all duration-300 ease-in-out">Ekstrakurikuler</a></li>
                     <li><a href="{{ route('achievements') }}"
-                            class="text-white/60 hover:text-[#F8CB62] transition-colors">Prestasi</a></li>
+                            class="text-white/60 hover:text-[#F8CB62] transition-all duration-300 ease-in-out">Prestasi</a></li>
                     <li><a href="{{ route('news') }}"
-                            class="text-white/60 hover:text-[#F8CB62] transition-colors">Berita</a></li>
+                            class="text-white/60 hover:text-[#F8CB62] transition-all duration-300 ease-in-out">Berita</a></li>
                 </ul>
             </div>
 

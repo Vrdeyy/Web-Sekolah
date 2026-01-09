@@ -16,7 +16,7 @@
 
     {{-- Icons --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     {{-- AOS Animation --}}
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -59,7 +59,7 @@
         const mobileMenuClose = document.getElementById('mobile-menu-close');
 
         function toggleMobileMenu() {
-            mobileMenu.classList.toggle('-translate-x-full');
+            mobileMenu.classList.toggle('translate-x-full');
             mobileMenuOverlay.classList.toggle('hidden');
             document.body.classList.toggle('overflow-hidden');
         }

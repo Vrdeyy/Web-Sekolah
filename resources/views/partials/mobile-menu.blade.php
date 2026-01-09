@@ -1,6 +1,6 @@
 {{-- Mobile Menu --}}
 <div id="mobile-menu"
-    class="fixed top-0 left-0 w-80 h-full bg-white z-50 -translate-x-full transition-transform duration-300 lg:hidden shadow-xl">
+    class="fixed top-0 right-0 w-80 h-full bg-white z-50 translate-x-full transition-transform duration-300 lg:hidden shadow-xl">
     <div class="p-6 flex flex-col h-full">
 
         {{-- Header --}}
@@ -21,7 +21,7 @@
                 </span>
             </div>
             <button id="mobile-menu-close"
-                class="p-2 rounded-lg hover:bg-[#8C51A5]/10">
+                class="p-2 rounded-lg hover:bg-[#8C51A5]/10 transition-colors duration-300 ease-in-out">
                 <i class="fas fa-times"></i>
             </button>
         </div>
@@ -29,7 +29,7 @@
         {{-- Beranda --}}
         <a href="{{ route('home') }}"
             class="flex items-center gap-3 px-4 py-3 mb-4 rounded-xl font-semibold
-                   bg-[#8C51A5]/10 text-[#612F73]">
+                   bg-[#8C51A5]/10 text-[#612F73] transition-all duration-300 ease-in-out">
             <i class="fas fa-home"></i>
             Beranda
         </a>
@@ -60,14 +60,14 @@
             ] as $title => $items)
                 <div class="border-b border-gray-100 pb-2">
                     <button
-                        class="mobile-dropdown-toggle w-full flex items-center justify-between py-3 font-medium text-gray-700">
+                        class="mobile-dropdown-toggle w-full flex items-center justify-between py-3 font-medium text-gray-700 transition-colors duration-300 ease-in-out">
                         {{ $title }}
                         <i class="fas fa-chevron-down text-xs transition-transform"></i>
                     </button>
                     <div class="mobile-dropdown hidden pl-4">
                         @foreach ($items as [$label, $url])
                             <a href="{{ $url }}"
-                                class="block py-2 text-gray-600 hover:text-[#8C51A5]">
+                                class="block py-2 text-gray-600 hover:text-[#8C51A5] transition-colors duration-300 ease-in-out">
                                 {{ $label }}
                             </a>
                         @endforeach

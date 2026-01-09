@@ -100,33 +100,35 @@
                 @endphp
 
                 @foreach($links as $index => $link)
-                    <a href="{{ $link['id'] === 'majors' ? route('majors') : route('page', $link['id']) }}"
-                        class="group relative p-12 bg-white rounded-[3rem] border border-[#8C51A5]/10 
-                                       shadow-xl shadow-[#612F73]/5 hover:shadow-premium-lg 
-                                       hover:border-[#8C51A5]/30 transition-all duration-700 transform hover:-translate-y-3 
-                                       text-center overflow-hidden {{ request()->is('*/' . $link['id']) ? 'ring-2 ring-[#8C51A5] bg-[#F0E7F8]' : '' }}" data-aos="fade-up" data-aos-delay="{{ $index * 150 }}">
+                    <div data-aos="fade-up" data-aos-delay="{{ $index * 150 }}">
+                        <a href="{{ $link['id'] === 'majors' ? route('majors') : route('page', $link['id']) }}"
+                            class="group relative block p-12 bg-white rounded-[3rem] border border-[#8C51A5]/10 
+                                           shadow-xl shadow-[#612F73]/5 hover:shadow-premium-lg 
+                                           hover:border-[#8C51A5]/30 transition-all duration-500 ease-in-out transform hover:-translate-y-3 
+                                           text-center overflow-hidden {{ request()->is('*/' . $link['id']) ? 'ring-2 ring-[#8C51A5] bg-[#F0E7F8]' : '' }}">
 
-                        {{-- Decorative Corner Shine --}}
-                        <div
-                            class="absolute -top-12 -right-12 w-40 h-40 bg-gradient-to-br from-[#8C51A5]/5 to-transparent rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000">
-                        </div>
-
-                        <div class="relative z-10">
+                            {{-- Decorative Corner Shine --}}
                             <div
-                                class="w-20 h-20 bg-[#F0E7F8] rounded-[2rem] flex items-center justify-center mb-8 mx-auto 
-                                               transition-all duration-700 border border-[#8C51A5]/10 shadow-lg group-hover:rotate-6 group-hover:bg-[#8C51A5]">
-                                <i
-                                    class="fas {{ $link['icon'] }} text-3xl text-[#8C51A5] group-hover:text-white transition-colors duration-500"></i>
+                                class="absolute -top-12 -right-12 w-40 h-40 bg-gradient-to-br from-[#8C51A5]/5 to-transparent rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000">
                             </div>
-                            <h3
-                                class="text-xl font-black text-[#612F73] group-hover:text-[#8C51A5] transition-colors tracking-tight uppercase">
-                                {{ $link['title'] }}
-                            </h3>
-                            <p
-                                class="text-gray-400 text-[10px] font-black uppercase tracking-[0.2em] mt-4 group-hover:text-gray-500 transition-colors">
-                                {{ $link['desc'] }}</p>
-                        </div>
-                    </a>
+
+                            <div class="relative z-10">
+                                <div
+                                    class="w-20 h-20 bg-[#F0E7F8] rounded-[2rem] flex items-center justify-center mb-8 mx-auto 
+                                                   transition-all duration-500 border border-[#8C51A5]/10 shadow-lg group-hover:rotate-6 group-hover:bg-[#8C51A5]">
+                                    <i
+                                        class="fas {{ $link['icon'] }} text-3xl text-[#8C51A5] group-hover:text-white transition-colors duration-500"></i>
+                                </div>
+                                <h3
+                                    class="text-xl font-black text-[#612F73] group-hover:text-[#8C51A5] transition-colors tracking-tight uppercase">
+                                    {{ $link['title'] }}
+                                </h3>
+                                <p
+                                    class="text-gray-400 text-[10px] font-black uppercase tracking-[0.2em] mt-4 group-hover:text-gray-500 transition-colors">
+                                    {{ $link['desc'] }}</p>
+                            </div>
+                        </a>
+                    </div>
                 @endforeach
             </div>
         </div>

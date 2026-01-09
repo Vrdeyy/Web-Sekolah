@@ -51,65 +51,67 @@
         <div class="container mx-auto px-4 lg:px-8">
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach($majors as $index => $major)
-                    <article
-                        class="group bg-white rounded-3xl overflow-hidden border border-[#8C51A5]/10 shadow-xl shadow-[#612F73]/5 hover:shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-700 hover:-translate-y-3" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
-                        {{-- Image --}}
-                        <a href="{{ route('major.show', $major->slug) }}"
-                            class="block relative h-56 overflow-hidden bg-gray-100">
-                            @if($major->image)
-                                <img src="{{ asset('storage/' . $major->image) }}" alt="{{ $major->name }}"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                            @else
+                    <div data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
+                        <article
+                            class="group h-full bg-white rounded-3xl overflow-hidden border border-[#8C51A5]/10 shadow-xl shadow-[#612F73]/5 hover:shadow-2xl hover:border-[#8C51A5]/30 transition-all duration-500 ease-in-out hover:-translate-y-2 hover:scale-[1.01]">
+                            {{-- Image --}}
+                            <a href="{{ route('major.show', $major->slug) }}"
+                                class="block relative h-56 overflow-hidden bg-gray-100">
+                                @if($major->image)
+                                    <img src="{{ asset('storage/' . $major->image) }}" alt="{{ $major->name }}"
+                                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                                @else
+                                    <div
+                                        class="w-full h-full bg-gradient-to-br from-purple-100 to-white flex items-center justify-center">
+                                        <i class="fas fa-graduation-cap text-6xl text-purple-200"></i>
+                                    </div>
+                                @endif
+    
+                                 {{-- Overlay --}}
                                 <div
-                                    class="w-full h-full bg-gradient-to-br from-purple-100 to-white flex items-center justify-center">
-                                    <i class="fas fa-graduation-cap text-6xl text-purple-200"></i>
+                                    class="absolute inset-0 bg-gradient-to-t from-[#612F73]/80 via-[#612F73]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                 </div>
-                            @endif
-
-                             {{-- Overlay --}}
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-[#612F73]/80 via-[#612F73]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            </div>
-
-                            {{-- Badge --}}
-                             @if($major->short_name)
-                                <div class="absolute top-4 left-4">
-                                    <span
-                                        class="px-4 py-2 bg-[#8C51A5] text-white text-xs font-black uppercase tracking-widest rounded-xl shadow-lg border border-white/20">
-                                        {{ $major->short_name }}
-                                    </span>
-                                </div>
-                            @endif
-                        </a>
-
-                         {{-- Content --}}
-                        <div class="p-8">
-                            <a href="{{ route('major.show', $major->slug) }}">
-                                <h3 class="text-xl font-black text-[#612F73] mb-3 group-hover:text-[#8C51A5] transition-colors leading-tight">
-                                    {{ $major->name }}
-                                </h3>
+    
+                                {{-- Badge --}}
+                                 @if($major->short_name)
+                                    <div class="absolute top-4 left-4">
+                                        <span
+                                            class="px-4 py-2 bg-[#8C51A5] text-white text-xs font-black uppercase tracking-widest rounded-xl shadow-lg border border-white/20">
+                                            {{ $major->short_name }}
+                                        </span>
+                                    </div>
+                                @endif
                             </a>
-
-                            @if($major->short_description)
-                                <p class="text-gray-600 text-sm mb-6 line-clamp-3 leading-relaxed">
-                                    {{ $major->short_description }}
-                                </p>
-                            @endif
-
-                             {{-- Footer --}}
-                            <div class="flex items-center justify-between pt-5 border-t border-gray-50">
-                                <a href="{{ route('major.show', $major->slug) }}"
-                                    class="inline-flex items-center gap-2 text-[#8C51A5] font-bold text-sm hover:gap-3 transition-all">
-                                    Lihat Detail
-                                    <i class="fas fa-arrow-right"></i>
+    
+                             {{-- Content --}}
+                            <div class="p-8">
+                                <a href="{{ route('major.show', $major->slug) }}">
+                                    <h3 class="text-xl font-black text-[#612F73] mb-3 group-hover:text-[#8C51A5] transition-colors leading-tight">
+                                        {{ $major->name }}
+                                    </h3>
                                 </a>
-                                <div class="flex items-center gap-2 text-gray-400">
-                                    <i class="fas fa-clock text-[#F8CB62]"></i>
-                                    <span class="text-xs font-bold uppercase tracking-widest">4 Tahun</span>
+    
+                                @if($major->short_description)
+                                    <p class="text-gray-600 text-sm mb-6 line-clamp-3 leading-relaxed">
+                                        {{ $major->short_description }}
+                                    </p>
+                                @endif
+    
+                                 {{-- Footer --}}
+                                <div class="flex items-center justify-between pt-5 border-t border-gray-50">
+                                    <a href="{{ route('major.show', $major->slug) }}"
+                                        class="inline-flex items-center gap-2 text-[#8C51A5] font-bold text-sm hover:gap-3 transition-all">
+                                        Lihat Detail
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                    <div class="flex items-center gap-2 text-gray-400">
+                                        <i class="fas fa-clock text-[#F8CB62]"></i>
+                                        <span class="text-xs font-bold uppercase tracking-widest">4 Tahun</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </article>
+                        </article>
+                    </div>
                 @endforeach
             </div>
         </div>

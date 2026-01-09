@@ -172,19 +172,19 @@
                         <div class="space-y-4">
                             @foreach(\App\Models\Major::active()->where('id', '!=', $major->id)->ordered()->take(5)->get() as $otherMajor)
                                 <a href="{{ route('major.show', $otherMajor->slug) }}"
-                                    class="flex items-center gap-4 p-4 rounded-2xl hover:bg-[#F0E7F8]/50 border border-transparent hover:border-[#8C51A5]/10 transition-all group">
+                                    class="flex items-center gap-4 p-4 rounded-2xl hover:bg-[#F0E7F8]/50 border border-transparent hover:border-[#8C51A5]/10 transition-all duration-300 ease-in-out group">
                                     <div
                                         class="w-12 h-12 bg-[#8C51A5]/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-[#8C51A5] transition-colors duration-500">
                                         @if($otherMajor->icon)
                                             <img src="{{ asset('storage/' . $otherMajor->icon) }}"
-                                                alt="{{ $otherMajor->short_name }}" class="w-6 h-6 group-hover:brightness-0 group-hover:invert transition-all">
+                                                alt="{{ $otherMajor->short_name }}" class="w-6 h-6 group-hover:brightness-0 group-hover:invert transition-all duration-300 ease-in-out">
                                         @else
-                                            <i class="fas fa-graduation-cap text-[#8C51A5] group-hover:text-white transition-colors"></i>
+                                            <i class="fas fa-graduation-cap text-[#8C51A5] group-hover:text-white transition-colors duration-300 ease-in-out"></i>
                                         @endif
                                     </div>
                                     <div class="flex-1 min-w-0">
                                         <p
-                                            class="font-black text-[#612F73] text-sm truncate group-hover:text-[#8C51A5] transition-colors tracking-tight uppercase">
+                                            class="font-black text-[#612F73] text-sm truncate group-hover:text-[#8C51A5] transition-colors duration-300 ease-in-out tracking-tight uppercase">
                                             {{ $otherMajor->name }}
                                         </p>
                                         @if($otherMajor->short_name)
@@ -192,7 +192,7 @@
                                         @endif
                                     </div>
                                     <i
-                                        class="fas fa-chevron-right text-gray-300 group-hover:text-[#8C51A5] group-hover:translate-x-1 transition-all"></i>
+                                         class="fas fa-chevron-right text-gray-300 group-hover:text-[#8C51A5] group-hover:translate-x-1 transition-all duration-300 ease-in-out"></i>
                                 </a>
                             @endforeach
                         </div>
@@ -228,7 +228,7 @@
                             <div class="relative h-56 overflow-hidden bg-gray-100">
                                 @if($news->image)
                                     <img src="{{ asset('storage/' . $news->image) }}" alt="{{ $news->title }}"
-                                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
                                 @else
                                     <div
                                         class="w-full h-full bg-gradient-to-br from-purple-100 to-white flex items-center justify-center">
@@ -239,7 +239,7 @@
                             </div>
                              <div class="p-8">
                                 <span class="text-[10px] font-black text-[#8C51A5] uppercase tracking-widest mb-4 block">{{ $news->published_at->format('d M Y') }}</span>
-                                <h3 class="text-xl font-black text-[#612F73] line-clamp-2 group-hover:text-[#8C51A5] transition-colors leading-tight tracking-tight">
+                                    <h3 class="text-xl font-black text-[#612F73] line-clamp-2 group-hover:text-[#8C51A5] transition-colors duration-500 ease-in-out leading-tight tracking-tight">
                                     {{ $news->title }}
                                 </h3>
                             </div>

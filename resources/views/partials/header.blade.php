@@ -107,7 +107,7 @@
                                 @foreach ($group['items'] as [$text, $route, $param])
                                     <a href="{{ $param ? route($route, $param) : route($route) }}"
                                        class="block px-4 py-2.5 mx-2 rounded-xl transition
-                                       {{ request()->routeIs($route.'*')
+                                       {{ (request()->routeIs($route.'*') && ($param ? request()->route('slug') == $param : true))
                                             ? 'bg-[#8C51A5]/10 text-[#612F73] font-bold'
                                             : 'text-gray-600 hover:bg-[#8C51A5]/5 hover:text-[#8C51A5]' }}">
                                         {{ $text }}

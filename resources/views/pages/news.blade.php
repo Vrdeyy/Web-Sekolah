@@ -103,63 +103,65 @@
                     </h2>
                 </div>
 
-                 <a href="{{ route('news.show', $featured->slug) }}"
-                    class="group block relative overflow-hidden rounded-[3rem] shadow-premium-lg hover:shadow-[#8C51A5]/20 transition-all duration-700 border border-[#8C51A5]/10" data-aos="zoom-in">
-                    {{-- Background Image --}}
-                    <div class="relative h-[550px] lg:h-[600px]">
-                        @if($featured->image)
-                            <img src="{{ asset('storage/' . $featured->image) }}" alt="{{ $featured->title }}"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[3s]">
-                        @else
-                            <div class="w-full h-full bg-gradient-to-br from-[#612F73] via-[#8C51A5] to-[#D668EA]"></div>
-                        @endif
- 
-                        {{-- Gradient Overlay --}}
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#612F73] via-[#612F73]/40 to-transparent"></div>
- 
-                        {{-- Content --}}
-                        <div class="absolute bottom-0 left-0 right-0 p-10 lg:p-16" data-aos="fade-up" data-aos-delay="400">
-                            <div class="max-w-4xl">
-                                @if($featured->category)
-                                    <span
-                                        class="inline-flex items-center gap-2 px-6 py-2.5 bg-[#F8CB62] text-[#612F73] text-[10px] font-black rounded-xl mb-6 shadow-lg tracking-widest uppercase">
-                                        <i class="fas fa-folder"></i>
-                                        {{ $featured->category }}
-                                    </span>
-                                @endif
- 
-                                <h3
-                                    class="text-4xl lg:text-6xl font-black text-white mb-6 group-hover:text-[#F8CB62] transition-colors leading-[1.1] tracking-tight">
-                                    {{ $featured->title }}
-                                </h3>
- 
-                                <p class="text-white/80 text-lg lg:text-xl mb-10 line-clamp-2 leading-relaxed font-medium">
-                                    {{ $featured->excerpt }}
-                                </p>
- 
-                                <div class="flex flex-wrap items-center gap-8 text-[10px] font-black uppercase tracking-widest">
-                                    <span class="flex items-center gap-3 text-white/60">
-                                        <i class="far fa-calendar text-[#F8CB62]"></i>
-                                        {{ $featured->published_at->format('d M Y') }}
-                                    </span>
-                                    <span class="flex items-center gap-3 text-white/60">
-                                        <i class="far fa-user text-[#F8CB62]"></i>
-                                        {{ $featured->author ?? 'Admin' }}
-                                    </span>
-                                    <span class="flex items-center gap-3 text-white/60">
-                                        <i class="far fa-eye text-[#F8CB62]"></i>
-                                        {{ number_format($featured->views) }} VIEWS
-                                    </span>
-                                    <span
-                                        class="inline-flex items-center gap-4 text-[#F8CB62] font-black group-hover:gap-6 transition-all ml-auto bg-white/10 backdrop-blur-md px-8 py-4 rounded-2xl border border-white/20 hover:bg-[#F8CB62] hover:text-[#612F73]">
-                                        BACA SELENGKAPNYA
-                                        <i class="fas fa-arrow-right"></i>
-                                    </span>
+                 <div data-aos="zoom-in">
+                    <a href="{{ route('news.show', $featured->slug) }}"
+                        class="group block relative overflow-hidden rounded-[3rem] shadow-premium-lg hover:shadow-[#8C51A5]/20 transition-all duration-700 border border-[#8C51A5]/10">
+                        {{-- Background Image --}}
+                        <div class="relative h-[550px] lg:h-[600px]">
+                            @if($featured->image)
+                                <img src="{{ asset('storage/' . $featured->image) }}" alt="{{ $featured->title }}"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-in-out">
+                            @else
+                                <div class="w-full h-full bg-gradient-to-br from-[#612F73] via-[#8C51A5] to-[#D668EA]"></div>
+                            @endif
+     
+                            {{-- Gradient Overlay --}}
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#612F73] via-[#612F73]/40 to-transparent"></div>
+     
+                            {{-- Content --}}
+                            <div class="absolute bottom-0 left-0 right-0 p-10 lg:p-16">
+                                <div class="max-w-4xl">
+                                    @if($featured->category)
+                                        <span
+                                            class="inline-flex items-center gap-2 px-6 py-2.5 bg-[#F8CB62] text-[#612F73] text-[10px] font-black rounded-xl mb-6 shadow-lg tracking-widest uppercase">
+                                            <i class="fas fa-folder"></i>
+                                            {{ $featured->category }}
+                                        </span>
+                                    @endif
+     
+                                    <h3
+                                        class="text-4xl lg:text-6xl font-black text-white mb-6 group-hover:text-[#F8CB62] transition-colors leading-[1.1] tracking-tight">
+                                        {{ $featured->title }}
+                                    </h3>
+     
+                                    <p class="text-white/80 text-lg lg:text-xl mb-10 line-clamp-2 leading-relaxed font-medium">
+                                        {{ $featured->excerpt }}
+                                    </p>
+     
+                                    <div class="flex flex-wrap items-center gap-8 text-[10px] font-black uppercase tracking-widest">
+                                        <span class="flex items-center gap-3 text-white/60">
+                                            <i class="far fa-calendar text-[#F8CB62]"></i>
+                                            {{ $featured->published_at->format('d M Y') }}
+                                        </span>
+                                        <span class="flex items-center gap-3 text-white/60">
+                                            <i class="far fa-user text-[#F8CB62]"></i>
+                                            {{ $featured->author ?? 'Admin' }}
+                                        </span>
+                                        <span class="flex items-center gap-3 text-white/60">
+                                            <i class="far fa-eye text-[#F8CB62]"></i>
+                                            {{ number_format($featured->views) }} VIEWS
+                                        </span>
+                                        <span
+                                            class="inline-flex items-center gap-4 text-[#F8CB62] font-black group-hover:gap-6 transition-all ml-auto bg-white/10 backdrop-blur-md px-8 py-4 rounded-2xl border border-white/20 hover:bg-[#F8CB62] hover:text-[#612F73]">
+                                            BACA SELENGKAPNYA
+                                            <i class="fas fa-arrow-right"></i>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
         </section>
     @endif
@@ -182,67 +184,69 @@
              @if($news->count() > 0)
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                     @foreach($news->skip(1) as $index => $item)
-                        <article
-                            class="group bg-white rounded-[2.5rem] overflow-hidden border border-[#8C51A5]/10 shadow-xl shadow-[#612F73]/5 hover:shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-700 hover:-translate-y-3" data-aos="fade-up" data-aos-delay="{{ ($index % 3) * 150 }}">
-                            {{-- Thumbnail --}}
-                            <a href="{{ route('news.show', $item->slug) }}" class="block relative h-64 overflow-hidden">
-                                @if($item->image)
-                                    <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}"
-                                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                                @else
-                                    <div
-                                        class="w-full h-full bg-gradient-to-br from-[#F0E7F8] to-white flex items-center justify-center">
-                                        <i class="fas fa-newspaper text-6xl text-[#D668EA]/20"></i>
+                        <div data-aos="fade-up" data-aos-delay="{{ ($index % 3) * 150 }}">
+                            <article
+                                class="group h-full bg-white rounded-[2.5rem] overflow-hidden border border-[#8C51A5]/10 shadow-xl shadow-[#612F73]/5 hover:shadow-2xl hover:border-[#8C51A5]/30 transition-all duration-500 ease-in-out hover:-translate-y-2 hover:scale-[1.01]">
+                                {{-- Thumbnail --}}
+                                <a href="{{ route('news.show', $item->slug) }}" class="block relative h-64 overflow-hidden">
+                                    @if($item->image)
+                                        <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}"
+                                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                                    @else
+                                        <div
+                                            class="w-full h-full bg-gradient-to-br from-[#F0E7F8] to-white flex items-center justify-center">
+                                            <i class="fas fa-newspaper text-6xl text-[#D668EA]/20"></i>
+                                        </div>
+                                    @endif
+     
+                                    {{-- Category Badge --}}
+                                    @if($item->category)
+                                        <div class="absolute top-6 left-6">
+                                            <span
+                                                class="px-4 py-2 bg-white/90 backdrop-blur-md text-[#8C51A5] text-[10px] font-black rounded-xl shadow-lg border border-[#8C51A5]/10 tracking-widest uppercase">
+                                                {{ $item->category }}
+                                            </span>
+                                        </div>
+                                    @endif
+     
+                                    {{-- Date Badge --}}
+                                    <div class="absolute top-6 right-6">
+                                        <div
+                                            class="w-14 h-14 bg-[#8C51A5] rounded-2xl flex flex-col items-center justify-center text-white shadow-lg shadow-[#8C51A5]/30">
+                                            <span class="text-xl font-black leading-none">{{ $item->published_at->format('d') }}</span>
+                                            <span class="text-[9px] font-black uppercase tracking-widest mt-1">{{ $item->published_at->format('M') }}</span>
+                                        </div>
                                     </div>
-                                @endif
- 
-                                {{-- Category Badge --}}
-                                @if($item->category)
-                                    <div class="absolute top-6 left-6">
-                                        <span
-                                            class="px-4 py-2 bg-white/90 backdrop-blur-md text-[#8C51A5] text-[10px] font-black rounded-xl shadow-lg border border-[#8C51A5]/10 tracking-widest uppercase">
-                                            {{ $item->category }}
+                                </a>
+    
+                                 {{-- Content --}}
+                                <div class="p-8 md:p-10">
+                                    <a href="{{ route('news.show', $item->slug) }}">
+                                        <h3
+                                            class="text-xl font-black text-[#612F73] mb-4 line-clamp-2 group-hover:text-[#8C51A5] transition-colors leading-tight tracking-tight uppercase">
+                                            {{ $item->title }}
+                                        </h3>
+                                    </a>
+     
+                                    <p class="text-gray-500 text-sm mb-8 line-clamp-3 leading-relaxed font-medium">
+                                        {{ $item->excerpt }}
+                                    </p>
+     
+                                    {{-- Meta --}}
+                                    <div class="flex items-center justify-between pt-6 border-t border-gray-50">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-8 h-8 bg-[#8C51A5]/10 rounded-lg flex items-center justify-center">
+                                                <i class="fas fa-user text-[#8C51A5] text-[10px]"></i>
+                                            </div>
+                                            <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest">{{ $item->author ?? 'Admin' }}</span>
+                                        </div>
+                                        <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest flex items-center gap-2">
+                                            <i class="far fa-eye text-[#8C51A5]"></i>{{ number_format($item->views) }}
                                         </span>
                                     </div>
-                                @endif
- 
-                                {{-- Date Badge --}}
-                                <div class="absolute top-6 right-6">
-                                    <div
-                                        class="w-14 h-14 bg-[#8C51A5] rounded-2xl flex flex-col items-center justify-center text-white shadow-lg shadow-[#8C51A5]/30">
-                                        <span class="text-xl font-black leading-none">{{ $item->published_at->format('d') }}</span>
-                                        <span class="text-[9px] font-black uppercase tracking-widest mt-1">{{ $item->published_at->format('M') }}</span>
-                                    </div>
                                 </div>
-                            </a>
-
-                             {{-- Content --}}
-                            <div class="p-8 md:p-10">
-                                <a href="{{ route('news.show', $item->slug) }}">
-                                    <h3
-                                        class="text-xl font-black text-[#612F73] mb-4 line-clamp-2 group-hover:text-[#8C51A5] transition-colors leading-tight tracking-tight uppercase">
-                                        {{ $item->title }}
-                                    </h3>
-                                </a>
- 
-                                <p class="text-gray-500 text-sm mb-8 line-clamp-3 leading-relaxed font-medium">
-                                    {{ $item->excerpt }}
-                                </p>
- 
-                                {{-- Meta --}}
-                                <div class="flex items-center justify-between pt-6 border-t border-gray-50">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-8 h-8 bg-[#8C51A5]/10 rounded-lg flex items-center justify-center">
-                                            <i class="fas fa-user text-[#8C51A5] text-[10px]"></i>
-                                        </div>
-                                        <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest">{{ $item->author ?? 'Admin' }}</span>
-                                    </div>
-                                    <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                                        <i class="far fa-eye text-[#8C51A5]"></i>{{ number_format($item->views) }}
-                                    </span>
-                                </div>
-                            </div>
-                        </article>
+                            </article>
+                        </div>
                     @endforeach
                 </div>
 
@@ -281,44 +285,46 @@
                             </span>
                             Prestasi Terbaru
                         </h2>
-                        <a href="{{ route('achievements') }}" class="text-[#8C51A5] font-black text-[10px] tracking-[0.2em] uppercase hover:text-[#612F73] transition-colors bg-[#F0E7F8]/50 px-5 py-2.5 rounded-xl border border-[#8C51A5]/10">
+                        <a href="{{ route('achievements') }}" class="text-[#8C51A5] font-black text-[10px] tracking-[0.2em] uppercase hover:text-[#612F73] transition-all duration-300 ease-in-out bg-[#F0E7F8]/50 px-5 py-2.5 rounded-xl border border-[#8C51A5]/10">
                             LIHAT SEMUA <i class="fas fa-arrow-right ml-2 text-[8px]"></i>
                         </a>
                     </div>
 
                      <div class="space-y-6">
                         @foreach(\App\Models\Achievement::active()->ordered()->take(3)->get() as $index => $achievement)
-                            <a href="{{ route('achievement.show', $achievement->slug) }}"
-                                class="flex gap-6 p-6 bg-white rounded-[2rem] border border-[#8C51A5]/5 shadow-xl shadow-[#612F73]/5 hover:shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-500 group transform hover:-translate-x-1" data-aos="fade-right" data-aos-delay="{{ $index * 150 }}">
-                                <div class="w-24 h-24 flex-shrink-0 rounded-2xl overflow-hidden bg-gray-50 border border-[#8C51A5]/10">
-                                    @if($achievement->image)
-                                        <img src="{{ asset('storage/' . $achievement->image) }}" alt="{{ $achievement->title }}"
-                                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                                    @else
-                                        <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#8C51A5]/20 to-transparent">
-                                            <i class="fas fa-trophy text-[#8C51A5] text-3xl"></i>
-                                        </div>
-                                    @endif
-                                </div>
-                                <div class="flex-1 min-w-0 flex flex-col justify-center">
-                                    <h4
-                                        class="text-lg font-black text-[#612F73] line-clamp-1 group-hover:text-[#8C51A5] transition-colors tracking-tight uppercase">
-                                        {{ $achievement->title }}</h4>
-                                    @if($achievement->student_name)
-                                        <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-2">{{ $achievement->student_name }}</p>
-                                    @endif
-                                    <div class="flex items-center gap-3 mt-4">
-                                        @if($achievement->level)
-                                            <span
-                                                class="px-3 py-1 bg-[#F0E7F8] text-[#8C51A5] text-[9px] font-black rounded-lg border border-[#8C51A5]/10 uppercase tracking-widest">{{ $achievement->level }}</span>
-                                        @endif
-                                        @if($achievement->rank)
-                                            <span
-                                                class="px-3 py-1 bg-[#F8CB62]/10 text-[#612F73] text-[9px] font-black rounded-lg border border-[#F8CB62]/20 uppercase tracking-widest">{{ $achievement->rank }}</span>
+                            <div data-aos="fade-right" data-aos-delay="{{ $index * 150 }}">
+                                <a href="{{ route('achievement.show', $achievement->slug) }}"
+                                    class="flex gap-6 p-6 bg-white rounded-[2rem] border border-[#8C51A5]/5 shadow-xl shadow-[#612F73]/5 hover:shadow-2xl hover:border-[#8C51A5]/30 transition-all duration-500 ease-in-out group transform hover:-translate-x-1">
+                                    <div class="w-24 h-24 flex-shrink-0 rounded-2xl overflow-hidden bg-gray-50 border border-[#8C51A5]/10">
+                                        @if($achievement->image)
+                                            <img src="{{ asset('storage/' . $achievement->image) }}" alt="{{ $achievement->title }}"
+                                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                                        @else
+                                            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#8C51A5]/20 to-transparent">
+                                                <i class="fas fa-trophy text-[#8C51A5] text-3xl"></i>
+                                            </div>
                                         @endif
                                     </div>
-                                </div>
-                            </a>
+                                    <div class="flex-1 min-w-0 flex flex-col justify-center">
+                                        <h4
+                                            class="text-lg font-black text-[#612F73] line-clamp-1 group-hover:text-[#8C51A5] transition-colors duration-300 ease-in-out tracking-tight uppercase">
+                                            {{ $achievement->title }}</h4>
+                                        @if($achievement->student_name)
+                                            <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-2">{{ $achievement->student_name }}</p>
+                                        @endif
+                                        <div class="flex items-center gap-3 mt-4">
+                                            @if($achievement->level)
+                                                <span
+                                                    class="px-3 py-1 bg-[#F0E7F8] text-[#8C51A5] text-[9px] font-black rounded-lg border border-[#8C51A5]/10 uppercase tracking-widest">{{ $achievement->level }}</span>
+                                            @endif
+                                            @if($achievement->rank)
+                                                <span
+                                                    class="px-3 py-1 bg-[#F8CB62]/10 text-[#612F73] text-[9px] font-black rounded-lg border border-[#F8CB62]/20 uppercase tracking-widest">{{ $achievement->rank }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
                         @endforeach
                     </div>
                 </div>
@@ -340,12 +346,14 @@
 
                      <div class="grid grid-cols-3 gap-6">
                         @foreach(\App\Models\Gallery::active()->photos()->ordered()->take(6)->get() as $index => $gallery)
-                            <div class="aspect-square rounded-2xl overflow-hidden group relative border border-[#8C51A5]/10 cursor-pointer shadow-lg hover:shadow-premium-lg transition-all duration-500" data-aos="zoom-in" data-aos-delay="{{ $index * 100 }}">
-                                <img src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->title ?? 'Galeri' }}"
-                                    class="w-full h-full object-cover group-hover:scale-125 transition-transform duration-1000"
-                                    onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=300'">
-                                <div class="absolute inset-0 bg-[#612F73]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">
-                                    <i class="fas fa-plus text-[#F8CB62] text-2xl transform scale-50 group-hover:scale-100 transition-transform duration-500"></i>
+                            <div data-aos="zoom-in" data-aos-delay="{{ $index * 100 }}">
+                                <div class="aspect-square rounded-2xl overflow-hidden group relative border border-[#8C51A5]/10 cursor-pointer shadow-lg hover:shadow-premium-lg transition-all duration-500">
+                                    <img src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->title ?? 'Galeri' }}"
+                                        class="w-full h-full object-cover group-hover:scale-125 transition-transform duration-1000"
+                                        onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=300'">
+                                    <div class="absolute inset-0 bg-[#612F73]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">
+                                        <i class="fas fa-plus text-[#F8CB62] text-2xl transform scale-50 group-hover:scale-100 transition-transform duration-500"></i>
+                                    </div>
                                 </div>
                             </div>
                         @endforeach
@@ -364,13 +372,13 @@
                 <p class="text-gray-400 text-lg md:text-xl mb-12 leading-relaxed font-medium">Jadilah yang pertama tahu tentang pengumuman, prestasi siswa, dan berbagai kegiatan seru lainnya di sekolah kami.</p>
                 <div class="flex flex-wrap justify-center gap-6">
                     <a href="{{ route('home') }}"
-                        class="inline-flex items-center gap-4 px-10 py-5 bg-white/5 backdrop-blur-md text-white font-black rounded-2xl border border-white/10 hover:bg-white/10 transition-all uppercase text-xs tracking-widest">
+                        class="inline-flex items-center gap-4 px-10 py-5 bg-white/5 backdrop-blur-md text-white font-black rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-500 hover:-translate-y-1 transform uppercase text-xs tracking-widest">
                         <i class="fas fa-home text-lg text-[#F8CB62]"></i>
                         KEMBALI KE BERANDA
                     </a>
                     @if(($settings['ppdb_active'] ?? false))
                         <a href="{{ $settings['ppdb_url'] ?? '#' }}" target="_blank"
-                            class="inline-flex items-center gap-4 px-10 py-5 bg-gradient-to-r from-[#F8CB62] to-[#f5b82e] text-[#612F73] font-black rounded-2xl hover:shadow-golden transition-all uppercase text-xs tracking-widest">
+                            class="inline-flex items-center gap-4 px-10 py-5 bg-gradient-to-r from-[#F8CB62] to-[#f5b82e] text-[#612F73] font-black rounded-2xl hover:shadow-golden transition-all duration-500 hover:-translate-y-1 transform uppercase text-xs tracking-widest">
                             <i class="fas fa-user-plus text-lg"></i>
                             DAFTAR PPDB SEKARANG
                         </a>
