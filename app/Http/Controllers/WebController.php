@@ -34,7 +34,16 @@ class WebController extends Controller
 
     public function home(): View
     {
-        $data = array_merge($this->getSharedData(), [
+        $sharedData = $this->getSharedData();
+        $schoolName = $sharedData['settings']['school_name'] ?? 'SMK YAJ';
+        $tagline = $sharedData['settings']['school_tagline'] ?? 'Pilihan Yang Tepat Di Sekolah Yang Berkualitas';
+
+        app(\App\Services\SEOManager::class)
+            ->setTitle($schoolName . ' - ' . $tagline, false)
+            ->setDescription($sharedData['settings']['school_description'] ?? '')
+            ->setKeywords(['SMK YAJ', 'Sekolah Kejuruan', 'Pendidikan', 'Jakarta']);
+
+        $data = array_merge($sharedData, [
             'slideBener' => ImgModel::active()->ordered()->get(),
             'principalMessage' => PrincipalMessage::active()->first(),
             'awards' => Award::active()->ordered()->take(8)->get(),
@@ -58,9 +67,12 @@ class WebController extends Controller
     {
         $page = Page::where('slug', $slug)->active()->firstOrFail();
 
+        app(\App\Services\SEOManager::class)
+            ->setTitle($page->title)
+            ->setDescription($page->meta_description ?? $page->content);
+
         $data = array_merge($this->getSharedData(), [
             'page' => $page,
-            'metaDescription' => $page->meta_description,
         ]);
 
         return view('pages.show', $data);
@@ -68,6 +80,10 @@ class WebController extends Controller
 
     public function majors(): View
     {
+        app(\App\Services\SEOManager::class)
+            ->setTitle('Program Keahlian')
+            ->setDescription('Daftar Program Keahlian Unggulan di SMK YAJ yang siap mencetak tenaga kerja profesional.');
+
         $data = array_merge($this->getSharedData(), [
             'majors' => Major::active()->ordered()->get(),
         ]);
@@ -77,6 +93,11 @@ class WebController extends Controller
 
     public function majorShow(Major $major): View
     {
+        app(\App\Services\SEOManager::class)
+            ->setTitle($major->name)
+            ->setDescription($major->short_description)
+            ->setOgImage($major->image ? asset('storage/' . $major->image) : null);
+
         $data = array_merge($this->getSharedData(), [
             'major' => $major,
         ]);
@@ -86,6 +107,10 @@ class WebController extends Controller
 
     public function extracurriculars(): View
     {
+        app(\App\Services\SEOManager::class)
+            ->setTitle('Ekstrakurikuler')
+            ->setDescription('Kembangkan bakat dan minat siswa melalui berbagai kegiatan ekstrakurikuler di SMK YAJ.');
+
         $data = array_merge($this->getSharedData(), [
             'extracurriculars' => Extracurricular::active()->ordered()->get(),
         ]);
@@ -95,6 +120,11 @@ class WebController extends Controller
 
     public function extracurricularShow(Extracurricular $extracurricular): View
     {
+        app(\App\Services\SEOManager::class)
+            ->setTitle($extracurricular->name)
+            ->setDescription($extracurricular->short_description)
+            ->setOgImage($extracurricular->image ? asset('storage/' . $extracurricular->image) : null);
+
         $data = array_merge($this->getSharedData(), [
             'extracurricular' => $extracurricular,
             'relatedExtracurriculars' => Extracurricular::active()->ordered()
@@ -108,6 +138,10 @@ class WebController extends Controller
 
     public function achievements(): View
     {
+        app(\App\Services\SEOManager::class)
+            ->setTitle('Prestasi Siswa')
+            ->setDescription('Daftar prestasi membanggakan yang diraih oleh siswa-siswi SMK YAJ di berbagai tingkatan.');
+
         $data = array_merge($this->getSharedData(), [
             'achievements' => Achievement::active()->ordered()->paginate(12),
         ]);
@@ -117,6 +151,11 @@ class WebController extends Controller
 
     public function achievementShow(Achievement $achievement): View
     {
+        app(\App\Services\SEOManager::class)
+            ->setTitle($achievement->title)
+            ->setDescription($achievement->description ?? $achievement->title)
+            ->setOgImage($achievement->image ? asset('storage/' . $achievement->image) : null);
+
         $data = array_merge($this->getSharedData(), [
             'achievement' => $achievement,
             'relatedAchievements' => Achievement::active()->ordered()
@@ -131,6 +170,11 @@ class WebController extends Controller
 
     public function businessCenterShow(BusinessCenter $businessCenter): View
     {
+        app(\App\Services\SEOManager::class)
+            ->setTitle($businessCenter->name)
+            ->setDescription($businessCenter->short_description)
+            ->setOgImage($businessCenter->image ? asset('storage/' . $businessCenter->image) : null);
+
         $data = array_merge($this->getSharedData(), [
             'businessCenter' => $businessCenter,
             'relatedBusinessCenters' => BusinessCenter::active()->ordered()
@@ -145,6 +189,10 @@ class WebController extends Controller
 
     public function teachers(): View
     {
+        app(\App\Services\SEOManager::class)
+            ->setTitle('Direktori Guru')
+            ->setDescription('Kenali lebih dekat tenaga pendidik profesional di SMK YAJ.');
+
         $data = array_merge($this->getSharedData(), [
             'teachers' => Teacher::active()->ordered()->get(),
         ]);
@@ -154,6 +202,10 @@ class WebController extends Controller
 
     public function staff(): View
     {
+        app(\App\Services\SEOManager::class)
+            ->setTitle('Direktori Staff')
+            ->setDescription('Tenaga kependidikan yang mendukung operasional SMK YAJ.');
+
         $data = array_merge($this->getSharedData(), [
             'staff' => Staff::active()->ordered()->get(),
         ]);
@@ -163,6 +215,10 @@ class WebController extends Controller
 
     public function businessCenters(): View
     {
+        app(\App\Services\SEOManager::class)
+            ->setTitle('Bussiness Center')
+            ->setDescription('Unit usaha dan layanan jasa kreasi siswa SMK YAJ.');
+
         $data = array_merge($this->getSharedData(), [
             'businessCenters' => BusinessCenter::active()->ordered()->get(),
         ]);
@@ -172,6 +228,10 @@ class WebController extends Controller
 
     public function galleryPhotos(): View
     {
+        app(\App\Services\SEOManager::class)
+            ->setTitle('Galeri Foto')
+            ->setDescription('Kumpulan dokumentasi kegiatan dan momen berharga di SMK YAJ.');
+
         $data = array_merge($this->getSharedData(), [
             'galleries' => Gallery::active()->photos()->ordered()->paginate(12),
             'type' => 'photo',
@@ -182,6 +242,10 @@ class WebController extends Controller
 
     public function galleryVideos(): View
     {
+        app(\App\Services\SEOManager::class)
+            ->setTitle('Galeri Video')
+            ->setDescription('Dokumentasi video kegiatan dan profil SMK YAJ.');
+
         $data = array_merge($this->getSharedData(), [
             'galleries' => Gallery::active()->videos()->ordered()->paginate(12),
             'type' => 'video',
@@ -192,6 +256,10 @@ class WebController extends Controller
 
     public function news(): View
     {
+        app(\App\Services\SEOManager::class)
+            ->setTitle('Berita & Artikel')
+            ->setDescription('Informasi terbaru seputar kegiatan dan perkembangan SMK YAJ.');
+
         $data = array_merge($this->getSharedData(), [
             'news' => News::active()->published()->latest()->paginate(9),
         ]);
@@ -202,6 +270,12 @@ class WebController extends Controller
     public function newsShow(News $news): View
     {
         $news->incrementViews();
+
+        app(\App\Services\SEOManager::class)
+            ->setTitle($news->title)
+            ->setDescription($news->excerpt)
+            ->setType('article')
+            ->setOgImage($news->image ? asset('storage/' . $news->image) : null);
 
         $data = array_merge($this->getSharedData(), [
             'news' => $news,
@@ -215,7 +289,6 @@ class WebController extends Controller
                 ->latest()
                 ->take(5)
                 ->get(),
-            'metaDescription' => $news->excerpt,
         ]);
 
         return view('pages.news-show', $data);

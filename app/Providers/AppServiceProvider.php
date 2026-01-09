@@ -11,7 +11,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(\App\Services\SEOManager::class, function ($app) {
+            return new \App\Services\SEOManager();
+        });
     }
 
     /**
@@ -19,6 +21,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        view()->share('seo', app(\App\Services\SEOManager::class));
     }
 }

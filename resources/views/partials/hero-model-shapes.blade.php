@@ -8,11 +8,11 @@
 
     {{-- Concentric Orbital Rings --}}
     <div
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] lg:w-[600px] h-[450px] lg:h-[600px] border border-white/5 rounded-full animate-spin-slow opacity-50">
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] md:w-[450px] lg:w-[600px] h-[280px] md:h-[450px] lg:h-[600px] border border-white/5 rounded-full animate-spin-slow opacity-50">
         <div class="absolute top-1/4 left-0 w-2 h-2 bg-purple-400 rounded-full blur-sm"></div>
     </div>
     <div
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] lg:w-[500px] h-[350px] lg:h-[500px] border border-[#8C51A5]/10 rounded-full animate-spin-slow-reverse opacity-30">
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] md:w-[350px] lg:w-[500px] h-[200px] md:h-[350px] lg:h-[500px] border border-[#8C51A5]/10 rounded-full animate-spin-slow-reverse opacity-30">
         <div class="absolute bottom-1/4 right-0 w-3 h-3 bg-[#8C51A5] rounded-full blur-[2px]"></div>
     </div>
 

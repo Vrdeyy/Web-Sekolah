@@ -34,3 +34,4 @@ Route::get('/berita/{news:slug}', [WebController::class, 'newsShow'])->name('new
 // Contact
 Route::get('/kontak', [WebController::class, 'contact'])->name('contact');
 Route::post('/kontak', [WebController::class, 'contactSend'])->name('contact.send');
+

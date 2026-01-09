@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="{{ $metaDescription ?? 'Website Resmi SMK YAJ - Sekolah Menengah Kejuruan yang berkomitmen mencetak generasi yang terampil dan berkarakter.' }}">
-    <title>@yield('title', 'SMK YAJ') - {{ $settings['school_name'] ?? 'SMK YAJ' }}</title>
+    
+    {!! $seo->generate() !!}
 
     {{-- Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -68,6 +67,15 @@
         mobileMenuOverlay?.addEventListener('click', toggleMobileMenu);
         mobileMenuClose?.addEventListener('click', toggleMobileMenu);
 
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('translate-x-full')) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+
 
         // Mobile dropdown menus
         document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
@@ -85,7 +93,7 @@
             });
         });
 
-        // Navbar
+        // Navbar scroll effect
         const navbar = document.getElementById('navbar');
 
         window.addEventListener('scroll', () => {
