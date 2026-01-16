@@ -75,12 +75,12 @@
                                             <i class="fas fa-trophy text-6xl text-[#D668EA]/20"></i>
                                         </div>
                                     @endif
-    
+
                                     {{-- Overlay Gradient --}}
                                     <div
                                         class="absolute inset-0 bg-gradient-to-t from-[#612F73]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                     </div>
-    
+
                                     {{-- Level Badge --}}
                                     @if($achievement->level)
                                         <div class="absolute top-6 left-6">
@@ -90,7 +90,7 @@
                                             </span>
                                         </div>
                                     @endif
-    
+
                                     {{-- Rank Badge --}}
                                     @if($achievement->rank)
                                         <div class="absolute top-6 right-6">
@@ -101,14 +101,14 @@
                                         </div>
                                     @endif
                                 </div>
-    
+
                                 {{-- Content --}}
                                 <div class="p-8 md:p-10">
                                     <h3
                                         class="text-xl md:text-2xl font-black text-[#612F73] mb-4 group-hover:text-[#8C51A5] transition-colors line-clamp-2 leading-tight">
                                         {{ $achievement->title }}
                                     </h3>
-    
+
                                     @if($achievement->student_name)
                                         <div class="flex items-center gap-2 mb-4">
                                             <span class="w-8 h-[2px] bg-[#F8CB62]"></span>
@@ -120,13 +120,13 @@
                                             </p>
                                         </div>
                                     @endif
-    
+
                                     @if($achievement->description)
                                         <p class="text-gray-500 text-sm mb-8 line-clamp-3 leading-relaxed font-medium">
                                             {{ strip_tags($achievement->description) }}
                                         </p>
                                     @endif
-    
+
                                     {{-- Footer --}}
                                     <div class="flex items-center justify-between pt-6 border-t border-gray-50">
                                         <div class="flex items-center gap-3">

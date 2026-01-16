@@ -201,9 +201,9 @@
                 <img
                     src="{{ asset('storage/' . $slide->image) }}"
                     alt="{{ $slide->title ?? 'Siswa SMK YAJ' }}"
-                    class="absolute bottom-0 left-1/2 -translate-x-1/2
-                           h-full w-auto max-w-none
-                           object-contain drop-shadow-[0_25px_40px_rgba(0,0,0,0.5)] 
+                    class="absolute bottom-0 left-0
+                           w-full h-full
+                           object-contain object-bottom drop-shadow-[0_25px_40px_rgba(0,0,0,0.5)] 
                            slider-item transition-all duration-1000 transform
                            {{ $index === 0 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95' }}"
                 />
@@ -211,9 +211,9 @@
                 <img
                     src="{{ asset('images/hero/hero-yaj.png') }}"
                     alt="Siswa SMK YAJ"
-                    class="absolute bottom-0 left-1/2 -translate-x-1/2
-                           h-full w-auto max-w-none
-                           object-contain drop-shadow-[0_25px_40px_rgba(0,0,0,0.5)] 
+                    class="absolute bottom-0 left-0
+                           w-full h-full
+                           object-contain object-bottom drop-shadow-[0_25px_40px_rgba(0,0,0,0.5)] 
                            animate-fade-in-up"
                 />
             @endforelse
@@ -438,13 +438,11 @@
                             $spanClass = "md:col-span-2";
                         }
 
-                        // Last item handling to avoid gaps if it's a "1" at the start of a row
-                        if ($index == $totalMajors - 1) {
-                             // If it's the only item in the last row (mod 0 or mod 2 starts a row in this pattern?)
-                             // Row starts at 0 (2+1) and 2 (1+2).
-                             // If we have 1 item: index 0 (2). OK.
-                             // If we have 3 items: 0(2), 1(1), 2(1). Row 2 starts with 1. It's alone. 
-                             // It looks fine as a small card.
+                        // Last item handling: If the total number of items is odd, the last item
+                        // will be alone in the row. We force it to span full width (3 columns)
+                        // so it doesn't leave awkward empty space.
+                        if ($index == $totalMajors - 1 && $totalMajors % 2 != 0) {
+                            $spanClass = "md:col-span-3";
                         }
                     @endphp
 
@@ -508,7 +506,6 @@
                     Semua Program Keahlian
                 </a>
             </div>
-
         </div>
     </section>
 
@@ -684,6 +681,13 @@
                             $spanClass = "md:col-span-1";
                         } elseif ($mod == 3) {
                             $spanClass = "md:col-span-2";
+                        }
+
+                        // Last item handling: If the total number of items is odd, the last item
+                        // will be alone in the row. We force it to span full width (3 columns)
+                        // so it doesn't leave awkward empty space.
+                        if ($index == $totalNews - 1 && $totalNews % 2 != 0) {
+                            $spanClass = "md:col-span-3";
                         }
                     @endphp
 

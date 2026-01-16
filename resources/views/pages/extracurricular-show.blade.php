@@ -92,13 +92,13 @@
 
                     {{-- Description Content --}}
                     <div class="prose prose-base md:prose-lg max-w-none mb-16
-                                            prose-headings:text-[#612F73] prose-headings:font-black
-                                            prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-8 prose-h2:tracking-tight prose-h2:uppercase
-                                            prose-p:text-gray-500 prose-p:leading-relaxed prose-p:mb-8 prose-p:font-medium
-                                            prose-a:text-[#8C51A5] prose-a:font-black prose-a:no-underline hover:prose-a:text-[#612F73] transition-colors
-                                            prose-strong:text-[#612F73] prose-strong:font-black
-                                            prose-ul:my-8 prose-li:text-gray-500 prose-li:mb-3 prose-li:font-medium
-                                            prose-blockquote:border-l-4 prose-blockquote:border-[#8C51A5] prose-blockquote:bg-[#F0E7F8]/30 prose-blockquote:py-8 prose-blockquote:px-10 prose-blockquote:rounded-[2rem] prose-blockquote:italic prose-blockquote:text-gray-500 prose-blockquote:shadow-sm"
+                                                prose-headings:text-[#612F73] prose-headings:font-black
+                                                prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-8 prose-h2:tracking-tight prose-h2:uppercase
+                                                prose-p:text-gray-500 prose-p:leading-relaxed prose-p:mb-8 prose-p:font-medium
+                                                prose-a:text-[#8C51A5] prose-a:font-black prose-a:no-underline hover:prose-a:text-[#612F73] transition-colors
+                                                prose-strong:text-[#612F73] prose-strong:font-black
+                                                prose-ul:my-8 prose-li:text-gray-500 prose-li:mb-3 prose-li:font-medium
+                                                prose-blockquote:border-l-4 prose-blockquote:border-[#8C51A5] prose-blockquote:bg-[#F0E7F8]/30 prose-blockquote:py-8 prose-blockquote:px-10 prose-blockquote:rounded-[2rem] prose-blockquote:italic prose-blockquote:text-gray-500 prose-blockquote:shadow-sm"
                         data-aos="fade-up">
                         {!! $extracurricular->description !!}
                     </div>

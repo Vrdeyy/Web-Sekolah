@@ -46,16 +46,16 @@
 
                 {{-- Content --}}
                 <div class="prose prose-lg max-w-none
-                                prose-headings:text-[#612F73] prose-headings:font-black
-                                prose-h2:text-4xl prose-h2:mt-16 prose-h2:mb-10 prose-h2:pb-6 prose-h2:border-b prose-h2:border-[#F0E7F8] prose-h2:uppercase prose-h2:tracking-tight
-                                prose-h3:text-2xl prose-h3:mt-12 prose-h3:mb-6 prose-h3:uppercase
-                                prose-p:text-gray-500 prose-p:leading-relaxed prose-p:mb-8 prose-p:font-medium
-                                prose-a:text-[#8C51A5] prose-a:font-black prose-a:no-underline hover:prose-a:text-[#612F73] transition-colors
-                                prose-strong:text-[#612F73] prose-strong:font-black
-                                prose-ul:my-8 prose-li:text-gray-500 prose-li:mb-3
-                                prose-ol:my-8
-                                prose-blockquote:border-l-4 prose-blockquote:border-[#8C51A5] prose-blockquote:bg-[#F0E7F8]/30 prose-blockquote:py-10 prose-blockquote:px-12 prose-blockquote:rounded-[2.5rem] prose-blockquote:italic prose-blockquote:text-gray-500
-                                prose-img:rounded-[2.5rem] prose-img:shadow-premium-lg" data-aos="fade-up">
+                                    prose-headings:text-[#612F73] prose-headings:font-black
+                                    prose-h2:text-4xl prose-h2:mt-16 prose-h2:mb-10 prose-h2:pb-6 prose-h2:border-b prose-h2:border-[#F0E7F8] prose-h2:uppercase prose-h2:tracking-tight
+                                    prose-h3:text-2xl prose-h3:mt-12 prose-h3:mb-6 prose-h3:uppercase
+                                    prose-p:text-gray-500 prose-p:leading-relaxed prose-p:mb-8 prose-p:font-medium
+                                    prose-a:text-[#8C51A5] prose-a:font-black prose-a:no-underline hover:prose-a:text-[#612F73] transition-colors
+                                    prose-strong:text-[#612F73] prose-strong:font-black
+                                    prose-ul:my-8 prose-li:text-gray-500 prose-li:mb-3
+                                    prose-ol:my-8
+                                    prose-blockquote:border-l-4 prose-blockquote:border-[#8C51A5] prose-blockquote:bg-[#F0E7F8]/30 prose-blockquote:py-10 prose-blockquote:px-12 prose-blockquote:rounded-[2.5rem] prose-blockquote:italic prose-blockquote:text-gray-500
+                                    prose-img:rounded-[2.5rem] prose-img:shadow-premium-lg" data-aos="fade-up">
                     {!! $page->content !!}
                 </div>
             </div>
@@ -103,9 +103,9 @@
                     <div data-aos="fade-up" data-aos-delay="{{ $index * 150 }}">
                         <a href="{{ $link['id'] === 'majors' ? route('majors') : route('page', $link['id']) }}"
                             class="group relative block p-12 bg-white rounded-[3rem] border border-[#8C51A5]/10 
-                                           shadow-xl shadow-[#612F73]/5 hover:shadow-premium-lg 
-                                           hover:border-[#8C51A5]/30 transition-all duration-500 ease-in-out transform hover:-translate-y-3 
-                                           text-center overflow-hidden {{ request()->is('*/' . $link['id']) ? 'ring-2 ring-[#8C51A5] bg-[#F0E7F8]' : '' }}">
+                                                   shadow-xl shadow-[#612F73]/5 hover:shadow-premium-lg 
+                                                   hover:border-[#8C51A5]/30 transition-all duration-500 ease-in-out transform hover:-translate-y-3 
+                                                   text-center overflow-hidden {{ request()->is('*/' . $link['id']) ? 'ring-2 ring-[#8C51A5] bg-[#F0E7F8]' : '' }}">
 
                             {{-- Decorative Corner Shine --}}
                             <div
@@ -115,7 +115,7 @@
                             <div class="relative z-10">
                                 <div
                                     class="w-20 h-20 bg-[#F0E7F8] rounded-[2rem] flex items-center justify-center mb-8 mx-auto 
-                                                   transition-all duration-500 border border-[#8C51A5]/10 shadow-lg group-hover:rotate-6 group-hover:bg-[#8C51A5]">
+                                                           transition-all duration-500 border border-[#8C51A5]/10 shadow-lg group-hover:rotate-6 group-hover:bg-[#8C51A5]">
                                     <i
                                         class="fas {{ $link['icon'] }} text-3xl text-[#8C51A5] group-hover:text-white transition-colors duration-500"></i>
                                 </div>
@@ -125,7 +125,8 @@
                                 </h3>
                                 <p
                                     class="text-gray-400 text-[10px] font-black uppercase tracking-[0.2em] mt-4 group-hover:text-gray-500 transition-colors">
-                                    {{ $link['desc'] }}</p>
+                                    {{ $link['desc'] }}
+                                </p>
                             </div>
                         </a>
                     </div>
@@ -143,20 +144,21 @@
                     data-aos-delay="200">Ada Pertanyaan?</h2>
                 <p class="text-gray-400 text-lg md:text-xl mb-12 font-medium leading-relaxed" data-aos="fade-up"
                     data-aos-delay="400">Tim kami siap membantu Anda memberikan informasi terbaik mengenai
-                    {{ $settings['school_name'] ?? 'SMK YAJ' }}.</p>
+                    {{ $settings['school_name'] ?? 'SMK YAJ' }}.
+                </p>
                 <div class="flex flex-wrap justify-center gap-6" data-aos="fade-up" data-aos-delay="600">
                     <a href="{{ route('contact') }}"
                         class="inline-flex items-center gap-4 px-12 py-5 
-                                rounded-2xl
-                                bg-[#8C51A5] text-white font-black hover:bg-[#612F73] shadow-premium-lg hover:-translate-y-1 transform transition-all uppercase text-xs tracking-widest">
+                                    rounded-2xl
+                                    bg-[#8C51A5] text-white font-black hover:bg-[#612F73] shadow-premium-lg hover:-translate-y-1 transform transition-all uppercase text-xs tracking-widest">
                         <i class="fas fa-paper-plane text-xl text-[#F8CB62]"></i>
                         KIRIM PESAN
                     </a>
                     @if(($settings['ppdb_active'] ?? false))
                         <a href="{{ $settings['ppdb_url'] ?? '#' }}" target="_blank"
                             class="inline-flex items-center gap-4 px-12 py-5 
-                                            rounded-2xl
-                                            bg-gradient-to-r from-[#F8CB62] to-[#f5b82e] text-[#612F73] font-black hover:shadow-golden transform hover:-translate-y-1 transition-all uppercase text-xs tracking-widest">
+                                                    rounded-2xl
+                                                    bg-gradient-to-r from-[#F8CB62] to-[#f5b82e] text-[#612F73] font-black hover:shadow-golden transform hover:-translate-y-1 transition-all uppercase text-xs tracking-widest">
                             <i class="fas fa-user-plus text-xl"></i>
                             Pendaftaran PPDB
                         </a>

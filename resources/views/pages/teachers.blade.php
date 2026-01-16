@@ -33,7 +33,8 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto text-center">
                 {{-- Stat 1 --}}
                 <div data-aos="fade-up" data-aos-delay="100">
-                    <div class="group h-full p-8 rounded-[2rem] bg-[#F0E7F8]/50 border border-[#8C51A5]/10 hover:shadow-2xl transition-all duration-500 ease-in-out transform hover:-translate-y-2 hover:scale-[1.02]">
+                    <div
+                        class="group h-full p-8 rounded-[2rem] bg-[#F0E7F8]/50 border border-[#8C51A5]/10 hover:shadow-2xl transition-all duration-500 ease-in-out transform hover:-translate-y-2 hover:scale-[1.02]">
                         <div
                             class="text-5xl font-black text-[#612F73] mb-3 leading-none group-hover:scale-110 transition-transform">
                             {{ $teachers->count() }}
@@ -44,7 +45,8 @@
 
                 {{-- Stat 2 --}}
                 <div data-aos="fade-up" data-aos-delay="200">
-                    <div class="group h-full p-8 rounded-[2rem] bg-[#8C51A5]/5 border border-[#8C51A5]/10 hover:shadow-2xl transition-all duration-500 ease-in-out transform hover:-translate-y-2 hover:scale-[1.02]">
+                    <div
+                        class="group h-full p-8 rounded-[2rem] bg-[#8C51A5]/5 border border-[#8C51A5]/10 hover:shadow-2xl transition-all duration-500 ease-in-out transform hover:-translate-y-2 hover:scale-[1.02]">
                         <div
                             class="text-5xl font-black text-[#8C51A5] mb-3 leading-none group-hover:scale-110 transition-transform">
                             100%</div>
@@ -54,7 +56,8 @@
 
                 {{-- Stat 3 --}}
                 <div data-aos="fade-up" data-aos-delay="300">
-                    <div class="group h-full p-8 rounded-[2rem] bg-[#F8CB62]/5 border border-[#8C51A5]/10 hover:shadow-2xl transition-all duration-500 ease-in-out transform hover:-translate-y-2 hover:scale-[1.02]">
+                    <div
+                        class="group h-full p-8 rounded-[2rem] bg-[#F8CB62]/5 border border-[#8C51A5]/10 hover:shadow-2xl transition-all duration-500 ease-in-out transform hover:-translate-y-2 hover:scale-[1.02]">
                         <div
                             class="text-5xl font-black text-[#F8CB62] mb-3 leading-none group-hover:scale-110 transition-transform">
                             PASCA</div>
@@ -86,7 +89,7 @@
                                         </div>
                                     @endif
                                 </div>
-    
+
                                 {{-- Role Badge --}}
                                 <div class="absolute -bottom-2 right-1/2 translate-x-12">
                                     <div
@@ -95,14 +98,14 @@
                                     </div>
                                 </div>
                             </div>
-    
+
                             {{-- Content --}}
                             <div class="space-y-4">
                                 <h3
                                     class="text-xl font-black text-[#612F73] group-hover:text-[#8C51A5] transition-colors leading-snug uppercase">
                                     {{ $teacher->name }}
                                 </h3>
-    
+
                                 @if($teacher->position)
                                     <div
                                         class="inline-flex items-center gap-2 px-4 py-1.5 bg-[#F0E7F8] rounded-full border border-[#8C51A5]/10 group-hover:bg-[#8C51A5] transition-colors duration-500">
@@ -110,14 +113,15 @@
                                             class="text-[#8C51A5] group-hover:text-white text-[10px] font-black uppercase tracking-widest">{{ $teacher->position }}</span>
                                     </div>
                                 @endif
-    
+
                                 @if($teacher->subjects)
                                     <div class="flex items-center justify-center gap-2 text-gray-400">
                                         <i class="fas fa-book-open text-[10px] text-[#8C51A5]"></i>
-                                        <span class="text-[10px] font-black uppercase tracking-widest">{{ $teacher->subjects }}</span>
+                                        <span
+                                            class="text-[10px] font-black uppercase tracking-widest">{{ $teacher->subjects }}</span>
                                     </div>
                                 @endif
-    
+
                                 {{-- Social/Contact --}}
                                 @if($teacher->email)
                                     <div class="mt-8 pt-8 border-t border-gray-50">
