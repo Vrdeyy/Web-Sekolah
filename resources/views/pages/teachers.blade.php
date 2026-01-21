@@ -122,16 +122,14 @@
                                     </div>
                                 @endif
 
-                                {{-- Social/Contact --}}
-                                @if($teacher->email)
-                                    <div class="mt-8 pt-8 border-t border-gray-50">
-                                        <a href="mailto:{{ $teacher->email }}"
-                                            class="inline-flex items-center gap-3 px-8 py-3.5 bg-[#8C51A5]/10 text-[#8C51A5] hover:bg-[#8C51A5] hover:text-white transition-all duration-500 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] border border-[#8C51A5]/20 w-full justify-center">
-                                            <i class="fas fa-paper-plane text-[10px]"></i>
-                                            HUBUNGI GURU
-                                        </a>
-                                    </div>
-                                @endif
+                                {{-- Action Button --}}
+                                <div class="mt-8 pt-8 border-t border-gray-50">
+                                    <a href="{{ route('teacher.show', $teacher->id) }}"
+                                        class="inline-flex items-center gap-3 px-8 py-3.5 bg-[#8C51A5]/10 text-[#8C51A5] hover:bg-[#8C51A5] hover:text-white transition-all duration-500 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] border border-[#8C51A5]/20 w-full justify-center">
+                                        <i class="fas fa-info-circle text-[10px]"></i>
+                                        DETAIL GURU
+                                    </a>
+                                </div>
                             </div>
                         </article>
                     </div>

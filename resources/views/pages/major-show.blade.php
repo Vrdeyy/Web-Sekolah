@@ -46,7 +46,7 @@
                 <div class="lg:col-span-2 space-y-16">
                     {{-- Featured Image --}}
                     @if($major->image)
-                        <div class="rounded-[3rem] overflow-hidden shadow-premium-lg border border-[#8C51A5]/10 group" data-aos="zoom-in">
+                        <div class="rounded-3xl md:rounded-[3rem] overflow-hidden shadow-premium-lg border border-[#8C51A5]/10 group" data-aos="zoom-in">
                             <img src="{{ asset('storage/' . $major->image) }}" alt="{{ $major->name }}" class="w-full h-auto group-hover:scale-105 transition-transform duration-1000">
                         </div>
                     @endif
@@ -184,7 +184,7 @@
                                     </div>
                                     <div class="flex-1 min-w-0">
                                         <p
-                                            class="font-black text-[#612F73] text-sm truncate group-hover:text-[#8C51A5] transition-colors duration-300 ease-in-out tracking-tight uppercase">
+                                            class="font-black text-[#612F73] text-sm line-clamp-2 group-hover:text-[#8C51A5] transition-colors duration-300 ease-in-out tracking-tight uppercase leading-snug">
                                             {{ $otherMajor->name }}
                                         </p>
                                         @if($otherMajor->short_name)

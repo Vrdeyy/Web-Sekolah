@@ -4,7 +4,7 @@
 
 @section('content')
 {{-- HERO SECTION CLEAN EDUCATION (PURPLE THEME) --}}
-<section class="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#612F73]/5 via-white to-[#F0E7F8]/30 pt-32 lg:pt-8">
+<section class="relative min-h-screen flex items-center lg:items-end overflow-hidden bg-gradient-to-br from-[#612F73]/5 via-white to-[#F0E7F8]/30 pt-32 lg:pt-8 pb-12 lg:pb-20">
 
     {{-- Decorative Blobs & Glowing Orbs --}}
     <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-gradient-to-br from-[#612F73]/15 to-transparent rounded-full blur-[120px] animate-pulse-slow"></div>
@@ -38,7 +38,7 @@
         <div class="absolute top-2/3 right-1/4 w-2 h-2 bg-[#8C51A5]/20 rounded-full blur-sm animate-ping" style="animation-delay: 2s"></div>
     </div>
 
-    <div class="container mx-auto px-6 lg:px-12 relative z-10 lg:-mt-20">
+    <div class="container mx-auto px-6 lg:px-12 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-14">
 
             {{-- LEFT CONTENT --}}
@@ -65,7 +65,7 @@
                         <i class="fas fa-lightbulb"></i>
                     </div>
                 </div>
-                <span class="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-[#8C51A5]/10 text-[#612F73] text-sm font-black tracking-wide mt-28 lg:mt-36 border border-[#8C51A5]/20 shadow-sm transition-all hover:bg-[#8C51A5]/20 hero-animate hero-fade-down" style="animation-delay: 200ms">
+                <span class="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-[#8C51A5]/10 text-[#612F73] text-sm font-black tracking-wide mt-8 lg:mt-24 border border-[#8C51A5]/20 shadow-sm transition-all hover:bg-[#8C51A5]/20 hero-animate hero-fade-down" style="animation-delay: 200ms">
                     <i class="fa-solid fa-award text-amber-500 scale-125"></i>
                     <span>{{ $settings['hero_badge'] ?? 'Status Akreditasi A' }}</span>
                 </span>
@@ -134,7 +134,7 @@
             </div>
 
             {{-- RIGHT IMAGE --}}
-            <div class="relative flex justify-center lg:justify-end min-h-[450px] md:min-h-[550px] lg:min-h-[700px] mt-2 lg:mt-0">
+            <div class="relative flex items-end justify-center lg:justify-end h-full mt-2 lg:mt-0 lg:translate-y-20">
 
     {{-- Dynamic Educational Collage Background --}}
     <div class="absolute inset-0 z-0 pointer-events-none overflow-visible flex items-center justify-center hero-animate hero-zoom-in" style="animation-delay: 400ms">
@@ -185,7 +185,7 @@
     </div>
 
     {{-- Hero Model Display Wrapper --}}
-    <div class="relative w-full max-w-[340px] md:max-w-[450px] lg:max-w-[600px] h-[450px] md:h-[550px] lg:h-[700px] z-10 flex items-end justify-center">
+    <div class="relative w-full max-w-[300px] md:max-w-[400px] lg:max-w-[520px] h-[400px] md:h-[480px] lg:h-[600px] z-10 flex items-end justify-center">
 
         {{-- Background Decorations specifically for the model --}}
         <div class="absolute inset-x-0 bottom-0 top-20 pointer-events-none">
@@ -203,7 +203,7 @@
                     alt="{{ $slide->title ?? 'Siswa SMK YAJ' }}"
                     class="absolute bottom-0 left-0
                            w-full h-full
-                           object-contain object-bottom drop-shadow-[0_25px_40px_rgba(0,0,0,0.5)] 
+                           object-cover object-bottom drop-shadow-[0_25px_40px_rgba(0,0,0,0.5)] 
                            slider-item transition-all duration-1000 transform
                            {{ $index === 0 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95' }}"
                 />
@@ -213,7 +213,7 @@
                     alt="Siswa SMK YAJ"
                     class="absolute bottom-0 left-0
                            w-full h-full
-                           object-contain object-bottom drop-shadow-[0_25px_40px_rgba(0,0,0,0.5)] 
+                           object-cover object-bottom drop-shadow-[0_25px_40px_rgba(0,0,0,0.5)] 
                            animate-fade-in-up"
                 />
             @endforelse
@@ -254,10 +254,10 @@
         <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-purple-50/60 to-transparent"></div>
 
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center flex-col-reverse">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
                 {{-- Image Side --}}
-                <div class="relative order-2 lg:order-1 px-4 lg:px-0" data-aos="fade-right">
+                <div class="relative order-first px-4 lg:px-0" data-aos="fade-right">
                     <div class="relative z-10 group max-w-[450px] mx-auto">
                         <div
                             class="absolute -inset-4 bg-gradient-to-br from-[#8C51A5]/15 to-[#612F73]/15

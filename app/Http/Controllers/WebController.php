@@ -200,6 +200,25 @@ class WebController extends Controller
         return view('pages.teachers', $data);
     }
 
+    public function teacherShow(Teacher $teacher): View
+    {
+        $sharedData = $this->getSharedData();
+        app(\App\Services\SEOManager::class)
+            ->setTitle($teacher->name . ' - Guru ' . ($sharedData['settings']['school_name'] ?? 'SMK YAJ'))
+            ->setDescription('Profil lengkap ' . $teacher->name . ', ' . ($teacher->position ?? 'Guru') . ' di ' . ($sharedData['settings']['school_name'] ?? 'SMK YAJ'))
+            ->setOgImage($teacher->photo ? asset('storage/' . $teacher->photo) : null);
+
+        $data = array_merge($sharedData, [
+            'teacher' => $teacher,
+            'relatedTeachers' => Teacher::active()->ordered()
+                ->where('id', '!=', $teacher->id)
+                ->take(4)
+                ->get(),
+        ]);
+
+        return view('pages.teacher-show', $data);
+    }
+
     public function staff(): View
     {
         app(\App\Services\SEOManager::class)
@@ -254,14 +273,37 @@ class WebController extends Controller
         return view('pages.gallery', $data);
     }
 
-    public function news(): View
+    public function news(Request $request): View
     {
         app(\App\Services\SEOManager::class)
             ->setTitle('Berita & Artikel')
             ->setDescription('Informasi terbaru seputar kegiatan dan perkembangan SMK YAJ.');
 
+        $query = News::active()->published();
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $keywords = explode(' ', $search);
+
+            $query->where(function ($q) use ($keywords) {
+                foreach ($keywords as $keyword) {
+                    if (trim($keyword) === '')
+                        continue;
+                    $keyword = trim($keyword);
+                    $q->where(function ($sq) use ($keyword) {
+                        $sq->where('title', 'like', "%{$keyword}%")
+                            ->orWhere('content', 'like', "%{$keyword}%");
+                    });
+                }
+            });
+        }
+
+        if ($request->has('category')) {
+            $query->where('category', $request->input('category'));
+        }
+
         $data = array_merge($this->getSharedData(), [
-            'news' => News::active()->published()->latest()->paginate(9),
+            'news' => $query->latest()->paginate(9)->withQueryString(),
         ]);
 
         return view('pages.news', $data);

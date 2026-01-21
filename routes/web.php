@@ -20,6 +20,7 @@ Route::get('/pusat-bisnis/{businessCenter:slug}', [WebController::class, 'busine
 
 // Directory
 Route::get('/daftar-guru', [WebController::class, 'teachers'])->name('teachers');
+Route::get('/daftar-guru/{teacher}', [WebController::class, 'teacherShow'])->name('teacher.show');
 Route::get('/daftar-staff', [WebController::class, 'staff'])->name('staff');
 Route::get('/business-center', [WebController::class, 'businessCenters'])->name('business-centers');
 
