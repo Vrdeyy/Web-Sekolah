@@ -133,7 +133,7 @@
                                 <i class="fab fa-twitter text-sm"></i>
                                 Twitter
                             </a>
-                            <a href="https://wa.me/?text={{ urlencode($news->title . ' ' . request()->url()) }}"
+                            <a href="https://wa.me/?text={{ urlencode("📰 *" . $news->title . "*\n\nBaca selengkapnya di:\n" . request()->url()) }}"
                                 target="_blank"
                                 class="inline-flex items-center gap-3 px-8 py-4 bg-[#25D366]/5 border border-[#25D366]/10 text-[#25D366] rounded-2xl hover:bg-[#25D366] hover:text-white transition-all duration-500 font-black text-[10px] uppercase tracking-[0.2em] shadow-sm hover:shadow-lg hover:shadow-[#25D366]/20" data-aos="fade-up" data-aos-delay="300">
                                 <i class="fab fa-whatsapp text-sm"></i>
@@ -351,17 +351,86 @@
 @push('scripts')
     <script>
          function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(function () {
+            const showToast = () => {
                 const toast = document.createElement('div');
-                toast.className = 'fixed bottom-10 right-10 bg-[#8C51A5] text-white px-8 py-5 rounded-2xl shadow-premium-lg z-[100] animate-bounce font-black text-[10px] tracking-[0.2em] flex items-center gap-3 border border-white/20 uppercase';
-                toast.innerHTML = '<i class="fas fa-check-circle text-lg text-[#F8CB62]"></i> Link Berhasil Disalin!';
+                toast.className = 'fixed bottom-10 right-10 z-[100] flex flex-col pointer-events-none group';
+                toast.innerHTML = `
+                    <div class="bg-[#612F73]/90 backdrop-blur-xl text-white px-8 py-6 rounded-[2rem] shadow-[0_20px_50px_rgba(97,47,115,0.4)] border border-white/20 flex items-center gap-5 translate-y-20 opacity-0 transition-all duration-700 ease-out" id="copy-toast-content">
+                        <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center shadow-inner">
+                            <i class="fas fa-check text-[#F8CB62] text-xl"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-[10px] font-black text-[#F8CB62] uppercase tracking-[0.3em] mb-1">Berhasil</span>
+                            <span class="font-black text-sm uppercase tracking-widest whitespace-nowrap">Link Berita Disalin</span>
+                        </div>
+                        <div class="absolute bottom-0 left-8 right-8 h-1 bg-white/10 rounded-full overflow-hidden">
+                            <div class="h-full bg-[#F8CB62] w-full" id="toast-progress"></div>
+                        </div>
+                    </div>
+                `;
                 document.body.appendChild(toast);
-
+                
+                const content = document.getElementById('copy-toast-content');
+                const progress = document.getElementById('toast-progress');
+                
+                // Trigger entry animation
                 setTimeout(() => {
-                    toast.classList.add('opacity-0', 'transition-all', 'duration-500', 'translate-y-10');
-                    setTimeout(() => toast.remove(), 500);
+                    content.classList.remove('translate-y-20', 'opacity-0');
+                    content.classList.add('translate-y-0', 'opacity-100');
+                    
+                    // Animate progress bar
+                    progress.style.transition = 'width 3s linear';
+                    progress.style.width = '0%';
+                }, 100);
+
+                // Exit animation
+                setTimeout(() => {
+                    content.classList.remove('translate-y-0', 'opacity-100');
+                    content.classList.add('translate-y-20', 'opacity-0');
+                    setTimeout(() => toast.remove(), 700);
                 }, 3000);
-            });
+            };
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(showToast);
+            } else {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                
+                // Prevent keyboard on mobile
+                textArea.setAttribute('readonly', '');
+                textArea.setAttribute('inputmode', 'none');
+                textArea.style.contentEditable = true;
+                textArea.style.readOnly = false;
+                
+                textArea.style.position = "fixed";
+                textArea.style.left = "-999999px";
+                textArea.style.top = "-999999px";
+                textArea.style.fontSize = "12pt"; // Prevent zoom on iOS
+                
+                document.body.appendChild(textArea);
+                
+                // Handle selection for all devices
+                const isiOS = navigator.userAgent.match(/ipad|iphone/i);
+                if (isiOS) {
+                    const range = document.createRange();
+                    range.selectNodeContents(textArea);
+                    const selection = window.getSelection();
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                    textArea.setSelectionRange(0, 999999);
+                } else {
+                    textArea.select();
+                }
+                
+                try {
+                    if (document.execCommand('copy')) showToast();
+                } catch (err) {
+                    console.error('Fallback copy failed', err);
+                }
+                
+                document.body.removeChild(textArea);
+            }
         }
     </script>
 @endpush

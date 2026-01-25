@@ -109,17 +109,13 @@
                         @foreach($galleries as $index => $gallery)
                             <div data-aos="fade-up" data-aos-delay="{{ ($index % 3) * 150 }}">
                                 <div class="group bg-white rounded-[2.5rem] overflow-hidden shadow-xl shadow-[#612F73]/5 hover:shadow-premium-lg border border-[#8C51A5]/10 hover:border-[#8C51A5]/30 transition-all duration-700 cursor-pointer"
-                                    onclick="openVideoModal('{{ $gallery->video_url }}')">
+                                    onclick="openVideoModal('{{ $gallery->embed_url }}')">
                                     <div class="relative aspect-video overflow-hidden bg-gray-50">
-                                        @if($gallery->thumbnail)
-                                            <img src="{{ asset('storage/' . $gallery->thumbnail) }}" alt="{{ $gallery->title ?? 'Video' }}"
-                                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                        @else
-                                            <div
-                                                class="w-full h-full bg-gradient-to-br from-[#F0E7F8] to-white flex items-center justify-center">
-                                                <i class="fas fa-play-circle text-6xl text-[#D668EA]/20"></i>
-                                            </div>
-                                        @endif
+                                        <img src="{{ $gallery->thumbnail_url }}" alt="{{ $gallery->title ?? 'Video' }}"
+                                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                            onerror="this.src='https://img.youtube.com/vi/{{ $gallery->youtube_id }}/hqdefault.jpg'">
+    
+                                        {{-- Play Button Overlay --}}
     
                                         {{-- Play Button Overlay --}}
                                         <div
@@ -192,17 +188,23 @@
     </section>
 
     {{-- Lightbox Modal --}}
-    <div id="lightbox" class="fixed inset-0 bg-[#1A0E17]/98 z-50 hidden items-center justify-center p-4 backdrop-blur-sm"
-        onclick="closeLightbox()">
-        <button onclick="closeLightbox()"
-            class="absolute top-6 right-6 w-14 h-14 bg-white/10 border border-white/20 rounded-2xl text-white text-2xl hover:bg-[#8C51A5] hover:text-white transition-all z-10 flex items-center justify-center shadow-2xl">
+    <div id="lightbox" class="fixed inset-0 bg-[#1A0E17]/98 z-50 hidden items-center justify-center p-4 backdrop-blur-md cursor-zoom-out"
+        onclick="closeLightbox(event)">
+        <button onclick="closeLightbox(event, true)"
+            class="absolute top-6 right-6 w-14 h-14 bg-white/10 border border-white/20 rounded-2xl text-white text-2xl hover:bg-[#8C51A5] hover:text-white transition-all z-[60] flex items-center justify-center shadow-2xl">
             <i class="fas fa-times"></i>
         </button>
-        <img id="lightbox-image" src="" alt=""
-            class="max-w-full max-h-[85vh] object-contain rounded-3xl shadow-[0_0_50px_rgba(140,81,165,0.3)] border border-white/10">
-        <p id="lightbox-caption"
-            class="absolute bottom-10 left-0 right-0 text-center text-white/90 font-black text-xs uppercase tracking-[0.3em] px-4">
-        </p>
+        
+        <div class="relative z-50 max-w-[95vw] max-h-[90vh] flex flex-col items-center justify-center pointer-events-none">
+            <div class="overflow-hidden rounded-3xl shadow-[0_0_80px_rgba(140,81,165,0.4)] border border-white/10 transition-all duration-500 pointer-events-auto">
+                <img id="lightbox-image" src="" alt=""
+                    class="max-w-full max-h-[85vh] object-contain cursor-zoom-in transition-transform duration-500 ease-out origin-center"
+                    ondblclick="toggleZoom(this, event)">
+            </div>
+            <p id="lightbox-caption"
+                class="mt-6 text-white/90 font-black text-xs uppercase tracking-[0.3em] px-4 text-center pointer-events-auto">
+            </p>
+        </div>
     </div>
 
     {{-- Video Modal --}}
@@ -227,29 +229,155 @@
 
 @push('scripts')
     <script>
+        let zoomState = {
+            scale: 1,
+            translateX: 0,
+            translateY: 0,
+            isDragging: false,
+            startX: 0,
+            startY: 0
+        };
+
+        function resetZoomState() {
+            zoomState = { scale: 1, translateX: 0, translateY: 0, isDragging: false, startX: 0, startY: 0 };
+            updateImageTransform();
+        }
+
+        function updateImageTransform() {
+            const img = document.getElementById('lightbox-image');
+            img.style.transform = `translate(${zoomState.translateX}px, ${zoomState.translateY}px) scale(${zoomState.scale})`;
+            
+            if (zoomState.scale > 1) {
+                img.classList.remove('cursor-zoom-in');
+                img.classList.add('cursor-grab');
+                if (zoomState.isDragging) img.classList.add('cursor-grabbing');
+            } else {
+                img.classList.remove('cursor-grab', 'cursor-grabbing');
+                img.classList.add('cursor-zoom-in');
+            }
+        }
+
         function openLightbox(src, caption) {
-            document.getElementById('lightbox-image').src = src;
+            const img = document.getElementById('lightbox-image');
+            img.src = src;
+            resetZoomState();
+            
             document.getElementById('lightbox-caption').textContent = caption;
             document.getElementById('lightbox').classList.remove('hidden');
             document.getElementById('lightbox').classList.add('flex');
             document.body.style.overflow = 'hidden';
         }
 
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.add('hidden');
-            document.getElementById('lightbox').classList.remove('flex');
-            document.body.style.overflow = '';
+        function closeLightbox(event, force = false) {
+            if (force || event.target.id === 'lightbox') {
+                document.getElementById('lightbox').classList.add('hidden');
+                document.getElementById('lightbox').classList.remove('flex');
+                document.body.style.overflow = '';
+                resetZoomState();
+            }
         }
 
+        // Handle Wheel & Pinch Zoom (Zoom towards cursor)
+        document.getElementById('lightbox').addEventListener('wheel', function(e) {
+            e.preventDefault();
+            const img = document.getElementById('lightbox-image');
+            const rect = img.getBoundingClientRect();
+            
+            const delta = e.deltaY > 0 ? -0.3 : 0.3;
+            const oldScale = zoomState.scale;
+            const newScale = Math.min(Math.max(1, zoomState.scale + delta), 6);
+            
+            if (newScale !== oldScale) {
+                // Calculate cursor position relative to image center
+                const mouseX = e.clientX - (rect.left + rect.width / 2);
+                const mouseY = e.clientY - (rect.top + rect.height / 2);
+                
+                // Adjust translation to zoom towards cursor
+                if (newScale > 1) {
+                    const ratio = newScale / oldScale;
+                    zoomState.translateX -= mouseX * (ratio - 1);
+                    zoomState.translateY -= mouseY * (ratio - 1);
+                } else {
+                    zoomState.translateX = 0;
+                    zoomState.translateY = 0;
+                }
+                
+                zoomState.scale = newScale;
+                updateImageTransform();
+            }
+        }, { passive: false });
+
+        // Drag to Pan
+        const imgEl = document.getElementById('lightbox-image');
+        imgEl.addEventListener('mousedown', (e) => {
+            if (zoomState.scale > 1) {
+                zoomState.isDragging = true;
+                zoomState.startX = e.clientX - zoomState.translateX;
+                zoomState.startY = e.clientY - zoomState.translateY;
+                updateImageTransform();
+            }
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (zoomState.isDragging) {
+                zoomState.translateX = e.clientX - zoomState.startX;
+                zoomState.translateY = e.clientY - zoomState.startY;
+                updateImageTransform();
+            }
+        });
+
+        window.addEventListener('mouseup', () => {
+            zoomState.isDragging = false;
+            updateImageTransform();
+        });
+
+        // Toggle Zoom on Double Click (Zoom towards double-click point)
+        function toggleZoom(img, e) {
+            if (zoomState.scale > 1) {
+                resetZoomState();
+            } else {
+                const rect = img.getBoundingClientRect();
+                const newScale = 3;
+                
+                // Get click position relative to image center
+                const offsetX = e.clientX - (rect.left + rect.width / 2);
+                const offsetY = e.clientY - (rect.top + rect.height / 2);
+                
+                zoomState.scale = newScale;
+                // Move image so the clicked point stays under cursor
+                zoomState.translateX = -offsetX * (newScale - 1);
+                zoomState.translateY = -offsetY * (newScale - 1);
+                
+                updateImageTransform();
+            }
+        }
+
+        // Support Touch for Mobile
+        imgEl.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1 && zoomState.scale > 1) {
+                zoomState.isDragging = true;
+                zoomState.startX = e.touches[0].clientX - zoomState.translateX;
+                zoomState.startY = e.touches[0].clientY - zoomState.translateY;
+            }
+        }, { passive: true });
+
+        imgEl.addEventListener('touchmove', (e) => {
+            if (zoomState.isDragging && e.touches.length === 1) {
+                zoomState.translateX = e.touches[0].clientX - zoomState.startX;
+                zoomState.translateY = e.touches[0].clientY - zoomState.startY;
+                updateImageTransform();
+            }
+        }, { passive: true });
+
+        imgEl.addEventListener('touchend', () => {
+            zoomState.isDragging = false;
+            updateImageTransform();
+        });
+
         function openVideoModal(url) {
-            // Convert YouTube URL to embed URL
             let embedUrl = url;
-            if (url.includes('youtube.com/watch')) {
-                const videoId = url.split('v=')[1]?.split('&')[0];
-                embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-            } else if (url.includes('youtu.be/')) {
-                const videoId = url.split('youtu.be/')[1]?.split('?')[0];
-                embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            if (!url.includes('autoplay=')) {
+                embedUrl += (url.includes('?') ? '&' : '?') + 'autoplay=1';
             }
 
             document.getElementById('video-iframe').src = embedUrl;
@@ -268,7 +396,7 @@
         // Close on escape key
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
-                closeLightbox();
+                closeLightbox(null, true);
                 closeVideoModal();
             }
         });
