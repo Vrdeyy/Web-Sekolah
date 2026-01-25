@@ -16,6 +16,10 @@ Website profil sekolah modern dan futuristik untuk **SMK YAJ**, dibangun dengan 
 - **Premium UI/UX**: Animasi modern, Glassmorphism, dan tema warna eksklusif.
 - **Smart Seeder**: Deploy project langsung dengan data nyata & dummy yang rapi.
 - **Responsive Management**: Pengaturan Logo, PPDB, dan Kontak langsung dari Admin.
+- **Smart Lightbox Gallery**: Galeri foto dengan fitur Zoom-to-Cursor, Drag-to-Pan, dan Double-Click zoom.
+- **Auto YouTube Thumbnail**: Galeri video otomatis mengambil thumbnail dari link YouTube.
+- **Optimized Search**: Pencarian berita yang cepat dengan algoritma prioritas judul dan anti-lag.
+- **Smart Share System**: Fitur bagikan berita ke sosial media dengan format teks otomatis dan tombol salin link anti-keyboard.
 
 ---
 
@@ -394,6 +398,7 @@ web-sekolah/
 
 | Versi | Tanggal | Perubahan |
 |-------|---------|-----------|
+| v1.4.0 | 2026-01-25 | Optimasi Pencarian, Auto YouTube Thumbnail, & Smart Lightbox Gallery |
 | v1.3.0 | 2026-01-20 | Integrasi SEO Manager, Update Seeder Premium |
 | v1.2.0 | 2026-01-15 | Optimasi Logo Management & Responsive Hero |
 | v1.1.0 | 2026-01-10 | Penambahan fitur Extracurricular & Gallery |
