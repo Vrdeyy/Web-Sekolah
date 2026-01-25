@@ -281,19 +281,21 @@ class WebController extends Controller
 
         $query = News::active()->published();
 
-        if ($request->has('search')) {
-            $search = $request->input('search');
-            $keywords = explode(' ', $search);
+        if ($search = $request->input('search')) {
+            $keywords = array_filter(explode(' ', $search), fn($k) => strlen($k) >= 3);
 
-            $query->where(function ($q) use ($keywords) {
+            $query->where(function ($q) use ($search, $keywords) {
+                // Priority 1: Exact title match (Very Fast)
+                $q->where('title', 'like', "%{$search}%");
+
+                // Priority 2: Keyword matches in titles (Fast)
                 foreach ($keywords as $keyword) {
-                    if (trim($keyword) === '')
-                        continue;
-                    $keyword = trim($keyword);
-                    $q->where(function ($sq) use ($keyword) {
-                        $sq->where('title', 'like', "%{$keyword}%")
-                            ->orWhere('content', 'like', "%{$keyword}%");
-                    });
+                    $q->orWhere('title', 'like', "%{$keyword}%");
+                }
+
+                // Priority 3: Exact phrase in content (Heavy, only done once)
+                if (strlen($search) > 3) {
+                    $q->orWhere('content', 'like', "%{$search}%");
                 }
             });
         }

@@ -4,7 +4,7 @@
 
 @section('content')
 {{-- HERO SECTION CLEAN EDUCATION (PURPLE THEME) --}}
-<section class="relative min-h-screen flex items-center lg:items-end overflow-hidden bg-gradient-to-br from-[#612F73]/5 via-white to-[#F0E7F8]/30 pt-32 lg:pt-8 pb-12 lg:pb-20">
+<section class="relative min-h-screen flex items-center lg:items-end overflow-hidden bg-gradient-to-br from-[#612F73]/5 via-white to-[#F0E7F8]/30 pt-32 lg:pt-8 pb-0 lg:pb-20">
 
     {{-- Decorative Blobs & Glowing Orbs --}}
     <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-gradient-to-br from-[#612F73]/15 to-transparent rounded-full blur-[120px] animate-pulse-slow"></div>
@@ -185,7 +185,7 @@
     </div>
 
     {{-- Hero Model Display Wrapper --}}
-    <div class="relative w-full max-w-[300px] md:max-w-[400px] lg:max-w-[520px] h-[400px] md:h-[480px] lg:h-[600px] z-10 flex items-end justify-center">
+    <div class="relative w-full max-w-[350px] md:max-w-[500px] lg:max-w-[520px] h-[450px] md:h-[550px] lg:h-[600px] z-10 flex items-end justify-center">
 
         {{-- Background Decorations specifically for the model --}}
         <div class="absolute inset-x-0 bottom-0 top-20 pointer-events-none">
@@ -254,6 +254,14 @@
         <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-purple-50/60 to-transparent"></div>
 
         <div class="container mx-auto px-4 lg:px-8 relative z-10">
+            {{-- Mobile Badge --}}
+            <div class="flex lg:hidden justify-center mb-10" data-aos="fade-up">
+                <div class="inline-flex items-center gap-2 px-5 py-2.5 bg-[#8C51A5]/10 rounded-full text-[#612F73] text-xs font-black border border-[#8C51A5]/20 shadow-sm uppercase">
+                    <i class="fas fa-quote-left text-[#F8CB62]"></i>
+                    <span>SAMBUTAN KEPALA SEKOLAH</span>
+                </div>
+            </div>
+
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
                 {{-- Image Side --}}
@@ -309,7 +317,7 @@
                 {{-- Content Side --}}
                 <div class="flex flex-col items-center lg:items-start text-center lg:text-left" data-aos="fade-left">
                     <div
-                        class="inline-flex items-center gap-2 px-5 py-2.5
+                        class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5
                             bg-[#8C51A5]/10 rounded-full
                             text-[#612F73] text-sm font-semibold mb-6 border border-[#8C51A5]/20 shadow-sm">
                         <i class="fas fa-quote-left"></i>
