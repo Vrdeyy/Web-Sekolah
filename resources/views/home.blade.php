@@ -38,8 +38,8 @@
         <div class="absolute top-2/3 right-1/4 w-2 h-2 bg-[#8C51A5]/20 rounded-full blur-sm animate-ping" style="animation-delay: 2s"></div>
     </div>
 
-    <div class="container mx-auto px-6 lg:px-12 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-14">
+    <div class="container mx-auto px-6 lg:px-12 2xl:px-16 3xl:px-20 relative z-10 max-w-7xl 2xl:max-w-[1440px] 3xl:max-w-[1600px]">
+        <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-14 2xl:gap-20 3xl:gap-24">
 
             {{-- LEFT CONTENT --}}
             <div class="space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left relative">
@@ -70,7 +70,7 @@
                     <span>{{ $settings['hero_badge'] ?? 'Status Akreditasi A' }}</span>
                 </span>
 
-                <h1 class="text-4xl lg:text-5xl xl:text-6xl font-black text-[#612F73] leading-tight hero-animate hero-fade-up" style="animation-delay: 500ms">
+                <h1 class="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl 3xl:text-8xl font-black text-[#612F73] leading-tight hero-animate hero-fade-up" style="animation-delay: 500ms">
                     @php
                         $title = $settings['hero_title'] ?? 'Pendidikan Online Serasa Kelas Nyata';
                         // Split title to colorize part of it if it's long enough or just use brand color for the last words
@@ -82,7 +82,7 @@
                     <span class="text-[#8C51A5] bg-gradient-to-r from-[#612F73] to-[#D668EA] bg-clip-text text-transparent">{{ implode(' ', $lastThree) }}</span>
                 </h1>
 
-                <p class="text-gray-600 max-w-xl text-lg hero-animate hero-fade-up" style="animation-delay: 750ms">
+                <p class="text-gray-600 max-w-xl 2xl:max-w-2xl text-lg 2xl:text-xl hero-animate hero-fade-up" style="animation-delay: 750ms">
                     {{ $settings['hero_description'] ?? 'Sistem pembelajaran sekolah modern dengan kelas interaktif, materi terstruktur, dan pendampingan guru profesional.' }}
                 </p>
 
@@ -140,7 +140,7 @@
     <div class="absolute inset-0 z-0 pointer-events-none overflow-visible flex items-center justify-center hero-animate hero-zoom-in" style="animation-delay: 400ms">
         
         {{-- Soft Glow --}}
-        <div class="absolute w-[600px] lg:w-[900px] h-[600px] lg:h-[900px] bg-[#8C51A5]/10 rounded-full blur-[120px]"></div>
+        <div class="absolute w-[600px] lg:w-[900px] 2xl:w-[1000px] 3xl:w-[1100px] h-[600px] lg:h-[900px] 2xl:h-[1000px] 3xl:h-[1100px] bg-[#8C51A5]/10 rounded-full blur-[120px]"></div>
  
         {{-- GEOMETRIC FOUNDATION --}}
         {{-- Solid Square - Top Right --}}
@@ -150,7 +150,7 @@
         <div class="absolute bottom-[20%] left-[8%] w-32 lg:w-56 h-32 lg:h-56 bg-[#8C51A5] clip-triangle -rotate-12 animate-float-slow-delayed border-white/10 opacity-20"></div>
         
         {{-- Wireframe Circle - Center --}}
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] lg:w-[600px] h-[350px] lg:h-[600px] border border-[#8C51A5]/20 rounded-full"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] lg:w-[600px] 2xl:w-[700px] 3xl:w-[800px] h-[350px] lg:h-[600px] 2xl:h-[700px] 3xl:h-[800px] border border-[#8C51A5]/20 rounded-full"></div>
  
         {{-- EDUCATIONAL TOOLS (Floating Icons) --}}
         {{-- Coding - Top Left --}}
@@ -185,7 +185,7 @@
     </div>
 
     {{-- Hero Model Display Wrapper --}}
-    <div class="relative w-full max-w-[350px] md:max-w-[500px] lg:max-w-[520px] h-[450px] md:h-[550px] lg:h-[600px] z-10 flex items-end justify-center">
+    <div class="relative w-full max-w-[350px] md:max-w-[500px] lg:max-w-[520px] 2xl:max-w-[600px] 3xl:max-w-[700px] h-[450px] md:h-[550px] lg:h-[600px] 2xl:h-[700px] 3xl:h-[800px] z-10 flex items-end justify-center">
 
         {{-- Background Decorations specifically for the model --}}
         <div class="absolute inset-x-0 bottom-0 top-20 pointer-events-none">
@@ -1067,7 +1067,6 @@
         // Counter animation
         const counters = document.querySelectorAll('.counter');
         const speed = 200;
-
         const animateCounter = (counter) => {
             const target = +counter.getAttribute('data-target');
             const count = +counter.innerText;

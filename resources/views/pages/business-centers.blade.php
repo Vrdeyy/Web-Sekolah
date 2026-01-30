@@ -122,30 +122,72 @@
 
             <div class="grid md:grid-cols-3 gap-8">
                 <div data-aos="fade-up" data-aos-delay="100">
-                    <div class="bg-white h-full group hover:bg-premium-dark rounded-[2.5rem] p-10 text-center border border-[#8C51A5]/10 transition-all duration-700 ease-in-out hover:-translate-y-3 shadow-xl shadow-[#612F73]/5 hover:shadow-2xl">
-                        <div class="w-20 h-20 bg-[#8C51A5]/10 rounded-3xl mx-auto flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 group-hover:bg-[#8C51A5] transition-all duration-500">
-                            <i class="fas fa-award text-4xl text-[#8C51A5] group-hover:text-white"></i>
+                    <div class="group relative block p-12 bg-white rounded-[3rem] border border-[#8C51A5]/10 
+                                shadow-xl shadow-[#612F73]/5 hover:shadow-premium-lg 
+                                hover:border-[#8C51A5]/30 transition-all duration-500 ease-in-out transform hover:-translate-y-3 
+                                text-center overflow-hidden">
+                        
+                        {{-- Decorative Corner Shine --}}
+                        <div class="absolute -top-12 -right-12 w-40 h-40 bg-gradient-to-br from-[#8C51A5]/5 to-transparent rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
+
+                        <div class="relative z-10">
+                            <div class="w-20 h-20 bg-[#F0E7F8] rounded-[2rem] flex items-center justify-center mb-8 mx-auto 
+                                        transition-all duration-500 border border-[#8C51A5]/10 shadow-lg group-hover:rotate-6 group-hover:bg-[#8C51A5]">
+                                <i class="fas fa-award text-3xl text-[#8C51A5] group-hover:text-white transition-colors duration-500"></i>
+                            </div>
+                            <h3 class="text-xl font-black text-[#612F73] group-hover:text-[#8C51A5] transition-colors tracking-tight uppercase">
+                                Kualitas Terjamin
+                            </h3>
+                            <p class="text-gray-400 text-[10px] font-black uppercase tracking-[0.2em] mt-4 group-hover:text-gray-500 transition-colors">
+                                Standar kualitas tinggi dalam setiap produk and layanan yang kami berikan.
+                            </p>
                         </div>
-                        <h3 class="text-xl font-black text-[#612F73] mb-4 group-hover:text-[#F8CB62] transition-colors uppercase tracking-tight">Kualitas Terjamin</h3>
-                        <p class="text-gray-500 group-hover:text-white/90 transition-colors leading-relaxed font-medium">Standar kualitas tinggi dalam setiap produk and layanan yang kami berikan.</p>
                     </div>
                 </div>
                 <div data-aos="fade-up" data-aos-delay="200">
-                    <div class="bg-white h-full group hover:bg-premium-dark rounded-[2.5rem] p-10 text-center border border-[#8C51A5]/10 transition-all duration-700 ease-in-out hover:-translate-y-3 shadow-xl shadow-[#612F73]/5 hover:shadow-2xl">
-                        <div class="w-20 h-20 bg-[#D668EA]/10 rounded-3xl mx-auto flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 group-hover:bg-[#D668EA] transition-all duration-500">
-                            <i class="fas fa-hand-holding-usd text-4xl text-[#D668EA] group-hover:text-white"></i>
+                    <div class="group relative block p-12 bg-white rounded-[3rem] border border-[#8C51A5]/10 
+                                shadow-xl shadow-[#612F73]/5 hover:shadow-premium-lg 
+                                hover:border-[#8C51A5]/30 transition-all duration-500 ease-in-out transform hover:-translate-y-3 
+                                text-center overflow-hidden">
+                        
+                        {{-- Decorative Corner Shine --}}
+                        <div class="absolute -top-12 -right-12 w-40 h-40 bg-gradient-to-br from-[#8C51A5]/5 to-transparent rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
+
+                        <div class="relative z-10">
+                            <div class="w-20 h-20 bg-[#F0E7F8] rounded-[2rem] flex items-center justify-center mb-8 mx-auto 
+                                        transition-all duration-500 border border-[#8C51A5]/10 shadow-lg group-hover:rotate-6 group-hover:bg-[#8C51A5]">
+                                <i class="fas fa-hand-holding-usd text-3xl text-[#8C51A5] group-hover:text-white transition-colors duration-500"></i>
+                            </div>
+                            <h3 class="text-xl font-black text-[#612F73] group-hover:text-[#8C51A5] transition-colors tracking-tight uppercase">
+                                Harga Kompetitif
+                            </h3>
+                            <p class="text-gray-400 text-[10px] font-black uppercase tracking-[0.2em] mt-4 group-hover:text-gray-500 transition-colors">
+                                Penawaran harga terbaik yang bersaing dengan kualitas yang tidak diragukan.
+                            </p>
                         </div>
-                        <h3 class="text-xl font-black text-[#612F73] mb-4 group-hover:text-[#F8CB62] transition-colors uppercase tracking-tight">Harga Kompetitif</h3>
-                        <p class="text-gray-500 group-hover:text-white/90 transition-colors leading-relaxed font-medium">Penawaran harga terbaik yang bersaing dengan kualitas yang tidak diragukan.</p>
                     </div>
                 </div>
                 <div data-aos="fade-up" data-aos-delay="300">
-                    <div class="bg-white h-full group hover:bg-premium-dark rounded-[2.5rem] p-10 text-center border border-[#8C51A5]/10 transition-all duration-700 ease-in-out hover:-translate-y-3 shadow-xl shadow-[#612F73]/5 hover:shadow-2xl">
-                        <div class="w-20 h-20 bg-[#F8CB62]/10 rounded-3xl mx-auto flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 group-hover:bg-[#F8CB62] transition-all duration-500">
-                            <i class="fas fa-users-cog text-4xl text-[#F8CB62] group-hover:text-white"></i>
+                    <div class="group relative block p-12 bg-white rounded-[3rem] border border-[#8C51A5]/10 
+                                shadow-xl shadow-[#612F73]/5 hover:shadow-premium-lg 
+                                hover:border-[#8C51A5]/30 transition-all duration-500 ease-in-out transform hover:-translate-y-3 
+                                text-center overflow-hidden">
+                        
+                        {{-- Decorative Corner Shine --}}
+                        <div class="absolute -top-12 -right-12 w-40 h-40 bg-gradient-to-br from-[#8C51A5]/5 to-transparent rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
+
+                        <div class="relative z-10">
+                            <div class="w-20 h-20 bg-[#F0E7F8] rounded-[2rem] flex items-center justify-center mb-8 mx-auto 
+                                        transition-all duration-500 border border-[#8C51A5]/10 shadow-lg group-hover:rotate-6 group-hover:bg-[#8C51A5]">
+                                <i class="fas fa-users-cog text-3xl text-[#8C51A5] group-hover:text-white transition-colors duration-500"></i>
+                            </div>
+                            <h3 class="text-xl font-black text-[#612F73] group-hover:text-[#8C51A5] transition-colors tracking-tight uppercase">
+                                SDM Professional
+                            </h3>
+                            <p class="text-gray-400 text-[10px] font-black uppercase tracking-[0.2em] mt-4 group-hover:text-gray-500 transition-colors">
+                                Didukung oleh siswa terlatih dan pembimbing ahli di bidangnya.
+                            </p>
                         </div>
-                        <h3 class="text-xl font-black text-[#612F73] mb-4 group-hover:text-[#F8CB62] transition-colors uppercase tracking-tight">SDM Professional</h3>
-                        <p class="text-gray-500 group-hover:text-white/90 transition-colors leading-relaxed font-medium">Didukung oleh siswa terlatih dan pembimbing ahli di bidangnya.</p>
                     </div>
                 </div>
             </div>
