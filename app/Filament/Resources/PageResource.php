@@ -27,12 +27,12 @@ class PageResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('title')
                             ->label('Judul')
-                            ->required()
-                            ->live(onBlur: true)
-                            ->afterStateUpdated(fn(string $state, Forms\Set $set) => $set('slug', Str::slug($state))),
+                            ->required(),
                         Forms\Components\TextInput::make('slug')
-                            ->label('Slug')
+                            ->label('URL')
                             ->required()
+                            ->disabled()
+                            ->dehydrated()
                             ->unique(ignoreRecord: true),
                         Forms\Components\FileUpload::make('image')
                             ->label('Gambar Header')
@@ -53,16 +53,6 @@ class PageResource extends Resource
                             ->label('Meta Description')
                             ->rows(2),
                     ])->columns(2),
-                Forms\Components\Section::make('Pengaturan')
-                    ->schema([
-                        Forms\Components\TextInput::make('order')
-                            ->label('Urutan')
-                            ->numeric()
-                            ->default(0),
-                        Forms\Components\Toggle::make('is_active')
-                            ->label('Aktif')
-                            ->default(true),
-                    ])->columns(2),
             ]);
     }
 
@@ -74,23 +64,29 @@ class PageResource extends Resource
                     ->label('Judul')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug')
-                    ->label('Slug'),
-                Tables\Columns\IconColumn::make('is_active')
-                    ->label('Aktif')
-                    ->boolean(),
+                    ->label('URL'),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->label('Diperbarui')
                     ->dateTime('d M Y'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    // Bulk actions dihapus sesuai permintaan
                 ]),
             ]);
+    }
+
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+
+    public static function canDeleteAny(): bool
+    {
+        return false;
     }
 
     public static function getPages(): array

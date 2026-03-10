@@ -29,9 +29,9 @@ class BusinessCenterResource extends Resource
                             ->label('Nama')
                             ->required()
                             ->live(onBlur: true)
-                            ->afterStateUpdated(fn(string $state, Forms\Set $set) => $set('slug', Str::slug($state))),
+                            ->afterStateUpdated(fn(?string $state, Forms\Set $set) => $set('slug', Str::slug($state ?? ''))),
                         Forms\Components\TextInput::make('slug')
-                            ->label('Slug')
+                            ->label('URL')
                             ->required()
                             ->unique(ignoreRecord: true),
                         Forms\Components\TextInput::make('location')

@@ -29,9 +29,9 @@ class ExtracurricularResource extends Resource
                             ->label('Nama')
                             ->required()
                             ->live(onBlur: true)
-                            ->afterStateUpdated(fn(string $state, Forms\Set $set) => $set('slug', Str::slug($state))),
+                            ->afterStateUpdated(fn(?string $state, Forms\Set $set) => $set('slug', Str::slug($state ?? ''))),
                         Forms\Components\TextInput::make('slug')
-                            ->label('Slug')
+                            ->label('URL')
                             ->required()
                             ->unique(ignoreRecord: true),
                         Forms\Components\TextInput::make('schedule')
@@ -50,7 +50,7 @@ class ExtracurricularResource extends Resource
                 Forms\Components\Section::make('Deskripsi')
                     ->schema([
                         Forms\Components\Textarea::make('short_description')
-                            ->label('Deskripsi Singkat')
+                            ->label('Slogan')
                             ->rows(3),
                         Forms\Components\RichEditor::make('description')
                             ->label('Deskripsi Lengkap')

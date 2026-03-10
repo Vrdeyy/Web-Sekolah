@@ -30,9 +30,9 @@ class MajorResource extends Resource
                             ->required()
                             ->maxLength(255)
                             ->live(onBlur: true)
-                            ->afterStateUpdated(fn(string $state, Forms\Set $set) => $set('slug', Str::slug($state))),
+                            ->afterStateUpdated(fn(?string $state, Forms\Set $set) => $set('slug', Str::slug($state ?? ''))),
                         Forms\Components\TextInput::make('slug')
-                            ->label('Slug')
+                            ->label('URL')
                             ->required()
                             ->unique(ignoreRecord: true)
                             ->maxLength(255),

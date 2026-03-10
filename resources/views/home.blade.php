@@ -93,7 +93,7 @@
                             bg-gradient-to-r from-[#F8CB62] to-[#f5b82e] text-[#612F73] font-black shadow-xl shadow-[#F8CB62]/20
                             hover:shadow-golden hover:-translate-y-1
                             transform transition-all duration-300">
-                        {{ $settings['hero_primary_text'] ?? 'PPDB Online' }}
+                        PPDB Online
                     </a>
 
                     <a href="{{ route('page', 'sekolah') }}"
@@ -101,29 +101,31 @@
                             bg-white border-2 border-[#8C51A5]/10 text-[#8C51A5] font-black 
                             hover:bg-[#F0E7F8] hover:border-[#8C51A5]/30
                             transform hover:-translate-y-1 transition-all duration-500 ease-in-out shadow-sm">
-                        {{ $settings['hero_secondary_text'] ?? 'Profil Sekolah' }}
+                        Profil Sekolah
                     </a>
                 </div>
 
                 {{-- Stats --}}
                 <div class="flex flex-wrap justify-center lg:justify-start gap-6 lg:gap-10 pt-8 border-t border-[#8C51A5]/10 hero-animate hero-fade-up" 
                     style="animation-delay: 600ms">
-                    @php
-                        $studentVal = $students_stat ? $students_stat->value : (int)filter_var($settings['hero_stats_1_value'] ?? '1500', FILTER_SANITIZE_NUMBER_INT);
-                        $studentSuffix = $students_stat ? $students_stat->suffix : '+';
-                    @endphp
+                    
+                    {{-- Statistik 1: Siswa --}}
                     <div class="text-center lg:text-left">
                         <h3 class="text-3xl font-black text-[#612F73] leading-none mb-1">
-                            <span class="counter" data-target="{{ $studentVal }}">0</span>{{ $studentSuffix }}
+                            <span class="counter" data-target="{{ (int)filter_var($settings['hero_stats_1_value'] ?? '1500', FILTER_SANITIZE_NUMBER_INT) }}">0</span>+
                         </h3>
                         <p class="text-[#8C51A5]/60 text-[10px] font-black uppercase tracking-widest">{{ $settings['hero_stats_1_label'] ?? 'Siswa Aktif' }}</p>
                     </div>
+
+                    {{-- Statistik 2: Guru (Data Real) --}}
                     <div class="text-center lg:text-left border-x border-[#8C51A5]/20 px-6 lg:px-10">
                         <h3 class="text-3xl font-black text-[#612F73] leading-none mb-1">
-                            <span class="counter" data-target="{{ $teachers_count ?? 120 }}">0</span>+
+                            <span class="counter" data-target="{{ $teachers_count ?? 0 }}">0</span>+
                         </h3>
                         <p class="text-[#8C51A5]/60 text-[10px] font-black uppercase tracking-widest">{{ $settings['hero_stats_2_label'] ?? 'Guru Profesional' }}</p>
                     </div>
+
+                    {{-- Statistik 3: Lainnya/Kelulusan --}}
                     <div class="text-center lg:text-left">
                         <h3 class="text-3xl font-black text-[#F8CB62] leading-none mb-1">
                             <span class="counter" data-target="{{ (int)filter_var($settings['hero_stats_3_value'] ?? '98', FILTER_SANITIZE_NUMBER_INT) }}">0</span>%

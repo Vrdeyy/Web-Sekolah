@@ -8,7 +8,7 @@ class EditPage extends EditRecord
     protected static string $resource = PageResource::class;
     protected function getHeaderActions(): array
     {
-        return [Actions\DeleteAction::make()];
+        return [];
     }
     protected function getRedirectUrl(): string
     {
