@@ -197,7 +197,7 @@
 
         {{-- Image Slider --}}
         <div class="relative w-full h-full">
-            @forelse($slideBener as $index => $slide)
+            @foreach($slideBener as $index => $slide)
                 <img
                     src="{{ asset('storage/' . $slide->image) }}"
                     alt="{{ $slide->title ?? 'Siswa SMK YAJ' }}"
@@ -207,16 +207,7 @@
                            slider-item transition-all duration-1000 transform
                            {{ $index === 0 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95' }}"
                 />
-            @empty
-                <img
-                    src="{{ asset('images/hero/hero-yaj.png') }}"
-                    alt="Siswa SMK YAJ"
-                    class="absolute bottom-0 left-0
-                           w-full h-full
-                           object-cover object-bottom drop-shadow-[0_25px_40px_rgba(0,0,0,0.5)] 
-                           animate-fade-in-up"
-                />
-            @endforelse
+            @endforeach
         </div>
 
         {{-- Glass Floating Badge (Pendidikan Digital) --}}
