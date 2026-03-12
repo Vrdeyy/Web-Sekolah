@@ -23,6 +23,24 @@ class SocialLink extends Model
         return $query->where('is_active', true);
     }
 
+    public function getIconClassAttribute()
+    {
+        if ($this->icon) {
+            return $this->icon;
+        }
+
+        return match (strtolower($this->platform)) {
+            'facebook' => 'fab fa-facebook-f',
+            'instagram' => 'fab fa-instagram',
+            'twitter', 'x' => 'fab fa-x-twitter',
+            'youtube' => 'fab fa-youtube',
+            'tiktok' => 'fab fa-tiktok',
+            'linkedin' => 'fab fa-linkedin-in',
+            'whatsapp' => 'fab fa-whatsapp',
+            default => 'fas fa-link',
+        };
+    }
+
     public function scopeOrdered($query)
     {
         return $query->orderBy('order');

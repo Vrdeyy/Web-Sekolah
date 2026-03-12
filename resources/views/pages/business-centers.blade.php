@@ -63,11 +63,8 @@
                                             <i class="fas fa-store text-6xl text-purple-200"></i>
                                         </div>
                                     @endif
-                                    <div class="absolute inset-0 bg-gradient-to-t from-[#612F73]/80 to-transparent flex flex-col justify-end p-8 md:p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                        <a href="{{ route('business-center.show', $center->slug) }}" class="inline-flex items-center gap-2 text-white font-black text-sm uppercase tracking-widest">
-                                            Lihat Detail <i class="fas fa-arrow-right text-[#F8CB62]"></i>
-                                        </a>
-                                    </div>
+                                    {{-- Optional: Subtle overlay on hover without text --}}
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#612F73]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                                 </div>
     
                                 {{-- Content Side --}}
@@ -82,7 +79,7 @@
                                         </p>
                                     @endif
     
-                                     <div class="space-y-4">
+                                     <div class="space-y-4 mb-8">
                                         <div class="flex items-center gap-4 group/item">
                                             <div class="w-10 h-10 rounded-xl bg-[#8C51A5]/10 flex items-center justify-center text-[#8C51A5] group-hover/item:bg-[#8C51A5] group-hover/item:text-white transition-all duration-300">
                                                 <i class="fas fa-clock"></i>
@@ -101,6 +98,16 @@
                                                 <span class="text-sm font-black text-[#612F73]">Buka Hari Ini</span>
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <div class="pt-6 border-t border-gray-50 flex justify-end mt-auto">
+                                        <a href="{{ route('business-center.show', $center->slug) }}" 
+                                            class="inline-flex items-center gap-3 px-6 py-3 bg-[#8C51A5]/10 text-[#8C51A5] font-black rounded-2xl hover:bg-[#8C51A5] hover:text-white transition-all duration-300 shadow-sm group/btn text-[10px] tracking-widest uppercase">
+                                            Lihat Detail
+                                            <div class="w-6 h-6 rounded-lg bg-white/20 flex items-center justify-center group-hover/btn:bg-[#612F73]/20 transition-colors">
+                                                <i class="fas fa-arrow-right text-[10px] text-[#F8CB62]"></i>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

@@ -56,6 +56,11 @@ class SocialLinkResource extends Resource
             ]);
     }
 
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+
     public static function table(Table $table): Table
     {
         return $table
@@ -73,12 +78,9 @@ class SocialLinkResource extends Resource
             ->defaultSort('order')
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                // No bulk delete
             ])
             ->reorderable('order');
     }
@@ -87,7 +89,6 @@ class SocialLinkResource extends Resource
     {
         return [
             'index' => Pages\ListSocialLinks::route('/'),
-            'create' => Pages\CreateSocialLink::route('/create'),
             'edit' => Pages\EditSocialLink::route('/{record}/edit'),
         ];
     }

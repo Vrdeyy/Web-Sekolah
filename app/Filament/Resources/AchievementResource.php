@@ -55,7 +55,11 @@ class AchievementResource extends Resource
                         Forms\Components\FileUpload::make('image')
                             ->label('Foto')
                             ->image()
-                            ->directory('achievements'),
+                            ->directory('achievements')
+                            ->imageResizeMode('cover')
+                            ->imageResizeTargetWidth('1200')
+                            ->imageResizeTargetHeight('800')
+                            ->maxSize(5120),
                     ])->columns(2),
                 Forms\Components\Section::make('Deskripsi')
                     ->schema([

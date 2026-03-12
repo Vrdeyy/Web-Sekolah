@@ -33,7 +33,25 @@
                     SEMUA
                 </a>
                 @php
-                    $categories = ['Kegiatan', 'Pengumuman', 'Prestasi', 'Workshop', 'Kunjungan'];
+                    $allOptions = [
+                        'Berita Sekolah', 
+                        'Kegiatan', 
+                        'Pengumuman', 
+                        'Program Internasional', 
+                        'Workshop', 
+                        'Prestasi'
+                    ];
+                    
+                    // Filter options that actually have news items in the database
+                    $categories = \App\Models\News::whereIn('category', $allOptions)
+                        ->where('is_active', true)
+                        ->select('category')
+                        ->distinct()
+                        ->pluck('category')
+                        ->toArray();
+                    
+                    // Keep the original order from $allOptions
+                    $categories = array_intersect($allOptions, $categories);
                 @endphp
                 @foreach($categories as $index => $cat)
                     <a href="{{ route('news') }}?category={{ $cat }}"
@@ -107,55 +125,63 @@
                     <a href="{{ route('news.show', $featured->slug) }}"
                         class="group block relative overflow-hidden rounded-[3rem] shadow-premium-lg hover:shadow-[#8C51A5]/20 transition-all duration-700 border border-[#8C51A5]/10">
                         {{-- Background Image --}}
-                        <div class="relative h-[550px] lg:h-[600px]">
+                        <div class="relative min-h-[500px] md:h-[600px]">
                             @if($featured->image)
                                 <img src="{{ asset('storage/' . $featured->image) }}" alt="{{ $featured->title }}"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-in-out">
+                                    class="w-full h-full absolute inset-0 object-cover group-hover:scale-110 transition-transform duration-[2s] ease-in-out">
                             @else
-                                <div class="w-full h-full bg-gradient-to-br from-[#612F73] via-[#8C51A5] to-[#D668EA]"></div>
+                                <div class="w-full h-full absolute inset-0 bg-gradient-to-br from-[#612F73] via-[#8C51A5] to-[#D668EA]"></div>
                             @endif
      
                             {{-- Gradient Overlay --}}
                             <div class="absolute inset-0 bg-gradient-to-t from-[#612F73] via-[#612F73]/40 to-transparent"></div>
      
                             {{-- Content --}}
-                            <div class="absolute bottom-0 left-0 right-0 p-10 lg:p-16">
-                                <div class="max-w-4xl">
-                                    @if($featured->category)
-                                        <span
-                                            class="inline-flex items-center gap-2 px-6 py-2.5 bg-[#F8CB62] text-[#612F73] text-[10px] font-black rounded-xl mb-6 shadow-lg tracking-widest uppercase">
-                                            <i class="fas fa-folder"></i>
-                                            {{ $featured->category }}
-                                        </span>
-                                    @endif
-     
-                                    <h3
-                                        class="text-4xl lg:text-6xl font-black text-white mb-6 group-hover:text-[#F8CB62] transition-colors leading-[1.1] tracking-tight">
-                                        {{ $featured->title }}
-                                    </h3>
-     
-                                    <p class="text-white/80 text-lg lg:text-xl mb-10 line-clamp-2 leading-relaxed font-medium">
-                                        {{ $featured->excerpt }}
-                                    </p>
-     
-                                    <div class="flex flex-wrap items-center gap-8 text-[10px] font-black uppercase tracking-widest">
-                                        <span class="flex items-center gap-3 text-white/60">
-                                            <i class="far fa-calendar text-[#F8CB62]"></i>
-                                            {{ $featured->published_at->format('d M Y') }}
-                                        </span>
-                                        <span class="flex items-center gap-3 text-white/60">
-                                            <i class="far fa-user text-[#F8CB62]"></i>
-                                            {{ $featured->author ?? 'Admin' }}
-                                        </span>
-                                        <span class="flex items-center gap-3 text-white/60">
-                                            <i class="far fa-eye text-[#F8CB62]"></i>
-                                            {{ number_format($featured->views) }} VIEWS
-                                        </span>
-                                        <span
-                                            class="inline-flex items-center gap-4 text-[#F8CB62] font-black group-hover:gap-6 transition-all ml-auto bg-white/10 backdrop-blur-md px-8 py-4 rounded-2xl border border-white/20 hover:bg-[#F8CB62] hover:text-[#612F73]">
-                                            BACA SELENGKAPNYA
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
+                            <div class="absolute inset-0 flex flex-col justify-end p-6 md:p-14 lg:p-20">
+                                <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 md:gap-10">
+                                    <div class="max-w-4xl">
+                                        @if($featured->category)
+                                            <span
+                                                class="inline-flex items-center gap-2 px-4 py-2 bg-[#F8CB62] text-[#612F73] text-[9px] md:text-[10px] font-black rounded-xl mb-4 md:mb-6 shadow-lg tracking-widest uppercase">
+                                                <i class="fas fa-folder"></i>
+                                                {{ $featured->category }}
+                                            </span>
+                                        @endif
+         
+                                        <h3
+                                            class="text-2xl md:text-5xl lg:text-7xl font-black text-white mb-4 md:mb-6 group-hover:text-[#F8CB62] transition-colors leading-[1.2] md:leading-[1.1] tracking-tight">
+                                            {{ $featured->title }}
+                                        </h3>
+         
+                                        <p class="text-white/80 text-sm md:text-lg lg:text-xl mb-6 md:mb-12 line-clamp-2 leading-relaxed font-medium">
+                                            {{ $featured->excerpt }}
+                                        </p>
+         
+                                        <div class="flex flex-wrap items-center gap-4 md:gap-8 text-[9px] md:text-[10px] font-black uppercase tracking-widest">
+                                            <span class="flex items-center gap-2 md:gap-3 text-white/60">
+                                                <i class="far fa-calendar text-[#F8CB62]"></i>
+                                                {{ $featured->published_at->format('d M Y') }}
+                                            </span>
+                                            <span class="flex items-center gap-2 md:gap-3 text-white/60">
+                                                <i class="far fa-user text-[#F8CB62]"></i>
+                                                {{ $featured->author ?? 'Admin' }}
+                                            </span>
+                                            <span class="flex items-center gap-2 md:gap-3 text-white/60">
+                                                <i class="far fa-eye text-[#F8CB62]"></i>
+                                                {{ number_format($featured->views) }} VIEWS
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex-shrink-0" data-aos="fade-left" data-aos-delay="200">
+                                        <div class="inline-flex items-center gap-4 px-8 md:px-10 py-4 md:py-5 bg-black/40 backdrop-blur-xl text-[#F8CB62] font-black rounded-2xl md:rounded-3xl border border-white/10 hover:bg-[#F8CB62] hover:text-[#612F73] hover:shadow-[0_0_50px_rgba(248,203,98,0.4)] hover:-translate-y-2 transition-all duration-500 group/btn shadow-2xl">
+                                            <span class="text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase">BACA SELENGKAPNYA</span>
+                                            <div class="w-8 h-8 md:w-10 md:h-10 rounded-xl md:rounded-2xl bg-white/10 flex items-center justify-center group-hover/btn:bg-[#612F73]/10 transition-colors shadow-inner">
+                                                <svg class="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                                </svg>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -240,9 +266,17 @@
                                             </div>
                                             <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest">{{ $item->author ?? 'Admin' }}</span>
                                         </div>
-                                        <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                                            <i class="far fa-eye text-[#8C51A5]"></i>{{ number_format($item->views) }}
-                                        </span>
+                                        <div class="flex items-center gap-4">
+                                            <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest flex items-center gap-2">
+                                                <i class="far fa-eye text-[#8C51A5]"></i>{{ number_format($item->views) }}
+                                            </span>
+                                            <div class="inline-flex items-center gap-2 text-[#8C51A5] font-black text-[9px] uppercase tracking-widest group-hover:text-[#612F73] transition-all">
+                                                DETAIL
+                                                <svg class="w-3 h-3 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7" />
+                                                </svg>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </article>

@@ -42,11 +42,18 @@ class MajorResource extends Resource
                         Forms\Components\FileUpload::make('icon')
                             ->label('Icon')
                             ->image()
-                            ->directory('majors/icons'),
+                            ->directory('majors/icons')
+                            ->imageResizeMode('cover')
+                            ->imageResizeTargetWidth('300')
+                            ->imageResizeTargetHeight('300'),
                         Forms\Components\FileUpload::make('image')
                             ->label('Gambar')
                             ->image()
-                            ->directory('majors'),
+                            ->directory('majors')
+                            ->imageResizeMode('cover')
+                            ->imageResizeTargetWidth('1200')
+                            ->imageResizeTargetHeight('800')
+                            ->maxSize(5120),
                     ])->columns(2),
                 Forms\Components\Section::make('Deskripsi')
                     ->schema([

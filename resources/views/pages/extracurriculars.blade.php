@@ -106,20 +106,23 @@
                                 @endif
 
                                 {{-- Footer --}}
-                                <div class="flex items-center justify-between pt-8 border-t border-gray-50">
+                                <div class="flex flex-col xl:flex-row items-center justify-between gap-6 pt-8 border-t border-gray-100">
                                     <div class="flex items-center gap-3">
                                         <div
-                                            class="w-10 h-10 bg-[#8C51A5]/10 rounded-xl flex items-center justify-center border border-[#8C51A5]/10">
+                                            class="w-10 h-10 bg-[#8C51A5]/5 rounded-xl flex items-center justify-center border border-[#8C51A5]/10 shadow-sm">
                                             <i class="fas fa-users text-[#8C51A5] text-sm"></i>
                                         </div>
-                                        <span
-                                            class="text-[10px] font-black text-gray-400 uppercase tracking-widest">AKTIF</span>
+                                        <div class="flex flex-col">
+                                            <span class="text-[8px] font-black text-gray-400 uppercase tracking-[0.2em] leading-none mb-1">Status</span>
+                                            <span class="text-[10px] font-black text-[#612F73] uppercase tracking-widest leading-none">AKTIF</span>
+                                        </div>
                                     </div>
                                     <a href="{{ route('extracurricular.show', $ekskul->slug) }}"
-                                        class="inline-flex items-center gap-3 text-[#8C51A5] font-black text-[10px] uppercase tracking-[0.2em] hover:text-[#612F73] transition-all group/link">
-                                        SELENGKAPNYA
-                                        <i
-                                            class="fas fa-arrow-right text-[8px] group-hover/link:translate-x-1 transition-transform"></i>
+                                        class="w-full xl:w-auto inline-flex items-center justify-center gap-4 px-8 py-4 bg-[#8C51A5] text-white font-black rounded-xl hover:bg-[#612F73] transition-all duration-500 group/link shadow-lg shadow-[#8C51A5]/20 hover:shadow-[#612F73]/30">
+                                        <span class="text-[10px] uppercase tracking-[0.2em]">SELENGKAPNYA</span>
+                                        <svg class="w-3 h-3 transition-transform group-hover/link:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
                                     </a>
                                 </div>
                             </div>

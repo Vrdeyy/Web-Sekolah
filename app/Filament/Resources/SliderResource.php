@@ -35,7 +35,11 @@ class SliderResource extends Resource
                             ->label('Gambar')
                             ->image()
                             ->directory('sliders')
-                            ->required(),
+                            ->required()
+                            ->imageResizeMode('cover')
+                            ->imageResizeTargetWidth('1080')
+                            ->imageResizeTargetHeight('1350')
+                            ->maxSize(5120),
                     ]),
                 Forms\Components\Section::make('Tombol')
                     ->schema([

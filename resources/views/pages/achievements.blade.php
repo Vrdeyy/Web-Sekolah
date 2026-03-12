@@ -37,7 +37,20 @@
                         class="px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all {{ !request('level') ? 'bg-[#8C51A5] text-white shadow-lg shadow-[#8C51A5]/30' : 'bg-gray-50 text-gray-400 hover:bg-[#8C51A5]/10 hover:text-[#8C51A5]' }}">
                         SEMUA
                     </a>
-                    @foreach(['Internasional', 'Nasional', 'Provinsi', 'Kota/Kabupaten', 'Sekolah'] as $level)
+                    @php
+                        $allLevels = ['Internasional', 'Nasional', 'Provinsi', 'Kota/Kabupaten', 'Sekolah'];
+                        
+                        // Get levels that actually have achievements in the database
+                        $activeLevels = \App\Models\Achievement::whereIn('level', $allLevels)
+                            ->select('level')
+                            ->distinct()
+                            ->pluck('level')
+                            ->toArray();
+                        
+                        // Filter and maintain order
+                        $levels = array_intersect($allLevels, $activeLevels);
+                    @endphp
+                    @foreach($levels as $level)
                         <a href="{{ route('achievements') }}?level={{ $level }}"
                             class="px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all {{ request('level') == $level ? 'bg-[#8C51A5] text-white shadow-lg shadow-[#8C51A5]/30' : 'bg-gray-50 text-gray-400 hover:bg-[#8C51A5]/10 hover:text-[#8C51A5]' }}">
                             {{ $level }}

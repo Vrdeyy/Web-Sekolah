@@ -875,9 +875,11 @@
                                     {{-- Action Button --}}
                                     <div class="mt-8 pt-8 border-t border-[#F0E7F8]">
                                         <a href="{{ route('business-center.show', $bc->slug) }}"
-                                            class="inline-flex items-center gap-3 px-8 py-3 bg-[#8C51A5]/10 text-[#8C51A5] hover:bg-[#8C51A5] hover:text-white transition-all duration-500 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] border border-[#8C51A5]/20 group/btn shadow-sm">
-                                            <i class="fas fa-arrow-right text-[8px] group-hover/btn:translate-x-1 transition-transform"></i>
-                                            Selengkapnya
+                                            class="inline-flex items-center gap-4 px-8 py-3.5 bg-[#8C51A5]/10 text-[#8C51A5] font-black rounded-xl hover:bg-[#8C51A5] hover:text-white transition-all duration-500 group/link border border-[#8C51A5]/10 shadow-sm hover:shadow-premium-lg">
+                                            <span class="text-[10px] uppercase tracking-[0.2em]">SELENGKAPNYA</span>
+                                            <svg class="w-3 h-3 transition-transform group-hover/link:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                            </svg>
                                         </a>
                                     </div>
                                 </div>

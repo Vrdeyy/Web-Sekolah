@@ -41,7 +41,11 @@ class BusinessCenterResource extends Resource
                         Forms\Components\FileUpload::make('image')
                             ->label('Gambar')
                             ->image()
-                            ->directory('business-centers'),
+                            ->directory('business-centers')
+                            ->imageResizeMode('cover')
+                            ->imageResizeTargetWidth('1200')
+                            ->imageResizeTargetHeight('800')
+                            ->maxSize(5120),
                     ])->columns(2),
                 Forms\Components\Section::make('Deskripsi')
                     ->schema([

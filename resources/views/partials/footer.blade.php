@@ -32,15 +32,7 @@
                             @if($social && $social->url)
                                 <a href="{{ $social->url }}" target="_blank"
                                    class="w-10 h-10 bg-white/5 hover:bg-[#8C51A5] rounded-lg flex items-center justify-center transition-all duration-300 ease-in-out border border-white/10">
-                                    @switch($social->platform ?? '')
-                                        @case('youtube') <i class="fab fa-youtube"></i> @break
-                                        @case('instagram') <i class="fab fa-instagram"></i> @break
-                                        @case('facebook') <i class="fab fa-facebook-f"></i> @break
-                                        @case('twitter') <i class="fab fa-twitter"></i> @break
-                                        @case('tiktok') <i class="fab fa-tiktok"></i> @break
-                                        @case('linkedin') <i class="fab fa-linkedin-in"></i> @break
-                                        @default <i class="fas fa-link"></i>
-                                    @endswitch
+                                    <i class="{{ $social->icon_class }}"></i>
                                 </a>
                             @endif
                         @endforeach

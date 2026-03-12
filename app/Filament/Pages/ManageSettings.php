@@ -61,6 +61,42 @@ class ManageSettings extends Page implements HasForms
                                             ->onColor('success'),
                                     ]),
                             ]),
+                        Tabs\Tab::make('Identitas & Kontak')
+                            ->icon('heroicon-o-envelope')
+                            ->schema([
+                                Grid::make(2)
+                                    ->schema([
+                                        FileUpload::make('school_logo')
+                                            ->label('Logo Sekolah')
+                                            ->directory('settings')
+                                            ->image()
+                                            ->columnSpanFull(),
+                                        TextInput::make('school_tagline')
+                                            ->label('Tagline Sekolah')
+                                            ->placeholder('misal: Sekolah Unggulan Masa Depan')
+                                            ->columnSpanFull(),
+                                        Textarea::make('address')
+                                            ->label('Alamat Lengkap')
+                                            ->rows(3)
+                                            ->columnSpanFull(),
+                                        TextInput::make('school_email')
+                                            ->label('Email Resmi')
+                                            ->email(),
+                                        TextInput::make('school_phone')
+                                            ->label('Nomor Telepon'),
+                                        TextInput::make('whatsapp')
+                                            ->label('WhatsApp Official')
+                                            ->placeholder('misal: 628123456789'),
+                                        TextInput::make('school_hours')
+                                            ->label('Jam Operasional')
+                                            ->placeholder('misal: Senin - Jumat: 07:00 - 16:00'),
+                                        Textarea::make('google_maps_embed')
+                                            ->label('Google Maps Embed Code')
+                                            ->placeholder('<iframe src="..."></iframe>')
+                                            ->rows(5)
+                                            ->columnSpanFull(),
+                                    ]),
+                            ]),
                         Tabs\Tab::make('Hero Beranda')
                             ->icon('heroicon-o-home')
                             ->schema([

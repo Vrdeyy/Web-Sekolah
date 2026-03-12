@@ -41,11 +41,18 @@ class ExtracurricularResource extends Resource
                         Forms\Components\FileUpload::make('icon')
                             ->label('Icon')
                             ->image()
-                            ->directory('extracurriculars/icons'),
+                            ->directory('extracurriculars/icons')
+                            ->imageResizeMode('cover')
+                            ->imageResizeTargetWidth('300')
+                            ->imageResizeTargetHeight('300'),
                         Forms\Components\FileUpload::make('image')
                             ->label('Gambar')
                             ->image()
-                            ->directory('extracurriculars'),
+                            ->directory('extracurriculars')
+                            ->imageResizeMode('cover')
+                            ->imageResizeTargetWidth('1200')
+                            ->imageResizeTargetHeight('800')
+                            ->maxSize(5120),
                     ])->columns(2),
                 Forms\Components\Section::make('Deskripsi')
                     ->schema([

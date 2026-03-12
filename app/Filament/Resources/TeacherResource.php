@@ -37,7 +37,10 @@ class TeacherResource extends Resource
                             ->label('Foto')
                             ->image()
                             ->directory('teachers')
-                            ->avatar(),
+                            ->avatar()
+                            ->imageResizeMode('cover')
+                            ->imageResizeTargetWidth('600')
+                            ->imageResizeTargetHeight('600'),
                     ])->columns(2),
                 Forms\Components\Section::make('Kontak')
                     ->schema([

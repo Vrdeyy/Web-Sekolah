@@ -33,7 +33,10 @@ class PrincipalMessageResource extends Resource
                             ->label('Foto')
                             ->image()
                             ->directory('principal')
-                            ->avatar(),
+                            ->avatar()
+                            ->imageResizeMode('cover')
+                            ->imageResizeTargetWidth('600')
+                            ->imageResizeTargetHeight('600'),
                     ])->columns(2),
                 Forms\Components\Section::make('Sambutan')
                     ->schema([

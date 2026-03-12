@@ -63,7 +63,26 @@
                                 <div>
                                     <h3 class="font-black text-[#612F73] mb-3 uppercase tracking-tight">Layanan Telepon</h3>
                                     <p class="text-gray-500 text-sm leading-relaxed font-medium mt-1">
-                                        {{ $settings['phone'] ?? '(021) 8791 2345' }}
+                                        {{ $settings['school_phone'] ?? '(021) 8791 2345' }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Email Card --}}
+                    <div data-aos="fade-right" data-aos-delay="250">
+                        <div
+                            class="bg-[#F0E7F8]/30 rounded-[2.5rem] p-8 border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-500 ease-in-out hover:-translate-y-2 group">
+                            <div class="flex items-start gap-6">
+                                <div
+                                    class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg text-[#8C51A5] group-hover:bg-[#8C51A5] group-hover:text-white transition-all duration-500">
+                                    <i class="fas fa-envelope-open-text text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-black text-[#612F73] mb-3 uppercase tracking-tight">Email Resmi</h3>
+                                    <p class="text-gray-500 text-sm leading-relaxed font-medium mt-1 break-all">
+                                        {{ $settings['school_email'] ?? 'info@smkyaj.sch.id' }}
                                     </p>
                                 </div>
                             </div>
@@ -74,7 +93,7 @@
                     @if($settings['whatsapp'] ?? false)
                         <div data-aos="fade-right" data-aos-delay="300">
                             <div
-                                class="bg-[#F0E7F8]/30 rounded-[2.5rem] p-8 border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-500 ease-in-out hover:-translate-y-2 group">
+                                class="bg-[#8C51A5]/5 rounded-[2.5rem] p-8 border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-500 ease-in-out hover:-translate-y-2 group">
                                 <div class="flex items-start gap-6">
                                     <div
                                         class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg text-[#25D366] group-hover:bg-[#25D366] group-hover:text-white transition-all duration-500">
@@ -107,7 +126,7 @@
                                             <div data-aos="zoom-in" data-aos-delay="{{ 500 + ($index * 100) }}">
                                                 <a href="{{ $social->url }}" target="_blank"
                                                     class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-[#8C51A5] shadow-lg border border-[#8C51A5]/10 hover:bg-[#8C51A5] hover:text-white transition-all transform hover:-translate-y-2 duration-500">
-                                                    <i class="fab fa-{{ $social->platform ?? 'link' }} text-xl"></i>
+                                                    <i class="{{ $social->icon_class }} text-xl"></i>
                                                 </a>
                                             </div>
                                         @endif
@@ -140,18 +159,18 @@
                 {{-- Map --}}
                 <div class="lg:col-span-2" data-aos="fade-left">
                     <div
-                        class="bg-white rounded-[2.5rem] overflow-hidden border border-[#8C51A5]/10 shadow-premium-lg h-full p-4">
-                        @if($settings['google_maps_embed'] ?? false)
-                            <div class="w-full h-full rounded-[2rem] overflow-hidden shadow-inner">
+                        class="bg-white rounded-[2.5rem] overflow-hidden border border-[#8C51A5]/10 shadow-premium-lg h-full p-4 min-h-[500px]">
+                        <div class="w-full h-full rounded-[2rem] overflow-hidden shadow-inner [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:min-h-[500px]">
+                            @if($settings['google_maps_embed'] ?? false)
                                 {!! $settings['google_maps_embed'] !!}
-                            </div>
-                        @else
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.1832049615555!2d106.87948277498188!3d-6.370321262319202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ec069c9b1473%3A0xe726f1c4df821d3!2sSMK%20YAJ%20DEPOK!5e0!3m2!1sen!2sid!4v1704285000000!5m2!1sen!2sid"
-                                width="100%" height="100%" style="border:0; min-height: 500px;" allowfullscreen=""
-                                loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-[2rem]">
-                            </iframe>
-                        @endif
+                            @else
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.1832049615555!2d106.87948277498188!3d-6.370321262319202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ec069c9b1473%3A0xe726f1c4df821d3!2sSMK%20YAJ%20DEPOK!5e0!3m2!1sen!2sid!4v1704285000000!5m2!1sen!2sid"
+                                    width="100%" height="100%" style="border:0;" allowfullscreen=""
+                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-[2rem]">
+                                </iframe>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

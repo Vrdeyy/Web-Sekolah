@@ -52,7 +52,7 @@ class WebController extends Controller
                 ->ordered()
                 ->get(),
             'achievements' => Achievement::active()->ordered()->take(6)->get(),
-            'news' => News::active()->published()->latest()->take(4)->get(),
+            'news' => News::active()->published()->orderBy('is_featured', 'desc')->orderBy('published_at', 'desc')->take(4)->get(),
             'businessCenters' => BusinessCenter::active()->ordered()->take(3)->get(),
             'statistics' => Statistic::active()->ordered()->get(),
             'extracurriculars' => Extracurricular::active()->ordered()->take(6)->get(),
@@ -305,7 +305,7 @@ class WebController extends Controller
         }
 
         $data = array_merge($this->getSharedData(), [
-            'news' => $query->latest()->paginate(9)->withQueryString(),
+            'news' => $query->orderBy('is_featured', 'desc')->orderBy('published_at', 'desc')->paginate(9)->withQueryString(),
         ]);
 
         return view('pages.news', $data);
