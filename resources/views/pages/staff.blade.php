@@ -121,16 +121,13 @@
                                     </div>
                                 @endif
 
-                                {{-- Social/Contact --}}
-                                @if($member->email)
-                                    <div class="mt-8 pt-8 border-t border-gray-50">
-                                        <a href="mailto:{{ $member->email }}"
-                                            class="inline-flex items-center gap-3 px-8 py-3.5 bg-[#8C51A5]/10 text-[#8C51A5] hover:bg-[#8C51A5] hover:text-white transition-all duration-500 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] border border-[#8C51A5]/20 w-full justify-center">
-                                            <i class="fas fa-paper-plane text-[10px]"></i>
-                                            KONTAK STAFF
-                                        </a>
-                                    </div>
-                                @endif
+                                <div class="mt-8 pt-8 border-t border-gray-50">
+                                    <a href="{{ route('staff.show', $member->id) }}"
+                                        class="inline-flex items-center gap-3 px-8 py-3.5 bg-[#8C51A5]/10 text-[#8C51A5] hover:bg-[#8C51A5] hover:text-white transition-all duration-500 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] border border-[#8C51A5]/20 w-full justify-center">
+                                        <i class="fas fa-user-tie text-[10px]"></i>
+                                        DETAIL PROFIL
+                                    </a>
+                                </div>
                             </div>
                         </article>
                     </div>

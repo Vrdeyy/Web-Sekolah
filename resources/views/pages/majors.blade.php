@@ -41,7 +41,7 @@
                     <div class="text-gray-500 text-sm font-bold uppercase tracking-widest">Tersertifikasi</div>
                 </div>
                 <div class="text-center group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-4xl font-black text-[#8C51A5] mb-1 transition-transform group-hover:scale-110">4
+                    <div class="text-4xl font-black text-[#8C51A5] mb-1 transition-transform group-hover:scale-110">3
                         Tahun</div>
                     <div class="text-gray-500 text-sm font-bold uppercase tracking-widest">Masa Studi</div>
                 </div>
@@ -110,7 +110,7 @@
                                     </a>
                                     <div class="flex items-center gap-2 text-gray-400">
                                         <i class="fas fa-clock text-[#F8CB62]"></i>
-                                        <span class="text-xs font-bold uppercase tracking-widest">4 Tahun</span>
+                                        <span class="text-xs font-bold uppercase tracking-widest">3 Tahun</span>
                                     </div>
                                 </div>
                             </div>

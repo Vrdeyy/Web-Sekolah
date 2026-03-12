@@ -43,17 +43,16 @@ class MajorResource extends Resource
                             ->label('Icon')
                             ->image()
                             ->directory('majors/icons')
-                            ->imageResizeMode('cover')
-                            ->imageResizeTargetWidth('300')
-                            ->imageResizeTargetHeight('300'),
+                            ->imageEditor()
+                            ->openable(),
                         Forms\Components\FileUpload::make('image')
                             ->label('Gambar')
                             ->image()
                             ->directory('majors')
-                            ->imageResizeMode('cover')
-                            ->imageResizeTargetWidth('1200')
-                            ->imageResizeTargetHeight('800')
-                            ->maxSize(5120),
+                            ->imageEditor()
+                            ->imagePreviewHeight('250')
+                            ->openable()
+                            ->downloadable(),
                     ])->columns(2),
                 Forms\Components\Section::make('Deskripsi')
                     ->schema([

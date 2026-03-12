@@ -58,10 +58,6 @@ class GalleryResource extends Resource
                             ->label('Gambar')
                             ->image()
                             ->directory('gallery')
-                            ->imageResizeMode('cover')
-                            ->imageResizeTargetWidth('1200')
-                            ->imageResizeTargetHeight('800')
-                            ->maxSize(5120)
                             ->visible(fn(Forms\Get $get) => $get('type') === 'photo'),
                         Forms\Components\TextInput::make('video_url')
                             ->label('URL Video (YouTube)')

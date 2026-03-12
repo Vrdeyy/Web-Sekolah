@@ -270,12 +270,12 @@
                                             <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest flex items-center gap-2">
                                                 <i class="far fa-eye text-[#8C51A5]"></i>{{ number_format($item->views) }}
                                             </span>
-                                            <div class="inline-flex items-center gap-2 text-[#8C51A5] font-black text-[9px] uppercase tracking-widest group-hover:text-[#612F73] transition-all">
+                                            <a href="{{ route('news.show', $item->slug) }}" class="inline-flex items-center gap-2 text-[#8C51A5] font-black text-[9px] uppercase tracking-widest hover:text-[#612F73] transition-all">
                                                 DETAIL
                                                 <svg class="w-3 h-3 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7" />
                                                 </svg>
-                                            </div>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

@@ -53,13 +53,13 @@ class AchievementResource extends Resource
                         Forms\Components\TextInput::make('year')
                             ->label('Tahun'),
                         Forms\Components\FileUpload::make('image')
-                            ->label('Foto')
+                            ->label('Gambar')
                             ->image()
                             ->directory('achievements')
-                            ->imageResizeMode('cover')
-                            ->imageResizeTargetWidth('1200')
-                            ->imageResizeTargetHeight('800')
-                            ->maxSize(5120),
+                            ->imageEditor()
+                            ->imagePreviewHeight('250')
+                            ->openable()
+                            ->downloadable(),
                     ])->columns(2),
                 Forms\Components\Section::make('Deskripsi')
                     ->schema([

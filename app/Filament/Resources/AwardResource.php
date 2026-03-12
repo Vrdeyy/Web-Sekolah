@@ -34,11 +34,7 @@ class AwardResource extends Resource
                         Forms\Components\FileUpload::make('image')
                             ->label('Gambar')
                             ->image()
-                            ->directory('awards')
-                            ->imageResizeMode('cover')
-                            ->imageResizeTargetWidth('1200')
-                            ->imageResizeTargetHeight('800')
-                            ->maxSize(5120),
+                            ->directory('awards'),
                         Forms\Components\Textarea::make('description')
                             ->label('Deskripsi')
                             ->rows(3)

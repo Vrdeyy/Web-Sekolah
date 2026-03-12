@@ -37,10 +37,7 @@ class StaffResource extends Resource
                             ->label('Foto')
                             ->image()
                             ->directory('staff')
-                            ->avatar()
-                            ->imageResizeMode('cover')
-                            ->imageResizeTargetWidth('600')
-                            ->imageResizeTargetHeight('600'),
+                            ->avatar(),
                     ])->columns(2),
                 Forms\Components\Section::make('Kontak')
                     ->schema([

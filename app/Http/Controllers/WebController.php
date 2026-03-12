@@ -232,6 +232,25 @@ class WebController extends Controller
         return view('pages.staff', $data);
     }
 
+    public function staffShow(Staff $staff): View
+    {
+        $sharedData = $this->getSharedData();
+        app(\App\Services\SEOManager::class)
+            ->setTitle($staff->name . ' - Staff ' . ($sharedData['settings']['school_name'] ?? 'SMK YAJ'))
+            ->setDescription('Profil lengkap ' . $staff->name . ', ' . ($staff->position ?? 'Staff') . ' di ' . ($sharedData['settings']['school_name'] ?? 'SMK YAJ'))
+            ->setOgImage($staff->photo ? asset('storage/' . $staff->photo) : null);
+
+        $data = array_merge($sharedData, [
+            'staffMember' => $staff,
+            'relatedStaff' => Staff::active()->ordered()
+                ->where('id', '!=', $staff->id)
+                ->take(4)
+                ->get(),
+        ]);
+
+        return view('pages.staff-show', $data);
+    }
+
     public function businessCenters(): View
     {
         app(\App\Services\SEOManager::class)

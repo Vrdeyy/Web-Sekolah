@@ -51,10 +51,10 @@ class NewsResource extends Resource
                             ->label('Gambar')
                             ->image()
                             ->directory('news')
-                            ->imageResizeMode('cover')
-                            ->imageResizeTargetWidth('1200')
-                            ->imageResizeTargetHeight('800')
-                            ->maxSize(5120),
+                            ->imageEditor()
+                            ->imagePreviewHeight('250')
+                            ->openable()
+                            ->downloadable(),
                     ])->columns(2),
                 Forms\Components\Section::make('Konten')
                     ->schema([
