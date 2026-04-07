@@ -11,6 +11,7 @@ Website profil sekolah modern dan futuristik untuk **SMK YAJ**, dibangun dengan 
 ---
 
 ## ✨ Fitur Utama
+
 - **Custom SEO Manager**: Meta tags, OpenGraph, dan Twitter cards dinamis per halaman.
 - **Filament Admin Panel**: Manajemen konten (CMS) yang user-friendly dan responsif.
 - **Premium UI/UX**: Animasi modern, Glassmorphism, dan tema warna eksklusif.
@@ -27,21 +28,23 @@ Website profil sekolah modern dan futuristik untuk **SMK YAJ**, dibangun dengan 
 
 Sebelum memulai, pastikan sistem Anda memenuhi kriteria berikut:
 
-| Komponen | Versi Minimum | Rekomendasi |
-|----------|---------------|-------------|
-| **PHP** | 8.2+ | 8.3+ |
-| **Composer** | 2.x | 2.7+ |
-| **Node.js** | 18+ | 20+ LTS |
-| **NPM** | 9+ | 10+ |
-| **MySQL** | 5.7+ | 8.0+ |
-| **MariaDB** | 10.3+ | 10.11+ |
+| Komponen     | Versi Minimum | Rekomendasi |
+| ------------ | ------------- | ----------- |
+| **PHP**      | 8.2+          | 8.3+        |
+| **Composer** | 2.x           | 2.7+        |
+| **Node.js**  | 18+           | 20+ LTS     |
+| **NPM**      | 9+            | 10+         |
+| **MySQL**    | 5.7+          | 8.0+        |
+| **MariaDB**  | 10.3+         | 10.11+      |
 
 ### Extensions PHP yang Diperlukan:
+
 ```
 bcmath, ctype, curl, dom, fileinfo, gd, json, mbstring, openssl, pdo, pdo_mysql, tokenizer, xml, zip
 ```
 
 ### Web Server yang Didukung:
+
 - ✅ **Laragon** (Sangat Disarankan untuk Windows)
 - ✅ XAMPP
 - ✅ MAMP
@@ -60,6 +63,7 @@ bcmath, ctype, curl, dom, fileinfo, gd, json, mbstring, openssl, pdo, pdo_mysql,
 Buka terminal/command prompt dan jalankan:
 
 **Windows (Command Prompt):**
+
 ```cmd
 cd C:\laragon\www
 git clone https://github.com/Vrdeyy/web-sekolah.git
@@ -67,6 +71,7 @@ cd web-sekolah
 ```
 
 **Windows (PowerShell):**
+
 ```powershell
 cd C:\laragon\www
 git clone https://github.com/Vrdeyy/web-sekolah.git
@@ -74,6 +79,7 @@ cd web-sekolah
 ```
 
 **Linux/Mac:**
+
 ```bash
 cd /var/www/html
 git clone https://github.com/Vrdeyy/web-sekolah.git
@@ -85,6 +91,7 @@ cd web-sekolah
 ### 📦 LANGKAH 2: Install Dependencies
 
 #### 2a. Install PHP Dependencies (Composer)
+
 ```bash
 composer install
 ```
@@ -92,6 +99,7 @@ composer install
 > ⏳ Tunggu hingga selesai. Jika ada error, pastikan PHP dan Composer sudah terinstall dengan benar.
 
 #### 2b. Install JavaScript Dependencies (NPM)
+
 ```bash
 npm install
 ```
@@ -105,11 +113,13 @@ npm install
 #### 3a. Salin File Environment
 
 **Windows (Command Prompt):**
+
 ```cmd
 copy .env.example .env
 ```
 
 **Linux/Mac/PowerShell:**
+
 ```bash
 cp .env.example .env
 ```
@@ -138,7 +148,8 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-> 💡 **Tips**: 
+> 💡 **Tips**:
+>
 > - Untuk Laragon, biasanya `DB_PASSWORD` dikosongkan
 > - Untuk XAMPP, biasanya `DB_PASSWORD` dikosongkan
 > - Pastikan nama database `web_sekolah` sudah dibuat di phpMyAdmin
@@ -170,8 +181,9 @@ php artisan migrate:fresh --seed
 ```
 
 > ⏳ Tunggu hingga semua tabel dan data seeder berhasil dibuat.
-> 
+>
 > ✅ Anda akan melihat output seperti:
+>
 > ```
 > Dropping all tables ...................... DONE
 > Running migrations ....................... DONE
@@ -197,6 +209,7 @@ php artisan storage:link
 Jalankan perintah berikut untuk membuat struktur folder media:
 
 **Windows (Command Prompt):**
+
 ```cmd
 mkdir storage\app\public\settings
 mkdir storage\app\public\sliders
@@ -214,6 +227,7 @@ mkdir storage\app\public\partners
 ```
 
 **Linux/Mac/Git Bash:**
+
 ```bash
 mkdir -p storage/app/public/{settings,sliders,news,majors,awards,achievements,extracurriculars/icons,business-centers,gallery,teachers,staff,partners}
 ```
@@ -227,7 +241,7 @@ npm run build
 ```
 
 > ⏳ Tunggu hingga proses build selesai.
-> 
+>
 > ✅ Anda akan melihat output build manifest.
 
 ---
@@ -235,25 +249,31 @@ npm run build
 ### 🚀 LANGKAH 8: Jalankan Aplikasi
 
 #### Opsi A: Menggunakan PHP Built-in Server
+
 ```bash
 php artisan serve
 ```
+
 Akses di: `http://localhost:8000`
 
 #### Opsi B: Menggunakan Laragon (Disarankan)
+
 1. Pastikan folder project ada di `C:\laragon\www\web-sekolah`
 2. Buka Laragon dan klik **"Start All"**
 3. Akses di: `http://web-sekolah.test`
 
 #### Opsi C: Development Mode (Hot Reload)
+
 Buka 2 terminal secara bersamaan:
 
 **Terminal 1:**
+
 ```bash
 php artisan serve
 ```
 
 **Terminal 2:**
+
 ```bash
 npm run dev
 ```
@@ -264,11 +284,11 @@ npm run dev
 
 Setelah instalasi selesai, Anda bisa mengakses admin panel:
 
-| | |
-|---|---|
-| **URL** | `http://localhost:8000/admin` atau `http://web-sekolah.test/admin` |
-| **Email** | `admin@sekolah.id` |
-| **Password** | `admin123` |
+|              |                                                                    |
+| ------------ | ------------------------------------------------------------------ |
+| **URL**      | `http://localhost:8000/admin` atau `http://web-sekolah.test/admin` |
+| **Email**    | `admin@sekolah.id`                                                 |
+| **Password** | `admin123`                                                         |
 
 > ⚠️ **PENTING**: Segera ganti password default setelah login pertama!
 
@@ -279,6 +299,7 @@ Setelah instalasi selesai, Anda bisa mengakses admin panel:
 ### Mengapa Gambar Tidak Muncul Setelah Clone?
 
 Gambar **tidak termasuk** dalam repository Git karena:
+
 1. File gambar berukuran besar dan tidak efisien untuk di-track Git
 2. Folder `storage/app/public` tidak di-commit ke repository
 
@@ -309,21 +330,25 @@ storage/app/public/
 ## 🧹 Perintah Maintenance
 
 ### Membersihkan Cache
+
 ```bash
 php artisan optimize:clear
 ```
 
 ### Update Asset Filament
+
 ```bash
 php artisan filament:assets
 ```
 
 ### Reset Database (Hati-hati! Data akan hilang)
+
 ```bash
 php artisan migrate:fresh --seed
 ```
 
 ### Melihat Daftar Route
+
 ```bash
 php artisan route:list
 ```
@@ -333,10 +358,13 @@ php artisan route:list
 ## 🐛 Troubleshooting (Masalah Umum)
 
 ### 1. Error: "SQLSTATE[HY000] [1049] Unknown database"
+
 **Solusi**: Buat database `web_sekolah` di phpMyAdmin terlebih dahulu.
 
 ### 2. Error: "The stream or file could not be opened"
+
 **Solusi**: Berikan permission pada folder storage:
+
 ```bash
 # Linux/Mac
 chmod -R 775 storage bootstrap/cache
@@ -347,10 +375,13 @@ icacls bootstrap\cache /grant Everyone:F /T
 ```
 
 ### 3. Gambar tidak muncul
+
 **Solusi**: Jalankan `php artisan storage:link` dan pastikan folder ada.
 
 ### 4. Error saat npm install
+
 **Solusi**: Hapus folder `node_modules` dan file `package-lock.json`, lalu install ulang:
+
 ```bash
 # Windows
 rmdir /s /q node_modules
@@ -363,6 +394,7 @@ npm install
 ```
 
 ### 5. Halaman blank/error 500
+
 **Solusi**: Cek log error di `storage/logs/laravel.log`
 
 ---
@@ -396,13 +428,13 @@ web-sekolah/
 
 ## 📝 Changelog
 
-| Versi | Tanggal | Perubahan |
-|-------|---------|-----------|
+| Versi  | Tanggal    | Perubahan                                                            |
+| ------ | ---------- | -------------------------------------------------------------------- |
 | v1.4.0 | 2026-01-25 | Optimasi Pencarian, Auto YouTube Thumbnail, & Smart Lightbox Gallery |
-| v1.3.0 | 2026-01-20 | Integrasi SEO Manager, Update Seeder Premium |
-| v1.2.0 | 2026-01-15 | Optimasi Logo Management & Responsive Hero |
-| v1.1.0 | 2026-01-10 | Penambahan fitur Extracurricular & Gallery |
-| v1.0.0 | 2026-01-01 | Initial Release |
+| v1.3.0 | 2026-01-20 | Integrasi SEO Manager, Update Seeder Premium                         |
+| v1.2.0 | 2026-01-15 | Optimasi Logo Management & Responsive Hero                           |
+| v1.1.0 | 2026-01-10 | Penambahan fitur Extracurricular & Gallery                           |
+| v1.0.0 | 2026-01-01 | Initial Release                                                      |
 
 ---
 
@@ -410,13 +442,13 @@ web-sekolah/
 
 Project ini dibuat khusus sebagai media informasi resmi **SMK YAJ**.
 
-| Jenis Penggunaan | Status |
-|------------------|--------|
-| ✅ Belajar & Referensi | **Diperbolehkan** |
-| ✅ Modifikasi untuk pembelajaran | **Diperbolehkan** |
-| ❌ Penggunaan Komersial | **DILARANG** |
-| ❌ Publikasi sebagai website sekolah lain | **DILARANG** |
-| ❌ Redistribusi tanpa izin | **DILARANG** |
+| Jenis Penggunaan                          | Status            |
+| ----------------------------------------- | ----------------- |
+| ✅ Belajar & Referensi                    | **Diperbolehkan** |
+| ✅ Modifikasi untuk pembelajaran          | **Diperbolehkan** |
+| ❌ Penggunaan Komersial                   | **DILARANG**      |
+| ❌ Publikasi sebagai website sekolah lain | **DILARANG**      |
+| ❌ Redistribusi tanpa izin                | **DILARANG**      |
 
 > ⚠️ Pelanggaran terhadap ketentuan di atas dapat dikenakan sanksi hukum sesuai dengan Undang-Undang Hak Cipta yang berlaku.
 
@@ -427,3 +459,5 @@ Project ini dibuat khusus sebagai media informasi resmi **SMK YAJ**.
 Dikembangkan dengan ❤️ oleh **IT Team SMK YAJ**
 
 © 2026 IT Team SMK YAJ. Seluruh Hak Cipta Dilindungi.
+
+kontol
