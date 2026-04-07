@@ -22,5 +22,10 @@ class DatabaseSeeder extends Seeder
                 'email_verified_at' => now(),
             ]
         );
+
+        // Memanggil seeder development (buat isi data awal biar nggak hilang kalo di-fresh)
+        $this->call([
+            DevelopmentSeeder::class,
+        ]);
     }
 }
