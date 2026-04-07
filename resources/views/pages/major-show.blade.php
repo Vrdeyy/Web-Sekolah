@@ -29,9 +29,9 @@
 
                     @if($major->short_name)
                         <div class="flex items-center gap-4 p-4 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm max-w-fit">
-                            <div class="w-12 h-12 bg-gradient-to-tr from-[#8C51A5] to-[#D668EA] rounded-2xl flex items-center justify-center shadow-lg">
+                            <div class="w-12 h-12 bg-gradient-to-tr from-[#8C51A5] to-[#D668EA] rounded-2xl flex items-center justify-center shadow-lg overflow-hidden">
                                 @if($major->icon)
-                                    <img src="{{ asset('storage/' . $major->icon) }}" alt="{{ $major->short_name }}" class="w-6 h-6 brightness-0 invert">
+                                    <img src="{{ asset('storage/' . $major->icon) }}" alt="{{ $major->short_name }}" class="w-full h-full object-cover">
                                 @else
                                     <i class="fas fa-graduation-cap text-white"></i>
                                 @endif
@@ -95,21 +95,21 @@
                         <div class="group p-6 rounded-[2rem] bg-gradient-to-br from-amber-50 to-white border border-amber-100 hover:shadow-premium-lg transition-all">
                             <i class="fas fa-clock text-[#f5b82e] text-2xl mb-4 group-hover:scale-110 transition-transform"></i>
                             <div class="text-gray-400 text-[10px] font-black uppercase tracking-widest mb-1">Durasi Belajar</div>
-                            <div class="text-[#612F73] font-black text-2xl">3 TAHUN</div>
+                            <div class="text-[#612F73] font-black text-2xl">{{ $settings['major_duration_value'] ?? '3 TAHUN' }}</div>
                         </div>
 
                         {{-- Sertifikasi --}}
                         <div class="group p-6 rounded-[2rem] bg-gradient-to-br from-purple-50 to-white border border-purple-100 hover:shadow-premium-lg transition-all">
                             <i class="fas fa-certificate text-[#8C51A5] text-2xl mb-4 group-hover:scale-110 transition-transform"></i>
                             <div class="text-gray-400 text-[10px] font-black uppercase tracking-widest mb-1">Sertifikasi</div>
-                            <div class="text-[#612F73] font-black text-xl leading-tight">INTERNASIONAL</div>
+                            <div class="text-[#612F73] font-black text-xl leading-tight">{{ $settings['major_certification_value'] ?? 'INTERNASIONAL' }}</div>
                         </div>
 
                         {{-- Praktek --}}
                         <div class="group p-6 rounded-[2rem] bg-gradient-to-br from-blue-50 to-white border border-blue-100 hover:shadow-premium-lg transition-all">
                             <i class="fas fa-building text-blue-500 text-2xl mb-4 group-hover:scale-110 transition-transform"></i>
                             <div class="text-gray-400 text-[10px] font-black uppercase tracking-widest mb-1">Praktek Industri</div>
-                            <div class="text-[#612F73] font-black text-2xl">6 BULAN</div>
+                            <div class="text-[#612F73] font-black text-2xl">{{ $settings['major_internship_value'] ?? '6 BULAN' }}</div>
                         </div>
                     </div>
 
@@ -179,7 +179,7 @@
                                         {{-- Icon Thumb --}}
                                         <div class="w-16 h-16 flex-shrink-0 rounded-2xl overflow-hidden bg-white/5 border border-white/10 group-hover:border-[#F8CB62]/50 transition-all flex items-center justify-center p-3">
                                             @if($item->icon)
-                                                <img src="{{ asset('storage/' . $item->icon) }}" alt="{{ $item->short_name }}" class="w-full h-full object-contain group-hover:scale-125 transition-transform duration-500 brightness-0 invert">
+                                                <img src="{{ asset('storage/' . $item->icon) }}" alt="{{ $item->short_name }}" class="w-full h-full object-contain group-hover:scale-125 transition-transform duration-500">
                                             @else
                                                 <i class="fas fa-graduation-cap text-white/20 text-2xl group-hover:text-[#F8CB62]"></i>
                                             @endif

@@ -319,7 +319,7 @@
                             </span>
                             Prestasi Terbaru
                         </h2>
-                        <a href="{{ route('achievements') }}" class="text-[#8C51A5] font-black text-[10px] tracking-[0.2em] uppercase hover:text-[#612F73] transition-all duration-300 ease-in-out bg-[#F0E7F8]/50 px-5 py-2.5 rounded-xl border border-[#8C51A5]/10">
+                        <a href="{{ route('achievements') }}" class="flex-shrink-0 whitespace-nowrap text-[#8C51A5] font-black text-[10px] tracking-[0.2em] uppercase hover:text-[#612F73] transition-all duration-300 ease-in-out bg-[#F0E7F8]/50 px-5 py-2.5 rounded-xl border border-[#8C51A5]/10">
                             LIHAT SEMUA <i class="fas fa-arrow-right ml-2 text-[8px]"></i>
                         </a>
                     </div>
@@ -373,7 +373,7 @@
                             Galeri Foto
                         </h2>
                         <a href="{{ route('gallery.photos') }}"
-                            class="text-[#8C51A5] font-black text-[10px] tracking-[0.2em] uppercase hover:text-[#612F73] transition-colors bg-[#F0E7F8]/50 px-5 py-2.5 rounded-xl border border-[#8C51A5]/10">
+                            class="flex-shrink-0 whitespace-nowrap text-[#8C51A5] font-black text-[10px] tracking-[0.2em] uppercase hover:text-[#612F73] transition-colors bg-[#F0E7F8]/50 px-5 py-2.5 rounded-xl border border-[#8C51A5]/10">
                             LIHAT SEMUA <i class="fas fa-arrow-right ml-2 text-[8px]"></i>
                         </a>
                     </div>

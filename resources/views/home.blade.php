@@ -114,7 +114,7 @@
                         <h3 class="text-3xl font-black text-[#612F73] leading-none mb-1">
                             <span class="counter" data-target="{{ (int)filter_var($settings['hero_stats_1_value'] ?? '1500', FILTER_SANITIZE_NUMBER_INT) }}">0</span>+
                         </h3>
-                        <p class="text-[#8C51A5]/60 text-[10px] font-black uppercase tracking-widest">{{ $settings['hero_stats_1_label'] ?? 'Siswa Aktif' }}</p>
+                        <p class="text-[#8C51A5]/60 text-[10px] font-black uppercase tracking-widest">Siswa Aktif</p>
                     </div>
 
                     {{-- Statistik 2: Guru (Data Real) --}}
@@ -122,7 +122,7 @@
                         <h3 class="text-3xl font-black text-[#612F73] leading-none mb-1">
                             <span class="counter" data-target="{{ $teachers_count ?? 0 }}">0</span>+
                         </h3>
-                        <p class="text-[#8C51A5]/60 text-[10px] font-black uppercase tracking-widest">{{ $settings['hero_stats_2_label'] ?? 'Guru Profesional' }}</p>
+                        <p class="text-[#8C51A5]/60 text-[10px] font-black uppercase tracking-widest">Guru Profesional</p>
                     </div>
 
                     {{-- Statistik 3: Lainnya/Kelulusan --}}
@@ -130,7 +130,7 @@
                         <h3 class="text-3xl font-black text-[#F8CB62] leading-none mb-1">
                             <span class="counter" data-target="{{ (int)filter_var($settings['hero_stats_3_value'] ?? '98', FILTER_SANITIZE_NUMBER_INT) }}">0</span>%
                         </h3>
-                        <p class="text-[#8C51A5]/60 text-[10px] font-black uppercase tracking-widest">{{ $settings['hero_stats_3_label'] ?? 'Kelulusan' }}</p>
+                        <p class="text-[#8C51A5]/60 text-[10px] font-black uppercase tracking-widest">Kelulusan</p>
                     </div>
                 </div>
             </div>
@@ -332,16 +332,16 @@
                     </div>
 
                     {{-- Vision & Mission --}}
-                    <div class="grid sm:grid-cols-2 gap-5">
+                    <div class="grid sm:grid-cols-2 gap-5 w-full">
 
                          {{-- Vision --}}
                         <div
-                            class="group p-6 bg-white/[0.02] backdrop-blur-sm
+                            class="group w-full p-6 bg-white/[0.02] backdrop-blur-sm
                                 rounded-3xl border border-[#8C51A5]/10
-                                hover:shadow-premium-lg hover:-translate-y-1 transition-all duration-500">
+                                hover:shadow-premium-lg hover:-translate-y-1 transition-all duration-500 text-center lg:text-left">
                             <div
                                 class="w-14 h-14 bg-gradient-to-r from-[#612F73] to-[#8C51A5]
-                                    rounded-2xl flex items-center justify-center mb-4
+                                    rounded-2xl flex items-center justify-center mx-auto lg:mx-0 mb-4
                                     shadow-lg group-hover:scale-110 transition-transform">
                                 <i class="fas fa-bullseye text-white text-xl"></i>
                             </div>
@@ -353,12 +353,12 @@
 
                         {{-- Mission --}}
                         <div
-                            class="group p-6 bg-white/[0.02] backdrop-blur-sm
+                            class="group w-full p-6 bg-white/[0.02] backdrop-blur-sm
                                 rounded-3xl border border-[#D668EA]/10
-                                hover:shadow-premium-lg hover:-translate-y-1 transition-all duration-500">
+                                hover:shadow-premium-lg hover:-translate-y-1 transition-all duration-500 text-center lg:text-left">
                             <div
                                 class="w-14 h-14 bg-gradient-to-r from-[#8C51A5] to-[#D668EA]
-                                    rounded-2xl flex items-center justify-center mb-4
+                                    rounded-2xl flex items-center justify-center mx-auto lg:mx-0 mb-4
                                     shadow-lg group-hover:scale-110 transition-transform">
                                 <i class="fas fa-rocket text-white text-xl"></i>
                             </div>

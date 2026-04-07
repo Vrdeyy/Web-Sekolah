@@ -13,7 +13,6 @@ use App\Models\Page;
 use App\Models\PrincipalMessage;
 use App\Models\Setting;
 use App\Models\ImgModel;
-use App\Models\SocialLink;
 use App\Models\Staff;
 use App\Models\Statistic;
 use App\Models\Teacher;
@@ -26,9 +25,30 @@ class WebController extends Controller
 {
     protected function getSharedData(): array
     {
+        $settings = Setting::all()->pluck('value', 'key')->toArray();
+
+        $socials = [];
+        $platforms = [
+            'social_facebook' => 'fab fa-facebook-f',
+            'social_instagram' => 'fab fa-instagram',
+            'social_twitter' => 'fab fa-x-twitter',
+            'social_youtube' => 'fab fa-youtube',
+            'social_tiktok' => 'fab fa-tiktok',
+            'social_whatsapp' => 'fab fa-whatsapp',
+        ];
+
+        foreach ($platforms as $key => $icon) {
+            if (!empty($settings[$key])) {
+                $socials[] = (object) [
+                    'url' => $settings[$key],
+                    'icon_class' => $icon,
+                ];
+            }
+        }
+
         return [
-            'settings' => Setting::all()->pluck('value', 'key')->toArray(),
-            'socialLinks' => SocialLink::active()->ordered()->get(),
+            'settings' => $settings,
+            'socialLinks' => collect($socials),
         ];
     }
 
@@ -48,7 +68,6 @@ class WebController extends Controller
             'principalMessage' => PrincipalMessage::active()->first(),
             'awards' => Award::active()->ordered()->take(8)->get(),
             'majors' => Major::active()
-                ->orderByRaw("CASE WHEN slug LIKE '%pplg%' OR slug LIKE '%pengembangan-perangkat-lunak%' THEN 0 ELSE 1 END")
                 ->ordered()
                 ->get(),
             'achievements' => Achievement::active()->ordered()->take(6)->get(),
@@ -69,7 +88,7 @@ class WebController extends Controller
 
         app(\App\Services\SEOManager::class)
             ->setTitle($page->title)
-            ->setDescription($page->meta_description ?? $page->content);
+            ->setDescription($page->meta_description ?? strip_tags($page->content) ?? '');
 
         $data = array_merge($this->getSharedData(), [
             'page' => $page,

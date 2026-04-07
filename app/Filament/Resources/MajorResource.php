@@ -28,7 +28,10 @@ class MajorResource extends Resource
                         Forms\Components\TextInput::make('name')
                             ->label('Nama Jurusan')
                             ->required()
-                            ->maxLength(255)
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('short_name')
+                            ->label('Singkatan')
+                            ->maxLength(50)
                             ->live(onBlur: true)
                             ->afterStateUpdated(fn(?string $state, Forms\Set $set) => $set('slug', Str::slug($state ?? ''))),
                         Forms\Components\TextInput::make('slug')
@@ -36,9 +39,6 @@ class MajorResource extends Resource
                             ->required()
                             ->unique(ignoreRecord: true)
                             ->maxLength(255),
-                        Forms\Components\TextInput::make('short_name')
-                            ->label('Singkatan')
-                            ->maxLength(50),
                         Forms\Components\FileUpload::make('icon')
                             ->label('Icon')
                             ->image()

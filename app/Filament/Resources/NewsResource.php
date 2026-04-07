@@ -59,10 +59,10 @@ class NewsResource extends Resource
                 Forms\Components\Section::make('Konten')
                     ->schema([
                         Forms\Components\Textarea::make('excerpt')
-                            ->label('Ringkasan')
+                            ->label('Deskripsi')
                             ->rows(3),
                         Forms\Components\RichEditor::make('content')
-                            ->label('Konten')
+                            ->label('Konten Singkat')
                             ->required()
                             ->columnSpanFull(),
                     ]),

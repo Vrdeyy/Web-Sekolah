@@ -49,8 +49,7 @@ class ManageSettings extends Page implements HasForms
                                 Grid::make(2)
                                     ->schema([
                                         TextInput::make('school_name')
-                                            ->label('Nama Sekolah')
-                                            ->required(),
+                                            ->label('Nama Sekolah'),
                                         TextInput::make('years_experience')
                                             ->label('Tahun Pengalaman')
                                             ->numeric(),
@@ -101,7 +100,7 @@ class ManageSettings extends Page implements HasForms
                             ->icon('heroicon-o-home')
                             ->schema([
                                 TextInput::make('hero_badge')
-                                    ->label('Badge Hero (Atas Judul)'),
+                                    ->label('Badge Hero (Contoh: Akreditasi A)'),
                                 TextInput::make('hero_title')
                                     ->label('Judul Hero'),
                                 Textarea::make('hero_description')
@@ -113,25 +112,57 @@ class ManageSettings extends Page implements HasForms
                             ->schema([
                                 Grid::make(2)
                                     ->schema([
-                                        Section::make('Statistik 1')
+                                        Section::make('Statistik 1 (Siswa Aktif)')
                                             ->schema([
-                                                TextInput::make('hero_stats_1_label')
-                                                    ->label('Label (misal: Siswa Aktif)'),
                                                 TextInput::make('hero_stats_1_value')
                                                     ->label('Nilai (misal: 1500)'),
                                             ])->columnSpan(1),
-                                        Section::make('Statistik 2')
+                                        Section::make('Statistik 3 (Kelulusan)')
                                             ->schema([
-                                                TextInput::make('hero_stats_2_label')
-                                                    ->label('Label (misal: Guru Profesional)'),
-                                            ])->columnSpan(1),
-                                        Section::make('Statistik 3')
-                                            ->schema([
-                                                TextInput::make('hero_stats_3_label')
-                                                    ->label('Label (misal: Kelulusan)'),
                                                 TextInput::make('hero_stats_3_value')
                                                     ->label('Nilai (misal: 98)'),
                                             ])->columnSpan(1),
+                                    ]),
+                            ]),
+                        Tabs\Tab::make('Statistik Jurusan')
+                            ->icon('heroicon-o-academic-cap')
+                            ->schema([
+                                Grid::make(3)
+                                    ->schema([
+                                        Section::make('Durasi Belajar')
+                                            ->schema([
+                                                TextInput::make('major_duration_value')
+                                                    ->label('Nilai (misal: 3 TAHUN)'),
+                                            ])->columnSpan(1),
+                                        Section::make('Sertifikasi')
+                                            ->schema([
+                                                TextInput::make('major_certification_value')
+                                                    ->label('Nilai (misal: INTERNASIONAL)'),
+                                            ])->columnSpan(1),
+                                        Section::make('Praktek Industri')
+                                            ->schema([
+                                                TextInput::make('major_internship_value')
+                                                    ->label('Nilai (misal: 6 BULAN)'),
+                                            ])->columnSpan(1),
+                                    ]),
+                            ]),
+                        Tabs\Tab::make('Sosial Media')
+                            ->icon('heroicon-o-share')
+                            ->schema([
+                                Grid::make(2)
+                                    ->schema([
+                                        TextInput::make('social_facebook')
+                                            ->label('Facebook URL')
+                                            ->placeholder('https://facebook.com/...'),
+                                        TextInput::make('social_instagram')
+                                            ->label('Instagram URL')
+                                            ->placeholder('https://instagram.com/...'),
+                                        TextInput::make('social_youtube')
+                                            ->label('YouTube URL')
+                                            ->placeholder('https://youtube.com/...'),
+                                        TextInput::make('social_tiktok')
+                                            ->label('TikTok URL')
+                                            ->placeholder('https://tiktok.com/...'),
                                     ]),
                             ]),
                     ])->columnSpanFull(),

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [WebController::class, 'home'])->name('home');
 
 // Static Pages
+Route::redirect('/halaman', '/halaman/sekolah');
 Route::get('/halaman/{slug}', [WebController::class, 'page'])->name('page');
 
 // Academic

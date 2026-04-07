@@ -87,13 +87,13 @@
                     </div>
                 @else
                     {{-- Empty State --}}
-                    <div class="text-center py-20 bg-white rounded-[3rem] border border-[#8C51A5]/10 shadow-premium-lg">
+                    <div class="text-center py-20 px-6 md:px-12 bg-white rounded-[3rem] border border-[#8C51A5]/10 shadow-premium-lg">
                         <div
                             class="w-24 h-24 bg-[#F0E7F8] rounded-2xl flex items-center justify-center mx-auto mb-6 border border-[#8C51A5]/10 shadow-xl">
                             <i class="fas fa-image text-4xl text-[#8C51A5]"></i>
                         </div>
                         <h3 class="text-xl font-black text-[#612F73] mb-2 uppercase tracking-tight">Belum Ada Foto</h3>
-                        <p class="text-gray-500 font-medium">Galeri foto sedang dalam proses pembaharuan.</p>
+                        <p class="text-gray-500 font-medium max-w-md mx-auto">Galeri foto sedang dalam proses pembaharuan.</p>
                     </div>
                 @endif
             </div>
@@ -148,13 +148,13 @@
                     </div>
                 @else
                     {{-- Empty State --}}
-                    <div class="text-center py-20 bg-white rounded-[3rem] border border-[#8C51A5]/10 shadow-premium-lg">
+                    <div class="text-center py-20 px-6 md:px-12 bg-white rounded-[3rem] border border-[#8C51A5]/10 shadow-premium-lg">
                         <div
                             class="w-24 h-24 bg-[#F0E7F8] rounded-2xl flex items-center justify-center mx-auto mb-6 border border-[#8C51A5]/10 shadow-xl">
                             <i class="fas fa-video text-4xl text-[#8C51A5]"></i>
                         </div>
                         <h3 class="text-xl font-black text-[#612F73] mb-2 uppercase tracking-tight">Belum Ada Video</h3>
-                        <p class="text-gray-500 font-medium">Arsip video akan segera hadir untuk Anda.</p>
+                        <p class="text-gray-500 font-medium max-w-md mx-auto">Arsip video akan segera hadir untuk Anda.</p>
                     </div>
                 @endif
             </div>
