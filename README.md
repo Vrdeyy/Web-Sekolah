@@ -459,5 +459,4 @@ Project ini dibuat khusus sebagai media informasi resmi **SMK YAJ**.
 Dikembangkan dengan ❤️ oleh **IT Team SMK YAJ**
 
 © 2026 IT Team SMK YAJ. Seluruh Hak Cipta Dilindungi.
-
-kontol
+dm vslkdkj dss,cjbsd
