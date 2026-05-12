@@ -1,0 +1,31 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\User;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+
+class DatabaseSeeder extends Seeder
+{
+    /**
+     * Seed the application's database.
+     */
+    public function run(): void
+    {
+        // Default Admin User
+        User::updateOrCreate(
+            ['email' => 'admin@sekolah.id'],
+            [
+                'name' => 'Administrator',
+                'password' => Hash::make('admin123'),
+                'email_verified_at' => now(),
+            ]
+        );
+
+        // Memanggil seeder development (buat isi data awal biar nggak hilang kalo di-fresh)
+        $this->call([
+            DevelopmentSeeder::class,
+        ]);
+    }
+}

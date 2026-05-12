@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Admin & Auth
+Disallow: /admin
+Disallow: /login
+Disallow: /register
+Disallow: /password/*
+
+# Assets
+Allow: /build/assets
+Allow: /storage
+
+# Sitemap
+Sitemap: http://mzq.full.diskon.cloud/sitemap.xml
