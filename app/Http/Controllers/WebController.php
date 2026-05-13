@@ -83,6 +83,21 @@ class WebController extends Controller
             'email' => $sharedData['settings']['school_email'] ?? '',
         ]);
 
+        // News Highlighting Logic: Max 2 pinned, fill with latest to total 3
+        $pinnedNews = News::active()->published()
+            ->where('is_featured', true)
+            ->orderBy('published_at', 'desc')
+            ->take(2)
+            ->get();
+        
+        $latestNews = News::active()->published()
+            ->whereNotIn('id', $pinnedNews->pluck('id'))
+            ->orderBy('published_at', 'desc')
+            ->take(3 - $pinnedNews->count())
+            ->get();
+            
+        $homeNews = $pinnedNews->merge($latestNews);
+
         $data = array_merge($sharedData, [
             'slideBener' => ImgModel::active()->ordered()->get(),
             'principalMessage' => PrincipalMessage::active()->first(),
@@ -91,7 +106,7 @@ class WebController extends Controller
                 ->ordered()
                 ->get(),
             'achievements' => Achievement::active()->ordered()->take(6)->get(),
-            'news' => News::active()->published()->orderBy('is_featured', 'desc')->orderBy('published_at', 'desc')->take(4)->get(),
+            'news' => $homeNews,
             'businessCenters' => BusinessCenter::active()->ordered()->take(3)->get(),
             'statistics' => Statistic::active()->ordered()->get(),
             'extracurriculars' => Extracurricular::active()->ordered()->take(6)->get(),

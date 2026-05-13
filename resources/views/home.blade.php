@@ -377,6 +377,159 @@
     @endif
 
 
+    {{-- News Section (Symmetrical Grid) - After Principal Message --}}
+    @if($news->count() > 0)
+    <section class="py-24 bg-white relative overflow-hidden">
+        {{-- Decorative Background --}}
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-purple-50/30 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-[#8C51A5]/5 rounded-full blur-3xl animate-pulse"></div>
+
+        <div class="container mx-auto px-6 lg:px-12 relative z-10">
+            {{-- Header --}}
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div class="max-w-2xl">
+                    <div class="inline-flex items-center gap-3 px-4 py-1.5 bg-[#8C51A5]/10 text-[#612F73] text-[10px] font-black uppercase tracking-widest rounded-full mb-4 border-l-2 border-[#8C51A5]">
+                        <i class="fas fa-bolt text-amber-500"></i>
+                        <span>HIGHLIGHT TERKINI</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-black text-[#612F73] leading-tight">
+                        Life at <span class="text-[#8C51A5]">{{ $settings['school_name'] ?? 'SMK YAJ' }}</span>
+                    </h2>
+                </div>
+                <a href="{{ route('news') }}" class="group flex items-center gap-3 text-[#612F73] font-black text-xs uppercase tracking-widest hover:text-[#8C51A5] transition-colors bg-gray-50 px-6 py-3 rounded-xl border border-gray-100 hover:border-[#8C51A5]/20">
+                    Semua Berita
+                    <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                </a>
+            </div>
+
+            {{-- Responsive Grid/Carousel --}}
+            <div id="news-container" class="flex md:grid overflow-x-auto md:overflow-x-visible flex-nowrap md:flex-wrap md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 pb-10 md:pb-0 px-4 md:px-0 snap-x snap-mandatory hide-scrollbar">
+                @foreach($news as $index => $item)
+                <div class="flex-none w-[300px] sm:w-[380px] md:w-auto snap-center group bg-white rounded-[2.5rem] overflow-hidden shadow-premium hover:shadow-premium-lg transition-all duration-500 border border-gray-100 flex flex-col h-full" data-index="{{ $index }}">
+                    {{-- Image with fixed aspect ratio --}}
+                    <div class="relative aspect-[16/10] overflow-hidden bg-gray-100">
+                        @if($item->image)
+                            <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        @else
+                            <div class="w-full h-full bg-gradient-to-br from-[#612F73] to-[#8C51A5] flex items-center justify-center">
+                                <i class="fas fa-newspaper text-5xl text-white/20"></i>
+                            </div>
+                        @endif
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        
+                        {{-- Badge --}}
+                        <div class="absolute top-6 left-6">
+                            <span class="px-4 py-1.5 bg-[#F8CB62] text-[#612F73] text-[10px] font-black uppercase tracking-widest rounded-lg shadow-lg">
+                                {{ $item->is_featured ? '📌 PINNED' : 'NEWS' }}
+                            </span>
+                        </div>
+                    </div>
+
+                    {{-- Content --}}
+                    <div class="p-6 md:p-8 flex flex-col flex-grow">
+                        <div class="flex items-center gap-4 text-[#8C51A5]/60 text-[10px] font-black uppercase tracking-widest mb-4">
+                            <span class="flex items-center gap-2"><i class="far fa-calendar-alt text-[#F8CB62]"></i> {{ $item->published_at->format('d M Y') }}</span>
+                            <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+                            <span class="flex items-center gap-2"><i class="far fa-user text-[#F8CB62]"></i> {{ $item->author ?? 'Admin' }}</span>
+                        </div>
+                        
+                        <h3 class="text-xl md:text-2xl font-black text-[#612F73] mb-4 line-clamp-2 leading-tight group-hover:text-[#8C51A5] transition-colors">
+                            <a href="{{ route('news.show', $item->slug) }}">
+                                {{ $item->title }}
+                            </a>
+                        </h3>
+                        
+                        <p class="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-8">
+                            {{ Str::limit(strip_tags($item->content), 120) }}
+                        </p>
+
+                        <div class="mt-auto pt-6 border-t border-gray-50 flex items-center justify-between">
+                            <a href="{{ route('news.show', $item->slug) }}" class="text-[#8C51A5] text-xs font-black uppercase tracking-widest flex items-center gap-2 group/btn hover:text-[#612F73] transition-colors">
+                                Selengkapnya 
+                                <i class="fas fa-arrow-right group-hover/btn:translate-x-2 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+
+            {{-- Dots Indicator (Mobile Only) --}}
+            <div class="flex md:hidden justify-center items-center gap-2 mt-2">
+                @foreach($news as $index => $item)
+                    <div class="news-dot h-2 rounded-full transition-all duration-300 {{ $index === 0 ? 'w-8 bg-[#8C51A5]' : 'w-2 bg-gray-200' }}" data-index="{{ $index }}"></div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    @endif
+
+    @push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('news-container');
+            const dots = document.querySelectorAll('.news-dot');
+            
+            if (container && dots.length > 0) {
+                // Initial state
+                updateActiveState();
+
+                container.addEventListener('scroll', function() {
+                    updateActiveState();
+                });
+
+                function updateActiveState() {
+                    const scrollLeft = container.scrollLeft;
+                    const containerWidth = container.offsetWidth;
+                    const cards = container.querySelectorAll('.flex-none');
+                    
+                    let activeIndex = 0;
+                    let minDistance = Infinity;
+
+                    cards.forEach((card, index) => {
+                        // Calculate center of the card relative to the container
+                        const cardCenter = card.offsetLeft - container.offsetLeft + (card.offsetWidth / 2);
+                        const scrollCenter = scrollLeft + (containerWidth / 2);
+                        const distance = Math.abs(cardCenter - scrollCenter);
+
+                        if (distance < minDistance) {
+                            minDistance = distance;
+                            activeIndex = index;
+                        }
+
+                        // Apply "Expanding" Effect
+                        if (window.innerWidth < 768) { // Only on mobile
+                            if (distance < 150) { // If close to center
+                                card.style.transform = 'scale(1.02)';
+                                card.style.opacity = '1';
+                            } else {
+                                card.style.transform = 'scale(0.95)';
+                                card.style.opacity = '0.7';
+                            }
+                            card.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                        } else {
+                            card.style.transform = 'none';
+                            card.style.opacity = '1';
+                        }
+                    });
+                    
+                    dots.forEach((dot, index) => {
+                        if (index === activeIndex) {
+                            dot.classList.remove('w-2', 'bg-gray-200');
+                            dot.classList.add('w-8', 'bg-[#8C51A5]');
+                        } else {
+                            dot.classList.remove('w-8', 'bg-[#8C51A5]');
+                            dot.classList.add('w-2', 'bg-gray-200');
+                        }
+                    });
+                }
+            }
+        });
+    </script>
+    @endpush
+
+
+
     {{-- Majors Section - Asymmetric Modern --}}
     <section class="py-32 bg-[#F0E7F8]/30 relative overflow-hidden">
 
@@ -615,149 +768,6 @@
                     </div>
                 @endforeach
             </div>
-        </div>
-    </section>
-    @endif 
-
-
-    {{-- News Section - Asymmetric Modern --}}
-    @if($news->count() > 0)
-    <section class="py-32 bg-white relative overflow-hidden">
- 
-        {{-- Decorative Background Elements --}}
-        <div class="absolute -top-32 -left-32 w-96 h-96 bg-[#8C51A5]/10 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div class="absolute top-1/3 -right-32 w-[28rem] h-[28rem] bg-[#612F73]/10 rounded-full blur-3xl animate-pulse-slow-delayed"></div>
-        
-        {{-- Subtle Floating Elements --}}
-        <div class="absolute top-20 right-[20%] text-[#8C51A5]/5 text-9xl font-black select-none pointer-events-none uppercase tracking-[0.2em]">LATEST</div>
-        <div class="absolute bottom-20 left-[10%] text-[#612F73]/5 text-9xl font-black select-none pointer-events-none rotate-90 uppercase tracking-[0.2em]">ARTICLES</div>
- 
-        {{-- Subtle Grid Pattern --}}
-        <div class="absolute inset-0 bg-[radial-gradient(#8C51A508_1px,transparent_1px)] bg-[size:40px_40px]"></div>
- 
-        <div class="container mx-auto px-6 lg:px-12 relative z-10">
- 
-            {{-- Section Header --}}
-            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-24 gap-8" data-aos="fade-up">
-                <div class="max-w-2xl">
-                    <div
-                        class="inline-flex items-center gap-3 px-5 py-2 bg-[#8C51A5]/10 text-[#612F73] text-[10px] font-black uppercase tracking-[0.3em] rounded-full mb-6 border-l-4 border-[#8C51A5] shadow-sm">
-                        <i class="fas fa-newspaper"></i>
-                        <span>BERITA & ARTIKEL TERKINI</span>
-                    </div>
- 
-                    <h2 class="text-4xl md:text-6xl font-black text-[#612F73] mb-6 leading-[1.1] uppercase tracking-tight">
-                        Informasi <br>
-                        <span class="text-[#8C51A5] bg-gradient-to-r from-[#612F73] to-[#D668EA] bg-clip-text text-transparent">Update</span> Sekolah
-                    </h2>
- 
-                    <p class="text-gray-500 text-lg leading-relaxed font-medium">
-                        Temukan berita terbaru, pengumuman resmi, dan artikel menarik seputar kegiatan sekolah kami.
-                    </p>
-                </div>
- 
-                <div class="hidden lg:block text-right">
-                    <div class="text-7xl font-black text-[#F0E7F8] mb-2 uppercase">News</div>
-                    <div class="w-24 h-1.5 bg-[#8C51A5] ml-auto rounded-full"></div>
-                </div>
-            </div>
-
-            {{-- ASYMMETRIC MASONRY GRID --}}
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-                @php 
-                    $newsItems = $news->take(4); // Or more if design permits
-                    $totalNews = $newsItems->count(); 
-                @endphp
-                @foreach($newsItems as $index => $item)
-                    @php
-                        $mod = $index % 4;
-                        $spanClass = "md:col-span-1";
-                        $heightClass = "h-[450px]"; 
-                        
-                        // New 3-Column Asymmetric Logic (2 - 1 / 1 - 2)
-                        if ($mod == 0) {
-                            $spanClass = "md:col-span-2";
-                        } elseif ($mod == 1) {
-                            $spanClass = "md:col-span-1";
-                        } elseif ($mod == 2) {
-                            $spanClass = "md:col-span-1";
-                        } elseif ($mod == 3) {
-                            $spanClass = "md:col-span-2";
-                        }
-
-                        // Last item handling: If the total number of items is odd, the last item
-                        // will be alone in the row. We force it to span full width (3 columns)
-                        // so it doesn't leave awkward empty space.
-                        if ($index == $totalNews - 1 && $totalNews % 2 != 0) {
-                            $spanClass = "md:col-span-3";
-                        }
-                    @endphp
-
-                    <div class="group relative {{ $spanClass }}" data-aos="fade-up">
-                        <a href="{{ route('news.show', $item->slug) }}"
-                           class="block relative w-full {{ $heightClass }} rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-purple-50 shadow-xl hover:shadow-2xl transition-all duration-500 ease-in-out transform group-hover:-translate-y-3">
-
-                            {{-- Background Image --}}
-                            @if($item->image)
-                                <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out" loading="lazy">
-                            @else
-                                <div class="w-full h-full bg-gradient-to-br from-[#612F73] to-[#8C51A5] flex items-center justify-center">
-                                    <i class="fas fa-newspaper text-7xl text-white/20"></i>
-                                </div>
-                            @endif
-
-                            {{-- Premium Overlays --}}
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-                            
-                            {{-- Glass Badge --}}
-                            @if($item->category)
-                            <div class="absolute top-6 left-6">
-                                <span class="px-5 py-2 bg-white/10 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest rounded-xl border border-white/20">
-                                    {{ $item->category }}
-                                </span>
-                            </div>
-                            @endif
-
-                            {{-- Floating Icon Decor --}}
-                            <div class="absolute top-6 right-6 text-white/20 text-3xl group-hover:scale-110 group-hover:text-white/40 transition-all duration-500 ease-in-out">
-                                <i class="fas fa-arrow-up-right-from-square"></i>
-                            </div>
-
-                            {{-- Text Content (Bottom Anchored) --}}
-                            <div class="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
-                                <div class="mb-4 flex items-center gap-3">
-                                    <div class="w-10 h-[2px] bg-[#F8CB62]"></div>
-                                    <span class="text-[#F8CB62] font-black text-[10px] uppercase tracking-[0.3em]">
-                                        {{ $item->published_at->format('d M Y') }}
-                                    </span>
-                                </div>
-                                
-                                <h3 class="text-2xl md:text-4xl font-black text-white mb-4 leading-tight">
-                                    {{ $item->title }}
-                                </h3>
-
-                                <p class="text-gray-300 text-sm md:text-base leading-relaxed line-clamp-2 max-w-xl group-hover:text-white transition-colors duration-500 ease-in-out">
-                                    {{ Str::limit(strip_tags($item->content), 120) }}
-                                </p>
-                            </div>
-
-                            {{-- Hover Border Glow --}}
-                            <div class="absolute inset-0 border-4 border-[#8C51A5]/0 group-hover:border-[#8C51A5]/50 rounded-[2rem] md:rounded-[3rem] transition-all pointer-events-none"></div>
-                        </a>
-                    </div>
-                @endforeach
-            </div>
-
-            {{-- FOOTER CTA --}}
-            <div class="text-center mt-24" data-aos="fade-up">
-                <a href="{{ route('news') }}"
-                   class="inline-flex items-center gap-4 px-12 py-5 bg-[#8C51A5] text-white font-black text-[10px] uppercase tracking-[0.2em] rounded-2xl shadow-xl shadow-[#8C51A5]/20 hover:bg-[#8C51A5]/10 hover:text-[#8C51A5] border border-transparent hover:border-[#8C51A5]/20 transition-all duration-500 group">
-                    <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform duration-300 ease-in-out"></i>
-                    Lihat Portofolio Berita
-                </a>
-            </div>
-
         </div>
     </section>
     @endif 

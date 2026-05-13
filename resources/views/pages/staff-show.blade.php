@@ -78,22 +78,7 @@
                                 </div>
                             @endif
 
-                            <div class="pt-4 border-t border-gray-100 flex justify-center gap-4">
-                                @if($staffMember->email)
-                                    <a href="mailto:{{ $staffMember->email }}"
-                                        class="w-10 h-10 rounded-full bg-[#8C51A5]/10 flex items-center justify-center text-[#8C51A5] hover:bg-[#8C51A5] hover:text-white transition-all shadow-sm cursor-pointer"
-                                        title="Email">
-                                        <i class="fas fa-envelope"></i>
-                                    </a>
-                                @endif
-                                @if($staffMember->phone)
-                                    <a href="https://wa.me/{{ $staffMember->phone }}" target="_blank"
-                                        class="w-10 h-10 rounded-full bg-[#F8CB62]/10 flex items-center justify-center text-[#d9aa38] hover:bg-[#F8CB62] hover:text-[#612F73] transition-all shadow-sm cursor-pointer"
-                                        title="WhatsApp">
-                                        <i class="fab fa-whatsapp text-lg"></i>
-                                    </a>
-                                @endif
-                            </div>
+
                         </div>
                     </div>
                 </div>

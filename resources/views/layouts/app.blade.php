@@ -112,6 +112,9 @@
         });
     </script>
 
+    {{-- WhatsApp Floating Button --}}
+    @include('partials.floating-whatsapp')
+
     {{-- AOS Animation JS --}}
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>

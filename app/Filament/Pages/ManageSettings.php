@@ -83,9 +83,13 @@ class ManageSettings extends Page implements HasForms
                                             ->email(),
                                         TextInput::make('school_phone')
                                             ->label('Nomor Telepon'),
-                                        TextInput::make('whatsapp')
-                                            ->label('WhatsApp Official')
-                                            ->placeholder('misal: 628123456789'),
+                                        Toggle::make('whatsapp_floating_active')
+                                            ->label('Aktifkan Tombol WhatsApp Melayang')
+                                            ->onColor('success'),
+                                        Textarea::make('whatsapp_message')
+                                            ->label('Template Pesan WhatsApp')
+                                            ->placeholder('Halo admin, saya ingin bertanya tentang...')
+                                            ->columnSpanFull(),
                                         TextInput::make('school_hours')
                                             ->label('Jam Operasional')
                                             ->placeholder('misal: Senin - Jumat: 07:00 - 16:00'),

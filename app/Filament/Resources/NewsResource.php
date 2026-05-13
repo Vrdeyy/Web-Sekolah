@@ -74,7 +74,8 @@ class NewsResource extends Resource
                             ->label('Tanggal Publikasi')
                             ->default(now()),
                         Forms\Components\Toggle::make('is_featured')
-                            ->label('Berita Unggulan'),
+                            ->label('Berita Unggulan')
+                            ->helperText('Maksimal 2 berita unggulan (pin) yang akan tampil pertama di beranda.'),
                         Forms\Components\Toggle::make('is_active')
                             ->label('Aktif')
                             ->default(true),

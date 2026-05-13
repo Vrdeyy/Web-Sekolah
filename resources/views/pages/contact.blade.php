@@ -90,7 +90,7 @@
                     </div>
 
                     {{-- WhatsApp Card --}}
-                    @if($settings['whatsapp'] ?? false)
+                    @if($settings['school_phone'] ?? false)
                         <div data-aos="fade-right" data-aos-delay="300">
                             <div
                                 class="bg-[#8C51A5]/5 rounded-[2.5rem] p-8 border border-[#8C51A5]/10 shadow-premium-lg hover:border-[#8C51A5]/30 transition-all duration-500 ease-in-out hover:-translate-y-2 group">
@@ -102,10 +102,10 @@
                                     <div>
                                         <h3 class="font-black text-[#612F73] mb-3 uppercase tracking-tight">WhatsApp Official
                                         </h3>
-                                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['whatsapp']) }}"
+                                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['school_phone']) }}"
                                             target="_blank"
                                             class="text-[#25D366] hover:text-[#128C7E] font-black text-sm transition-colors block mt-1 uppercase tracking-widest">
-                                            {{ $settings['whatsapp'] }}
+                                            {{ $settings['school_phone'] }}
                                         </a>
                                     </div>
                                 </div>

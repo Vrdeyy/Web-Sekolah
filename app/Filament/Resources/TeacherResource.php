@@ -44,12 +44,6 @@ class TeacherResource extends Resource
                     ])->columns(2),
                 Forms\Components\Section::make('Kontak')
                     ->schema([
-                        Forms\Components\TextInput::make('email')
-                            ->label('Email')
-                            ->email(),
-                        Forms\Components\TextInput::make('phone')
-                            ->label('Telepon')
-                            ->tel(),
                         Forms\Components\Textarea::make('bio')
                             ->label('Bio')
                             ->rows(3)
