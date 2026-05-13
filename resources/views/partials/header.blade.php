@@ -127,6 +127,15 @@
                         Berita
                     </a>
 
+                    {{-- Agenda --}}
+                    <a href="{{ route('agenda') }}"
+                       class="px-4 py-2 rounded-lg transition glass-text
+                       {{ request()->routeIs('agenda*')
+                            ? 'bg-[#8C51A5]/10 text-[#612F73] font-bold'
+                            : 'text-slate-900 hover:bg-[#8C51A5]/5 hover:text-[#8C51A5]' }}">
+                        Agenda
+                    </a>
+
                     {{-- Kontak --}}
                     <a href="{{ route('contact') }}"
                        class="px-4 py-2 rounded-lg transition glass-text

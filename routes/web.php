@@ -18,6 +18,7 @@ Route::get('/ekstrakurikuler/{extracurricular:slug}', [WebController::class, 'ex
 Route::get('/prestasi', [WebController::class, 'achievements'])->name('achievements');
 Route::get('/prestasi/{achievement:slug}', [WebController::class, 'achievementShow'])->name('achievement.show');
 Route::get('/pusat-bisnis/{businessCenter:slug}', [WebController::class, 'businessCenterShow'])->name('business-center.show');
+Route::get('/agenda', [WebController::class, 'agenda'])->name('agenda');
 
 // Directory
 Route::get('/daftar-guru', [WebController::class, 'teachers'])->name('teachers');

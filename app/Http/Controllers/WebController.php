@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Achievement;
+use App\Models\Agenda;
 use App\Models\Award;
 use App\Models\BusinessCenter;
 use App\Models\Extracurricular;
@@ -112,6 +113,13 @@ class WebController extends Controller
             'extracurriculars' => Extracurricular::active()->ordered()->take(6)->get(),
             'teachers_count' => Teacher::active()->count(),
             'students_stat' => Statistic::active()->where('label', 'Siswa Aktif')->first(),
+            'upcomingAgendas' => Agenda::active()
+                ->where(function($q) {
+                    $q->where('event_date', '>=', now()->toDateString())
+                      ->orWhere(fn($q2) => $q2->whereNotNull('end_date')->where('end_date', '>=', now()->toDateString()));
+                })
+                ->orderBy('event_date', 'asc')
+                ->take(4)->get(),
         ]);
 
         return view('home', $data);
@@ -329,6 +337,36 @@ class WebController extends Controller
         ]);
 
         return view('pages.staff-show', $data);
+    }
+
+    public function agenda(): View
+    {
+        app(\App\Services\SEOManager::class)
+            ->setTitle('Agenda Sekolah')
+            ->setDescription('Kalender kegiatan dan agenda penting di SMK YAJ.');
+
+        $agendas = Agenda::active()->orderBy('event_date', 'asc')->get();
+
+        $agendasForJs = $agendas->map(function ($a) {
+            return [
+                'id'             => $a->id,
+                'title'          => $a->title,
+                'description'    => $a->description,
+                'event_date'     => $a->event_date ? $a->event_date->format('Y-m-d') : null,
+                'end_date'       => $a->end_date ? $a->end_date->format('Y-m-d') : null,
+                'selected_dates' => $a->selected_dates, // Array of strings ["YYYY-MM-DD", ...]
+                'category'       => $a->category,
+                'color'          => $a->category_color,
+                'label'          => $a->category_label,
+            ];
+        })->values();
+
+        $data = array_merge($this->getSharedData(), [
+            'agendas'      => $agendas,
+            'agendasForJs' => $agendasForJs,
+        ]);
+
+        return view('pages.agenda', $data);
     }
 
     public function businessCenters(): View

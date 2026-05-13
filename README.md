@@ -21,6 +21,7 @@ Website profil sekolah modern dan futuristik untuk **SMK YAJ**, dibangun dengan 
 - **Auto YouTube Thumbnail**: Galeri video otomatis mengambil thumbnail dari link YouTube.
 - **Optimized Search**: Pencarian berita yang cepat dengan algoritma prioritas judul dan anti-lag.
 - **Smart Share System**: Fitur bagikan berita ke sosial media dengan format teks otomatis dan tombol salin link anti-keyboard.
+- **Flexible Multi-Date Agenda**: Sistem kalender akademik modern dengan fitur pemilihan banyak tanggal sekaligus (multi-date), kategori agenda dinamis (Akademik, Libur, Event), dan desain interaktif dengan auto-scroll responsif.
 
 ---
 
@@ -428,13 +429,14 @@ web-sekolah/
 
 ## 📝 Changelog
 
-| Versi  | Tanggal    | Perubahan                                                            |
-| ------ | ---------- | -------------------------------------------------------------------- |
-| v1.4.0 | 2026-01-25 | Optimasi Pencarian, Auto YouTube Thumbnail, & Smart Lightbox Gallery |
-| v1.3.0 | 2026-01-20 | Integrasi SEO Manager, Update Seeder Premium                         |
-| v1.2.0 | 2026-01-15 | Optimasi Logo Management & Responsive Hero                           |
-| v1.1.0 | 2026-01-10 | Penambahan fitur Extracurricular & Gallery                           |
-| v1.0.0 | 2026-01-01 | Initial Release                                                      |
+| Versi  | Tanggal    | Perubahan                                                                  |
+| ------ | ---------- | -------------------------------------------------------------------------- |
+| v1.5.0 | 2026-05-13 | Fitur Multi-Date Agenda, Redesign Header Premium, & Optimalisasi Mobile UX |
+| v1.4.0 | 2026-01-25 | Optimasi Pencarian, Auto YouTube Thumbnail, & Smart Lightbox Gallery       |
+| v1.3.0 | 2026-01-20 | Integrasi SEO Manager, Update Seeder Premium                               |
+| v1.2.0 | 2026-01-15 | Optimasi Logo Management & Responsive Hero                                 |
+| v1.1.0 | 2026-01-10 | Penambahan fitur Extracurricular & Gallery                                 |
+| v1.0.0 | 2026-01-01 | Initial Release                                                            |
 
 ---
 
@@ -459,4 +461,3 @@ Project ini dibuat khusus sebagai media informasi resmi **SMK YAJ**.
 Dikembangkan dengan ❤️ oleh **IT Team SMK YAJ**
 
 © 2026 IT Team SMK YAJ. Seluruh Hak Cipta Dilindungi.
-dm vslkdkj dss,cjbsd

@@ -530,6 +530,60 @@
 
 
 
+    {{-- Upcoming Agenda Section --}}
+    @if($upcomingAgendas->count() > 0)
+    <section class="py-24 bg-gray-50/50 relative overflow-hidden">
+        <div class="container mx-auto px-6 lg:px-12 relative z-10">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div class="max-w-2xl">
+                    <div class="inline-flex items-center gap-3 px-4 py-1.5 bg-[#8C51A5]/10 text-[#612F73] text-[10px] font-black uppercase tracking-widest rounded-full mb-4 border-l-2 border-[#8C51A5]">
+                        <i class="fas fa-calendar-check text-[#F8CB62]"></i>
+                        <span>JADWAL TERDEKAT</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-black text-[#612F73] leading-tight">
+                        Agenda <span class="text-[#8C51A5]">Sekolah</span>
+                    </h2>
+                </div>
+                <a href="{{ route('agenda') }}" class="group flex items-center gap-3 text-[#612F73] font-black text-xs uppercase tracking-widest hover:text-[#8C51A5] transition-colors bg-white px-6 py-3 rounded-xl border border-gray-100 hover:border-[#8C51A5]/20 shadow-sm">
+                    Lihat Kalender Lengkap
+                    <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                @foreach($upcomingAgendas as $agenda)
+                <div class="group bg-white p-8 rounded-[2rem] border border-gray-100 shadow-premium hover:shadow-premium-lg transition-all duration-500 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
+                    <div class="flex flex-col h-full">
+                        <div class="mb-6 flex items-center justify-between">
+                            <div class="w-12 h-12 rounded-2xl flex flex-col items-center justify-center text-white shadow-lg" style="background-color: {{ $agenda->category_color }}">
+                                <span class="text-lg font-black leading-none">{{ $agenda->event_date->format('d') }}</span>
+                                <span class="text-[8px] font-bold uppercase">{{ $agenda->event_date->format('M') }}</span>
+                            </div>
+                            <span class="text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full text-white" style="background-color: {{ $agenda->category_color }}30; color: {{ $agenda->category_color }}">{{ $agenda->category_label }}</span>
+                        </div>
+                        
+                        <h4 class="text-lg font-black text-[#612F73] mb-4 group-hover:text-[#8C51A5] transition-colors line-clamp-2">
+                            {{ $agenda->title }}
+                        </h4>
+                        
+                        <p class="text-xs text-gray-500 line-clamp-2 mb-6">
+                            {{ $agenda->description ?? 'Tidak ada deskripsi tambahan.' }}
+                        </p>
+
+                        <div class="mt-auto">
+                            <div class="w-8 h-1 bg-gray-100 rounded-full overflow-hidden">
+                                <div class="w-full h-full -translate-x-full group-hover:translate-x-0 transition-transform duration-500" style="background-color: {{ $agenda->category_color }}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    @endif
+
+
     {{-- Majors Section - Asymmetric Modern --}}
     <section class="py-32 bg-[#F0E7F8]/30 relative overflow-hidden">
 
