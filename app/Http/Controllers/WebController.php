@@ -115,11 +115,16 @@ class WebController extends Controller
             'students_stat' => Statistic::active()->where('label', 'Siswa Aktif')->first(),
             'upcomingAgendas' => Agenda::active()
                 ->where(function($q) {
-                    $q->where('event_date', '>=', now()->toDateString())
-                      ->orWhere(fn($q2) => $q2->whereNotNull('end_date')->where('end_date', '>=', now()->toDateString()));
+                    $today = now()->toDateString();
+                    $q->where('event_date', '>=', $today)
+                      ->orWhere(function($q2) use ($today) {
+                          $q2->whereNotNull('end_date')
+                             ->where('end_date', '>=', $today);
+                      });
                 })
                 ->orderBy('event_date', 'asc')
-                ->take(4)->get(),
+                ->take(4)
+                ->get(),
         ]);
 
         return view('home', $data);

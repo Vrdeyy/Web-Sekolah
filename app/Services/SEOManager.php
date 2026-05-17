@@ -102,16 +102,17 @@ class SEOManager
         $html[] = '<meta property="og:locale" content="' . e($this->locale) . '">';
         if ($this->ogImage) {
             $html[] = '<meta property="og:image" content="' . e($this->ogImage) . '">';
+            $html[] = '<meta property="og:image:alt" content="' . e($this->title) . '">';
         }
 
         // Twitter
         $html[] = '<!-- Twitter -->';
-        $html[] = '<meta property="twitter:card" content="summary_large_image">';
-        $html[] = '<meta property="twitter:url" content="' . e(request()->fullUrl()) . '">';
-        $html[] = '<meta property="twitter:title" content="' . e($this->title) . '">';
-        $html[] = '<meta property="twitter:description" content="' . e($this->description) . '">';
+        $html[] = '<meta name="twitter:card" content="summary_large_image">';
+        $html[] = '<meta name="twitter:url" content="' . e(request()->fullUrl()) . '">';
+        $html[] = '<meta name="twitter:title" content="' . e($this->title) . '">';
+        $html[] = '<meta name="twitter:description" content="' . e($this->description) . '">';
         if ($this->ogImage) {
-            $html[] = '<meta property="twitter:image" content="' . e($this->ogImage) . '">';
+            $html[] = '<meta name="twitter:image" content="' . e($this->ogImage) . '">';
         }
 
         // Structured Data

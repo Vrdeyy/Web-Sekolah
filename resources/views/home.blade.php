@@ -467,63 +467,66 @@
     @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const container = document.getElementById('news-container');
-            const dots = document.querySelectorAll('.news-dot');
-            
-            if (container && dots.length > 0) {
-                // Initial state
-                updateActiveState();
+            function setupCarousel(containerId, dotClass, cardClass) {
+                const container = document.getElementById(containerId);
+                const dots = document.querySelectorAll(dotClass);
+                
+                if (container && dots.length > 0) {
+                    function updateActiveState() {
+                        const scrollLeft = container.scrollLeft;
+                        const containerWidth = container.offsetWidth;
+                        const cards = container.querySelectorAll(cardClass);
+                        
+                        let activeIndex = 0;
+                        let minDistance = Infinity;
 
-                container.addEventListener('scroll', function() {
-                    updateActiveState();
-                });
+                        cards.forEach((card, index) => {
+                            // Calculate center of the card relative to the container
+                            const cardCenter = card.offsetLeft - container.offsetLeft + (card.offsetWidth / 2);
+                            const scrollCenter = scrollLeft + (containerWidth / 2);
+                            const distance = Math.abs(cardCenter - scrollCenter);
 
-                function updateActiveState() {
-                    const scrollLeft = container.scrollLeft;
-                    const containerWidth = container.offsetWidth;
-                    const cards = container.querySelectorAll('.flex-none');
-                    
-                    let activeIndex = 0;
-                    let minDistance = Infinity;
-
-                    cards.forEach((card, index) => {
-                        // Calculate center of the card relative to the container
-                        const cardCenter = card.offsetLeft - container.offsetLeft + (card.offsetWidth / 2);
-                        const scrollCenter = scrollLeft + (containerWidth / 2);
-                        const distance = Math.abs(cardCenter - scrollCenter);
-
-                        if (distance < minDistance) {
-                            minDistance = distance;
-                            activeIndex = index;
-                        }
-
-                        // Apply "Expanding" Effect
-                        if (window.innerWidth < 768) { // Only on mobile
-                            if (distance < 150) { // If close to center
-                                card.style.transform = 'scale(1.02)';
-                                card.style.opacity = '1';
-                            } else {
-                                card.style.transform = 'scale(0.95)';
-                                card.style.opacity = '0.7';
+                            if (distance < minDistance) {
+                                minDistance = distance;
+                                activeIndex = index;
                             }
-                            card.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-                        } else {
-                            card.style.transform = 'none';
-                            card.style.opacity = '1';
-                        }
-                    });
-                    
-                    dots.forEach((dot, index) => {
-                        if (index === activeIndex) {
-                            dot.classList.remove('w-2', 'bg-gray-200');
-                            dot.classList.add('w-8', 'bg-[#8C51A5]');
-                        } else {
-                            dot.classList.remove('w-8', 'bg-[#8C51A5]');
-                            dot.classList.add('w-2', 'bg-gray-200');
-                        }
-                    });
+
+                            // Apply "Expanding" Effect
+                            if (window.innerWidth < 768) { // Only on mobile
+                                if (distance < 150) { // If close to center
+                                    card.style.transform = 'scale(1.02)';
+                                    card.style.opacity = '1';
+                                } else {
+                                    card.style.transform = 'scale(0.95)';
+                                    card.style.opacity = '0.7';
+                                }
+                                card.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                            } else {
+                                card.style.transform = 'none';
+                                card.style.opacity = '1';
+                            }
+                        });
+                        
+                        dots.forEach((dot, index) => {
+                            if (index === activeIndex) {
+                                dot.classList.remove('w-2', 'bg-gray-200');
+                                dot.classList.add('w-8', 'bg-[#8C51A5]');
+                            } else {
+                                dot.classList.remove('w-8', 'bg-[#8C51A5]');
+                                dot.classList.add('w-2', 'bg-gray-200');
+                            }
+                        });
+                    }
+
+                    updateActiveState();
+                    container.addEventListener('scroll', updateActiveState);
+                    window.addEventListener('resize', updateActiveState);
                 }
             }
+
+            // Initialize both carousels
+            setupCarousel('news-container', '.news-dot', '.flex-none');
+            setupCarousel('agenda-container', '.agenda-dot', '.agenda-card');
         });
     </script>
     @endpush
@@ -532,51 +535,148 @@
 
     {{-- Upcoming Agenda Section --}}
     @if($upcomingAgendas->count() > 0)
-    <section class="py-24 bg-gray-50/50 relative overflow-hidden">
-        <div class="container mx-auto px-6 lg:px-12 relative z-10">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-                <div class="max-w-2xl">
-                    <div class="inline-flex items-center gap-3 px-4 py-1.5 bg-[#8C51A5]/10 text-[#612F73] text-[10px] font-black uppercase tracking-widest rounded-full mb-4 border-l-2 border-[#8C51A5]">
-                        <i class="fas fa-calendar-check text-[#F8CB62]"></i>
-                        <span>JADWAL TERDEKAT</span>
+    <section class="py-32 bg-gray-50 relative overflow-hidden">
+        {{-- Animated Background Elements --}}
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-transparent to-transparent pointer-events-none"></div>
+        <div class="absolute bottom-20 left-10 w-72 h-72 bg-[#F8CB62]/0 rounded-full blur-3xl animate-pulse pointer-events-none"></div>
+        <div class="absolute top-20 right-20 w-96 h-96 bg-[#8C51A5]/0 rounded-full blur-3xl animate-pulse-slow pointer-events-none"></div>
+        
+        <div class="absolute inset-0 bg-[radial-gradient(#612F7305_1px,transparent_1px)] bg-[size:30px_30px] pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 lg:px-12 relative z-10 max-w-7xl">
+            {{-- Section Header --}}
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8" data-aos="fade-up">
+                <div class="max-w-2xl relative">
+                    <div class="absolute -left-6 -top-6 w-20 h-20 bg-[#F8CB62]/20 rounded-full blur-2xl -z-10 animate-pulse"></div>
+                    
+                    <div class="inline-flex items-center gap-3 px-5 py-2.5 bg-[#8C51A5]/10 text-[#612F73] text-xs font-black uppercase tracking-[0.2em] rounded-full mb-6 border-l-4 border-[#8C51A5] shadow-sm transform hover:scale-105 transition-transform cursor-default">
+                        <i class="fas fa-calendar-alt text-[#F8CB62] animate-bounce"></i>
+                        <span>AGENDA TERDEKAT</span>
                     </div>
-                    <h2 class="text-3xl md:text-5xl font-black text-[#612F73] leading-tight">
-                        Agenda <span class="text-[#8C51A5]">Sekolah</span>
+                    
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-[#612F73] leading-tight mb-5">
+                        Agenda <span class="relative inline-block">
+                            <span class="text-[#8C51A5] bg-gradient-to-r from-[#612F73] to-[#D668EA] bg-clip-text text-transparent">Sekolah</span>
+                            <svg class="absolute w-full h-3 -bottom-1 left-0 text-[#F8CB62]/60" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="4" fill="transparent"/></svg>
+                        </span>
                     </h2>
+                    
+                    <p class="text-gray-500 text-lg leading-relaxed">
+                        Pantau kegiatan akademik dan non-akademik di bulan ini agar kamu tidak tertinggal momen penting.
+                    </p>
                 </div>
-                <a href="{{ route('agenda') }}" class="group flex items-center gap-3 text-[#612F73] font-black text-xs uppercase tracking-widest hover:text-[#8C51A5] transition-colors bg-white px-6 py-3 rounded-xl border border-gray-100 hover:border-[#8C51A5]/20 shadow-sm">
-                    Lihat Kalender Lengkap
-                    <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                
+                <a href="{{ route('agenda') }}" class="group flex items-center gap-4 text-white font-black text-xs uppercase tracking-widest bg-gradient-to-r from-[#612F73] to-[#8C51A5] px-8 py-4 rounded-2xl shadow-xl shadow-[#8C51A5]/20 hover:shadow-[#8C51A5]/40 hover:-translate-y-1 transition-all duration-300">
+                    Kalender Lengkap
+                    <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-2 transition-transform">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
                 </a>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            @php
+                $agendaCount = $upcomingAgendas->count();
+                $gridClass = 'md:grid-cols-1 lg:grid-cols-1';
+                if ($agendaCount == 2) {
+                    $gridClass = 'md:grid-cols-2 lg:grid-cols-2';
+                } elseif ($agendaCount == 3) {
+                    $gridClass = 'md:grid-cols-3 lg:grid-cols-3';
+                } elseif ($agendaCount >= 4) {
+                    $gridClass = 'md:grid-cols-2 lg:grid-cols-4';
+                }
+            @endphp
+            
+            <div id="agenda-container" class="flex overflow-x-auto md:grid {{ $gridClass }} gap-6 md:gap-8 pb-8 md:pb-0 snap-x snap-mandatory items-stretch -mx-6 px-6 md:mx-0 md:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 @foreach($upcomingAgendas as $agenda)
-                <div class="group bg-white p-8 rounded-[2rem] border border-gray-100 shadow-premium hover:shadow-premium-lg transition-all duration-500 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
-                    <div class="flex flex-col h-full">
-                        <div class="mb-6 flex items-center justify-between">
-                            <div class="w-12 h-12 rounded-2xl flex flex-col items-center justify-center text-white shadow-lg" style="background-color: {{ $agenda->category_color }}">
-                                <span class="text-lg font-black leading-none">{{ $agenda->event_date->format('d') }}</span>
-                                <span class="text-[8px] font-bold uppercase">{{ $agenda->event_date->format('M') }}</span>
-                            </div>
-                            <span class="text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full text-white" style="background-color: {{ $agenda->category_color }}30; color: {{ $agenda->category_color }}">{{ $agenda->category_label }}</span>
-                        </div>
+                @php
+                    $datesArray = collect($agenda->selected_dates)->sort()->values();
+                    $sDate = $datesArray->first() ? \Carbon\Carbon::parse($datesArray->first()) : $agenda->event_date;
+                    $eDate = $datesArray->count() > 1 ? \Carbon\Carbon::parse($datesArray->last()) : ($agenda->end_date ?? $sDate);
+                @endphp
+                <div data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}" class="agenda-card h-full w-[85vw] sm:w-[350px] md:w-auto shrink-0 snap-center md:snap-none">
+                    <a href="{{ route('agenda') }}" class="block group relative bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-gray-100 shadow-premium hover:shadow-premium-xl transition-all duration-500 md:hover:-translate-y-2 overflow-hidden cursor-pointer h-full flex flex-col">
                         
-                        <h4 class="text-lg font-black text-[#612F73] mb-4 group-hover:text-[#8C51A5] transition-colors line-clamp-2">
-                            {{ $agenda->title }}
-                        </h4>
-                        
-                        <p class="text-xs text-gray-500 line-clamp-2 mb-6">
-                            {{ $agenda->description ?? 'Tidak ada deskripsi tambahan.' }}
-                        </p>
+                        {{-- Decorative Hover Glows --}}
+                        <div class="absolute inset-0 bg-gradient-to-br from-transparent to-transparent md:group-hover:from-transparent md:group-hover:to-transparent transition-colors duration-700 pointer-events-none"></div>
+                        <div class="absolute -top-24 -right-24 w-48 h-48 bg-[#8C51A5]/0 rounded-full blur-3xl md:group-hover:scale-150 transition-transform duration-700 pointer-events-none"></div>
+                        <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-[#F8CB62]/0 rounded-full blur-3xl md:group-hover:scale-150 transition-transform duration-700 pointer-events-none"></div>
 
-                        <div class="mt-auto">
-                            <div class="w-8 h-1 bg-gray-100 rounded-full overflow-hidden">
-                                <div class="w-full h-full -translate-x-full group-hover:translate-x-0 transition-transform duration-500" style="background-color: {{ $agenda->category_color }}"></div>
+                        <div class="flex {{ $agendaCount == 1 ? 'flex-col md:flex-row md:items-center md:gap-12' : 'flex-col' }} h-full relative z-10">
+                            
+                            {{-- Left Side: Dates & Category --}}
+                            <div class="mb-6 md:mb-8 {{ $agendaCount == 1 ? 'md:mb-0 md:w-1/3 flex-shrink-0 flex items-center justify-start' : 'flex items-center justify-between w-full' }}">
+                                
+                                {{-- Dates Wrapper --}}
+                                <div class="flex items-center gap-2 md:gap-3 relative">
+                                    
+                                    {{-- Start Date Bubble --}}
+                                    <div class="w-14 h-14 md:w-16 md:h-16 rounded-[1rem] md:rounded-[1.2rem] flex flex-col items-center justify-center text-white shadow-xl shrink-0 transform md:group-hover:scale-105 transition-all duration-500 border border-white/20 relative overflow-hidden" style="background-color: {{ $agenda->category_color }}">
+                                        <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity"></div>
+                                        <span class="text-xl md:text-2xl font-black leading-none z-10">{{ $sDate->format('d') }}</span>
+                                        <span class="text-[8px] md:text-[9px] font-bold uppercase tracking-widest mt-1 z-10">{{ $sDate->format('M') }}</span>
+                                    </div>
+                                    
+                                    @if($eDate && $eDate->format('Y-m-d') !== $sDate->format('Y-m-d'))
+                                        <div class="flex items-center justify-center shrink-0 px-1 md:px-2" style="--hover-color: {{ $agenda->category_color }}">
+                                            <div class="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-gray-300 md:group-hover:text-[var(--hover-color,gray)] transition-all duration-500 flex items-center gap-1 md:gap-1.5 transform md:group-hover:scale-125">
+                                                <span class="md:group-hover:animate-pulse">s/d</span>
+                                                <i class="fas fa-chevron-right text-[7px] md:text-[8px] md:group-hover:translate-x-0.5 transition-transform duration-500"></i>
+                                            </div>
+                                        </div>
+                                        
+                                        {{-- End Date Bubble --}}
+                                        <div class="w-14 h-14 md:w-16 md:h-16 rounded-[1rem] md:rounded-[1.2rem] flex flex-col items-center justify-center text-white shadow-xl shrink-0 transform md:group-hover:scale-105 transition-all duration-500 border border-white/20 relative overflow-hidden" style="background-color: {{ $agenda->category_color }}">
+                                            <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity"></div>
+                                            <span class="text-xl md:text-2xl font-black leading-none z-10">{{ $eDate->format('d') }}</span>
+                                            <span class="text-[8px] md:text-[9px] font-bold uppercase tracking-widest mt-1 z-10">{{ $eDate->format('M') }}</span>
+                                        </div>
+                                    @endif
+                                </div>
+
+                                @if($agendaCount > 1)
+                                    <span class="text-[9px] md:text-[10px] font-black uppercase tracking-widest px-3 py-1.5 md:px-4 md:py-2 rounded-xl text-white shrink-0 ml-auto backdrop-blur-sm border transition-colors duration-500 shadow-sm" style="background-color: {{ $agenda->category_color }}15; color: {{ $agenda->category_color }}; border-color: {{ $agenda->category_color }}30;">{{ $agenda->category_label }}</span>
+                                @endif
+                            </div>
+                            
+                            {{-- Right Side: Content --}}
+                            <div class="flex flex-col h-full flex-grow relative {{ $agendaCount == 1 ? 'md:w-2/3 md:border-l-2 md:border-dashed md:border-gray-100 md:pl-12' : '' }}">
+                                
+                                @if($agendaCount == 1)
+                                    <div class="mb-4">
+                                        <span class="text-[9px] md:text-[10px] font-black uppercase tracking-widest px-3 py-1.5 md:px-4 md:py-2 rounded-xl text-white inline-block backdrop-blur-sm border transition-colors duration-500 shadow-sm" style="background-color: {{ $agenda->category_color }}15; color: {{ $agenda->category_color }}; border-color: {{ $agenda->category_color }}30;">{{ $agenda->category_label }}</span>
+                                    </div>
+                                @endif
+                                
+                                <h4 class="text-xl md:text-2xl font-black text-[#612F73] mb-4 transition-colors duration-500 {{ $agendaCount == 1 ? '' : 'line-clamp-2' }}" style="--hover-color: {{ $agenda->category_color }}">
+                                    <span class="md:group-hover:text-[var(--hover-color)] transition-colors duration-500">{{ $agenda->title }}</span>
+                                </h4>
+                                
+                                <p class="text-sm text-gray-500 {{ $agendaCount == 1 ? 'mb-8' : 'line-clamp-2 mb-8' }} md:group-hover:text-gray-700 transition-colors duration-500 leading-relaxed">
+                                    {{ $agenda->description ?? 'Tidak ada deskripsi tambahan untuk kegiatan ini.' }}
+                                </p>
+
+                                <div class="mt-auto pt-6 pb-2">
+                                    <div class="w-full h-1 bg-gray-100 rounded-full overflow-hidden relative">
+                                        <div class="absolute inset-0 origin-left scale-x-100 md:scale-x-0 md:group-hover:scale-x-100 transition-transform duration-700 ease-out" style="background-color: {{ $agenda->category_color }}"></div>
+                                    </div>
+                                    <div class="flex justify-between items-center mt-4 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
+                                        <span class="text-[10px] font-bold uppercase tracking-widest transition-transform duration-500 md:group-hover:translate-x-1" style="color: {{ $agenda->category_color }}">Lebih Detail</span>
+                                        <div class="w-6 h-6 rounded-full flex items-center justify-center transform md:-translate-x-2 md:group-hover:translate-x-0 transition-all duration-500" style="background-color: {{ $agenda->category_color }}20; color: {{ $agenda->category_color }}">
+                                            <i class="fas fa-arrow-right text-[10px]"></i>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
+                @endforeach
+            </div>
+
+            {{-- Dots Indicator (Mobile Only) --}}
+            <div class="flex md:hidden justify-center items-center gap-2 mt-4 relative z-10">
+                @foreach($upcomingAgendas as $index => $item)
+                    <div class="agenda-dot h-2 rounded-full transition-all duration-300 {{ $index === 0 ? 'w-8 bg-[#8C51A5]' : 'w-2 bg-gray-200' }}" data-index="{{ $index }}"></div>
                 @endforeach
             </div>
         </div>

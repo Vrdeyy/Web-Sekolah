@@ -40,9 +40,9 @@
 
                     {{-- Beranda --}}
                     <a href="{{ route('home') }}"
-                       class="px-4 py-2 rounded-lg font-bold transition-all duration-500 glass-text
+                       class="px-4 py-2 rounded-lg transition-all duration-500 glass-text
                        {{ request()->routeIs('home')
-                            ? 'bg-[#8C51A5]/10 text-[#612F73]'
+                            ? 'bg-[#8C51A5]/10 text-[#612F73] font-bold'
                             : 'text-slate-900 hover:bg-[#8C51A5]/5 hover:text-[#8C51A5]' }}">
                         Beranda
                     </a>
@@ -58,7 +58,7 @@
                             ],
                         ],
                         'Akademik' => [
-                            'active' => request()->routeIs('majors*','extracurriculars*','achievements*'),
+                            'active' => request()->routeIs('majors', 'major.*', 'extracurriculars', 'extracurricular.*', 'achievements', 'achievement.*'),
                             'items' => [
                                 ['Jurusan', 'majors', null],
                                 ['Ekstrakurikuler', 'extracurriculars', null],
@@ -66,7 +66,7 @@
                             ],
                         ],
                         'Direktori' => [
-                            'active' => request()->routeIs('teachers*','staff*','business-centers*'),
+                            'active' => request()->routeIs('teachers', 'teacher.*', 'staff', 'staff.*', 'business-centers', 'business-center.*'),
                             'items' => [
                                 ['Guru', 'teachers', null],
                                 ['Staff', 'staff', null],
@@ -84,9 +84,9 @@
 
                         <div class="relative group">
                             <button
-                                class="px-4 py-2 rounded-lg font-bold flex items-center gap-1 transition glass-text
+                                class="px-4 py-2 rounded-lg flex items-center gap-1 transition glass-text
                                 {{ $group['active']
-                                    ? 'bg-[#8C51A5]/10 text-[#612F73]'
+                                    ? 'bg-[#8C51A5]/10 text-[#612F73] font-bold'
                                     : 'text-slate-900 hover:text-[#8C51A5] hover:bg-[#8C51A5]/5' }}">
                                 {{ $label }}
                                 <i class="fas fa-chevron-down text-xs opacity-80"></i>
@@ -105,9 +105,16 @@
                                        transition-all duration-500">
 
                                 @foreach ($group['items'] as [$text, $route, $param])
+                                    @php
+                                        $singularRoute = Str::singular($route);
+                                        $isActive = request()->routeIs($route, $route.'.*', $singularRoute.'.*');
+                                        if ($param && request()->route('slug') != $param) {
+                                            $isActive = false;
+                                        }
+                                    @endphp
                                     <a href="{{ $param ? route($route, $param) : route($route) }}"
                                        class="block px-4 py-2.5 mx-2 rounded-xl transition
-                                       {{ (request()->routeIs($route.'*') && ($param ? request()->route('slug') == $param : true))
+                                       {{ $isActive
                                             ? 'bg-[#8C51A5]/10 text-[#612F73] font-bold'
                                             : 'text-gray-600 hover:bg-[#8C51A5]/5 hover:text-[#8C51A5]' }}">
                                         {{ $text }}
