@@ -575,98 +575,94 @@
             </div>
 
             @php
+                $upcomingAgendas = collect($upcomingAgendas)->take(3);
                 $agendaCount = $upcomingAgendas->count();
                 $gridClass = 'md:grid-cols-1 lg:grid-cols-1';
                 if ($agendaCount == 2) {
                     $gridClass = 'md:grid-cols-2 lg:grid-cols-2';
-                } elseif ($agendaCount == 3) {
+                } elseif ($agendaCount >= 3) {
                     $gridClass = 'md:grid-cols-3 lg:grid-cols-3';
-                } elseif ($agendaCount >= 4) {
-                    $gridClass = 'md:grid-cols-2 lg:grid-cols-4';
                 }
             @endphp
             
-            <div id="agenda-container" class="flex overflow-x-auto md:grid {{ $gridClass }} gap-6 md:gap-8 pb-8 md:pb-0 snap-x snap-mandatory items-stretch -mx-6 px-6 md:mx-0 md:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+            <div id="agenda-container" class="flex overflow-x-auto md:grid {{ $gridClass }} gap-6 md:gap-8 pb-8 md:pb-0 snap-x snap-mandatory items-stretch px-0 md:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 @foreach($upcomingAgendas as $agenda)
                 @php
                     $datesArray = collect($agenda->selected_dates)->sort()->values();
                     $sDate = $datesArray->first() ? \Carbon\Carbon::parse($datesArray->first()) : $agenda->event_date;
                     $eDate = $datesArray->count() > 1 ? \Carbon\Carbon::parse($datesArray->last()) : ($agenda->end_date ?? $sDate);
                 @endphp
-                <div data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}" class="agenda-card h-full w-[85vw] sm:w-[350px] md:w-auto shrink-0 snap-center md:snap-none">
-                    <a href="{{ route('agenda') }}" class="block group relative bg-white p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-gray-100 shadow-premium hover:shadow-premium-xl transition-all duration-500 md:hover:-translate-y-2 overflow-hidden cursor-pointer h-full flex flex-col">
+                <div data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}" class="agenda-card h-full w-[82vw] sm:w-[350px] md:w-auto shrink-0 snap-center md:snap-none relative">
+                    <a href="{{ route('agenda') }}" class="block group relative bg-white p-8 md:p-10 rounded-[2.5rem] border border-gray-100 shadow-[0_15px_40px_rgba(97,47,115,0.03)] hover:shadow-[0_30px_70px_rgba(97,47,115,0.08)] transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer h-full flex flex-col">
                         
-                        {{-- Decorative Hover Glows --}}
-                        <div class="absolute inset-0 bg-gradient-to-br from-transparent to-transparent md:group-hover:from-transparent md:group-hover:to-transparent transition-colors duration-700 pointer-events-none"></div>
-                        <div class="absolute -top-24 -right-24 w-48 h-48 bg-[#8C51A5]/0 rounded-full blur-3xl md:group-hover:scale-150 transition-transform duration-700 pointer-events-none"></div>
-                        <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-[#F8CB62]/0 rounded-full blur-3xl md:group-hover:scale-150 transition-transform duration-700 pointer-events-none"></div>
+                        {{-- Futuristic Soft Corner Lights --}}
+                        <div class="absolute top-0 right-0 w-32 h-32 rounded-full opacity-[0.03] group-hover:opacity-[0.08] blur-2xl transition-all duration-700 pointer-events-none" style="background-color: {{ $agenda->category_color }}"></div>
+                        <div class="absolute bottom-0 left-0 w-32 h-32 rounded-full opacity-[0.02] group-hover:opacity-[0.06] blur-2xl transition-all duration-700 pointer-events-none" style="background-color: {{ $agenda->category_color }}"></div>
 
-                        <div class="flex {{ $agendaCount == 1 ? 'flex-col md:flex-row md:items-center md:gap-12' : 'flex-col' }} h-full relative z-10">
+                        <div class="flex flex-col h-full relative z-10">
                             
-                            {{-- Left Side: Dates & Category --}}
-                            <div class="mb-6 md:mb-8 {{ $agendaCount == 1 ? 'md:mb-0 md:w-1/3 flex-shrink-0 flex items-center justify-start' : 'flex items-center justify-between w-full' }}">
+                            {{-- Top Panel: Category & Status Dot --}}
+                            <div class="flex items-center justify-between w-full mb-6 pb-4 border-b border-gray-100/50">
+                                <span class="text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-xl border transition-all duration-500 shadow-sm" 
+                                    style="background-color: {{ $agenda->category_color }}08; color: {{ $agenda->category_color }}; border-color: {{ $agenda->category_color }}20;">
+                                    {{ $agenda->category_label }}
+                                </span>
                                 
-                                {{-- Dates Wrapper --}}
-                                <div class="flex items-center gap-2 md:gap-3 relative">
-                                    
-                                    {{-- Start Date Bubble --}}
-                                    <div class="w-14 h-14 md:w-16 md:h-16 rounded-[1rem] md:rounded-[1.2rem] flex flex-col items-center justify-center text-white shadow-xl shrink-0 transform md:group-hover:scale-105 transition-all duration-500 border border-white/20 relative overflow-hidden" style="background-color: {{ $agenda->category_color }}">
-                                        <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity"></div>
-                                        <span class="text-xl md:text-2xl font-black leading-none z-10">{{ $sDate->format('d') }}</span>
-                                        <span class="text-[8px] md:text-[9px] font-bold uppercase tracking-widest mt-1 z-10">{{ $sDate->format('M') }}</span>
-                                    </div>
-                                    
-                                    @if($eDate && $eDate->format('Y-m-d') !== $sDate->format('Y-m-d'))
-                                        <div class="flex items-center justify-center shrink-0 px-1 md:px-2" style="--hover-color: {{ $agenda->category_color }}">
-                                            <div class="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-gray-300 md:group-hover:text-[var(--hover-color,gray)] transition-all duration-500 flex items-center gap-1 md:gap-1.5 transform md:group-hover:scale-125">
-                                                <span class="md:group-hover:animate-pulse">s/d</span>
-                                                <i class="fas fa-chevron-right text-[7px] md:text-[8px] md:group-hover:translate-x-0.5 transition-transform duration-500"></i>
-                                            </div>
-                                        </div>
-                                        
-                                        {{-- End Date Bubble --}}
-                                        <div class="w-14 h-14 md:w-16 md:h-16 rounded-[1rem] md:rounded-[1.2rem] flex flex-col items-center justify-center text-white shadow-xl shrink-0 transform md:group-hover:scale-105 transition-all duration-500 border border-white/20 relative overflow-hidden" style="background-color: {{ $agenda->category_color }}">
-                                            <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity"></div>
-                                            <span class="text-xl md:text-2xl font-black leading-none z-10">{{ $eDate->format('d') }}</span>
-                                            <span class="text-[8px] md:text-[9px] font-bold uppercase tracking-widest mt-1 z-10">{{ $eDate->format('M') }}</span>
-                                        </div>
-                                    @endif
+                                <div class="flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background-color: {{ $agenda->category_color }}"></span>
+                                    <span class="text-[8px] font-black uppercase tracking-widest text-gray-400">UPCOMING</span>
+                                </div>
+                            </div>
+
+                            {{-- Middle Panel: Date Banner --}}
+                            <div class="flex items-center gap-4 mb-6">
+                                {{-- Start Date --}}
+                                <div class="w-16 h-16 rounded-2xl flex flex-col items-center justify-center text-white shadow-md relative overflow-hidden transition-transform duration-500 group-hover:scale-105" 
+                                    style="background-color: {{ $agenda->category_color }}">
+                                    <span class="text-2xl font-black leading-none mt-1">{{ $sDate->format('d') }}</span>
+                                    <span class="text-[8px] font-bold uppercase tracking-widest mt-1 opacity-90">{{ $sDate->format('M') }}</span>
+                                    <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
                                 </div>
 
-                                @if($agendaCount > 1)
-                                    <span class="text-[9px] md:text-[10px] font-black uppercase tracking-widest px-3 py-1.5 md:px-4 md:py-2 rounded-xl text-white shrink-0 ml-auto backdrop-blur-sm border transition-colors duration-500 shadow-sm" style="background-color: {{ $agenda->category_color }}15; color: {{ $agenda->category_color }}; border-color: {{ $agenda->category_color }}30;">{{ $agenda->category_label }}</span>
-                                @endif
-                            </div>
-                            
-                            {{-- Right Side: Content --}}
-                            <div class="flex flex-col h-full flex-grow relative {{ $agendaCount == 1 ? 'md:w-2/3 md:border-l-2 md:border-dashed md:border-gray-100 md:pl-12' : '' }}">
-                                
-                                @if($agendaCount == 1)
-                                    <div class="mb-4">
-                                        <span class="text-[9px] md:text-[10px] font-black uppercase tracking-widest px-3 py-1.5 md:px-4 md:py-2 rounded-xl text-white inline-block backdrop-blur-sm border transition-colors duration-500 shadow-sm" style="background-color: {{ $agenda->category_color }}15; color: {{ $agenda->category_color }}; border-color: {{ $agenda->category_color }}30;">{{ $agenda->category_label }}</span>
+                                @if($eDate && $eDate->format('Y-m-d') !== $sDate->format('Y-m-d'))
+                                    {{-- Elegant Connecting Line/Chevron --}}
+                                    <div class="flex flex-col items-center justify-center shrink-0 gap-1 select-none" style="--hover-color: {{ $agenda->category_color }}">
+                                        <span class="text-[9px] font-black uppercase tracking-widest transition-colors duration-500" style="color: {{ $agenda->category_color }}">s/d</span>
+                                        <i class="fas fa-chevron-right text-[8px] transition-colors duration-500" style="color: {{ $agenda->category_color }}"></i>
+                                    </div>
+
+                                    {{-- End Date --}}
+                                    <div class="w-16 h-16 rounded-2xl flex flex-col items-center justify-center text-white shadow-md relative overflow-hidden transition-transform duration-500 group-hover:scale-105" 
+                                        style="background-color: {{ $agenda->category_color }}">
+                                        <span class="text-2xl font-black leading-none mt-1">{{ $eDate->format('d') }}</span>
+                                        <span class="text-[8px] font-bold uppercase tracking-widest mt-1 opacity-90">{{ $eDate->format('M') }}</span>
+                                        <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
                                     </div>
                                 @endif
+                            </div>
+
+                            {{-- Bottom Panel: Texts & Interaction --}}
+                            <div class="flex flex-col flex-grow">
+                                <h3 class="text-lg md:text-xl font-black text-[#612F73] mb-3 line-clamp-2 leading-tight transition-colors duration-500 group-hover:text-[#8C51A5]">
+                                    {{ $agenda->title }}
+                                </h3>
                                 
-                                <h4 class="text-xl md:text-2xl font-black text-[#612F73] mb-4 transition-colors duration-500 {{ $agendaCount == 1 ? '' : 'line-clamp-2' }}" style="--hover-color: {{ $agenda->category_color }}">
-                                    <span class="md:group-hover:text-[var(--hover-color)] transition-colors duration-500">{{ $agenda->title }}</span>
-                                </h4>
-                                
-                                <p class="text-sm text-gray-500 {{ $agendaCount == 1 ? 'mb-8' : 'line-clamp-2 mb-8' }} md:group-hover:text-gray-700 transition-colors duration-500 leading-relaxed">
-                                    {{ $agenda->description ?? 'Tidak ada deskripsi tambahan untuk kegiatan ini.' }}
+                                <p class="text-gray-400 text-xs font-medium leading-relaxed line-clamp-3 mb-6">
+                                    {{ $agenda->description ?? 'Tidak ada deskripsi tambahan untuk agenda kegiatan ini.' }}
                                 </p>
 
-                                <div class="mt-auto pt-6 pb-2">
-                                    <div class="w-full h-1 bg-gray-100 rounded-full overflow-hidden relative">
-                                        <div class="absolute inset-0 origin-left scale-x-100 md:scale-x-0 md:group-hover:scale-x-100 transition-transform duration-700 ease-out" style="background-color: {{ $agenda->category_color }}"></div>
-                                    </div>
-                                    <div class="flex justify-between items-center mt-4 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500">
-                                        <span class="text-[10px] font-bold uppercase tracking-widest transition-transform duration-500 md:group-hover:translate-x-1" style="color: {{ $agenda->category_color }}">Lebih Detail</span>
-                                        <div class="w-6 h-6 rounded-full flex items-center justify-center transform md:-translate-x-2 md:group-hover:translate-x-0 transition-all duration-500" style="background-color: {{ $agenda->category_color }}20; color: {{ $agenda->category_color }}">
-                                            <i class="fas fa-arrow-right text-[10px]"></i>
-                                        </div>
+                                <div class="mt-auto pt-4 border-t border-gray-50 flex items-center justify-between">
+                                    <span class="text-[9px] font-black uppercase tracking-widest transition-transform duration-500 group-hover:translate-x-1" 
+                                          style="color: {{ $agenda->category_color }}">
+                                        SELANJUTNYA
+                                    </span>
+                                    <div class="w-8 h-8 rounded-xl flex items-center justify-center transform translate-x-2 opacity-80 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500" 
+                                         style="background-color: {{ $agenda->category_color }}10; color: {{ $agenda->category_color }}">
+                                        <i class="fas fa-arrow-right text-[10px]"></i>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </a>
                 </div>

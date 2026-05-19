@@ -284,9 +284,69 @@
                     @endforeach
                 </div>
 
-                {{-- Pagination --}}
-                <div class="mt-16">
-                    {{ $news->links() }}
+                {{-- Pagination & Rows Per Page Selector --}}
+                <div class="mt-16 flex flex-col items-center justify-center gap-6 border-t border-gray-100/50 pt-8">
+                    {{-- Pagination Links --}}
+                    <div class="w-full flex justify-center">
+                        @if($news->hasPages())
+                            <div class="flex items-center justify-center gap-3">
+                                {{-- Previous Page Link --}}
+                                @if($news->onFirstPage())
+                                    <span class="px-5 py-2.5 bg-gray-100/50 text-gray-400 border border-gray-200/30 rounded-xl text-[9px] font-black tracking-widest cursor-not-allowed select-none transition-all">
+                                        PREV
+                                    </span>
+                                @else
+                                    <a href="{{ $news->previousPageUrl() }}" 
+                                       class="px-5 py-2.5 bg-white border border-[#8C51A5]/15 text-[#8C51A5] hover:bg-[#8C51A5] hover:text-white rounded-xl text-[9px] font-black tracking-widest transition-all duration-300 shadow-sm hover:shadow-[#8C51A5]/10">
+                                        PREV
+                                    </a>
+                                @endif
+
+                                {{-- Page indicator --}}
+                                <div class="px-5 py-2.5 bg-white border border-[#8C51A5]/5 text-gray-400 font-bold text-[9px] tracking-widest rounded-xl select-none">
+                                    PAGE {{ $news->currentPage() }} OF {{ $news->lastPage() }}
+                                </div>
+
+                                {{-- Next Page Link --}}
+                                @if($news->hasMorePages())
+                                    <a href="{{ $news->nextPageUrl() }}" 
+                                       class="px-5 py-2.5 bg-white border border-[#8C51A5]/15 text-[#8C51A5] hover:bg-[#8C51A5] hover:text-white rounded-xl text-[9px] font-black tracking-widest transition-all duration-300 shadow-sm hover:shadow-[#8C51A5]/10">
+                                        NEXT
+                                    </a>
+                                @else
+                                    <span class="px-5 py-2.5 bg-gray-100/50 text-gray-400 border border-gray-200/30 rounded-xl text-[9px] font-black tracking-widest cursor-not-allowed select-none transition-all">
+                                        NEXT
+                                    </span>
+                                @endif
+                            </div>
+                        @endif
+                    </div>
+                    
+                    {{-- Stats & Select Dropdown --}}
+                    <div class="flex flex-col sm:flex-row items-center gap-4 text-gray-400 font-bold text-[10px] uppercase tracking-widest">
+                        <span>Showing {{ $news->firstItem() ?? 0 }} to {{ $news->lastItem() ?? 0 }} of {{ $news->total() }} results</span>
+                        
+                        {{-- Segmented selector box (exactly like in the screenshot) --}}
+                        <div class="flex items-center bg-white border border-[#8C51A5]/15 rounded-xl overflow-hidden shadow-sm hover:border-[#8C51A5]/40 transition-all duration-300">
+                            <span class="px-4 py-2.5 bg-gray-50 text-[10px] font-black uppercase tracking-widest text-gray-400 border-r border-[#8C51A5]/15 select-none">
+                                Per page
+                            </span>
+                            <div class="relative">
+                                <select onchange="window.location.href = this.value" 
+                                    class="appearance-none pl-4 pr-8 py-2.5 bg-white text-[10px] font-black text-[#612F73] outline-none cursor-pointer tracking-widest">
+                                    @foreach([10, 20, 50, 100, 'all'] as $perPage)
+                                        <option value="{{ request()->fullUrlWithQuery(['per_page' => $perPage]) }}" 
+                                            {{ (request('per_page', '10') == $perPage) ? 'selected' : '' }}>
+                                            {{ strtoupper($perPage) }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-[#8C51A5]/70">
+                                    <i class="fas fa-chevron-down text-[8px]"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
              @else
                 {{-- Empty State --}}

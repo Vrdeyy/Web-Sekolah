@@ -46,22 +46,44 @@
 
     {{-- Category Filter --}}
     @if(isset($categories) && $categories->count() > 0)
-    <section class="py-8 bg-white border-b border-[#F0E7F8]/50">
+    <section class="py-6 bg-white border-b border-[#F0E7F8]/30 overflow-hidden">
         <div class="container mx-auto px-4 lg:px-8">
-            <div class="flex flex-wrap items-center justify-center gap-3" data-aos="fade-up" data-aos-delay="100">
-                <a href="{{ url()->current() }}?category=all" 
-                    class="px-6 py-3 rounded-xl text-[9px] font-black uppercase tracking-[0.2em] transition-all duration-500 {{ ($activeCategory ?? 'all') == 'all' ? 'bg-[#F8CB62] text-[#612F73] shadow-lg shadow-[#F8CB62]/20' : 'bg-[#F0E7F8]/50 text-[#8C51A5] hover:bg-[#8C51A5] hover:text-white border border-[#8C51A5]/10' }}">
-                    SEMUA
+            <div class="flex flex-nowrap md:flex-wrap items-center justify-start md:justify-center gap-3 overflow-x-auto pb-3 md:pb-0 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0 scroll-smooth snap-x snap-mandatory">
+                {{-- Semua --}}
+                <a href="{{ request()->fullUrlWithQuery(['category' => 'all', 'page' => 1]) }}" 
+                    class="snap-start shrink-0 px-6 py-3.5 rounded-2xl text-[9px] font-black uppercase tracking-[0.2em] transition-all duration-300 select-none shadow-sm flex items-center gap-2.5
+                    {{ ($activeCategory ?? 'all') == 'all' 
+                        ? 'bg-gradient-to-r from-[#8C51A5] to-[#D668EA] text-white shadow-lg shadow-[#8C51A5]/25 border border-[#8C51A5]/20 scale-105' 
+                        : 'bg-[#F0E7F8]/40 hover:bg-[#8C51A5]/10 text-[#8C51A5] border border-[#8C51A5]/10 hover:scale-102 active:scale-98' }}">
+                    <i class="fas fa-th-large text-[10px] {{ ($activeCategory ?? 'all') == 'all' ? 'text-[#F8CB62]' : 'text-[#8C51A5]/60' }}"></i>
+                    <span>SEMUA</span>
                 </a>
+
                 @foreach($categories as $category)
-                <a href="{{ url()->current() }}?category={{ $category }}" 
-                    class="px-6 py-3 rounded-xl text-[9px] font-black uppercase tracking-[0.2em] transition-all duration-500 {{ ($activeCategory ?? 'all') == $category ? 'bg-[#F8CB62] text-[#612F73] shadow-lg shadow-[#F8CB62]/20' : 'bg-[#F0E7F8]/50 text-[#8C51A5] hover:bg-[#8C51A5] hover:text-white border border-[#8C51A5]/10' }}">
-                    {{ $category }}
+                <a href="{{ request()->fullUrlWithQuery(['category' => $category, 'page' => 1]) }}" 
+                    class="snap-start shrink-0 px-6 py-3.5 rounded-2xl text-[9px] font-black uppercase tracking-[0.2em] transition-all duration-300 select-none shadow-sm flex items-center gap-2.5
+                    {{ ($activeCategory ?? 'all') == $category 
+                        ? 'bg-gradient-to-r from-[#8C51A5] to-[#D668EA] text-white shadow-lg shadow-[#8C51A5]/25 border border-[#8C51A5]/20 scale-105' 
+                        : 'bg-[#F0E7F8]/40 hover:bg-[#8C51A5]/10 text-[#8C51A5] border border-[#8C51A5]/10 hover:scale-102 active:scale-98' }}">
+                    <i class="fas fa-tag text-[10px] {{ ($activeCategory ?? 'all') == $category ? 'text-[#F8CB62]' : 'text-[#8C51A5]/60' }}"></i>
+                    <span>{{ $category }}</span>
                 </a>
                 @endforeach
             </div>
         </div>
     </section>
+
+    <style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .scrollbar-hide {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
     @endif
 
     {{-- Photo Gallery --}}
@@ -101,9 +123,69 @@
                         @endforeach
                     </div>
 
-                    {{-- Pagination --}}
-                    <div class="mt-12">
-                        {{ $galleries->links() }}
+                    {{-- Pagination & Rows Per Page Selector --}}
+                    <div class="mt-16 flex flex-col items-center justify-center gap-6 border-t border-gray-100/50 pt-8">
+                        {{-- Pagination Links --}}
+                        <div class="w-full flex justify-center">
+                            @if($galleries->hasPages())
+                                <div class="flex items-center justify-center gap-3">
+                                    {{-- Previous Page Link --}}
+                                    @if($galleries->onFirstPage())
+                                        <span class="px-5 py-2.5 bg-gray-100/50 text-gray-400 border border-gray-200/30 rounded-xl text-[9px] font-black tracking-widest cursor-not-allowed select-none transition-all">
+                                            PREV
+                                        </span>
+                                    @else
+                                        <a href="{{ $galleries->previousPageUrl() }}" 
+                                           class="px-5 py-2.5 bg-white border border-[#8C51A5]/15 text-[#8C51A5] hover:bg-[#8C51A5] hover:text-white rounded-xl text-[9px] font-black tracking-widest transition-all duration-300 shadow-sm hover:shadow-[#8C51A5]/10">
+                                            PREV
+                                        </a>
+                                    @endif
+
+                                    {{-- Page indicator --}}
+                                    <div class="px-5 py-2.5 bg-white border border-[#8C51A5]/5 text-gray-400 font-bold text-[9px] tracking-widest rounded-xl select-none">
+                                        PAGE {{ $galleries->currentPage() }} OF {{ $galleries->lastPage() }}
+                                    </div>
+
+                                    {{-- Next Page Link --}}
+                                    @if($galleries->hasMorePages())
+                                        <a href="{{ $galleries->nextPageUrl() }}" 
+                                           class="px-5 py-2.5 bg-white border border-[#8C51A5]/15 text-[#8C51A5] hover:bg-[#8C51A5] hover:text-white rounded-xl text-[9px] font-black tracking-widest transition-all duration-300 shadow-sm hover:shadow-[#8C51A5]/10">
+                                            NEXT
+                                        </a>
+                                    @else
+                                        <span class="px-5 py-2.5 bg-gray-100/50 text-gray-400 border border-gray-200/30 rounded-xl text-[9px] font-black tracking-widest cursor-not-allowed select-none transition-all">
+                                            NEXT
+                                        </span>
+                                    @endif
+                                </div>
+                            @endif
+                        </div>
+                        
+                        {{-- Stats & Select Dropdown --}}
+                        <div class="flex flex-col sm:flex-row items-center gap-4 text-gray-400 font-bold text-[10px] uppercase tracking-widest">
+                            <span>Showing {{ $galleries->firstItem() ?? 0 }} to {{ $galleries->lastItem() ?? 0 }} of {{ $galleries->total() }} results</span>
+                            
+                            {{-- Segmented selector box --}}
+                            <div class="flex items-center bg-white border border-[#8C51A5]/15 rounded-xl overflow-hidden shadow-sm hover:border-[#8C51A5]/40 transition-all duration-300">
+                                <span class="px-4 py-2.5 bg-gray-50 text-[10px] font-black uppercase tracking-widest text-gray-400 border-r border-[#8C51A5]/15 select-none">
+                                    Per page
+                                </span>
+                                <div class="relative">
+                                    <select onchange="window.location.href = this.value" 
+                                        class="appearance-none pl-4 pr-8 py-2.5 bg-white text-[10px] font-black text-[#612F73] outline-none cursor-pointer tracking-widest">
+                                        @foreach([12, 24, 48, 96, 'all'] as $perPage)
+                                            <option value="{{ request()->fullUrlWithQuery(['per_page' => $perPage]) }}" 
+                                                {{ (request('per_page', '12') == $perPage) ? 'selected' : '' }}>
+                                                {{ strtoupper($perPage) }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-[#8C51A5]/70">
+                                        <i class="fas fa-chevron-down text-[8px]"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 @else
                     {{-- Empty State --}}
@@ -158,9 +240,69 @@
                         @endforeach
                     </div>
 
-                    {{-- Pagination --}}
-                    <div class="mt-12">
-                        {{ $galleries->links() }}
+                    {{-- Pagination & Rows Per Page Selector --}}
+                    <div class="mt-16 flex flex-col items-center justify-center gap-6 border-t border-gray-100/50 pt-8">
+                        {{-- Pagination Links --}}
+                        <div class="w-full flex justify-center">
+                            @if($galleries->hasPages())
+                                <div class="flex items-center justify-center gap-3">
+                                    {{-- Previous Page Link --}}
+                                    @if($galleries->onFirstPage())
+                                        <span class="px-5 py-2.5 bg-gray-100/50 text-gray-400 border border-gray-200/30 rounded-xl text-[9px] font-black tracking-widest cursor-not-allowed select-none transition-all">
+                                            PREV
+                                        </span>
+                                    @else
+                                        <a href="{{ $galleries->previousPageUrl() }}" 
+                                           class="px-5 py-2.5 bg-white border border-[#8C51A5]/15 text-[#8C51A5] hover:bg-[#8C51A5] hover:text-white rounded-xl text-[9px] font-black tracking-widest transition-all duration-300 shadow-sm hover:shadow-[#8C51A5]/10">
+                                            PREV
+                                        </a>
+                                    @endif
+
+                                    {{-- Page indicator --}}
+                                    <div class="px-5 py-2.5 bg-white border border-[#8C51A5]/5 text-gray-400 font-bold text-[9px] tracking-widest rounded-xl select-none">
+                                        PAGE {{ $galleries->currentPage() }} OF {{ $galleries->lastPage() }}
+                                    </div>
+
+                                    {{-- Next Page Link --}}
+                                    @if($galleries->hasMorePages())
+                                        <a href="{{ $galleries->nextPageUrl() }}" 
+                                           class="px-5 py-2.5 bg-white border border-[#8C51A5]/15 text-[#8C51A5] hover:bg-[#8C51A5] hover:text-white rounded-xl text-[9px] font-black tracking-widest transition-all duration-300 shadow-sm hover:shadow-[#8C51A5]/10">
+                                            NEXT
+                                        </a>
+                                    @else
+                                        <span class="px-5 py-2.5 bg-gray-100/50 text-gray-400 border border-gray-200/30 rounded-xl text-[9px] font-black tracking-widest cursor-not-allowed select-none transition-all">
+                                            NEXT
+                                        </span>
+                                    @endif
+                                </div>
+                            @endif
+                        </div>
+                        
+                        {{-- Stats & Select Dropdown --}}
+                        <div class="flex flex-col sm:flex-row items-center gap-4 text-gray-400 font-bold text-[10px] uppercase tracking-widest">
+                            <span>Showing {{ $galleries->firstItem() ?? 0 }} to {{ $galleries->lastItem() ?? 0 }} of {{ $galleries->total() }} results</span>
+                            
+                            {{-- Segmented selector box --}}
+                            <div class="flex items-center bg-white border border-[#8C51A5]/15 rounded-xl overflow-hidden shadow-sm hover:border-[#8C51A5]/40 transition-all duration-300">
+                                <span class="px-4 py-2.5 bg-gray-50 text-[10px] font-black uppercase tracking-widest text-gray-400 border-r border-[#8C51A5]/15 select-none">
+                                    Per page
+                                </span>
+                                <div class="relative">
+                                    <select onchange="window.location.href = this.value" 
+                                        class="appearance-none pl-4 pr-8 py-2.5 bg-white text-[10px] font-black text-[#612F73] outline-none cursor-pointer tracking-widest">
+                                        @foreach([12, 24, 48, 96, 'all'] as $perPage)
+                                            <option value="{{ request()->fullUrlWithQuery(['per_page' => $perPage]) }}" 
+                                                {{ (request('per_page', '12') == $perPage) ? 'selected' : '' }}>
+                                                {{ strtoupper($perPage) }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-[#8C51A5]/70">
+                                        <i class="fas fa-chevron-down text-[8px]"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 @else
                     {{-- Empty State --}}

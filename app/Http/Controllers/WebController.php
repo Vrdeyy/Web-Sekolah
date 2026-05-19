@@ -401,8 +401,19 @@ class WebController extends Controller
 
         $categories = Gallery::active()->photos()->whereNotNull('category')->distinct()->pluck('category');
 
+        $perPageInput = $request->input('per_page', '12');
+        if ($perPageInput === 'all') {
+            $count = $query->count();
+            $perPage = max(1, $count);
+        } else {
+            $perPage = (int) $perPageInput;
+            if (!in_array($perPage, [12, 24, 48, 96])) {
+                $perPage = 12;
+            }
+        }
+
         $data = array_merge($this->getSharedData(), [
-            'galleries' => $query->paginate(12)->withQueryString(),
+            'galleries' => $query->paginate($perPage)->withQueryString(),
             'categories' => $categories,
             'type' => 'photo',
             'activeCategory' => $request->category ?? 'all'
@@ -425,8 +436,19 @@ class WebController extends Controller
 
         $categories = Gallery::active()->videos()->whereNotNull('category')->distinct()->pluck('category');
 
+        $perPageInput = $request->input('per_page', '12');
+        if ($perPageInput === 'all') {
+            $count = $query->count();
+            $perPage = max(1, $count);
+        } else {
+            $perPage = (int) $perPageInput;
+            if (!in_array($perPage, [12, 24, 48, 96])) {
+                $perPage = 12;
+            }
+        }
+
         $data = array_merge($this->getSharedData(), [
-            'galleries' => $query->paginate(12)->withQueryString(),
+            'galleries' => $query->paginate($perPage)->withQueryString(),
             'categories' => $categories,
             'type' => 'video',
             'activeCategory' => $request->category ?? 'all'
@@ -466,8 +488,19 @@ class WebController extends Controller
             $query->where('category', $request->input('category'));
         }
 
+        $perPageInput = $request->input('per_page', '10');
+        if ($perPageInput === 'all') {
+            $count = $query->count();
+            $perPage = max(1, $count);
+        } else {
+            $perPage = (int) $perPageInput;
+            if (!in_array($perPage, [10, 20, 50, 100])) {
+                $perPage = 10;
+            }
+        }
+
         $data = array_merge($this->getSharedData(), [
-            'news' => $query->orderBy('is_featured', 'desc')->orderBy('published_at', 'desc')->paginate(9)->withQueryString(),
+            'news' => $query->orderBy('is_featured', 'desc')->orderBy('published_at', 'desc')->paginate($perPage)->withQueryString(),
         ]);
 
         return view('pages.news', $data);
