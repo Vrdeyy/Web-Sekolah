@@ -28,7 +28,16 @@ class AwardResource extends Resource
                             ->label('Judul')
                             ->required(),
                         Forms\Components\TextInput::make('year')
-                            ->label('Tahun'),
+                            ->label('Tahun')
+                            ->nullable()
+                            ->maxLength(4)
+                            ->extraInputAttributes([
+                                'oninput' => "this.value = this.value.replace(/[^0-9]/g, '')",
+                            ])
+                            ->regex('/^[0-9]+$/')
+                            ->validationMessages([
+                                'regex' => 'Tahun hanya boleh berisi angka.',
+                            ]),
                         Forms\Components\TextInput::make('organizer')
                             ->label('Penyelenggara'),
                         Forms\Components\FileUpload::make('image')
@@ -45,7 +54,12 @@ class AwardResource extends Resource
                         Forms\Components\TextInput::make('order')
                             ->label('Urutan')
                             ->numeric()
-                            ->default(0),
+                            ->default(1)
+                            ->required()
+                            ->minValue(1)
+                            ->validationMessages([
+                                'min' => 'Urutan tidak boleh 0 atau kurang.',
+                            ]),
                         Forms\Components\Toggle::make('is_active')
                             ->label('Aktif')
                             ->default(true),

@@ -28,9 +28,19 @@ class StaffResource extends Resource
                             ->label('Nama Lengkap')
                             ->required(),
                         Forms\Components\TextInput::make('nip')
-                            ->label('NIP'),
+                            ->label('NIP')
+                            ->nullable()
+                            ->maxLength(18)
+                            ->extraInputAttributes([
+                                'oninput' => "this.value = this.value.replace(/[^0-9]/g, '')",
+                            ])
+                            ->regex('/^[0-9]+$/')
+                            ->validationMessages([
+                                'regex' => 'NIP hanya boleh berisi angka.',
+                            ]),
                         Forms\Components\TextInput::make('position')
-                            ->label('Jabatan'),
+                            ->label('Jabatan')
+                            ->default('Staf'),
                         Forms\Components\TextInput::make('department')
                             ->label('Bagian'),
                         Forms\Components\FileUpload::make('photo')
@@ -51,7 +61,12 @@ class StaffResource extends Resource
                         Forms\Components\TextInput::make('order')
                             ->label('Urutan')
                             ->numeric()
-                            ->default(0),
+                            ->default(1)
+                            ->required()
+                            ->minValue(1)
+                            ->validationMessages([
+                                'min' => 'Urutan tidak boleh 0 atau kurang.',
+                            ]),
                         Forms\Components\Toggle::make('is_active')
                             ->label('Aktif')
                             ->default(true),

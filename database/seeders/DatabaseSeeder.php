@@ -23,9 +23,9 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Memanggil seeder development (buat isi data awal biar nggak hilang kalo di-fresh)
+        // Memanggil seeder produksi (untuk mengisi data dasar/produksi berstandar riil)
         $this->call([
-            DevelopmentSeeder::class,
+            ProductionSeeder::class,
         ]);
     }
 }

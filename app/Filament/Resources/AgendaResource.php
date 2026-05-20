@@ -14,6 +14,8 @@ class AgendaResource extends Resource
 {
     protected static ?string $model = Agenda::class;
 
+    protected static ?string $slug = 'agenda';
+
     protected static ?string $navigationIcon = 'heroicon-o-calendar';
     protected static ?string $navigationGroup = 'Konten Website';
     protected static ?string $navigationLabel = 'Agenda Sekolah';
@@ -48,7 +50,7 @@ class AgendaResource extends Resource
                             ->label('Kategori')
                             ->options([
                                 'akademik' => '🟣 Akademik',
-                                'libur'    => '🔴 Libur / Ujian',
+                                'libur'    => '🔴 Libur',
                                 'event'    => '🟡 Event Sekolah',
                             ])
                             ->default('akademik')

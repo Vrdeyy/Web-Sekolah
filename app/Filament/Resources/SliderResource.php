@@ -50,7 +50,12 @@ class SliderResource extends Resource
                         Forms\Components\TextInput::make('order')
                             ->label('Urutan')
                             ->numeric()
-                            ->default(0),
+                            ->default(1)
+                            ->required()
+                            ->minValue(1)
+                            ->validationMessages([
+                                'min' => 'Urutan tidak boleh 0 atau kurang.',
+                            ]),
                         Forms\Components\Toggle::make('is_active')
                             ->label('Aktif')
                             ->default(true),
