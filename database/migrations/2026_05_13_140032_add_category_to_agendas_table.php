@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('agendas', function (Blueprint $table) {
-            //
+            $table->string('category')->default('akademik')->after('description');
+            if (Schema::hasColumn('agendas', 'color')) {
+                $table->dropColumn('color');
+            }
         });
     }
 
@@ -22,7 +25,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('agendas', function (Blueprint $table) {
-            //
+            $table->dropColumn('category');
+            $table->string('color')->default('#8C51A5')->after('event_date');
         });
     }
 };

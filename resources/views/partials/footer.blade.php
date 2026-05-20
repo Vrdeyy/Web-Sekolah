@@ -26,16 +26,49 @@
                     {{ $settings['address'] ?? 'Pilihan Yang Tepat Di Sekolah Yang Berkualitas' }}
                 </p>
 
-                <div class="flex gap-3">
-                    @if(isset($socialLinks) && $socialLinks->count() > 0)
-                        @foreach($socialLinks as $social)
-                            @if($social && $social->url)
-                                <a href="{{ $social->url }}" target="_blank"
-                                   class="w-10 h-10 bg-white/5 hover:bg-[#8C51A5] rounded-lg flex items-center justify-center transition-all duration-300 ease-in-out border border-white/10">
-                                    <i class="{{ $social->icon_class }}"></i>
-                                </a>
-                            @endif
-                        @endforeach
+                <div class="hidden lg:flex gap-3">
+                    {{-- Render dari Settings (Manage Settings) --}}
+                    @if(!empty($settings['social_facebook']))
+                        <a href="{{ $settings['social_facebook'] }}" target="_blank"
+                           class="w-10 h-10 bg-white/5 hover:bg-[#8C51A5] rounded-lg flex items-center justify-center transition-all duration-300 ease-in-out border border-white/10"
+                           title="Facebook">
+                            <i class="fab fa-facebook-f text-white text-sm"></i>
+                        </a>
+                    @endif
+                    @if(!empty($settings['social_instagram']))
+                        <a href="{{ $settings['social_instagram'] }}" target="_blank"
+                           class="w-10 h-10 bg-white/5 hover:bg-[#8C51A5] rounded-lg flex items-center justify-center transition-all duration-300 ease-in-out border border-white/10"
+                           title="Instagram">
+                            <i class="fab fa-instagram text-white text-sm"></i>
+                        </a>
+                    @endif
+                    @if(!empty($settings['social_youtube']))
+                        <a href="{{ $settings['social_youtube'] }}" target="_blank"
+                           class="w-10 h-10 bg-white/5 hover:bg-[#8C51A5] rounded-lg flex items-center justify-center transition-all duration-300 ease-in-out border border-white/10"
+                           title="YouTube">
+                            <i class="fab fa-youtube text-white text-sm"></i>
+                        </a>
+                    @endif
+                    @if(!empty($settings['social_tiktok']))
+                        <a href="{{ $settings['social_tiktok'] }}" target="_blank"
+                           class="w-10 h-10 bg-white/5 hover:bg-[#8C51A5] rounded-lg flex items-center justify-center transition-all duration-300 ease-in-out border border-white/10"
+                           title="TikTok">
+                            <i class="fab fa-tiktok text-white text-sm"></i>
+                        </a>
+                    @endif
+
+                    {{-- Fallback: Render dari SocialLink Model (jika ada dan settings di atas kosong) --}}
+                    @if(empty($settings['social_facebook']) && empty($settings['social_instagram']) && empty($settings['social_youtube']) && empty($settings['social_tiktok']))
+                        @if(isset($socialLinks) && $socialLinks->count() > 0)
+                            @foreach($socialLinks as $social)
+                                @if($social && $social->url)
+                                    <a href="{{ $social->url }}" target="_blank"
+                                       class="w-10 h-10 bg-white/5 hover:bg-[#8C51A5] rounded-lg flex items-center justify-center transition-all duration-300 ease-in-out border border-white/10">
+                                        <i class="{{ $social->icon_class ?? 'fas fa-share-alt' }}"></i>
+                                    </a>
+                                @endif
+                            @endforeach
+                        @endif
                     @endif
                 </div>
             </div>
@@ -97,6 +130,53 @@
                 </ul>
             </div>
 
+        </div>
+
+        {{-- Mobile Social Icons (Left-aligned) --}}
+        <div class="lg:hidden flex justify-start gap-3 mt-10">
+            {{-- Render dari Settings (Manage Settings) --}}
+            @if(!empty($settings['social_facebook']))
+                <a href="{{ $settings['social_facebook'] }}" target="_blank"
+                   class="w-10 h-10 bg-white/5 hover:bg-[#8C51A5] rounded-lg flex items-center justify-center transition-all duration-300 ease-in-out border border-white/10"
+                   title="Facebook">
+                    <i class="fab fa-facebook-f text-white text-sm"></i>
+                </a>
+            @endif
+            @if(!empty($settings['social_instagram']))
+                <a href="{{ $settings['social_instagram'] }}" target="_blank"
+                   class="w-10 h-10 bg-white/5 hover:bg-[#8C51A5] rounded-lg flex items-center justify-center transition-all duration-300 ease-in-out border border-white/10"
+                   title="Instagram">
+                    <i class="fab fa-instagram text-white text-sm"></i>
+                </a>
+            @endif
+            @if(!empty($settings['social_youtube']))
+                <a href="{{ $settings['social_youtube'] }}" target="_blank"
+                   class="w-10 h-10 bg-white/5 hover:bg-[#8C51A5] rounded-lg flex items-center justify-center transition-all duration-300 ease-in-out border border-white/10"
+                   title="YouTube">
+                    <i class="fab fa-youtube text-white text-sm"></i>
+                </a>
+            @endif
+            @if(!empty($settings['social_tiktok']))
+                <a href="{{ $settings['social_tiktok'] }}" target="_blank"
+                   class="w-10 h-10 bg-white/5 hover:bg-[#8C51A5] rounded-lg flex items-center justify-center transition-all duration-300 ease-in-out border border-white/10"
+                   title="TikTok">
+                    <i class="fab fa-tiktok text-white text-sm"></i>
+                </a>
+            @endif
+
+            {{-- Fallback: Render dari SocialLink Model --}}
+            @if(empty($settings['social_facebook']) && empty($settings['social_instagram']) && empty($settings['social_youtube']) && empty($settings['social_tiktok']))
+                @if(isset($socialLinks) && $socialLinks->count() > 0)
+                    @foreach($socialLinks as $social)
+                        @if($social && $social->url)
+                            <a href="{{ $social->url }}" target="_blank"
+                               class="w-10 h-10 bg-white/5 hover:bg-[#8C51A5] rounded-lg flex items-center justify-center transition-all duration-300 ease-in-out border border-white/10">
+                                <i class="{{ $social->icon_class ?? 'fas fa-share-alt' }}"></i>
+                            </a>
+                        @endif
+                    @endforeach
+                @endif
+            @endif
         </div>
     </div>
 

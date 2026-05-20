@@ -49,7 +49,7 @@ class Agenda extends Model
             'icon'  => 'fas fa-graduation-cap',
         ],
         'libur' => [
-            'label' => 'Libur / Ujian',
+            'label' => 'Libur Sekolah',
             'color' => '#EF4444',
             'bg'    => 'bg-red-500',
             'icon'  => 'fas fa-calendar-times',
