@@ -8,6 +8,34 @@
     
     {!! $seo->generate() !!}
 
+    {{-- Dynamic Favicon --}}
+    @if(isset($settings['school_logo']) && !empty($settings['school_logo']))
+        <link rel="icon" type="image/png" href="{{ asset('storage/' . $settings['school_logo']) }}">
+    @else
+        @php
+            $schoolName = isset($settings['school_name']) ? $settings['school_name'] : 'SMK YAJ';
+            $words = explode(' ', $schoolName);
+            $initials = '';
+            $filteredWords = array_filter($words, function($word) {
+                return !in_array(strtoupper($word), ['SMK', 'SMA', 'SMP', 'SD', 'TK', 'SLB']);
+            });
+            if (empty($filteredWords)) {
+                $filteredWords = $words;
+            }
+            foreach ($filteredWords as $word) {
+                $initials .= strtoupper(substr($word, 0, 1));
+            }
+            $initials = substr($initials, 0, 3);
+            if (empty($initials)) {
+                $initials = 'YAJ';
+            }
+            
+            $svgIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="navbarGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8C51A5" /><stop offset="100%" stop-color="#612F73" /></linearGradient></defs><rect width="100" height="100" rx="28" fill="url(#navbarGrad)" /><text x="50" y="55" font-size="34" font-weight="900" font-family="\'Plus Jakarta Sans\', \'Inter\', sans-serif" fill="#ffffff" text-anchor="middle" dominant-baseline="middle">' . $initials . '</text></svg>';
+            $faviconDataUri = 'data:image/svg+xml;base64,' . base64_encode($svgIcon);
+        @endphp
+        <link rel="icon" type="image/svg+xml" href="{{ $faviconDataUri }}">
+    @endif
+
     {{-- Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

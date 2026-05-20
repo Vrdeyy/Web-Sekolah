@@ -403,7 +403,7 @@
             </div>
 
             {{-- Responsive Grid/Carousel --}}
-            <div id="news-container" class="flex md:grid overflow-x-auto md:overflow-x-visible flex-nowrap md:flex-wrap md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 pb-10 md:pb-0 px-4 md:px-0 snap-x snap-mandatory hide-scrollbar">
+            <div id="news-container" class="flex md:grid overflow-x-auto md:overflow-x-visible flex-nowrap md:flex-wrap md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 pt-6 pb-16 md:pt-0 md:pb-0 px-4 md:px-0 snap-x snap-mandatory hide-scrollbar">
                 @foreach($news as $index => $item)
                 <div class="flex-none w-[300px] sm:w-[380px] md:w-auto snap-center group bg-white rounded-[2.5rem] overflow-hidden shadow-premium hover:shadow-premium-lg transition-all duration-500 border border-gray-100 flex flex-col h-full" data-index="{{ $index }}">
                     {{-- Image with fixed aspect ratio --}}
@@ -585,7 +585,7 @@
                 }
             @endphp
             
-            <div id="agenda-container" class="flex overflow-x-auto md:grid {{ $gridClass }} gap-6 md:gap-8 pb-8 md:pb-0 snap-x snap-mandatory items-stretch px-0 md:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+            <div id="agenda-container" class="flex overflow-x-auto md:grid {{ $gridClass }} gap-6 md:gap-8 pt-6 pb-16 md:pt-0 md:pb-0 snap-x snap-mandatory items-stretch px-4 md:px-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 @foreach($upcomingAgendas as $agenda)
                 @php
                     $datesArray = collect($agenda->selected_dates)->sort()->values();
